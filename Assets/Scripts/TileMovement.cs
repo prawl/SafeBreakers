@@ -11,21 +11,31 @@ public class TileMovement : MonoBehaviour {
 	public Brush possibleLoc;
 	public Brush defaultLoc;
 	public TileIndex current;
+	public float distance;
+	public Vector3 temp;
+	public Rigidbody rigid;
+	public float speed;
+	public bool move;
 	
 	// Use this for initialization
 	void Start () {
 		current = tileSystem.ClosestTileIndexFromWorld (player.transform.position);
 		Vector3 temp = tileSystem.WorldPositionFromTileIndex(current, true);
 		player.transform.position = temp;
+		speed = 3.0f;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		LockZAxis ();
 		HighlightMoves ();
 		if (Input.GetMouseButtonDown(0)) {
 			MoveToLocation ();
 		}
+		if(move){
+			player.transform.position = Vector3.Lerp (player.transform.position, temp, Time.deltaTime*speed);
+			checkLoc ();
+		}
+
 	}
 	
 	void HighlightMoves(){
@@ -48,24 +58,29 @@ public class TileMovement : MonoBehaviour {
 			}
 		}
 	}
-	
-	void LockZAxis(){
-		Vector3 pos = player.transform.position;
-		pos.z = -1;
-		player.transform.position = pos;
+
+	void checkLoc(){
+		if(player.transform.position == temp){
+			move = false;
+		}
 	}
-	
+
 	void MoveToLocation(){
-		bool move = false;
+		move = false;
+		temp = new Vector3 ();
 		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
 		current = tileSystem.ClosestTileIndexFromWorld (player.transform.position);
 		TileIndex next = tileSystem.ClosestTileIndexFromRay (ray);
 		move = CanMove (current, next, move);
 		if (move == true) {
-			Vector3 temp = tileSystem.WorldPositionFromTileIndex(next, true);
-			temp.z = -1;
-			player.transform.position = temp;
+						temp = tileSystem.WorldPositionFromTileIndex (next, true);
+						temp.z = -1;
 		}
+			//player.transform.position = temp;
+	}
+
+	IEnumerator wait(){
+		yield return new WaitForSeconds(1f);			
 	}
 	
 	bool CanMove(TileIndex current, TileIndex next, bool status){
