@@ -1,13 +1,13 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2008
 
-Project("{D39EFCCD-E5BF-768E-5956-DCFF770EF9B0}") = "Safebreakers", "Assembly-CSharp.csproj", "{92CD60C4-2047-6A4B-4C29-FADB2D49B5CA}"
+Project("{225E8780-EDE0-FC40-3F29-672F45F48931}") = "SafeBreakers", "Assembly-CSharp.csproj", "{D6638B14-4E34-4A69-2120-C36943B5E1DD}"
 EndProject
-Project("{D39EFCCD-E5BF-768E-5956-DCFF770EF9B0}") = "Safebreakers", "Assembly-CSharp-Editor.csproj", "{74B46C8D-1C7F-84FE-68A2-9E927F196840}"
+Project("{225E8780-EDE0-FC40-3F29-672F45F48931}") = "SafeBreakers", "Assembly-CSharp-Editor.csproj", "{121DECEC-F65F-F605-24B5-02AEED0F23CE}"
 EndProject
-Project("{D39EFCCD-E5BF-768E-5956-DCFF770EF9B0}") = "Safebreakers", "Assembly-UnityScript.unityproj", "{45D973EE-FF5D-BE13-A933-27B7463541F4}"
+Project("{225E8780-EDE0-FC40-3F29-672F45F48931}") = "SafeBreakers", "Assembly-UnityScript.unityproj", "{4F5FCC74-58CE-C159-D857-AC4F284C3F19}"
 EndProject
-Project("{D39EFCCD-E5BF-768E-5956-DCFF770EF9B0}") = "Safebreakers", "Assembly-UnityScript-Editor.unityproj", "{BBB329B5-75C0-5224-3A45-2615DA44E80B}"
+Project("{225E8780-EDE0-FC40-3F29-672F45F48931}") = "SafeBreakers", "Assembly-UnityScript-Editor.unityproj", "{6B53A530-876D-344C-2EEC-4B69C65779C1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,27 +15,27 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{92CD60C4-2047-6A4B-4C29-FADB2D49B5CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{92CD60C4-2047-6A4B-4C29-FADB2D49B5CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{92CD60C4-2047-6A4B-4C29-FADB2D49B5CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{92CD60C4-2047-6A4B-4C29-FADB2D49B5CA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{74B46C8D-1C7F-84FE-68A2-9E927F196840}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{74B46C8D-1C7F-84FE-68A2-9E927F196840}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{74B46C8D-1C7F-84FE-68A2-9E927F196840}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{74B46C8D-1C7F-84FE-68A2-9E927F196840}.Release|Any CPU.Build.0 = Release|Any CPU
-		{45D973EE-FF5D-BE13-A933-27B7463541F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{45D973EE-FF5D-BE13-A933-27B7463541F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{45D973EE-FF5D-BE13-A933-27B7463541F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{45D973EE-FF5D-BE13-A933-27B7463541F4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BBB329B5-75C0-5224-3A45-2615DA44E80B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BBB329B5-75C0-5224-3A45-2615DA44E80B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BBB329B5-75C0-5224-3A45-2615DA44E80B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BBB329B5-75C0-5224-3A45-2615DA44E80B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6638B14-4E34-4A69-2120-C36943B5E1DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6638B14-4E34-4A69-2120-C36943B5E1DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6638B14-4E34-4A69-2120-C36943B5E1DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6638B14-4E34-4A69-2120-C36943B5E1DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{121DECEC-F65F-F605-24B5-02AEED0F23CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{121DECEC-F65F-F605-24B5-02AEED0F23CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{121DECEC-F65F-F605-24B5-02AEED0F23CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{121DECEC-F65F-F605-24B5-02AEED0F23CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F5FCC74-58CE-C159-D857-AC4F284C3F19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F5FCC74-58CE-C159-D857-AC4F284C3F19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F5FCC74-58CE-C159-D857-AC4F284C3F19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F5FCC74-58CE-C159-D857-AC4F284C3F19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B53A530-876D-344C-2EEC-4B69C65779C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B53A530-876D-344C-2EEC-4B69C65779C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B53A530-876D-344C-2EEC-4B69C65779C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B53A530-876D-344C-2EEC-4B69C65779C1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-										GlobalSection(MonoDevelopProperties) = preSolution
+											GlobalSection(MonoDevelopProperties) = preSolution
 		StartupItem = Assembly-CSharp.csproj
 		Policies = $0
 		$0.TextStylePolicy = $1
