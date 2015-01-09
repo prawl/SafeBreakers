@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using Rotorz.Tile;
 using Rotorz.Tile.Internal;
 
+
+[RequireComponent(typeof(Animator))]
 public class TileMovement : MonoBehaviour {
 
 	public GameObject player;
@@ -16,13 +18,17 @@ public class TileMovement : MonoBehaviour {
 	public Rigidbody rigid;
 	public float speed;
 	public bool move;
+	private Animator playerAnimator = null;
+	public GameObject highlightMouse;
 	
 	// Use this for initialization
 	void Start () {
+		playerAnimator = GetComponent<Animator>();
 		current = tileSystem.ClosestTileIndexFromWorld (player.transform.position);
 		Vector3 temp = tileSystem.WorldPositionFromTileIndex(current, true);
+		temp.z = -1;
 		player.transform.position = temp;
-		speed = 3.0f;
+		speed = 1.0f;
 	}
 	
 	// Update is called once per frame
@@ -32,12 +38,47 @@ public class TileMovement : MonoBehaviour {
 			MoveToLocation ();
 		}
 		if(move){
-			player.transform.position = Vector3.Lerp (player.transform.position, temp, Time.deltaTime*speed);
+			player.transform.position = Vector3.MoveTowards (player.transform.position, temp, Time.deltaTime*speed);
 			checkLoc ();
+		}
+		highlightMouse.transform.position = highlightMouse .transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
+		UpdateAnimation ();
+	}
+
+	void UpdateAnimation(){
+		if (temp.x > player.transform.position.x) {
+			playerAnimator.SetBool ("Walk_Right", true);
+			playerAnimator.SetBool ("Walk_Left", false);
+			playerAnimator.SetBool ("Walk_Forward", false);
+			playerAnimator.SetBool ("Walk_Back", false);
+		}
+		if (temp.x < player.transform.position.x) {
+			playerAnimator.SetBool ("Walk_Right", false);
+			playerAnimator.SetBool ("Walk_Left", true);
+			playerAnimator.SetBool ("Walk_Forward", false);
+			playerAnimator.SetBool ("Walk_Back", false);
+		}
+		if (temp.y < player.transform.position.y) {
+			playerAnimator.SetBool ("Walk_Right", false);
+			playerAnimator.SetBool ("Walk_Left", false);
+			playerAnimator.SetBool ("Walk_Forward", true);
+			playerAnimator.SetBool ("Walk_Back", false);
+		}
+		if (temp.y > player.transform.position.y) {
+			playerAnimator.SetBool ("Walk_Right", false);
+			playerAnimator.SetBool ("Walk_Left", false);
+			playerAnimator.SetBool ("Walk_Forward", false);
+			playerAnimator.SetBool ("Walk_Back", true);
+		}
+		if (!move) {
+			playerAnimator.SetBool ("Walk_Right", false);
+			playerAnimator.SetBool ("Walk_Left", false);
+			playerAnimator.SetBool ("Walk_Forward", false);
+			playerAnimator.SetBool ("Walk_Back", false);
 		}
 
 	}
-	
+
 	void HighlightMoves(){
 		current = tileSystem.ClosestTileIndexFromWorld (player.transform.position);
 		
@@ -68,15 +109,15 @@ public class TileMovement : MonoBehaviour {
 	void MoveToLocation(){
 		move = false;
 		temp = new Vector3 ();
-		Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
-		current = tileSystem.ClosestTileIndexFromWorld (player.transform.position);
-		TileIndex next = tileSystem.ClosestTileIndexFromRay (ray);
+		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		RaycastHit hit;
+		Physics.Raycast(ray, out hit);
+		TileIndex next = tileSystem.ClosestTileIndexFromWorld (hit.point);
 		move = CanMove (current, next, move);
 		if (move == true) {
 						temp = tileSystem.WorldPositionFromTileIndex (next, true);
 						temp.z = -1;
 		}
-			//player.transform.position = temp;
 	}
 
 	IEnumerator wait(){

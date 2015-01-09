@@ -41,3 +41,11 @@ TagManager:
     userID: 0
     uniqueID: 0
     locked: 0
+  - name: Sprites
+    userID: 1
+    uniqueID: 190485405
+    locked: 0
+  - name: GameObjects
+    userID: 2
+    uniqueID: 4063126375
+    locked: 0
