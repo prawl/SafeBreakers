@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Rotorz.Tile;
 using Rotorz.Tile.Internal;
 
-
+[RequireComponent(typeof(CameraController))]
 [RequireComponent(typeof(Animator))]
 public class TileMovement : MonoBehaviour {
 
@@ -18,11 +18,13 @@ public class TileMovement : MonoBehaviour {
 	public Rigidbody rigid;
 	public float speed;
 	public bool move;
+	private CameraController mainCamera;
 	private Animator playerAnimator = null;
 	public GameObject highlightMouse;
 	
 	// Use this for initialization
 	void Start () {
+		mainCamera = GetComponent<CameraController> ();
 		playerAnimator = GetComponent<Animator>();
 		current = tileSystem.ClosestTileIndexFromWorld (player.transform.position);
 		Vector3 temp = tileSystem.WorldPositionFromTileIndex(current, true);
@@ -30,19 +32,22 @@ public class TileMovement : MonoBehaviour {
 		player.transform.position = temp;
 		speed = 1.0f;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
+		mainCamera.EnableCameraMovement ();
 		HighlightMoves ();
 		if (Input.GetMouseButtonDown(0)) {
 			MoveToLocation ();
 		}
 		if(move){
+			mainCamera.DisableCameraMovement();
 			player.transform.position = Vector3.MoveTowards (player.transform.position, temp, Time.deltaTime*speed);
 			checkLoc ();
 		}
 		highlightMouse.transform.position = highlightMouse .transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 		UpdateAnimation ();
+	
 	}
 
 	void UpdateAnimation(){

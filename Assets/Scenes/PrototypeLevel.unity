@@ -5284,9 +5284,10 @@ GameObject:
   - 212: {fileID: 257980985}
   - 95: {fileID: 257980984}
   - 114: {fileID: 257980987}
+  - 114: {fileID: 257980988}
   m_Layer: 0
   m_Name: Player_Test
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5306,6 +5307,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!212 &257980985
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5367,6 +5369,22 @@ MonoBehaviour:
   speed: 0
   move: 0
   highlightMouse: {fileID: 100002, guid: ec059b034b4647b4f8a59e1fe34583b9, type: 2}
+--- !u!114 &257980988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 257980983}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 510db33893a63a04b9cfabefc8aed245, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cameraSensitivity: .100000001
+  cameraLimitLeft: 1
+  cameraLimitDown: -12.5
+  cameraLimitRight: 27
+  cameraLimitUp: -12
 --- !u!1 &258256982
 GameObject:
   m_ObjectHideFlags: 0
@@ -8234,6 +8252,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 1
   m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &341745030
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30197,6 +30216,10 @@ Prefab:
       propertyPath: tileSystem
       value: 
       objectReference: {fileID: 603794808}
+    - target: {fileID: 100000, guid: c997d2f5ec1c35441be063d817ca69de, type: 2}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c997d2f5ec1c35441be063d817ca69de, type: 2}
   m_RootGameObject: {fileID: 257980983}
