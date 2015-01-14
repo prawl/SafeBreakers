@@ -120,8 +120,9 @@ public class TileMovement : MonoBehaviour {
 		TileIndex next = tileSystem.ClosestTileIndexFromWorld (hit.point);
 		move = CanMove (current, next, move);
 		if (move == true) {
-						temp = tileSystem.WorldPositionFromTileIndex (next, true);
-						temp.z = -1;
+				temp = tileSystem.WorldPositionFromTileIndex (next, true);
+				temp.z = -1;
+				GameController.gameCount++;
 		}
 	}
 
