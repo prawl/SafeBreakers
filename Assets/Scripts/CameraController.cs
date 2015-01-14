@@ -19,15 +19,11 @@ public class CameraController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-		//mainCharacter = GameObject.FindGameObjectWithTag ("Player");
-
 	}
 	
 	// Update is called once per framedadawdawdsa
 	void Update () {
 		curPosition = mainCamera.transform.position;
-		//Debug.Log (mainCharacter.transform.position);
-		//Debug.Log (Camera.main.transform.position);
 		if (canMove) {
 			MoveCamera ();
 		}
@@ -35,8 +31,6 @@ public class CameraController : MonoBehaviour {
 
 	private void MoveCamera() {
 		DisableCameraMovement ();
-		//CenterCameraOnPlayer ();
-
 		if (Input.GetKeyDown(KeyCode.A) && cameraLimitLeft < curPosition.x){
 			mainCamera.transform.Translate(-curPosition.x * cameraSensitivity, 0, 0);
 		}
@@ -53,7 +47,7 @@ public class CameraController : MonoBehaviour {
 	}
 
 	public void CenterCameraOnPlayer(){
-	//	mainCamera.transform.position = new Vector3 (0, 0, 0);
+
 	}
 
 	public void DisableCameraMovement() {
