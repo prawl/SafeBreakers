@@ -41,21 +41,21 @@ public class EnemyGuard : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(GameController.enemyCount < GameController.gameCount){
-			if(GameController.doneMoving < GameController.numEnemies){
-				GameController.doneMoving++;
+			if(firstMove){
+				if(GameController.doneMoving < GameController.numEnemies){
+					GameController.doneMoving++;
+				}
+				GetNextTile();
+				firstMove = false;
 			}
-			print ("1");
-			CheckDirection ();
-			GetNextTile();
-			firstMove = false;
-			/*else{
-				print ("2");
+
+			else{
 				if(GameController.doneMoving < GameController.numEnemies){
 					GameController.doneMoving++;
 				}
 				CheckDirection ();
 				GetNextTile ();
-			}*/
+			}
 		}
 		if (enemy.transform.position != currentLoc) {
 			MoveToLocation (currentTile, end);

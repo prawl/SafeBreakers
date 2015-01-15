@@ -24,7 +24,6 @@ public class GameController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (gameCount > enemyCount) {
-			print (doneMoving + " " + numEnemies);
 			if(doneMoving == numEnemies){
 				enemyCount++;
 				doneMoving = 0;
