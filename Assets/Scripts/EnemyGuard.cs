@@ -23,6 +23,7 @@ public class EnemyGuard : MonoBehaviour {
 	private Animator enemyAnimator = null;
 	private bool firstMove;
 	public  bool moving;
+	public int individualMove;
 	
 	// Use this for initialization
 	void Start () {
@@ -40,23 +41,25 @@ public class EnemyGuard : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(GameController.enemyCount < GameController.gameCount){
+		if(GameController.enemyCount < GameController.gameCount && individualMove == 0){
 			if(firstMove){
-				if(GameController.doneMoving < GameController.numEnemies){
-					GameController.doneMoving++;
-				}
 				GetNextTile();
 				firstMove = false;
 			}
-
 			else{
-				if(GameController.doneMoving < GameController.numEnemies){
-					GameController.doneMoving++;
-				}
 				CheckDirection ();
 				GetNextTile ();
 			}
+			if(GameController.doneMoving < GameController.numEnemies){
+				GameController.doneMoving++;
+				individualMove++;
+			}
 		}
+
+		if (GameController.enemyCount == GameController.gameCount) {
+			individualMove = 0;
+		}
+
 		if (enemy.transform.position != currentLoc) {
 			MoveToLocation (currentTile, end);
 		}
@@ -134,42 +137,42 @@ public class EnemyGuard : MonoBehaviour {
 	}
 
 	void GetNextTile(){
-		if(currentTile.column == end.column && currentTile.row < end.row && down && to){
+		if(vertical && down && to){
 			currentTile.row = currentTile.row + 1;
 			currentLoc = tileSystem.WorldPositionFromTileIndex (currentTile, true);
 			currentLoc.z = -1;
 		}
-		if(currentTile.column == end.column && currentTile.row > end.row && up && to){
+		if(vertical && up && to){
 			currentTile.row = currentTile.row - 1;
 			currentLoc = tileSystem.WorldPositionFromTileIndex (currentTile, true);
 			currentLoc.z = -1;
 		}
-		if(currentTile.row == end.row && currentTile.column < end.column && right && to){
+		if(horizontal && right && to){
 			currentTile.column = currentTile.column + 1;
 			currentLoc = tileSystem.WorldPositionFromTileIndex (currentTile, true);
 			currentLoc.z = -1;
 		}
-		if(currentTile.row == end.row && currentTile.column > end.column && left && to){
+		if(horizontal && left && to){
 			currentTile.column = currentTile.column - 1;
 			currentLoc = tileSystem.WorldPositionFromTileIndex (currentTile, true);
 			currentLoc.z = -1;
 		}
-		if(currentTile.column == start.column && currentTile.row < start.row && down && from){
+		if(vertical && down && from){
 			currentTile.row = currentTile.row + 1;
 			currentLoc = tileSystem.WorldPositionFromTileIndex (currentTile, true);
 			currentLoc.z = -1;
 		}
-		if(currentTile.column == start.column && currentTile.row > start.row && up && from){
+		if(vertical && up && from){
 			currentTile.row = currentTile.row - 1;
 			currentLoc = tileSystem.WorldPositionFromTileIndex (currentTile, true);
 			currentLoc.z = -1;
 		}
-		if(currentTile.row == start.row && currentTile.column < start.column && right && from){
+		if(horizontal && right && from){
 			currentTile.column = currentTile.column + 1;
 			currentLoc = tileSystem.WorldPositionFromTileIndex (currentTile, true);
 			currentLoc.z = -1;
 		}
-		if(currentTile.row == start.row && currentTile.column > start.column && left && from){
+		if(horizontal && left && from){
 			currentTile.column = currentTile.column - 1;
 			currentLoc = tileSystem.WorldPositionFromTileIndex (currentTile, true);
 			currentLoc.z = -1;

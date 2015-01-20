@@ -16,9 +16,10 @@ public class GameController : MonoBehaviour {
 	void Start () {
 		gameCount = 0;
 		enemyCount = gameCount;
-		guards = GameObject.FindGameObjectsWithTag ("Guard");
+		guards = GameObject.FindGameObjectsWithTag ("Enemy");
 		enemiesDone = true;
 		numEnemies = guards.Length;
+		doneMoving = 0;
 	}
 	
 	// Update is called once per frame
