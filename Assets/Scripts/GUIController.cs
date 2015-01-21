@@ -9,8 +9,8 @@ public class GUIController : MonoBehaviour {
 	private float screenWidth;
 	private float buttonWidth = 250;
 	private float buttonHeight = 300f;
-	public float xPos;  // Determines horizonatally where the box will start 
-	public float yPos;  // Determines vertically where the box will start
+	private float xPos;  // Determines horizonatally where the box will start 
+	private float yPos;  // Determines vertically where the box will start
 	
 	// Use this for initialization
 	void Start () {

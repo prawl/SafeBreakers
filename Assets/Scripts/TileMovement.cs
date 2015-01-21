@@ -34,7 +34,7 @@ public class TileMovement : MonoBehaviour {
 	}
 
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate () {
 		mainCamera.EnableCameraMovement ();
 		HighlightMoves ();
 		if (Input.GetMouseButtonDown(0)) {
