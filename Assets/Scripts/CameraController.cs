@@ -22,7 +22,7 @@ public class CameraController : MonoBehaviour {
 	}
 	
 	// Update is called once per framedadawdawdsa
-	void Update () {
+	void FixedUpdate () {
 		curPosition = mainCamera.transform.position;
 		if (canMove) {
 			MoveCamera ();
