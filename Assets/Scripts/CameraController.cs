@@ -4,9 +4,9 @@ using System.Collections;
 public class CameraController : MonoBehaviour {
 	
 	public float cameraLimitLeft = 1.5f;
-	public float cameraLimitDown = -2.0f;
+	public float cameraLimitDown = -2.5f;
 	public float cameraLimitRight = 27.0f;
-	public float cameraLimitUp = -5.0f;	
+	public float cameraLimitUp = -5.5f;	
 	public float dragSpeed = 30.0f;
 	private GameObject mainCamera, defaultFocus;
 	private Transform target;

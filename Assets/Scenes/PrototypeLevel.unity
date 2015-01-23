@@ -5526,11 +5526,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 510db33893a63a04b9cfabefc8aed245, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cameraSensitivity: .100000001
-  cameraLimitLeft: 1
-  cameraLimitDown: -12.5
+  cameraLimitLeft: 1.5
+  cameraLimitDown: -2.5
   cameraLimitRight: 27
-  cameraLimitUp: -12
+  cameraLimitUp: -5.5
+  dragSpeed: 30
 --- !u!114 &257980989
 MonoBehaviour:
   m_ObjectHideFlags: 0
