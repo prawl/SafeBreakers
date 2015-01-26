@@ -44,6 +44,7 @@ public class TileMovement : MonoBehaviour {
 			mainCamera.DisableCameraMovement();
 			player.transform.position = Vector3.MoveTowards (player.transform.position, temp, Time.deltaTime*speed);
 			checkLoc ();
+			mainCamera.SetCameraFocus("Player");
 		}
 		highlightMouse.transform.position = highlightMouse .transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 		UpdateAnimation ();

@@ -2,59 +2,62 @@
 using System.Collections;
 
 public class CameraController : MonoBehaviour {
-
-	private GameObject mainCamera;
-	private GameObject mainCharacter;
+	
+	public float cameraLimitLeft = 1.5f;
+	public float cameraLimitDown = -2.5f;
+	public float cameraLimitRight = 27.0f;
+	public float cameraLimitUp = -5.5f;	
+	public float dragSpeed = 30.0f;
+	private GameObject mainCamera, defaultFocus;
+	private Transform target;
 	private Vector3 curPosition;
 	private bool canMove = true;
-	public float cameraSensitivity = 0.1f;
-	// To prevent the player from panning the camera past where the level exist, we set a limit
-	// to how far they can go in each direction
-	public float cameraLimitLeft = 1.0f;
-	public float cameraLimitDown = -15.0f;
-	public float cameraLimitRight = 27.0f;
-	public float cameraLimitUp = -12.0f;
-
 
 	// Use this for initialization
 	void Start () {
 		mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 	}
 	
-	// Update is called once per framedadawdawdsa
+	// Update is called once per frame
 	void FixedUpdate () {
 		curPosition = mainCamera.transform.position;
-		if (canMove) {
-			MoveCamera ();
+		if (AbleToMoveCamera()) {
+			PanCamera ();
 		}
 	}
-
-	private void MoveCamera() {
-		DisableCameraMovement ();
-		if (Input.GetKeyDown(KeyCode.A) && cameraLimitLeft < curPosition.x){
-			mainCamera.transform.Translate(-curPosition.x * cameraSensitivity, 0, 0);
-		}
-		if (Input.GetKeyDown(KeyCode.W) && cameraLimitUp > curPosition.y){
-			mainCamera.transform.Translate(0, -curPosition.y * cameraSensitivity, 0);
-		}
-		if (Input.GetKeyDown(KeyCode.S) && cameraLimitDown < curPosition.y){
-			mainCamera.transform.Translate(0, curPosition.y * cameraSensitivity, 0);
-		}
-		if (Input.GetKeyDown(KeyCode.D) && cameraLimitRight > curPosition.x){
-			mainCamera.transform.Translate(curPosition.x * cameraSensitivity, 0, 0);
-		}
-		EnableCameraMovement ();
+	
+	// Moves the main camera's focus onto an object using it's tag that exist in the scene
+	public void SetCameraFocus(string Tag){
+		defaultFocus = GameObject.FindGameObjectWithTag (Tag);
+		target = defaultFocus.transform;
+		mainCamera.transform.position = new Vector3 (target.position.x, -11.5f, -4.7f);
 	}
 
-	public void CenterCameraOnPlayer(){
-
+	public bool AbleToMoveCamera() {
+		return canMove;
 	}
-
+	
 	public void DisableCameraMovement() {
 		canMove = false;
 	}
-
+	
 	public void EnableCameraMovement(){
 		canMove = true;
+	}
+
+	private void PanCamera() {
+		//Right mouse btn is held down
+		if (Input.GetMouseButton(1)){
+			OnMouseDrag();
+		}
+		//Right mouse btn is let go
+		if (Input.GetMouseButtonUp(1)) {
+			SetCameraFocus("Player");
+		}
+	}
+
+	private void OnMouseDrag(){
+		mainCamera.transform.position = new Vector3(Mathf.Clamp(mainCamera.transform.position.x, cameraLimitLeft, cameraLimitRight), mainCamera.transform.position.y, Mathf.Clamp(mainCamera.transform.position.z, cameraLimitUp, cameraLimitDown));
+		mainCamera.transform.position += new Vector3(-Input.GetAxisRaw("Mouse X") * Time.deltaTime * dragSpeed, 0f, Input.GetAxisRaw("Mouse Y") * Time.deltaTime * dragSpeed);
 	}
 }
