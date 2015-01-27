@@ -57,7 +57,6 @@
      <Compile Include="Assets\Scripts\EnemyGuard.cs" />
      <Compile Include="Assets\Scripts\GUIController.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
-     <Compile Include="Assets\Scripts\NpcController.cs" />
      <Compile Include="Assets\Scripts\SecurityCamera.cs" />
      <Compile Include="Assets\Scripts\TileMovement.cs" />
      <None Include="Assets\Rotorz\Tile System\Shaders\Preview.shader" />
