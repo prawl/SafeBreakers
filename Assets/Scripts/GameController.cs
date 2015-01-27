@@ -5,6 +5,7 @@ using Rotorz.Tile.Internal;
 
 public class GameController : MonoBehaviour {
 
+	private GUIController gui;
 	public static int gameCount;
 	public static int enemyCount;
 	public bool enemiesDone;
@@ -30,5 +31,19 @@ public class GameController : MonoBehaviour {
 				doneMoving = 0;
 			}
 		}
+	}
+
+	void OnGUI(){
+		if (GUI.Button (new Rect(0, 0, 100, 50), "Pause")){	
+			GUIController.PauseGame();
+		}
+		if (GUIController.GameIsPaused()) {
+			GUIController.FreezeTime();
+			GUIController.ActivatePauseMenu();
+		}
+		if (GUIController.PauseActive()) {
+			GUIController.DisplayPauseMenu();
+		}
+
 	}
 }

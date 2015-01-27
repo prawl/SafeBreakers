@@ -3,67 +3,50 @@ using System.Collections;
 
 public class GUIController : MonoBehaviour {
 
-	private bool isPaused = false;
-	private bool showMenu = false;
-	private float screenHeight;
-	private float screenWidth;
-	private float buttonWidth = 250;
-	private float buttonHeight = 300f;
-	private float xPos;  // Determines horizonatally where the box will start 
-	private float yPos;  // Determines vertically where the box will start
-	
-	// Use this for initialization
-	void Start () {
-		xPos = (Screen.width - buttonWidth) / 2;
-		yPos = (Screen.height - buttonHeight) / 2;
-	}
+	private static bool isPaused = false;
+	private static bool showMenu = false;
+	private static float screenHeight;
+	private static float screenWidth;
+	private static float buttonWidth = 250;
+	private static float buttonHeight = 300f;
+	// Determines horizonatally where the box will start 
+	private static float xPos = (Screen.width - buttonWidth) / 2;  
+	// Determines vertically where the box will start
+	private static float yPos  = (Screen.height - buttonWidth) / 2;  
 
-	void OnGUI(){
-		if (GUI.Button (new Rect(0, 0, 100, 50), "Pause")){	
-			PauseGame();
-		}
-		if (GameIsPaused()) {
-			FreezeTime();
-			ActivatePauseMenu();
-		}
-		if (PauseActive()) {
-			DisplayPauseMenu();
-		}
-	}
-
-	public void PauseGame(){
+	public static void PauseGame(){
 		isPaused = true;
 	}
 
-	public void ResumeGame(){
+	public static void ResumeGame(){
 		isPaused = false;
 	}
 
-	public bool GameIsPaused(){
+	public static bool GameIsPaused(){
 		return isPaused;
 	}
 
-	public void FreezeTime(){
+	public static void FreezeTime(){
 		Time.timeScale = 0;
 	}
 
-	public void ResumeTime(){
+	public static void ResumeTime(){
 		Time.timeScale = 1;
 	}
 
-	public void ActivatePauseMenu(){
+	public static void ActivatePauseMenu(){
 		showMenu = true;
 	}
 
-	public void DeactivePauseMenu(){
+	public static void DeactivePauseMenu(){
 		showMenu = false;
 	}
 
-	public bool PauseActive(){
+	public static bool PauseActive(){
 		return showMenu;
 	}
 
-	private void DisplayPauseMenu(){
+	public static void DisplayPauseMenu(){
 		GUI.Box (new Rect(xPos, yPos, buttonWidth, buttonHeight), "");
 		if (GUI.Button (new Rect( (xPos + 70) , (yPos + 65), 100, 50), "Resume") || Input.GetKeyDown(KeyCode.Escape)){
 			DeactivePauseMenu();
