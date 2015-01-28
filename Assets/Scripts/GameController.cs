@@ -5,7 +5,6 @@ using Rotorz.Tile.Internal;
 
 public class GameController : MonoBehaviour {
 
-	private GUIController gui;
 	public static int gameCount;
 	public static int enemyCount;
 	public bool enemiesDone;
@@ -24,13 +23,17 @@ public class GameController : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void FixedUpdate() {
 		if (gameCount > enemyCount) {
 			if(doneMoving == numEnemies){
 				enemyCount++;
 				doneMoving = 0;
 			}
 		}
+		if (CameraController.AbleToMoveCamera()) {
+			CameraController.PanCamera();
+		}
+
 	}
 
 	void OnGUI(){

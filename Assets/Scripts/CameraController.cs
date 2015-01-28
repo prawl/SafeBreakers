@@ -3,49 +3,41 @@ using System.Collections;
 
 public class CameraController : MonoBehaviour {
 	
-	public float cameraLimitLeft = 1.5f;
-	public float cameraLimitDown = -2.5f;
-	public float cameraLimitRight = 27.0f;
-	public float cameraLimitUp = -5.5f;	
-	public float dragSpeed = 30.0f;
-	private GameObject mainCamera, defaultFocus;
-	private Transform target;
-	private Vector3 curPosition;
-	private bool canMove = true;
+	public static float cameraLimitLeft = 1.5f;
+	public static float cameraLimitDown = -2.5f;
+	public static float cameraLimitRight = 27.0f;
+	public static float cameraLimitUp = -5.5f;	
+	public static float dragSpeed = 30.0f;
+	private static GameObject mainCamera, defaultFocus;
+	private static Transform target;
+	private static Vector3 curPosition;
+	private static bool canMove = true;
 
 	// Use this for initialization
 	void Start () {
 		mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 	}
 	
-	// Update is called once per frame
-	void FixedUpdate () {
-		curPosition = mainCamera.transform.position;
-		if (AbleToMoveCamera()) {
-			PanCamera ();
-		}
-	}
-	
 	// Moves the main camera's focus onto an object using it's tag that exist in the scene
-	public void SetCameraFocus(string Tag){
+	public static void SetCameraFocus(string Tag){
 		defaultFocus = GameObject.FindGameObjectWithTag (Tag);
 		target = defaultFocus.transform;
 		mainCamera.transform.position = new Vector3 (target.position.x, -11.5f, -4.7f);
 	}
 
-	public bool AbleToMoveCamera() {
+	public static bool AbleToMoveCamera() {
 		return canMove;
 	}
 	
-	public void DisableCameraMovement() {
+	public static void DisableCameraMovement() {
 		canMove = false;
 	}
 	
-	public void EnableCameraMovement(){
+	public static void EnableCameraMovement(){
 		canMove = true;
 	}
 
-	private void PanCamera() {
+	public static void PanCamera() {
 		//Right mouse btn is held down
 		if (Input.GetMouseButton(1)){
 			OnMouseDrag();
@@ -56,7 +48,7 @@ public class CameraController : MonoBehaviour {
 		}
 	}
 
-	private void OnMouseDrag(){
+	private static void OnMouseDrag(){
 		mainCamera.transform.position = new Vector3(Mathf.Clamp(mainCamera.transform.position.x, cameraLimitLeft, cameraLimitRight), mainCamera.transform.position.y, Mathf.Clamp(mainCamera.transform.position.z, cameraLimitUp, cameraLimitDown));
 		mainCamera.transform.position += new Vector3(-Input.GetAxisRaw("Mouse X") * Time.deltaTime * dragSpeed, 0f, Input.GetAxisRaw("Mouse Y") * Time.deltaTime * dragSpeed);
 	}

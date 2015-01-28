@@ -18,13 +18,11 @@ public class TileMovement : MonoBehaviour {
 	public Rigidbody rigid;
 	public float speed;
 	public bool move;
-	private CameraController mainCamera;
 	private Animator playerAnimator = null;
 	public GameObject highlightMouse;
 	
 	// Use this for initialization
 	void Start () {
-		mainCamera = GetComponent<CameraController> ();
 		playerAnimator = GetComponent<Animator>();
 		current = tileSystem.ClosestTileIndexFromWorld (player.transform.position);
 		Vector3 temp = tileSystem.WorldPositionFromTileIndex(current, true);
@@ -35,16 +33,16 @@ public class TileMovement : MonoBehaviour {
 
 	// Update is called once per frame
 	void FixedUpdate () {
-		mainCamera.EnableCameraMovement ();
+		CameraController.EnableCameraMovement ();
 		HighlightMoves ();
 		if (Input.GetMouseButtonDown(0)) {
 			MoveToLocation ();
 		}
 		if(move){
-			mainCamera.DisableCameraMovement();
+			CameraController.DisableCameraMovement();
 			player.transform.position = Vector3.MoveTowards (player.transform.position, temp, Time.deltaTime*speed);
 			checkLoc ();
-			mainCamera.SetCameraFocus("Player");
+			CameraController.SetCameraFocus("Player");
 		}
 		highlightMouse.transform.position = highlightMouse .transform.position - Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 0));
 		UpdateAnimation ();
