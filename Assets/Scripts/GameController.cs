@@ -5,21 +5,17 @@ using Rotorz.Tile.Internal;
 
 public class GameController : MonoBehaviour {
 
-	public static int gameCount;
-	public static int enemyCount;
-	public bool enemiesDone;
+	public static int gameCount = 0;
+	public static int enemyCount = 0;
+	public bool enemiesDone = true;
 	public GameObject[] guards;
-	public static int doneMoving;
+	public static int doneMoving = 0;
 	public static int numEnemies;
 
 	// Use this for initialization
 	void Start () {
-		gameCount = 0;
-		enemyCount = gameCount;
 		guards = GameObject.FindGameObjectsWithTag ("Enemy");
-		enemiesDone = true;
 		numEnemies = guards.Length;
-		doneMoving = 0;
 	}
 	
 	// Update is called once per frame
