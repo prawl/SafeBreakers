@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Rotorz.Tile;
 using Rotorz.Tile.Internal;
 
-[RequireComponent(typeof(CameraController))]
+//[RequireComponent(typeof(CameraController))]
 [RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour {
 	
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		CameraController.EnableCameraMovement ();
+		//CameraController.EnableCameraMovement ();
 		HighlightMoves ();
 		if (Input.GetMouseButtonDown(0)) {
 			if(GameController.gameCount == GameController.enemyCount){
@@ -40,10 +40,10 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 		if(move){
-			CameraController.DisableCameraMovement();
+			//CameraController.DisableCameraMovement();
 			player.transform.position = Vector3.MoveTowards (player.transform.position, temp, Time.deltaTime*speed);
 			checkLoc ();
-			CameraController.SetCameraFocus("Player");
+			//CameraController.SetCameraFocus("Player");
 		}
 		UpdateAnimation ();
 		
