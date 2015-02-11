@@ -22,7 +22,7 @@ public class EnemyGuard : MonoBehaviour {
 	public bool vertical;
 	private Animator enemyAnimator = null;
 	private bool firstMove;
-	public  bool moving;
+	public bool moving;
 	public int individualMove;
 	
 	// Use this for initialization
@@ -41,7 +41,7 @@ public class EnemyGuard : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if(GameController.enemyCount < GameController.gameCount && individualMove == 0){
+		if(GameController.enemyCount < GameController.gameCount && individualMove == 0 && PlayerController.move == false){
 			if(firstMove){
 				GetNextTile();
 				firstMove = false;
@@ -55,15 +55,15 @@ public class EnemyGuard : MonoBehaviour {
 				individualMove++;
 			}
 		}
-
+		
 		if (GameController.enemyCount == GameController.gameCount) {
 			individualMove = 0;
 		}
-
+		
 		if (enemy.transform.position != currentLoc) {
 			MoveToLocation (currentTile, end);
 		}
-
+		
 		if (enemy.transform.position == currentLoc) {
 			enemyAnimator.SetBool ("Right", false);
 			enemyAnimator.SetBool ("Left", false);
@@ -71,7 +71,7 @@ public class EnemyGuard : MonoBehaviour {
 			enemyAnimator.SetBool ("Back", false);
 		}
 	}
-
+	
 	void CheckDirection(){
 		if (currentTile == end){
 			if(vertical==true && horizontal == false){
@@ -103,7 +103,7 @@ public class EnemyGuard : MonoBehaviour {
 				}
 			}
 		}
-
+		
 		if (currentTile == start){
 			if(vertical==true && horizontal == false){
 				if(up){
@@ -135,7 +135,7 @@ public class EnemyGuard : MonoBehaviour {
 			}
 		}
 	}
-
+	
 	void GetNextTile(){
 		if(vertical && down && to){
 			currentTile.row = currentTile.row + 1;
