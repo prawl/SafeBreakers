@@ -37,7 +37,6 @@ public class PlayerController : MonoBehaviour {
 		if (Input.GetMouseButtonDown(0)) {
 			if(GameController.gameCount == GameController.enemyCount){
 				MoveToLocation ();
-				move = true;
 			}
 		}
 		if(move){
@@ -49,9 +48,8 @@ public class PlayerController : MonoBehaviour {
 		UpdateAnimation ();
 		
 	}
-	
+
 	void UpdateAnimation(){
-		print ("Player: " + player.transform.position.ToString () + " Temp: " + temp.ToString ());
 		if (Mathf.Abs(temp.x) > Mathf.Abs(player.transform.position.x) && move) {
 			playerAnimator.SetBool ("Walk_Right", true);
 			playerAnimator.SetBool ("Walk_Left", false);
@@ -122,6 +120,7 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	void MoveToLocation(){
+		move = false;
 		temp = new Vector3 ();
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
@@ -133,6 +132,9 @@ public class PlayerController : MonoBehaviour {
 			temp.z = -1;
 			GameController.gameCount++;
 		}
+		else{
+			temp = player.transform.position;
+		}
 	}
 	
 	IEnumerator wait(){
@@ -141,6 +143,7 @@ public class PlayerController : MonoBehaviour {
 	
 	bool CanMove(TileIndex current, TileIndex next, bool status){
 		bool canMove = false;
+
 		for(int row = 0; row < tileSystem.RowCount; row++){
 			for(int column = 0; column<tileSystem.ColumnCount; column++){
 				if(((int.Parse (current.row.ToString ()) + 1) == (int.Parse(next.row.ToString ())) && ((int.Parse (current.column.ToString ())) == (int.Parse(next.column.ToString ()))))
