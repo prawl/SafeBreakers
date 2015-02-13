@@ -20,9 +20,11 @@ public class PlayerController : MonoBehaviour {
 	public float speed;
 	public static bool move;
 	public bool occupied;
+	public static bool spotted;
 	
 	// Use this for initialization
 	void Start () {
+		spotted = false;
 		playerAnimator = GetComponent<Animator>();
 		current = tileSystem.ClosestTileIndexFromWorld (player.transform.position);
 		Vector3 temp = tileSystem.WorldPositionFromTileIndex(current, true);
@@ -33,10 +35,10 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		CameraController.EnableCameraMovement ();
+		CameraController.EnableCameraMovement ();		
 		HighlightMoves ();
 		if (Input.GetMouseButtonDown(0)) {
-			if(GameController.gameCount == GameController.enemyCount){
+			if(GameController.gameCount == GameController.enemyCount && GameController.nextTurn == 0){
 				MoveToLocation ();
 			}
 		}
@@ -86,7 +88,7 @@ public class PlayerController : MonoBehaviour {
 	
 	void HighlightMoves(){
 		current = tileSystem.ClosestTileIndexFromWorld (player.transform.position);
-		if (!move) {
+		if (!move && GameController.nextTurn == 0) {
 			for(int row = 0; row < tileSystem.RowCount; row++){
 				for(int column = 0; column<tileSystem.ColumnCount; column++){
 					if((int.Parse (current.row.ToString ()) + 1 == row) && (int.Parse (current.column.ToString ()) == column)

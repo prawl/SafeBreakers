@@ -6,6 +6,8 @@ using Rotorz.Tile.Internal;
 public class EnemyGuard : MonoBehaviour {
 	
 	public GameObject enemy;
+	public GameObject player;
+	public TileIndex playerLoc;
 	public TileSystem tileSystem;
 	public TileIndex start;
 	public TileIndex currentTile;
@@ -28,6 +30,7 @@ public class EnemyGuard : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		enemyAnimator = GetComponent<Animator>();
+		player = GameObject.FindGameObjectWithTag ("Player");
 		start = tileSystem.ClosestTileIndexFromWorld (enemy.transform.position);
 		currentTile = start;
 		currentLoc = enemy.transform.position;
@@ -41,6 +44,7 @@ public class EnemyGuard : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		GetPlayerPos ();
 		if(GameController.enemyCount < GameController.gameCount && individualMove == 0 && PlayerController.move == false){
 			if(firstMove){
 				GetNextTile();
@@ -65,13 +69,63 @@ public class EnemyGuard : MonoBehaviour {
 		}
 		
 		if (enemy.transform.position == currentLoc) {
+			if(individualMove == 1){
+				GameController.nextTurn++;
+				individualMove++;
+			}
 			enemyAnimator.SetBool ("Right", false);
 			enemyAnimator.SetBool ("Left", false);
 			enemyAnimator.SetBool ("Front", false);
 			enemyAnimator.SetBool ("Back", false);
 		}
+
+		CheckLineOfSight ();
+
 	}
-	
+
+	public void GetPlayerPos(){
+		playerLoc = tileSystem.ClosestTileIndexFromWorld (player.transform.position);
+	}
+
+	bool CheckIfOccupied(TileIndex next){
+		TileData tile = tileSystem.GetTile (next.row, next.column);
+		GameObject tileObject = tile.gameObject;
+		TileCheck check = tileObject.GetComponent<TileCheck> ();
+		bool status = check.occupied;
+		return status;
+	}
+
+	void CheckLineOfSight(){
+		if(up){
+			for(int i = 0; i < 3; i++){
+				if(currentTile.row-i == playerLoc.row && playerLoc.column == currentTile.column){
+					print ("Up Caught!!!!");
+				}
+			}
+		}
+		if(down){
+			for(int i = 0; i < 3; i++){
+				if(currentTile.row+i == playerLoc.row && playerLoc.column == currentTile.column){
+					print ("Down Caught!!!!");
+				}
+			}
+		}
+		if(left){
+			for(int i = 0; i < 3; i++){
+				if(currentTile.column-i == playerLoc.column && playerLoc.row == currentTile.row){
+					print ("Left Caught!!!!");
+				}
+			}
+		}
+		if(right){
+			for(int i = 0; i < 3; i++){
+				if(currentTile.column+i == playerLoc.column && playerLoc.row == currentTile.row){
+					print ("Right Caught!!!!");
+				}
+			}
+		}
+	}
+
 	void CheckDirection(){
 		if (currentTile == end){
 			if(vertical==true && horizontal == false){

@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour {
 	public bool enemiesDone = true;
 	public GameObject[] guards;
 	public static int doneMoving = 0;
+	public static int nextTurn = 0;
 	public static int numEnemies;
 
 	// Use this for initialization
@@ -28,6 +29,10 @@ public class GameController : MonoBehaviour {
 		}
 		if (CameraController.AbleToMoveCamera()) {
 			CameraController.PanCamera();
+		}
+
+		if (nextTurn == numEnemies) {
+			nextTurn = 0;
 		}
 
 	}
