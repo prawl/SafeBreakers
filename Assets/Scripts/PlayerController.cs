@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Rotorz.Tile;
 using Rotorz.Tile.Internal;
 
-//[RequireComponent(typeof(CameraController))]
+[RequireComponent(typeof(CameraController))]
 [RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour {
 	
@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour {
 	public Rigidbody rigid;
 	public float speed;
 	public static bool move;
+	public bool occupied;
 	
 	// Use this for initialization
 	void Start () {
@@ -32,7 +33,7 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//CameraController.EnableCameraMovement ();
+		CameraController.EnableCameraMovement ();
 		HighlightMoves ();
 		if (Input.GetMouseButtonDown(0)) {
 			if(GameController.gameCount == GameController.enemyCount){
@@ -40,10 +41,10 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 		if(move){
-			//CameraController.DisableCameraMovement();
+			CameraController.DisableCameraMovement();
 			player.transform.position = Vector3.MoveTowards (player.transform.position, temp, Time.deltaTime*speed);
 			checkLoc ();
-			//CameraController.SetCameraFocus("Player");
+			CameraController.SetCameraFocus("Player");
 		}
 		UpdateAnimation ();
 		
@@ -85,7 +86,6 @@ public class PlayerController : MonoBehaviour {
 	
 	void HighlightMoves(){
 		current = tileSystem.ClosestTileIndexFromWorld (player.transform.position);
-		
 		if (!move) {
 			for(int row = 0; row < tileSystem.RowCount; row++){
 				for(int column = 0; column<tileSystem.ColumnCount; column++){
@@ -93,9 +93,17 @@ public class PlayerController : MonoBehaviour {
 					   || (int.Parse (current.row.ToString ()) - 1 == row) && (int.Parse (current.column.ToString()) == column)
 					   || (int.Parse (current.column.ToString ()) + 1 == column) && (int.Parse (current.row.ToString()) == row)
 					   ||  (int.Parse (current.column.ToString ()) - 1 == column) && (int.Parse (current.row.ToString()) == row)){
-						
-						possibleLoc.Paint (tileSystem, row, column);
-						
+
+						TileIndex temp = tileSystem.ClosestTileIndexFromWorld (tileSystem.GetTile (row, column).gameObject.transform.position);
+						bool check = CheckIfOccupied (temp);
+
+						if(!check){
+							possibleLoc.Paint (tileSystem, row, column);
+						}
+
+						else{
+							defaultLoc.Paint (tileSystem, row, column);
+						}
 					}
 					
 					else{
@@ -118,7 +126,15 @@ public class PlayerController : MonoBehaviour {
 			move = false;
 		}
 	}
-	
+
+	bool CheckIfOccupied(TileIndex next){
+		TileData tile = tileSystem.GetTile (next.row, next.column);
+		GameObject tileObject = tile.gameObject;
+		TileCheck check = tileObject.GetComponent<TileCheck> ();
+		bool status = check.occupied;
+		return status;
+	}
+
 	void MoveToLocation(){
 		move = false;
 		temp = new Vector3 ();
@@ -127,7 +143,8 @@ public class PlayerController : MonoBehaviour {
 		Physics.Raycast(ray, out hit);
 		TileIndex next = tileSystem.ClosestTileIndexFromWorld (hit.point);
 		move = CanMove (current, next, move);
-		if (move == true) {
+		occupied = CheckIfOccupied (next);
+		if (move == true && occupied == false) {
 			temp = tileSystem.WorldPositionFromTileIndex (next, true);
 			temp.z = -1;
 			GameController.gameCount++;
