@@ -32,12 +32,13 @@ public class GUIController : MonoBehaviour {
 		return isPaused;
 	}
 
-	public static void ShowInventory(){
-	  displayInventory = true;
-	}
-
-	public static void HideInventory(){
-	  displayInventory = false;
+	public static void ToggleInventory(){
+	  if (InventoryActive()){
+		  displayInventory = false;
+		}
+		else{
+		  displayInventory = true;
+		}
 	}
 
 	public static bool InventoryActive(){
