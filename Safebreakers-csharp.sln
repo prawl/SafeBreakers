@@ -25,6 +25,7 @@ Global
 	EndGlobalSection
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 																																																																											GlobalSection(MonoDevelopProperties) = preSolution
 =======
 																																																															GlobalSection(MonoDevelopProperties) = preSolution
@@ -38,6 +39,9 @@ Global
 =======
 																																																																GlobalSection(MonoDevelopProperties) = preSolution
 >>>>>>> Can now toggle inventory [#86119752]
+=======
+																																																																GlobalSection(MonoDevelopProperties) = preSolution
+>>>>>>> WIP Added popup menu over enemies
 =======
 																																													GlobalSection(MonoDevelopProperties) = preSolution
 >>>>>>> The player can pan the camera around the map [#85834460]

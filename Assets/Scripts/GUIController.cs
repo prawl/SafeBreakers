@@ -20,6 +20,8 @@ public class GUIController : MonoBehaviour {
 	private static int timerWidth = 100;
 	private static int timerHeight = 50;
 
+	private static float x, y;
+
 	public static void PauseGame(){
 		isPaused = true;
 	}
@@ -98,6 +100,15 @@ public class GUIController : MonoBehaviour {
 			// itemHandler.DeployTraqGun();
 	  }
   }
+
+  public static void CreatePopUpMenu(GameObject[] enemies){
+	  if (enemies.Length > 0){
+			foreach(GameObject enemy in enemies){
+				Vector3 screenPos = Camera.main.WorldToScreenPoint(enemy.transform.position);
+				GUI.Box (new Rect(screenPos.x, screenPos.y, 100, 50), "Enemy");
+			}
+		}	
+	}
 
 	public static void DisplayPauseMenu(){
 		GUI.Box (new Rect(xPos, yPos, buttonWidth, buttonHeight), "");

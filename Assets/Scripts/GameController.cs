@@ -102,6 +102,7 @@ public class GameController : MonoBehaviour {
 		}
 		if (GUIController.InventoryActive()){
 		  GUIController.DisplayInventory();
+			GUIController.CreatePopUpMenu(guards);
 		}
 	}
 }
