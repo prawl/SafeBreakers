@@ -26,6 +26,7 @@ Global
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 																																																																											GlobalSection(MonoDevelopProperties) = preSolution
 =======
 																																																															GlobalSection(MonoDevelopProperties) = preSolution
@@ -42,6 +43,9 @@ Global
 =======
 																																																																GlobalSection(MonoDevelopProperties) = preSolution
 >>>>>>> WIP Added popup menu over enemies
+=======
+																																																																	GlobalSection(MonoDevelopProperties) = preSolution
+>>>>>>> GUI Menu will popup over enemies head [#86122422]
 =======
 																																													GlobalSection(MonoDevelopProperties) = preSolution
 >>>>>>> The player can pan the camera around the map [#85834460]
