@@ -26,6 +26,9 @@ public class EnemyGuard : MonoBehaviour {
 	private bool firstMove;
 	public bool moving;
 	public int individualMove;
+	public Vector3 startingPos;
+	public Vector3 curPos;
+	public Vector3 lastPos;
 	
 	// Use this for initialization
 	void Start () {
@@ -34,6 +37,7 @@ public class EnemyGuard : MonoBehaviour {
 		start = tileSystem.ClosestTileIndexFromWorld (enemy.transform.position);
 		currentTile = start;
 		currentLoc = enemy.transform.position;
+		startingPos = currentLoc;
 		speed = 1.0f;
 		StartDirection ();
 		to = true;
@@ -41,9 +45,17 @@ public class EnemyGuard : MonoBehaviour {
 		firstMove = true;
 		moving = false;
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
+		curPos = transform.position;
+		if (curPos != lastPos) {
+			moving = true;
+		}
+		else{
+			moving = false;
+		}
+		lastPos = curPos;
 		GetPlayerPos ();
 		if(GameController.enemyCount < GameController.gameCount && individualMove == 0 && PlayerController.move == false){
 			if(firstMove){
@@ -99,28 +111,28 @@ public class EnemyGuard : MonoBehaviour {
 		if(up){
 			for(int i = 0; i < 3; i++){
 				if(currentTile.row-i == playerLoc.row && playerLoc.column == currentTile.column){
-					print ("Up Caught!!!!");
+					PlayerController.spotted = true;
 				}
 			}
 		}
 		if(down){
 			for(int i = 0; i < 3; i++){
 				if(currentTile.row+i == playerLoc.row && playerLoc.column == currentTile.column){
-					print ("Down Caught!!!!");
+					PlayerController.spotted = true;
 				}
 			}
 		}
 		if(left){
 			for(int i = 0; i < 3; i++){
 				if(currentTile.column-i == playerLoc.column && playerLoc.row == currentTile.row){
-					print ("Left Caught!!!!");
+					PlayerController.spotted = true;
 				}
 			}
 		}
 		if(right){
 			for(int i = 0; i < 3; i++){
 				if(currentTile.column+i == playerLoc.column && playerLoc.row == currentTile.row){
-					print ("Right Caught!!!!");
+					PlayerController.spotted = true;
 				}
 			}
 		}

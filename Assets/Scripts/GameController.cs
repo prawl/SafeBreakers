@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEditor;
 using System.Collections;
 using Rotorz.Tile;
 using Rotorz.Tile.Internal;
@@ -12,15 +13,40 @@ public class GameController : MonoBehaviour {
 	public static int doneMoving = 0;
 	public static int nextTurn = 0;
 	public static int numEnemies;
+	public TileIndex start;
+	public TileIndex end;
+	public Brush endTile;
+	public TileSystem tileSystem;
+	public GameObject player;
+	public static bool restart;
+	public string scene;
+	public static bool playerReady;
 
 	// Use this for initialization
 	void Start () {
+		restart = false;
+		player = GameObject.FindGameObjectWithTag ("Player");
 		guards = GameObject.FindGameObjectsWithTag ("Enemy");
 		numEnemies = guards.Length;
 	}
-	
+
+	void PaintEnd(){
+		for(int row = 0; row < tileSystem.RowCount; row++){
+			for(int column = 0; column<tileSystem.ColumnCount; column++){
+				if(int.Parse (end.row.ToString ()) == row && int.Parse (end.column.ToString ()) == column){
+					endTile.Paint (tileSystem, row, column);
+				}
+			}
+		}
+	}
+
 	// Update is called once per frame
 	void FixedUpdate() {
+		PaintEnd ();
+		bool spotted = CheckIfSpotted ();
+		if(spotted){
+			RestartGame ();
+		}
 		if (gameCount > enemyCount) {
 			if(doneMoving == numEnemies){
 				enemyCount++;
@@ -34,7 +60,28 @@ public class GameController : MonoBehaviour {
 		if (nextTurn == numEnemies) {
 			nextTurn = 0;
 		}
+		CheckIfMoving ();
+	}
 
+	void CheckIfMoving(){
+		playerReady = true;
+		for(int i = 0; i < numEnemies; i++){
+			GameObject temp = guards[i];
+			EnemyGuard tempScript = temp.GetComponent<EnemyGuard>();
+			if(tempScript.moving){
+				playerReady = false;
+			}
+		}
+	}
+
+	bool CheckIfSpotted(){
+		return PlayerController.spotted;
+	}
+
+	void RestartGame(){
+		if (gameCount == enemyCount) {
+			Application.LoadLevel (scene);
+		}
 	}
 
 	void OnGUI(){

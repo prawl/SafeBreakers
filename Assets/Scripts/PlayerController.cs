@@ -13,6 +13,8 @@ public class PlayerController : MonoBehaviour {
 	public TileSystem tileSystem;
 	public Brush possibleLoc;
 	public Brush defaultLoc;
+	public Brush endTileColor;
+	public Brush endLoc;
 	public TileIndex current;
 	public float distance;
 	public Vector3 temp;
@@ -21,12 +23,15 @@ public class PlayerController : MonoBehaviour {
 	public static bool move;
 	public bool occupied;
 	public static bool spotted;
+	public GameController controllerScript;
 	
 	// Use this for initialization
 	void Start () {
 		spotted = false;
 		playerAnimator = GetComponent<Animator>();
+		controllerScript = player.GetComponent<GameController> ();
 		current = tileSystem.ClosestTileIndexFromWorld (player.transform.position);
+		controllerScript.start = current;
 		Vector3 temp = tileSystem.WorldPositionFromTileIndex(current, true);
 		temp.z = -1;
 		player.transform.position = temp;
@@ -35,11 +40,14 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		CameraController.EnableCameraMovement ();		
-		HighlightMoves ();
-		if (Input.GetMouseButtonDown(0)) {
-			if(GameController.gameCount == GameController.enemyCount && GameController.nextTurn == 0){
-				MoveToLocation ();
+		Restart ();
+		CameraController.EnableCameraMovement ();	
+		if(GameController.playerReady){
+			HighlightMoves ();
+			if (Input.GetMouseButtonDown(0)) {
+				if(GameController.gameCount == GameController.enemyCount && GameController.nextTurn == 0){
+					MoveToLocation ();
+				}
 			}
 		}
 		if(move){
@@ -50,6 +58,12 @@ public class PlayerController : MonoBehaviour {
 		}
 		UpdateAnimation ();
 		
+	}
+
+	void Restart(){
+		if(GameController.restart){
+			Start ();
+		}
 	}
 
 	void UpdateAnimation(){
@@ -85,7 +99,9 @@ public class PlayerController : MonoBehaviour {
 		}
 		
 	}
-	
+
+
+
 	void HighlightMoves(){
 		current = tileSystem.ClosestTileIndexFromWorld (player.transform.position);
 		if (!move && GameController.nextTurn == 0) {
@@ -97,19 +113,21 @@ public class PlayerController : MonoBehaviour {
 					   ||  (int.Parse (current.column.ToString ()) - 1 == column) && (int.Parse (current.row.ToString()) == row)){
 
 						TileIndex temp = tileSystem.ClosestTileIndexFromWorld (tileSystem.GetTile (row, column).gameObject.transform.position);
-						bool check = CheckIfOccupied (temp);
+						bool end = CheckIfEnd (temp);
 
-						if(!check){
-							possibleLoc.Paint (tileSystem, row, column);
+						if(!end){
+							bool check = CheckIfOccupied (temp);
+							
+							if(!check){
+								UpdateValid (temp, true);
+								possibleLoc.Paint (tileSystem, row, column);
+							}
+							
+							if(check){
+								UpdateValid (temp, false);
+								defaultLoc.Paint (tileSystem, row, column);
+							}
 						}
-
-						else{
-							defaultLoc.Paint (tileSystem, row, column);
-						}
-					}
-					
-					else{
-						defaultLoc.Paint (tileSystem, row, column);
 					}
 				}
 			}
@@ -117,7 +135,11 @@ public class PlayerController : MonoBehaviour {
 		if(move){
 			for(int row = 0; row < tileSystem.RowCount; row++){
 				for(int column = 0; column<tileSystem.ColumnCount; column++){
-					defaultLoc.Paint (tileSystem, row, column);
+					TileIndex temp = tileSystem.ClosestTileIndexFromWorld (tileSystem.GetTile (row, column).gameObject.transform.position);
+					bool check = CheckIfValid (temp);
+					if(check){
+						defaultLoc.Paint (tileSystem, row, column);
+					}
 				}
 			}
 		}
@@ -127,6 +149,35 @@ public class PlayerController : MonoBehaviour {
 		if(player.transform.position == temp){
 			move = false;
 		}
+	}
+
+	void UpdateValid(TileIndex next, bool valid){
+		if (valid) {
+			TileData tile = tileSystem.GetTile (next.row, next.column);
+			GameObject tileObject = tile.gameObject;
+			TileCheck validTile = tileObject.GetComponent<TileCheck>();
+			validTile.valid = true;
+		}
+		else{
+			TileData tile = tileSystem.GetTile (next.row, next.column);
+			GameObject tileObject = tile.gameObject;
+			TileCheck validTile = tileObject.GetComponent<TileCheck>();
+			validTile.valid = false;
+		}
+	}
+
+	bool CheckIfValid(TileIndex next){
+		TileData tile = tileSystem.GetTile (next.row, next.column);
+		GameObject tileObject = tile.gameObject;
+		TileCheck validTile = tileObject.GetComponent<TileCheck>();
+		return validTile.valid;
+	}
+
+	bool CheckIfEnd(TileIndex next){
+		TileData tile = tileSystem.GetTile (next.row, next.column);
+		GameObject tileObject = tile.gameObject;
+		TileCheck validTile = tileObject.GetComponent<TileCheck>();
+		return validTile.end;
 	}
 
 	bool CheckIfOccupied(TileIndex next){
