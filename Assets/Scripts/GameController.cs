@@ -85,10 +85,12 @@ public class GameController : MonoBehaviour {
 	}
 
 	void OnGUI(){
-		if (GUI.Button (new Rect(0, 0, 100, 50), "Pause")){	
+	  GUIController.DisplayTimer();
+
+		if (GUI.Button (new Rect(0, 0, 100, 50), "Pause")){
 			GUIController.PauseGame();
 		}
-    if (GUI.Button (new Rect(0, 55, 100, 50), "Backpack")){	
+    if (GUI.Button (new Rect(0, 55, 100, 50), "Backpack")){
 	  	GUIController.ShowInventory();
 		}
   	if (GUIController.GameIsPaused()) {
