@@ -40,6 +40,8 @@ public class EnemyGuard : MonoBehaviour {
 		startingPos = currentLoc;
 		speed = 1.0f;
 		StartDirection ();
+		renderer.castShadows = true;
+		renderer.receiveShadows = true;
 		to = true;
 		from = false;
 		firstMove = true;

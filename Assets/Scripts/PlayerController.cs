@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour {
 		temp.z = -1;
 		player.transform.position = temp;
 		speed = 1.0f;
+		renderer.castShadows = true;
+		renderer.receiveShadows = true;
 	}
 	
 	// Update is called once per frame

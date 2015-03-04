@@ -73,6 +73,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 100000}
+  player: {fileID: 0}
+  playerLoc:
+    row: 0
+    column: 0
   tileSystem: {fileID: 0}
   start:
     row: 0
@@ -95,6 +99,10 @@ MonoBehaviour:
   vertical: 0
   moving: 0
   individualMove: 0
+  startingPos: {x: 0, y: 0, z: 0}
+  curPos: {x: 0, y: 0, z: 0}
+  lastPos: {x: 0, y: 0, z: 0}
+  renderer: {fileID: 21200000}
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1
