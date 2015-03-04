@@ -20,6 +20,8 @@ public class GUIController : MonoBehaviour {
 	private static int timerWidth = 100;
 	private static int timerHeight = 50;
 
+	private static float x, y;
+
 	public static void PauseGame(){
 		isPaused = true;
 	}
@@ -98,6 +100,19 @@ public class GUIController : MonoBehaviour {
 			// itemHandler.DeployTraqGun();
 	  }
   }
+
+  public static void CreatePopUpMenu(GameObject[] enemies){
+			GUI.backgroundColor = Color.red; // GUI set to red so you can actually see it
+			if (enemies.Length > 0){
+				foreach(GameObject enemy in enemies){
+					Vector3 screenPos = Camera.main.WorldToScreenPoint(enemy.transform.position);
+					GUI.Box (new Rect(screenPos.x - (100)/2, (-screenPos.y), 100, 400), "");
+					GUI.Button (new Rect(screenPos.x - (100)/2, (-screenPos.y+350), 100, 50), "Action 1");
+					GUI.Button (new Rect(screenPos.x - (100)/2, (-screenPos.y+300), 100, 50), "Action 2");
+					GUI.Button (new Rect(screenPos.x - (100)/2, (-screenPos.y+250), 100, 50), "Patty Rules");
+				}
+		 }
+	}				
 
 	public static void DisplayPauseMenu(){
 		GUI.Box (new Rect(xPos, yPos, buttonWidth, buttonHeight), "");
