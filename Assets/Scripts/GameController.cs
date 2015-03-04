@@ -40,8 +40,43 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
+  // Use this in FixedUpdate method to see more detailed info about what you're currently clicking on
+	// while playing the game
+	void ClickInfoDebug(){
+	 if (Input.GetMouseButtonDown (0)) {
+		 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		 RaycastHit hit;
+				if (Physics.Raycast(ray, out hit)) {
+					 Debug.Log ("Name = " + hit.collider.name);
+					 Debug.Log ("Tag = " + hit.collider.tag);
+					 Debug.Log ("Hit Point = " + hit.point);
+					 Debug.Log ("Object position = " + hit.collider.gameObject.transform.position);
+					 Debug.Log ("--------------");
+				}
+		 }	
+	}
+
+	void ToggleDoor(){
+	 if (Input.GetMouseButtonDown (0)) {
+		 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		 RaycastHit hit;
+				if (Physics.Raycast(ray, out hit)) {
+					if(hit.collider.name == "Door") {
+					 Debug.Log ("Object position = " + hit.collider.gameObject.transform.parent.gameObject);
+					 if (hit.collider.gameObject.transform.parent.gameObject.transform.eulerAngles.z == 0){ 
+						 hit.collider.gameObject.transform.parent.gameObject.transform.eulerAngles = new Vector3(0, 0, -90);
+					 } else {
+						 hit.collider.gameObject.transform.parent.gameObject.transform.eulerAngles = new Vector3(0, 0, 0);
+					 }
+					}
+				}
+		 }	
+
+	}
+
 	// Update is called once per frame
 	void FixedUpdate() {
+		ToggleDoor();
 		PaintEnd ();
 		bool spotted = CheckIfSpotted ();
 		if(spotted){
