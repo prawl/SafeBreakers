@@ -36,6 +36,7 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 <<<<<<< HEAD
+<<<<<<< HEAD
 																																																																										GlobalSection(MonoDevelopProperties) = preSolution
 =======
 																																																														GlobalSection(MonoDevelopProperties) = preSolution
@@ -46,6 +47,9 @@ Global
 >>>>>>> Now displaying a GUI timer [#86118136]
 >>>>>>> Now displaying a GUI timer [#86118136]
 >>>>>>> Now displaying a GUI timer [#86118136]
+=======
+																																																															GlobalSection(MonoDevelopProperties) = preSolution
+>>>>>>> Can now toggle inventory [#86119752]
 =======
 																																													GlobalSection(MonoDevelopProperties) = preSolution
 >>>>>>> The player can pan the camera around the map [#85834460]
