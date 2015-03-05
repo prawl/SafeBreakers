@@ -33,7 +33,7 @@ public class PlayerController : MonoBehaviour {
 		current = tileSystem.ClosestTileIndexFromWorld (player.transform.position);
 		controllerScript.start = current;
 		Vector3 temp = tileSystem.WorldPositionFromTileIndex(current, true);
-		temp.z = -1;
+		temp.z = -1.1f;
 		player.transform.position = temp;
 		speed = 1.0f;
 		renderer.castShadows = true;
@@ -201,7 +201,7 @@ public class PlayerController : MonoBehaviour {
 		occupied = CheckIfOccupied (next);
 		if (move == true && occupied == false) {
 			temp = tileSystem.WorldPositionFromTileIndex (next, true);
-			temp.z = -1;
+			temp.z = -1.1f;
 			GameController.gameCount++;
 		}
 		else{

@@ -186,17 +186,21 @@
  <Reference Include="TileSystem.Editor">
  <HintPath>C:/Users/Bradley/Desktop/Creech Monster/Unity/Safebreakers/Assets/Rotorz/Tile System/Editor/TileSystem.Editor.dll</HintPath>
  </Reference>
- <Reference Include="UnityEditor.Graphs">
- <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
+ <Reference Include="tk2dExternal">
+ <HintPath>C:/Users/Bradley/Desktop/Creech Monster/Unity/Safebreakers/Assets/TK2DROOT/tk2d/Editor/tk2dExternal.dll</HintPath>
  </Reference>
  <Reference Include="tk2dSkin">
  <HintPath>C:/Users/Bradley/Desktop/Creech Monster/Unity/Safebreakers/Assets/TK2DROOT/tk2d/Editor/tk2dSkin.dll</HintPath>
  </Reference>
- <Reference Include="tk2dExternal">
- <HintPath>C:/Users/Bradley/Desktop/Creech Monster/Unity/Safebreakers/Assets/TK2DROOT/tk2d/Editor/tk2dExternal.dll</HintPath>
+ <Reference Include="UnityEditor.Graphs">
+ <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
+      <Project>{8BACE7A3-C274-22DD-B64B-361FC25927A5}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+    <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
+      <Project>{DE22F74A-5943-302C-57BC-C019B022C8CF}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
       <Project>{92CD60C4-2047-6A4B-4C29-FADB2D49B5CA}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-UnityScript.unityproj">

@@ -29,6 +29,7 @@ public class EnemyGuard : MonoBehaviour {
 	public Vector3 startingPos;
 	public Vector3 curPos;
 	public Vector3 lastPos;
+	public GameObject flashlight;
 	
 	// Use this for initialization
 	void Start () {
@@ -48,8 +49,72 @@ public class EnemyGuard : MonoBehaviour {
 		moving = false;
 	}
 
+	void FlashLightDirection(){
+		if(up){
+			var lightTransform = flashlight.transform;
+			lightTransform.parent = enemy.transform;
+			Quaternion tempRot = lightTransform.rotation;
+			tempRot.x = 0;
+			tempRot.y = -90;
+			tempRot.z = 90;
+			Vector3 tempPos = lightTransform.position;
+			tempPos.z = 1;
+			tempPos.x = 0;
+			tempPos.y = 0;
+			flashlight.transform.parent = enemy.transform;
+			flashlight.transform.localPosition = tempPos;
+			flashlight.transform.localRotation = tempRot;
+		}
+		if(down){
+			var lightTransform = flashlight.transform;
+			lightTransform.parent = enemy.transform;
+			Quaternion tempRot = lightTransform.rotation;;
+			tempRot.x = 0;
+			tempRot.y = 90;
+			tempRot.z = 90;
+			Vector3 tempPos = lightTransform.position;
+			tempPos.z = -1;
+			tempPos.x = 0;
+			tempPos.y = 0;
+			flashlight.transform.parent = enemy.transform;
+			flashlight.transform.localPosition = tempPos;
+			flashlight.transform.localRotation = tempRot;
+		}
+		if(left){
+			var lightTransform = flashlight.transform;
+			lightTransform.parent = enemy.transform;
+			Quaternion tempRot = lightTransform.rotation;
+			tempRot.x = 90;
+			tempRot.y = 90;
+			tempRot.z = 0;
+			Vector3 tempPos = lightTransform.position;
+			tempPos.z = 0;
+			tempPos.x = -1;
+			tempPos.y = 0;
+			flashlight.transform.parent = enemy.transform;
+			flashlight.transform.localPosition = tempPos;
+			flashlight.transform.localRotation = tempRot;
+		}
+		if(right){
+			var lightTransform = flashlight.transform;
+			lightTransform.parent = enemy.transform;
+			Quaternion tempRot = lightTransform.rotation;
+			tempRot.x = 90;
+			tempRot.y = -90;
+			tempRot.z = 0;
+			Vector3 tempPos = lightTransform.position;
+			tempPos.z = 0;
+			tempPos.x = 1;
+			tempPos.y = 0;
+			flashlight.transform.parent = enemy.transform;
+			flashlight.transform.localPosition = tempPos;
+			flashlight.transform.localRotation = tempRot;
+		}
+	}
+
 	// Update is called once per frame
 	void Update () {
+		FlashLightDirection ();
 		curPos = transform.position;
 		if (curPos != lastPos) {
 			moving = true;
@@ -208,42 +273,42 @@ public class EnemyGuard : MonoBehaviour {
 		if(vertical && down && to){
 			currentTile.row = currentTile.row + 1;
 			currentLoc = tileSystem.WorldPositionFromTileIndex (currentTile, true);
-			currentLoc.z = -1;
+			currentLoc.z = -1.1f;
 		}
 		if(vertical && up && to){
 			currentTile.row = currentTile.row - 1;
 			currentLoc = tileSystem.WorldPositionFromTileIndex (currentTile, true);
-			currentLoc.z = -1;
+			currentLoc.z = -1.1f;
 		}
 		if(horizontal && right && to){
 			currentTile.column = currentTile.column + 1;
 			currentLoc = tileSystem.WorldPositionFromTileIndex (currentTile, true);
-			currentLoc.z = -1;
+			currentLoc.z = -1.1f;
 		}
 		if(horizontal && left && to){
 			currentTile.column = currentTile.column - 1;
 			currentLoc = tileSystem.WorldPositionFromTileIndex (currentTile, true);
-			currentLoc.z = -1;
+			currentLoc.z = -1.1f;
 		}
 		if(vertical && down && from){
 			currentTile.row = currentTile.row + 1;
 			currentLoc = tileSystem.WorldPositionFromTileIndex (currentTile, true);
-			currentLoc.z = -1;
+			currentLoc.z = -1.1f;
 		}
 		if(vertical && up && from){
 			currentTile.row = currentTile.row - 1;
 			currentLoc = tileSystem.WorldPositionFromTileIndex (currentTile, true);
-			currentLoc.z = -1;
+			currentLoc.z = -1.1f;
 		}
 		if(horizontal && right && from){
 			currentTile.column = currentTile.column + 1;
 			currentLoc = tileSystem.WorldPositionFromTileIndex (currentTile, true);
-			currentLoc.z = -1;
+			currentLoc.z = -1.1f;
 		}
 		if(horizontal && left && from){
 			currentTile.column = currentTile.column - 1;
 			currentLoc = tileSystem.WorldPositionFromTileIndex (currentTile, true);
-			currentLoc.z = -1;
+			currentLoc.z = -1.1f;
 		}
 	}
 	
