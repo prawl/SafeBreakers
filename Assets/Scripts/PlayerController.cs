@@ -116,16 +116,18 @@ public class PlayerController : MonoBehaviour {
 
 						TileIndex temp = tileSystem.ClosestTileIndexFromWorld (tileSystem.GetTile (row, column).gameObject.transform.position);
 						bool end = CheckIfEnd (temp);
+						bool occupied = CheckIfOccupied(temp);
 
-						if(!end){
+						if(!end && !occupied){
+
 							bool check = CheckIfOccupied (temp);
 							
 							if(!check){
 								UpdateValid (temp, true);
 								possibleLoc.Paint (tileSystem, row, column);
 							}
-							
-							if(check){
+
+							else{
 								UpdateValid (temp, false);
 								defaultLoc.Paint (tileSystem, row, column);
 							}
@@ -153,6 +155,14 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
+	bool CheckIfOccupied(TileIndex next){
+		TileData tile = tileSystem.GetTile (next.row, next.column);
+		GameObject tileObject = tile.gameObject;
+		TileCheck check = tileObject.GetComponent<TileCheck> ();
+		bool status = check.occupied;
+		return status;
+	}
+	
 	void UpdateValid(TileIndex next, bool valid){
 		if (valid) {
 			TileData tile = tileSystem.GetTile (next.row, next.column);
@@ -180,14 +190,6 @@ public class PlayerController : MonoBehaviour {
 		GameObject tileObject = tile.gameObject;
 		TileCheck validTile = tileObject.GetComponent<TileCheck>();
 		return validTile.end;
-	}
-
-	bool CheckIfOccupied(TileIndex next){
-		TileData tile = tileSystem.GetTile (next.row, next.column);
-		GameObject tileObject = tile.gameObject;
-		TileCheck check = tileObject.GetComponent<TileCheck> ();
-		bool status = check.occupied;
-		return status;
 	}
 
 	void MoveToLocation(){
@@ -223,7 +225,12 @@ public class PlayerController : MonoBehaviour {
 				   || ((int.Parse (current.column.ToString ()) + 1) == (int.Parse(next.column.ToString ())) && ((int.Parse (current.row.ToString ())) == (int.Parse(next.row.ToString ()))))
 				   || ((int.Parse (current.column.ToString ()) - 1) == (int.Parse(next.column.ToString ())) && ((int.Parse (current.row.ToString ())) == (int.Parse(next.row.ToString ())))))
 				{
-					canMove = true;
+					TileIndex temp = tileSystem.ClosestTileIndexFromWorld (tileSystem.GetTile (row, column).gameObject.transform.position);
+					bool occupiedCheck = CheckIfOccupied (temp);
+					if(!occupiedCheck){
+						canMove = true;
+					}
+					else canMove = false;
 				}
 			}
 		}

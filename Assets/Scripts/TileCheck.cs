@@ -18,6 +18,7 @@ public class TileCheck : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other){
 		occupied = true;
+		valid = false;
 	}
 
 	void OnTriggerExit(Collider other){
