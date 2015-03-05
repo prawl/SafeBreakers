@@ -62,6 +62,7 @@
      <Compile Include="Assets\Scripts\SecurityCamera.cs" />
      <Compile Include="Assets\Scripts\TileCheck.cs" />
      <Compile Include="Assets\Scripts\TileMovement.cs" />
+     <Compile Include="Assets\Scripts\Wall_Fade.cs" />
      <Compile Include="Assets\TK2DROOT\tk2d\Code\Camera\tk2dCamera.cs" />
      <Compile Include="Assets\TK2DROOT\tk2d\Code\Camera\tk2dCameraAnchor.cs" />
      <Compile Include="Assets\TK2DROOT\tk2d\Code\Camera\tk2dCameraUtil.cs" />
@@ -168,7 +169,9 @@
      <None Include="Assets\Rotorz\Tile System\Shaders\PreviewSeeThrough.shader" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\CutoutVertexColor.shader" />
      <None Include="Assets\TK2DROOT\tk2d_demo\demobmfont\test.fnt" />
+     <None Include="Assets\Transparent.shader" />
      <None Include="Assets\Rotorz\Tile System\Demo\Readme.txt" />
+     <None Include="Assets\ShowThrough.shader" />
      <None Include="Assets\TK2DROOT\tk2dUI_demo\Assets\Font\OldSansBlack\OldSansBlack.fnt" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\LitBlendVertexColor.shader" />
      <None Include="Assets\TK2DROOT\tk2dUI_demo\Assets\Dark\Fonts\Nunito16.fnt" />
