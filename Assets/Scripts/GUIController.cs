@@ -106,10 +106,11 @@ public class GUIController : MonoBehaviour {
 			if (enemies.Length > 0){
 				foreach(GameObject enemy in enemies){
 					Vector3 screenPos = Camera.main.WorldToScreenPoint(enemy.transform.position);
-					GUI.Box (new Rect(screenPos.x - (100)/2, (-screenPos.y), 100, 400), "");
-					GUI.Button (new Rect(screenPos.x - (100)/2, (-screenPos.y+350), 100, 50), "Action 1");
-					GUI.Button (new Rect(screenPos.x - (100)/2, (-screenPos.y+300), 100, 50), "Action 2");
-					GUI.Button (new Rect(screenPos.x - (100)/2, (-screenPos.y+250), 100, 50), "Patty Rules");
+					xPos = screenPos.x - 250 / 2; // Center button horizontally over targets head
+					yPos = -screenPos.y + Screen.height / 1.25f;
+					float xSpacing = new float(); 
+					xSpacing = (250 / 2) - (100 / 2);
+					GUI.Button (new Rect((xPos + xSpacing), (yPos), 100, 50), "Knockout");
 				}
 		 }
 	}				
