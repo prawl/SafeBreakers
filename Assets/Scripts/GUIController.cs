@@ -8,8 +8,8 @@ public class GUIController : MonoBehaviour {
 	private static bool showMenu = false;
 	private static float buttonWidth = 250;
 	private static float buttonHeight = 300f;
-	private static float xPos = (Screen.width - buttonWidth) / 2;
-	private static float yPos = (Screen.height - buttonWidth) / 2;
+	private static float xPos;
+	private static float yPos;
 	private static float yItemPos = 150;
 	private static bool timer =  false;
 	private static string textTimer;
@@ -115,6 +115,9 @@ public class GUIController : MonoBehaviour {
 	}				
 
 	public static void DisplayPauseMenu(){
+		xPos = (Screen.width - buttonWidth)/2;
+		yPos = (Screen.height - buttonHeight)/2;
+		
 		GUI.Box (new Rect(xPos, yPos, buttonWidth, buttonHeight), "");
 		if (GUI.Button (new Rect( (xPos + 70) , (yPos + 65), 100, 50), "Resume") || Input.GetKeyDown(KeyCode.Escape)){
 			DeactivePauseMenu();
