@@ -105,12 +105,15 @@ public class GUIController : MonoBehaviour {
 			GUI.backgroundColor = Color.red; // GUI set to red so you can actually see it
 			if (enemies.Length > 0){
 				foreach(GameObject enemy in enemies){
+					print(enemy);
 					Vector3 screenPos = Camera.main.WorldToScreenPoint(enemy.transform.position);
 					xPos = screenPos.x - 250 / 2; // Center button horizontally over targets head
 					yPos = -screenPos.y + Screen.height / 1.25f;
 					float xSpacing = new float(); 
 					xSpacing = (250 / 2) - (100 / 2);
-					GUI.Button (new Rect((xPos + xSpacing), (yPos), 100, 50), "Knockout");
+					if (GUI.Button (new Rect((xPos + xSpacing), (yPos), 100, 50), "Knockout")) {
+						Destroy(enemy);
+					}
 				}
 		 }
 	}				

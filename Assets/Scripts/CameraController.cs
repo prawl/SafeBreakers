@@ -8,6 +8,7 @@ public class CameraController : MonoBehaviour {
 	public static float cameraLimitRight = 27.0f;
 	public static float cameraLimitUp = -5.5f;	
 	public static float dragSpeed = 30.0f;
+	private static float yDistanceFromThePlayer = 5.0f; // The camera needs to be moved back so we can see the player, because target.position.y is the player position not the camera.
 	private static GameObject mainCamera, defaultFocus;
 	private static Transform target;
 	private static Vector3 curPosition;
@@ -18,11 +19,11 @@ public class CameraController : MonoBehaviour {
 		mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 	}
 	
-	// Moves the main camera's focus onto an object using it's tag that exist in the scene
+	// Moves the main camera's focus onto an object using its tag
 	public static void SetCameraFocus(string Tag){
 		defaultFocus = GameObject.FindGameObjectWithTag (Tag);
 		target = defaultFocus.transform;
-		mainCamera.transform.position = new Vector3 (target.position.x, -11.5f, -4.7f);
+		mainCamera.transform.position = new Vector3 (target.position.x, target.position.y - yDistanceFromThePlayer, -4.7f);
 	}
 
 	public static bool AbleToMoveCamera() {
