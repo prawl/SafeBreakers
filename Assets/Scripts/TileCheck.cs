@@ -3,11 +3,13 @@ using System.Collections;
 using Rotorz.Tile;
 using Rotorz.Tile.Internal;
 
-public class TileCheck : MonoBehaviour {
+public class TileCheck : TileHighlight {
 
 	public bool occupied;
 	public bool valid;
 	public bool end;
+	public bool isOccupied;
+	public bool isValid;
 
 	// Use this for initialization
 	void Start () {
@@ -15,7 +17,7 @@ public class TileCheck : MonoBehaviour {
 		occupied = false;
 		end = false;
 	}
-
+	
 	void OnTriggerEnter(Collider other){
 		occupied = true;
 		valid = false;

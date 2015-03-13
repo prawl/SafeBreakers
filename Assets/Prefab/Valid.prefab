@@ -81,7 +81,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00cdee68eb24f4c4b8a2169fbc934b46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileSystem: {fileID: 0}
+  player: {fileID: 0}
+  playerController: {fileID: 0}
+  current:
+    row: 0
+    column: 0
+  possibleLoc: {fileID: 0}
+  defaultLoc: {fileID: 0}
   occupied: 0
+  valid: 0
+  end: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
