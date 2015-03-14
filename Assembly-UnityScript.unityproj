@@ -48,7 +48,9 @@
   <ItemGroup>
      <Compile Include="Assets\LookAtCamera.js" />
      <Compile Include="Assets\Rotorz\Tile System\Scripts\RtsBrushFieldAttribute.js" />
+     <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFX3 Multiply Color.shader" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\LitSolidVertexColor.shader" />
+     <None Include="Assets\JMO Assets\Cartoon FX\Shaders (Mobile)\CFXM_MobileParticleAdd_Alpha8.shader" />
      <None Include="Assets\TK2DROOT\tk2d\Goodies\TexturePacker\Exporter\2dtoolkit\exporter.xml" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\SolidVertexColor.shader" />
      <None Include="Assets\TK2DROOT\tk2dUI\Shaders\DepthMask.shader" />
@@ -62,14 +64,23 @@
      <None Include="Assets\TK2DROOT\tk2d\Shaders\goodies\PackedTextMesh.shader" />
      <None Include="Assets\Rotorz\Tile System\!Readme.txt" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\Blend2TexVertexColor.shader" />
+     <None Include="Assets\JMO Assets\Cartoon FX\Shaders (Mobile)\CFXM_MobileParticleAlphaBlend_Alpha8.shader" />
      <None Include="Assets\TK2DROOT\tk2dUI\Shaders\DepthMaskSolid.shader" />
      <None Include="Assets\TK2DROOT\tk2dUI_demo\Assets\Dark\Fonts\Nunito24.fnt" />
      <None Include="Assets\Rotorz\Tile System\Demo\Hat Guy\Shaders\Diamond.shader" />
+     <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFX3 Invert.shader" />
      <None Include="Assets\Rotorz\Tile System\Shaders\AtlasOpaque.shader" />
+     <None Include="Assets\JMO Assets\Cartoon FX Easy Editor\CartoonFX Easy Editor Readme.txt" />
+     <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFX4 Particle AlphaBlend+AddSoft.shader" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\resources\BlendVertexColor.shader" />
+     <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFX4 Particle AlphaBlend+AddSoft VColor.shader" />
+     <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFX4 Particle AlphaBlend+Add.shader" />
+     <None Include="Assets\JMO Assets\!JMO Assets Readme.txt" />
+     <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFX4 Hidden.shader" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\LitCutoutVertexColor.shader" />
      <None Include="Assets\Rotorz\Tile System\Editor\TileSystem.Editor.xml" />
      <None Include="Assets\TK2DROOT\tk2d\Editor\EditorUtility.shader" />
+     <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFX4 Particle AlphaBlend+Add VColor.shader" />
      <None Include="Assets\Rotorz\Tile System\Support\Release Notes.txt" />
      <None Include="Assets\Rotorz\Tile System\Shaders\PreviewSeeThrough.shader" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\CutoutVertexColor.shader" />
@@ -81,6 +92,7 @@
      <None Include="Assets\TK2DROOT\tk2d\Shaders\LitBlendVertexColor.shader" />
      <None Include="Assets\TK2DROOT\tk2dUI_demo\Assets\Dark\Fonts\Nunito16.fnt" />
      <None Include="Assets\TK2DROOT\tk2dUI_demo\Assets\Dark\Fonts\Nunito32.fnt" />
+     <None Include="Assets\JMO Assets\Cartoon FX\CartoonFX4 Readme.txt" />
      <None Include="Assets\Rotorz\Tile System\preset.default.xml" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\AdditiveVertexColor.shader" />
      <None Include="Assets\Rotorz\Tile System\TileSystem.Runtime.xml" />

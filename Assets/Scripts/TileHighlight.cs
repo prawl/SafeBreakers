@@ -29,7 +29,7 @@ public class TileHighlight : MonoBehaviour {
 
 	void HighlightMoves(){
 		current = tileSystem.ClosestTileIndexFromWorld (player.transform.position);
-		if(!GameController.playerReady){
+		if(!GameController.playerReady || GameController.gameCount > GameController.enemyCount){
 			for(int row = 0; row < tileSystem.RowCount; row++){
 				for(int column = 0; column<tileSystem.ColumnCount; column++){
 					defaultLoc.Paint (tileSystem, row, column);
@@ -37,7 +37,7 @@ public class TileHighlight : MonoBehaviour {
 			}
 		}
 		
-		if(GameController.playerReady){
+		if(GameController.playerReady && GameController.gameCount == GameController.enemyCount){
 			if(!PlayerController.move && GameController.nextTurn == 0){
 				for(int row = 0; row < tileSystem.RowCount; row++){
 					for(int column = 0; column < tileSystem.ColumnCount; column++){
