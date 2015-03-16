@@ -89,21 +89,38 @@ public class GameController : MonoBehaviour {
 
 		if (GUI.Button (new Rect(0, 0, 100, 50), "Pause")){
 			GUIController.PauseGame();
+			GUIController.HideInventory();
+			GUIController.HidePurchase();
 		}
-    if (GUI.Button (new Rect(0, 55, 100, 50), "Backpack")){	
-	  	GUIController.ToggleInventory();
+
+		if (GUIController.PauseActive()){
+			GUI.enabled = false; // When paused disable Backpack and Shop GUI buttons (grayed-out) 
 		}
+
+		if (GUI.Button (new Rect(0, 55, 100, 50), "Backpack")){	
+			GUIController.ToggleInventory();
+		}
+		if (GUI.Button (new Rect(Screen.width-100, 0, 100, 50), "Shop")){	
+			GUIController.TogglePurchaseWindow();
+		}
+
+		GUI.enabled = true; 
+
   	if (GUIController.GameIsPaused()) {
 			GUIController.FreezeTime();
 			GUIController.ActivatePauseMenu();
 		}
 		if (GUIController.PauseActive()) {
 			GUIController.DisplayPauseMenu();
+
 		}
 		if (GUIController.InventoryActive()){
 		  GUIController.DisplayInventory();
 			GUIController.CreatePopUpMenu(guards);
 		}
+    if (GUIController.PurchaseActive()){
+      GUIController.DisplayPurchaseWindow();
+    }
 	}
 
   // Use this in FixedUpdate method to see more detailed info about what you're currently clicking on
