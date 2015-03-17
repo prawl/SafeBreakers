@@ -8,7 +8,7 @@ public class DoorController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		IgnoreEntryWay ();
+	/* 	IgnoreEntryWay (); */
 	}
 	
 	// Update is called once per frame
