@@ -16,6 +16,7 @@ public class GUIController : MonoBehaviour {
 	private static bool timer =  false;
 	private static bool purchase = false;
 	private static string textTimer;
+	private static string textCurrency;
 	private static int restSeconds;
 	private static int displaySeconds;
 	private static int displayMinutes;
@@ -126,10 +127,8 @@ public class GUIController : MonoBehaviour {
   public static void DisplayInventory(){
 	  GUI.Box (new Rect(0, 1, buttonWidth/2, Screen.height), "");
 		if (GUI.Button (new Rect (0, yItemPos, 100, 50), "Smoke Bomb")) {
-			// itemHandler.DeploySmokeBomb();
 		}
 		if (GUI.Button (new Rect (0, yItemPos + 60, 100, 50), "Tranq Gun")) {
-			// itemHandler.DeployTraqGun();
 	  }
   }
 
@@ -168,9 +167,9 @@ public class GUIController : MonoBehaviour {
 		xPos = (Screen.width - purchaseBoxWidth)/2;
 		yPos = (Screen.height - purchaseBoxHeight)/2;
 
+    textCurrency = string.Format("Currency: {0}", InventoryController.DisplayCurrency());
     GUI.Box(new Rect(xPos, yPos, purchaseBoxWidth, purchaseBoxHeight), "");
-
-    GUI.Label(new Rect(xPos + 70, yPos + 15, 100, 50), "Currency: ");
+    GUI.Label(new Rect(xPos + 70, yPos + 15, 100, 50), textCurrency);
     GUI.Label(new Rect(xPos + 230, yPos + 15, 100, 50), "Purchase ");
     GUI.Button(new Rect(xPos + 70, yPos + 50, 100, 50), "Item 1");
     GUI.Button(new Rect(xPos + 210, yPos + 50, 100, 50), "Item 2");

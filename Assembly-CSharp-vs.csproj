@@ -69,10 +69,13 @@
      <Compile Include="Assets\Rotorz\Tile System\Demo\Hat Guy\Scripts\HatGuyTouchButton.cs" />
      <Compile Include="Assets\Rotorz\Tile System\Scripts\RtsBrushPropertyAttribute.cs" />
      <Compile Include="Assets\Scripts\CameraController.cs" />
+     <Compile Include="Assets\Scripts\Currency.cs" />
      <Compile Include="Assets\Scripts\DoorController.cs" />
      <Compile Include="Assets\Scripts\EnemyGuard.cs" />
      <Compile Include="Assets\Scripts\GUIController.cs" />
      <Compile Include="Assets\Scripts\GameController.cs" />
+     <Compile Include="Assets\Scripts\InventoryController.cs" />
+     <Compile Include="Assets\Scripts\Items.cs" />
      <Compile Include="Assets\Scripts\MiniGame_Door.cs" />
      <Compile Include="Assets\Scripts\PlayerAnimationController.cs" />
      <Compile Include="Assets\Scripts\PlayerController.cs" />

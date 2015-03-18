@@ -28,6 +28,7 @@ public class GameController : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag ("Player");
 		guards = GameObject.FindGameObjectsWithTag ("Enemy");
 		numEnemies = guards.Length;
+    InventoryController.ResetCurrency();
 	}
 
 	void PaintEnd(){
@@ -94,7 +95,7 @@ public class GameController : MonoBehaviour {
 		}
 
 		if (GUIController.PauseActive()){
-			GUI.enabled = false; // When paused disable Backpack and Shop GUI buttons (grayed-out) 
+			GUI.enabled = false; // When paused, disable Backpack and Shop GUI buttons (grayed-out) 
 		}
 
 		if (GUI.Button (new Rect(0, 55, 100, 50), "Backpack")){	
@@ -112,7 +113,6 @@ public class GameController : MonoBehaviour {
 		}
 		if (GUIController.PauseActive()) {
 			GUIController.DisplayPauseMenu();
-
 		}
 		if (GUIController.InventoryActive()){
 		  GUIController.DisplayInventory();
