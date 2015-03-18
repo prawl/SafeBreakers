@@ -29,6 +29,7 @@ public class GameController : MonoBehaviour {
 		guards = GameObject.FindGameObjectsWithTag ("Enemy");
 		numEnemies = guards.Length;
     InventoryController.ResetCurrency();
+    CameraController.SetCameraFocus("Player");
 	}
 
 	void PaintEnd(){
