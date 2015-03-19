@@ -7,6 +7,9 @@ http://unity3diy.blogspot.com/2014/06/using-git-with-3d-games-source-control_8.h
 
 - Simply opening the project and playing the secene will cause git to pickup changes dispite the fact that no changes were made.  Reseting using 'git reset --hard master' will remove the changes
 
+# Resovling Merge Conflicts
+- Tutorial: https://www.youtube.com/watch?v=zz7NuSCH6II
+
 # Rebasing A Branch
 
 - Pull down the latest changes while on the master branch "get pull origin master"
