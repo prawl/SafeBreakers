@@ -11,7 +11,7 @@ http://unity3diy.blogspot.com/2014/06/using-git-with-3d-games-source-control_8.h
 
 - Pull down the latest changes while on the master branch "get pull origin master"
 - Switch over to your branch "git checkout [branch_name]
-- Bring in the newest changes from master to your branch with "get rebase master" 
+- Bring in the newest changes from master to your branch with "git rebase master" 
 - If there are merge conflicts that means we changed the same file, you need to open that file and remove the changes you dont want, then type "git add --all" then "git rebase --continue" 
 - Push changes to github "git push origin [branch_name]
 - Create a new pull request 
