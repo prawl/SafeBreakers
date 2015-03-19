@@ -7,8 +7,17 @@ http://unity3diy.blogspot.com/2014/06/using-git-with-3d-games-source-control_8.h
 
 - Simply opening the project and playing the secene will cause git to pickup changes dispite the fact that no changes were made.  Reseting using 'git reset --hard master' will remove the changes
 
+# Rebasing A Branch
+
+- Pull down the latest changes while on the master branch "get pull origin master"
+- Switch over to your branch "git checkout <branch_name>
+- Bring in the newest changes from master to your branch with "get rebase master" 
+- If there are merge conflicts that means we changed the same file, you need to open that file and remove the changes you dont want, then type "git add --all" then "git rebase --continue" 
+- Push changes to github "git push origin <branch_name>
+- Create a new pull request 
+
 # Creating Pull Requests
-- Create a new branch with "git branch BRANCH_NAME"
-- Switch over to the new branch with "git checkout BRANCH_NAME"  *Note you need a clean working directory to do this
-- Push to github with "git push origin BRANCH_NAME"
-- If you just pushed your branch github will show a button that says "create pull request" if not click "pull requests" on the right side of the page and create a new pull request with the pushed branch
+
+- If you just pushed up your branch you should see a button pop up that says something like "Create new pull request <branch_name>. 
+- Create the pull request then click the button at the bottom that says "Merge" *This will put your branch on top of master
+- If no buttons appears there should be a "Create pull request" button on the upper right hand corner of this page.
