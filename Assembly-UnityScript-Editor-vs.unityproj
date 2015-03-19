@@ -102,6 +102,9 @@
  <Reference Include="Assembly-UnityScript">
  <HintPath>C:/Users/Bradley/Desktop/Creech Monster/Unity/Safebreakers/Library/ScriptAssemblies/Assembly-UnityScript.dll</HintPath>
  </Reference>
+ <Reference Include="JMOAssets">
+ <HintPath>C:/Users/Bradley/Desktop/Creech Monster/Unity/Safebreakers/Assets/JMO Assets/Editor/JMOAssets.dll</HintPath>
+ </Reference>
  <Reference Include="TileSystem.Runtime">
  <HintPath>C:/Users/Bradley/Desktop/Creech Monster/Unity/Safebreakers/Assets/Rotorz/Tile System/TileSystem.Runtime.dll</HintPath>
  </Reference>
@@ -116,9 +119,6 @@
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files (x86)/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
- </Reference>
- <Reference Include="JMOAssets">
- <HintPath>C:/Users/Bradley/Desktop/Creech Monster/Unity/Safebreakers/Assets/JMO Assets/Editor/JMOAssets.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>

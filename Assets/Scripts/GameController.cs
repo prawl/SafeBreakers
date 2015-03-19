@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEditor;
 using System.Collections;
 using Rotorz.Tile;
 using Rotorz.Tile.Internal;
