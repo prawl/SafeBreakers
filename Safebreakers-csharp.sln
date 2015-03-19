@@ -29,7 +29,46 @@ Global
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																																																																																						GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																																																														GlobalSection(MonoDevelopProperties) = preSolution
+=======
+																																																														GlobalSection(MonoDevelopProperties) = preSolution
+<<<<<<< HEAD
+=======
+=======
+																																																								GlobalSection(MonoDevelopProperties) = preSolution
+>>>>>>> Now displaying a GUI timer [#86118136]
+>>>>>>> Now displaying a GUI timer [#86118136]
+>>>>>>> Now displaying a GUI timer [#86118136]
+=======
+																																																															GlobalSection(MonoDevelopProperties) = preSolution
+>>>>>>> Can now toggle inventory [#86119752]
+=======
+																																																															GlobalSection(MonoDevelopProperties) = preSolution
+>>>>>>> WIP Added popup menu over enemies
+=======
+																																																																GlobalSection(MonoDevelopProperties) = preSolution
+>>>>>>> GUI Menu will popup over enemies head [#86122422]
+=======
+																																													GlobalSection(MonoDevelopProperties) = preSolution
+>>>>>>> The player can pan the camera around the map [#85834460]
+		StartupItem = Assembly-CSharp.csproj
+		Policies = $0
+		$0.TextStylePolicy = $1
+		$1.inheritsSet = null
+		$1.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $2
+		$2.inheritsSet = Mono
+		$2.inheritsScope = text/x-csharp
+		$2.scope = text/x-csharp
+		$0.TextStylePolicy = $3
+		$3.FileWidth = 120
+		$3.TabWidth = 4
+		$3.EolMarker = Unix
+		$3.inheritsSet = Mono
+		$3.inheritsScope = text/plain
+		$3.scope = text/plain
+	EndGlobalSection
+																																																																																																																										GlobalSection(MonoDevelopProperties) = preSolution
 =======
 																																																														GlobalSection(MonoDevelopProperties) = preSolution
 <<<<<<< HEAD

@@ -8,19 +8,45 @@ public class GUIController : MonoBehaviour {
 	private static bool showMenu = false;
 	private static float buttonWidth = 250;
 	private static float buttonHeight = 300f;
+	private static float purchaseBoxWidth = 500;
+	private static float purchaseBoxHeight = 300;
 	private static float xPos;
 	private static float yPos;
 	private static float yItemPos = 150;
 	private static bool timer =  false;
+	private static bool purchase = false;
 	private static string textTimer;
+	private static string textCurrency;
 	private static int restSeconds;
 	private static int displaySeconds;
 	private static int displayMinutes;
 	private static int roundedRestSeconds;
 	private static int timerWidth = 100;
 	private static int timerHeight = 50;
-
 	private static float x, y;
+
+  public static void TogglePurchaseWindow(){
+    if (PurchaseActive()){
+			HidePurchase();
+			ResumeGame();
+			ResumeTime();
+    } else {
+			ActivatePurchase();
+			FreezeTime();
+    }
+  }
+
+	public static void ToggleInventory(){
+	  if (InventoryActive()){
+			HideInventory();
+		} else {
+			ShowInventory();
+		}
+	}
+
+	public static bool GameIsPaused(){
+		return isPaused;
+	}
 
 	public static void PauseGame(){
 		isPaused = true;
@@ -30,17 +56,12 @@ public class GUIController : MonoBehaviour {
 		isPaused = false;
 	}
 
-	public static bool GameIsPaused(){
-		return isPaused;
+	public static void ShowInventory(){
+		displayInventory = true;
 	}
 
-	public static void ToggleInventory(){
-	  if (InventoryActive()){
-		  displayInventory = false;
-		}
-		else{
-		  displayInventory = true;
-		}
+	public static void HideInventory(){
+		displayInventory = false;
 	}
 
 	public static bool InventoryActive(){
@@ -79,6 +100,18 @@ public class GUIController : MonoBehaviour {
 		 timer = false;
 	}
 
+	public static void HidePurchase(){
+		 purchase = false;
+	}
+
+	public static void ActivatePurchase(){
+		 purchase = true;
+	}
+
+	public static bool PurchaseActive(){
+		return purchase;
+	}
+
   public static void DisplayTimer(){
     GUIStyle style = new GUIStyle();
 		style.normal.textColor = Color.white;
@@ -94,10 +127,8 @@ public class GUIController : MonoBehaviour {
   public static void DisplayInventory(){
 	  GUI.Box (new Rect(0, 1, buttonWidth/2, Screen.height), "");
 		if (GUI.Button (new Rect (0, yItemPos, 100, 50), "Smoke Bomb")) {
-			// itemHandler.DeploySmokeBomb();
 		}
 		if (GUI.Button (new Rect (0, yItemPos + 60, 100, 50), "Tranq Gun")) {
-			// itemHandler.DeployTraqGun();
 	  }
   }
 
@@ -105,7 +136,6 @@ public class GUIController : MonoBehaviour {
 			GUI.backgroundColor = Color.red; // GUI set to red so you can actually see it
 			if (enemies.Length > 0){
 				foreach(GameObject enemy in enemies){
-					print(enemy);
 					Vector3 screenPos = Camera.main.WorldToScreenPoint(enemy.transform.position);
 					xPos = screenPos.x - 250 / 2; // Center button horizontally over targets head
 					yPos = -screenPos.y + Screen.height / 1.25f;
@@ -131,4 +161,24 @@ public class GUIController : MonoBehaviour {
 		if (GUI.Button (new Rect ((xPos + 70), (yPos + 130), 100, 50), "Quit")) {
 		}
 	}
+
+  public static void DisplayPurchaseWindow(){
+    FreezeTime();
+		xPos = (Screen.width - purchaseBoxWidth)/2;
+		yPos = (Screen.height - purchaseBoxHeight)/2;
+
+    textCurrency = string.Format("Currency: {0}", InventoryController.DisplayCurrency());
+    GUI.Box(new Rect(xPos, yPos, purchaseBoxWidth, purchaseBoxHeight), "");
+    GUI.Label(new Rect(xPos + 70, yPos + 15, 100, 50), textCurrency);
+    GUI.Label(new Rect(xPos + 230, yPos + 15, 100, 50), "Purchase ");
+    GUI.Button(new Rect(xPos + 70, yPos + 50, 100, 50), "Item 1");
+    GUI.Button(new Rect(xPos + 210, yPos + 50, 100, 50), "Item 2");
+    GUI.Button(new Rect(xPos + 360, yPos + 50, 100, 50), "Item 3");
+    GUI.Button(new Rect(xPos + 70, yPos + 125, 100, 50), "Item 4");
+    GUI.Button(new Rect(xPos + 210, yPos + 125, 100, 50), "Item 5");
+    GUI.Button(new Rect(xPos + 360, yPos + 125, 100, 50), "Item 6");
+    GUI.Button(new Rect(xPos + 70, yPos + 200, 100, 50), "Item 7");
+    GUI.Button(new Rect(xPos + 210, yPos + 200, 100, 50), "Item 8");
+    GUI.Button(new Rect(xPos + 360, yPos + 200, 100, 50), "Item 9");
+  }
 }

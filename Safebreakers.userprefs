@@ -1,15 +1,13 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\MiniGame_Door.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Door_MiniGameController.cs">
     <Files>
       <File FileName="Assets\Scripts\PlayerController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\GameController.cs" Line="1" Column="1" />
       <File FileName="Assets\Scripts\EnemyGuard.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\TileCheck.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\TileHighlight.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\PlayerAnimationController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\DoorController.cs" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\MiniGame_Door.cs" Line="6" Column="25" />
+      <File FileName="Assets\Scripts\Door_MiniGameController.cs" Line="46" Column="22" />
+      <File FileName="Assets\Scripts\Door_GUIController.cs" Line="20" Column="3" />
+      <File FileName="Assets\Scripts\Door_ButtonController.cs" Line="9" Column="23" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

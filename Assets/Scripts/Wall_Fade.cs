@@ -8,11 +8,13 @@ public class Wall_Fade : MonoBehaviour {
 	public Material normal;
 	public Renderer rend;
 	public bool insideRoom;
+	public GameObject door;
 
 	// Use this for initialization
 	void Start () {
 		rend = wall.GetComponent<Renderer> ();
 		rend.material = normal;
+		Physics.IgnoreCollision (door.GetComponent<Collider>(), GetComponent<Collider>());
 	}
 
 	void OnTriggerEnter(Collider collider){
