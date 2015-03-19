@@ -15,7 +15,7 @@ http://unity3diy.blogspot.com/2014/06/using-git-with-3d-games-source-control_8.h
 - If there are merge conflicts that means we changed the same file, you need to open that file and remove the changes you dont want, then type "git add --all" then "git rebase --continue" 
 - Push changes to github "git push origin [branch_name]
 - Create a new pull request 
--
+
 # Switching Branches
 - Use "git checkout [branch_name]"
 - You need to have a clean directory before switching branches *AKA no red files lines, Hide your changes with "git stash" 
