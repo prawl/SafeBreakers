@@ -24,7 +24,7 @@ MonoBehaviour:
   layer: 2
   overrideTag: 0
   tag: Untagged
-  category: 0
+  _categoryId: 0
   forceLegacySideways: 1
   overrideTransforms: 0
   scaleMode: 0
@@ -39,12 +39,13 @@ MonoBehaviour:
   - mask: 0
     _type: 0
     _rotation: 0
-    variations:
+    _variations:
     - {fileID: 100000, guid: 7b07d8ac8008bc442b149a9f1bf260db, type: 2}
-    _variationWeights: 
+    _variationWeights: 32000000
   _materialMappingFrom: []
   _materialMappingTo: []
-  coalesce: 1
-  coalesceWithRotated: 0
-  coalesceBrushGroup: 0
+  _coalesce: 1
+  _coalesceWithRotated: 0
+  _coalesceWithBorder: 0
+  _coalesceBrushGroup: 0
   _coalesceWithBrushGroups: 

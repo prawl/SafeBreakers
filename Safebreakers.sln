@@ -11,8 +11,6 @@ Project("{D39EFCCD-E5BF-768E-5956-DCFF770EF9B0}") = "Safebreakers", "Assembly-Un
 EndProject
 Project("{D39EFCCD-E5BF-768E-5956-DCFF770EF9B0}") = "Safebreakers", "Assembly-UnityScript.unityproj", "{45D973EE-FF5D-BE13-A933-27B7463541F4}"
 EndProject
-Project("{D39EFCCD-E5BF-768E-5956-DCFF770EF9B0}") = "Safebreakers", "Assembly-UnityScript-Editor.unityproj", "{BBB329B5-75C0-5224-3A45-2615DA44E80B}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,15 +37,11 @@ Global
 		{45D973EE-FF5D-BE13-A933-27B7463541F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{45D973EE-FF5D-BE13-A933-27B7463541F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{45D973EE-FF5D-BE13-A933-27B7463541F4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BBB329B5-75C0-5224-3A45-2615DA44E80B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BBB329B5-75C0-5224-3A45-2615DA44E80B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BBB329B5-75C0-5224-3A45-2615DA44E80B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BBB329B5-75C0-5224-3A45-2615DA44E80B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																																																																																													GlobalSection(MonoDevelopProperties) = preSolution
+																																																																																																																																																																									GlobalSection(MonoDevelopProperties) = preSolution
 =======
 																																																														GlobalSection(MonoDevelopProperties) = preSolution
 <<<<<<< HEAD

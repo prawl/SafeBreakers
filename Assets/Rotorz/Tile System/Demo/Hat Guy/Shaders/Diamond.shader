@@ -1,4 +1,4 @@
-// Based on "http://unifycommunity.com/wiki/index.php?title=IPhoneGems"
+// Based on "http://wiki.unity3d.com/index.php?title=IPhoneGems"
 
 Shader "FX/Diamond" {
 Properties {

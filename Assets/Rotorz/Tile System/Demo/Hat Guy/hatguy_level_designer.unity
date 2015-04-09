@@ -191,10 +191,10 @@ MonoBehaviour:
   _editable: 1
   _built: 0
   _locked: 0
-  tileSize: {x: .266000003, y: .266000003, z: .266000003}
+  _cellSize: {x: .266000003, y: .266000003, z: .266000003}
   _tilesFacing: 0
-  rows: 30
-  columns: 30
+  _rows: 30
+  _columns: 30
   _strippingPreset: 0
   _strippingOptions: 0
   applyRuntimeStripping: 0
@@ -338,10 +338,10 @@ MonoBehaviour:
   _editable: 1
   _built: 0
   _locked: 0
-  tileSize: {x: .797999978, y: .797999978, z: .797999978}
+  _cellSize: {x: .797999978, y: .797999978, z: .797999978}
   _tilesFacing: 0
-  rows: 10
-  columns: 10
+  _rows: 10
+  _columns: 10
   _strippingPreset: 0
   _strippingOptions: 0
   applyRuntimeStripping: 0

@@ -1,20 +1,167 @@
-v2.3.3 (2014-11-10)
+v2.4.0
 ===============================================================================
+
+## Upgrade Notes
+
+These files should be manually removed from existing projects when updating:
+
+ - Assets/Rotorz/Tile System/Editor/Upgrader
+ - Assets/Rotorz/Tile System/Editor/RtsBrushPropertyDrawer.cs
+ - Assets/Rotorz/Tile System/Editor/RtsBrushFieldDrawer.js
+ - Assets/Rotorz/Tile System/Scripts/RtsBrushPropertyAttribute.cs
+ - Assets/Rotorz/Tile System/Scripts/RtsBrushFieldAttribute.js
+ - Assets/Rotorz/Tile System/Support/Migration Guide from 1x.pdf
+
+
+## New Features
+
+ - 'Coalesce with border' property added to oriented brushes.
+
+ - Added new tileset shaders which are similar to Unity's sprite shaders except
+   allow for texture selection and do not support tinting. With the new lit
+   tileset shaders it is not necessary to use 'Add Procedural Normals'.
+
+ - Added new property 'Apply Simple Rotation' to tileset brushes which applies
+   simple tile rotation to attached prefab objects.
+
+ - Added new project wide settings asset which allows template materials to
+   be specified which are then used when creating new tilesets.
+
+ - Tile system presets are now saved as individual asset files instead of
+   inside an XML file. This means that they can now be edited using the
+   inspector and they can be scattered around project as desired. New presets
+   are placed inside the "Rotorz/User Data/Tile System/Presets" folder in the
+   "Assets" folder.
+
+ - Added user preference 'Hide scene view grid upon activating tool' which is
+   enabled by default.
+
+
+## Changes for Unity 5
+
+ - Runtime assembly has been split into two assemblies, following the same
+   convention that Unity have adopted for their UI.
+   
+   - "Rotorz/Tile System/Standalone/TileSystem.Runtime.dll" is used when you
+     build your game.
+
+   - "Rotorz/Tile System/TileSystem.Runtime.dll" is used when testing your game
+     in-editor.
+
+
+## Changes
+
+ - Flag and category data files are no longer stored in "Assets/TileBrushes"
+   because these have been migrated into the new project settings asset.
+
+ - 'Atlas Opaque' shader is no longer included in asset. This shouldn't break
+   existing projects since the shader will not be automatically deleted.
+
+ - 'Automatic' zoom mode now shows tileset brushes at their actual size.
+   Replaced 'Tileset' zoom mode with 'Best Fit' which allows tileset brush
+   previews to fill the available window space.
+
+ - Reorganized directory structure of asset so that demonstration assets are
+   easier to exclude.
+
+ - Ordering of "Chunk Width" and "Chunk Height" fields for consistency with
+   ordering of "Rows" and "Columns" fields.
+
+ - Empty orientations no longer cause an error; instead a warning is logged and
+   simply is no visual representation of the tile.
+
+ - Alpha blending is now selected by default when creating new tilesets.
+
+ - Removed `ActiveTile` and `ActiveTileIndex` properties from tile system class
+   and exposed similar properties from `ToolUtility`.
+
+ - `Preset` and `PresetManager` classes have been replaced with the new
+   `TileSystemPreset` and `TileSystemPresetUtility` classes which deal with the
+   new tile system preset assets.
+
 
 ## Improvements
 
- - `TileIndex` now exposes static property `EqualityComparer` which should be
-   used when constructing collections like `HashSet<TileIndex>` or
-   `Dictionary<TileIndex, Object>` to circumvent runtime exceptions on platforms
-   that require AOT.
+ - Sorting layer properties are now also stored for tile system presets.
+
+ - Brush categories can now be reordered using the new project settings asset.
+
+ - The new unlit opaque and transparent tileset shaders are now used when
+   creating new tilesets.
+
+ - New overload `PaintingUtility.FloodFill(TileSystem, TileIndex, PaintingArgs, TileIndex[])`
+   which outputs a list of tile indices that were filled.
+
+ - Better exception handling to `PaintingUtility`.
+
+ - Added utility method `TileData.ToggleUserFlag`.
+
+ - Refined Hat Guy demonstration assets and replaced legacy animations with a
+   Mecanim animator.
+
+ - Added blender files for coin and stone platform demonstration objects.
+
+ - Updated demonstration objects 'Coin' and 'Stone Platform' so that they
+   work properly without selecting legacy mode.
+
+ - Updated references to methods which are marked as obsolete in Unity 5.
+
+ - Replaced custom asset preview cache with Unity's new API.
+
+ - Removed command 'Clear Preview Cache' from brush designer menu.
+
+ - Replaced labels "From" and "To" with a simple arrow graphic in material
+   mapper interface.
 
 
 ## Bug Fixes
 
- - Resolved exception 'ExecutionEngineException: Attempting to JIT compile method'
-   when attempting to use `PaintingUtility` class on iOS.
+ - Fixed rendering of tile system gizmos in Unity 5.
 
-  
+ - Fixed brightness of brush previews in Unity 5.
+
+ - Removed redundant usage of reflection for accessing internal sorting layer
+   properties since they are no longer needed and break in Unity 5.
+
+ - Resolved issue where "Cell Size" could not be adjusted in tile system
+   inspector in Unity 5.
+
+ - Workaround a bug where usage of lhs == rhs doesn't always work in Unity 5.
+
+ - Meshes of inactive renderer components are no longer included in tile system
+   optimization.
+ 
+ - Picker tool mouse-down state no longer bleeds into the next tool when the
+   mouse is dragged slightly.
+
+ - Fixed asset name validation in brush creators (they were still checking for
+   legacy suffixes).
+
+
+v2.3.4 (2015-01-10)
+===============================================================================
+
+## Bug Fixes
+
+ - Resolved issue which occurs when used with recent releases where immediate
+   previews are not shown when using paint tools in editor.
+
+
+v2.3.3 (2014-11-11)
+===============================================================================
+
+## Improvements
+
+ - Exposed `TileIndex.EqualityComparer` which should be explicitly provided to
+   generic collections when using `TileIndex` as a key; as with dictionaries
+   and hash sets.
+
+## Bug Fixes
+
+ - Fixed exception on iOS when attempting to use PaintingUtility; was throwing
+   ExecutionEngineException.
+
+
 v2.3.2 (2014-10-08)
 ===============================================================================
 

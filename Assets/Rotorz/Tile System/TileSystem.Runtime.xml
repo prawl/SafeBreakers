@@ -587,7 +587,7 @@
             A value of <c>true</c> if flag is on; otherwise <c>false</c>.
             </returns>
       <exception cref="T:System.ArgumentOutOfRangeException">
-            Thrown when flag number was out of range.
+            If flag number was out of range.
             </exception>
     </member>
     <member name="F:Rotorz.Tile.Brush.group">
@@ -849,7 +849,7 @@
       <param name="flag">Number of user flag (1-16)</param>
       <param name="on">Specify <c>true</c> to set flag, or <c>false</c> to unset flag.</param>
       <exception cref="T:System.ArgumentOutOfRangeException">
-            Thrown when flag number was out of range.
+            If flag number was out of range.
             </exception>
     </member>
     <member name="P:Rotorz.Tile.Brush.Smooth">
@@ -872,11 +872,6 @@
     <member name="F:Rotorz.Tile.Brush.tag">
       <summary>
             Tag to assign to game objects that are attached to painted tiles.
-            </summary>
-    </member>
-    <member name="E:Rotorz.Tile.Brush.TilePainted">
-      <summary>
-            Occurs when a tile is painted using a brush.
             </summary>
     </member>
     <member name="F:Rotorz.Tile.Brush.transformScale">
@@ -924,8 +919,8 @@
       <param name="weight">Weight of variation for randomization. Value is automatically
             clamped within the range 0 to 100 (inclusive).</param>
       <exception cref="T:System.ArgumentOutOfRangeException">
-            Thrown when specified index is out of range. You can verify whether an index is
-            within range prior to invoking this method by checking <see cref="P:Rotorz.Tile.BrushOrientation.VariationCount" />.
+            If specified index is out of range. You can verify whether an index is within
+            range prior to invoking this method by checking <see cref="P:Rotorz.Tile.BrushOrientation.VariationCount" />.
             </exception>
     </member>
     <member name="M:Rotorz.Tile.BrushOrientation.AddVariation(UnityEngine.Object,System.Int32)">
@@ -937,8 +932,8 @@
       <param name="weight">Weight of variation for randomization. Value is automatically
             clamped within the range 0 to 100 (inclusive).</param>
       <exception cref="T:System.ArgumentOutOfRangeException">
-            Thrown when specified index is out of range. You can verify whether an index is
-            within range prior to invoking this method by checking <see cref="P:Rotorz.Tile.BrushOrientation.VariationCount" />.
+            If specified index is out of range. You can verify whether an index is within
+            range prior to invoking this method by checking <see cref="P:Rotorz.Tile.BrushOrientation.VariationCount" />.
             </exception>
     </member>
     <member name="F:Rotorz.Tile.BrushOrientation.DefaultVariationWeight">
@@ -966,7 +961,7 @@
             (for instance, if variation prefab or asset has been deleted by user).
             </returns>
       <exception cref="T:System.IndexOutOfRangeException">
-            Thrown when specified index is out of range. You can verify whether an index is
+            If specified index is out of range. You can verify whether an index is
             within range prior to invoking this method by checking <see cref="P:Rotorz.Tile.BrushOrientation.VariationCount" />.
             </exception>
     </member>
@@ -980,8 +975,8 @@
             zero indicates that variation should be avoided if possible.
             </returns>
       <exception cref="T:System.IndexOutOfRangeException">
-            Thrown when specified index is out of range. You can verify whether an index is
-            within range prior to invoking this method by checking <see cref="P:Rotorz.Tile.BrushOrientation.VariationCount" />.
+            If specified index is out of range. You can verify whether an index is within
+            range prior to invoking this method by checking <see cref="P:Rotorz.Tile.BrushOrientation.VariationCount" />.
             </exception>
     </member>
     <member name="P:Rotorz.Tile.BrushOrientation.HasRotationalSymmetry">
@@ -1009,8 +1004,8 @@
       <param name="weight">Weight of variation for randomization. Value is automatically
             clamped within the range 0 to 100 (inclusive).</param>
       <exception cref="T:System.ArgumentOutOfRangeException">
-            Thrown when specified index is out of range. You can verify whether an index is
-            within range prior to invoking this method by checking <see cref="P:Rotorz.Tile.BrushOrientation.VariationCount" />.
+            If specified index is out of range. You can verify whether an index is within
+            range prior to invoking this method by checking <see cref="P:Rotorz.Tile.BrushOrientation.VariationCount" />.
             </exception>
     </member>
     <member name="M:Rotorz.Tile.BrushOrientation.InsertVariation(System.Int32,UnityEngine.Object,System.Int32)">
@@ -1022,8 +1017,8 @@
       <param name="weight">Weight of variation for randomization. Value is automatically
             clamped within the range 0 to 100 (inclusive).</param>
       <exception cref="T:System.ArgumentOutOfRangeException">
-            Thrown when specified index is out of range. You can verify whether an index is
-            within range prior to invoking this method by checking <see cref="P:Rotorz.Tile.BrushOrientation.VariationCount" />.
+            If specified index is out of range. You can verify whether an index is within
+            range prior to invoking this method by checking <see cref="P:Rotorz.Tile.BrushOrientation.VariationCount" />.
             </exception>
     </member>
     <member name="P:Rotorz.Tile.BrushOrientation.Mask">
@@ -1036,7 +1031,7 @@
             Pick random variation from orientation.
             </summary>
       <returns>
-            Zero-based index of variation within <see cref="F:Rotorz.Tile.BrushOrientation.variations" /> array.
+            Zero-based index of variation in sequence.
             </returns>
     </member>
     <member name="M:Rotorz.Tile.BrushOrientation.RemoveAllVariations">
@@ -1050,8 +1045,8 @@
             </summary>
       <param name="index">Zero-based index of variation.</param>
       <exception cref="T:System.ArgumentOutOfRangeException">
-            Thrown when specified index is out of range. You can verify whether an index is
-            within range prior to invoking this method by checking <see cref="P:Rotorz.Tile.BrushOrientation.VariationCount" />.
+            If specified index is out of range. You can verify whether an index is within
+            range prior to invoking this method by checking <see cref="P:Rotorz.Tile.BrushOrientation.VariationCount" />.
             </exception>
     </member>
     <member name="P:Rotorz.Tile.BrushOrientation.Rotation">
@@ -1066,8 +1061,8 @@
       <param name="index">Zero-based index of variation.</param>
       <param name="variation">The variation.</param>
       <exception cref="T:System.IndexOutOfRangeException">
-            Thrown when specified index is out of range. You can verify whether an index is
-            within range prior to invoking this method by checking <see cref="P:Rotorz.Tile.BrushOrientation.VariationCount" />.
+            If specified index is out of range. You can verify whether an index is within
+            range prior to invoking this method by checking <see cref="P:Rotorz.Tile.BrushOrientation.VariationCount" />.
             </exception>
     </member>
     <member name="M:Rotorz.Tile.BrushOrientation.SetVariationWeight(System.Int32,System.Int32)">
@@ -1078,8 +1073,8 @@
       <param name="weight">Weight of variation for randomization. Value is automatically
             clamped within the range 0 to 100 (inclusive).</param>
       <exception cref="T:System.IndexOutOfRangeException">
-            Thrown when specified index is out of range. You can verify whether an index is
-            within range prior to invoking this method by checking <see cref="P:Rotorz.Tile.BrushOrientation.VariationCount" />.
+            If specified index is out of range. You can verify whether an index is within
+            range prior to invoking this method by checking <see cref="P:Rotorz.Tile.BrushOrientation.VariationCount" />.
             </exception>
     </member>
     <member name="M:Rotorz.Tile.BrushOrientation.SyncVariationsFrom(Rotorz.Tile.BrushOrientation)">
@@ -1897,10 +1892,10 @@
             Bitmask representation of orientation.
             </returns>
       <exception cref="T:System.NullReferenceException">
-            Thrown when input orientation name is <c>null</c>.
+            If <paramref name="name" /> is <c>null</c>.
             </exception>
       <exception cref="T:System.IndexOutOfRangeException">
-            Thrown when input orientation name containers fewer than 8 characters.
+            If input orientation name containers fewer than 8 characters.
             </exception>
     </member>
     <member name="M:Rotorz.Tile.OrientationUtility.NameFromMask(System.Int32)">
@@ -1912,7 +1907,7 @@
             Name of orientation.
             </returns>
       <exception cref="T:System.ArgumentOutOfRangeException">
-            Thrown when bitmask does not represent a valid orientation.
+            If <paramref name="mask" /> is not a valid orientation.
             </exception>
     </member>
     <member name="M:Rotorz.Tile.OrientationUtility.RotateAntiClockwise(System.Int32,System.Int32)">
@@ -2149,7 +2144,7 @@
             </summary>
       <param name="mask">Bitmask of orientation.</param>
       <exception cref="T:System.NullReferenceException">
-            Thrown when specified orientation was not found.
+            If the specified orientation was not found.
             </exception>
     </member>
     <member name="P:Rotorz.Tile.OrientedBrush.UseWireIndicatorInEditor">
@@ -2250,6 +2245,26 @@
       <param name="system">Tile system.</param>
       <param name="index">Target index at which to begin filling from.</param>
       <param name="args">Arguments to customize painting of tiles.</param>
+      <exception cref="T:System.ArgumentNullException">
+            If <paramref name="system" /> is <c>null</c>.
+            </exception>
+    </member>
+    <member name="M:Rotorz.Tile.PaintingUtility.FloodFill(Rotorz.Tile.TileSystem,Rotorz.Tile.TileIndex,Rotorz.Tile.PaintingArgs,System.Collections.Generic.IList{Rotorz.Tile.TileIndex})">
+      <summary>
+            Flood fill area of tile system.
+            </summary>
+      <param name="filledIndices">Tile indices are added to the specified list as
+            they are filled or erased by this method; any existing indices will be
+            removed from the collection.</param>
+      <param name="system">Tile system.</param>
+      <param name="index">Target index at which to begin filling from.</param>
+      <param name="args">Arguments to customize painting of tiles.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <list type="bullet">
+          <item>If <paramref name="system" /> is <c>null</c>.</item>
+          <item>If <paramref name="filledIndices" /> is <c>null</c>.</item>
+        </list>
+      </exception>
     </member>
     <member name="M:Rotorz.Tile.PaintingUtility.GetCircleIndices(System.Collections.Generic.IList{Rotorz.Tile.TileIndex},Rotorz.Tile.TileIndex,System.Int32)">
       <summary>
@@ -2259,6 +2274,9 @@
             indices will be removed from list.</param>
       <param name="index">Index of tile at center of circle.</param>
       <param name="radius">Radius of circle where 1 is the smallest value.</param>
+      <exception cref="T:System.ArgumentNullException">
+            If <paramref name="indices" /> is <c>null</c>.
+            </exception>
     </member>
     <member name="M:Rotorz.Tile.PaintingUtility.GetCircleOutlineIndices(System.Collections.Generic.IList{Rotorz.Tile.TileIndex},Rotorz.Tile.TileIndex,System.Int32)">
       <summary>
@@ -2268,6 +2286,9 @@
             indices will be removed from list.</param>
       <param name="index">Index of tile at center of circle.</param>
       <param name="radius">Radius of circle where 1 is the smallest value.</param>
+      <exception cref="T:System.ArgumentNullException">
+            If <paramref name="indices" /> is <c>null</c>.
+            </exception>
     </member>
     <member name="M:Rotorz.Tile.PaintingUtility.GetLineIndices(System.Collections.Generic.IList{Rotorz.Tile.TileIndex},Rotorz.Tile.TileIndex,Rotorz.Tile.TileIndex)">
       <summary>
@@ -2277,6 +2298,9 @@
             indices will be removed from list.</param>
       <param name="from">Index of tile at start of line.</param>
       <param name="to">Index of tile at end of line.</param>
+      <exception cref="T:System.ArgumentNullException">
+            If <paramref name="indices" /> is <c>null</c>.
+            </exception>
     </member>
     <member name="M:Rotorz.Tile.PaintingUtility.GetSquareIndices(System.Collections.Generic.IList{Rotorz.Tile.TileIndex},Rotorz.Tile.TileIndex,System.Int32)">
       <summary>
@@ -2286,6 +2310,9 @@
             indices will be removed from list.</param>
       <param name="index">Index of tile at center of square.</param>
       <param name="size">Size of square where 1 is the smallest value.</param>
+      <exception cref="T:System.ArgumentNullException">
+            If <paramref name="indices" /> is <c>null</c>.
+            </exception>
     </member>
     <member name="M:Rotorz.Tile.PaintingUtility.GetSquareOutlineIndices(System.Collections.Generic.IList{Rotorz.Tile.TileIndex},Rotorz.Tile.TileIndex,System.Int32)">
       <summary>
@@ -2295,6 +2322,9 @@
             indices will be removed from list.</param>
       <param name="index">Index of tile at center of square.</param>
       <param name="size">Size of square where 1 is the smallest value.</param>
+      <exception cref="T:System.ArgumentNullException">
+            If <paramref name="indices" /> is <c>null</c>.
+            </exception>
     </member>
     <member name="M:Rotorz.Tile.PaintingUtility.GetStrokeLineIndices(System.Collections.Generic.IList{Rotorz.Tile.TileIndex},Rotorz.Tile.TileIndex,Rotorz.Tile.TileIndex,System.Collections.Generic.IList{Rotorz.Tile.TileIndex})">
       <summary>
@@ -2332,6 +2362,9 @@
       <param name="system">Tile system.</param>
       <param name="index">Index of tile.</param>
       <param name="args">Arguments to customize painting of tiles.</param>
+      <exception cref="T:System.ArgumentNullException">
+            If <paramref name="system" /> is <c>null</c>.
+            </exception>
     </member>
     <member name="M:Rotorz.Tile.PaintingUtility.Paint(Rotorz.Tile.TileSystem,System.Collections.Generic.IList{Rotorz.Tile.TileIndex},Rotorz.Tile.PaintingArgs)">
       <summary>
@@ -2340,6 +2373,12 @@
       <param name="system">Tile system.</param>
       <param name="indices">List of tile indices.</param>
       <param name="args">Arguments to customize painting of tiles.</param>
+      <exception cref="T:System.ArgumentNullException">
+        <list type="bullet">
+          <item>If <paramref name="system" /> is <c>null</c>.</item>
+          <item>If <paramref name="indices" /> is <c>null</c>.</item>
+        </list>
+      </exception>
     </member>
     <member name="M:Rotorz.Tile.PaintingUtility.PaintCircle(Rotorz.Tile.TileSystem,Rotorz.Tile.TileIndex,System.Int32,Rotorz.Tile.PaintingArgs)">
       <summary>
@@ -2349,6 +2388,9 @@
       <param name="index">Index of tile at center of circle.</param>
       <param name="radius">Radius of circle where 1 is the smallest value.</param>
       <param name="args">Arguments to customize painting of tiles.</param>
+      <exception cref="T:System.ArgumentNullException">
+            If <paramref name="system" /> is <c>null</c>.
+            </exception>
     </member>
     <member name="M:Rotorz.Tile.PaintingUtility.PaintCircleOutline(Rotorz.Tile.TileSystem,Rotorz.Tile.TileIndex,System.Int32,Rotorz.Tile.PaintingArgs)">
       <summary>
@@ -2358,6 +2400,9 @@
       <param name="index">Index of tile at center of circle.</param>
       <param name="radius">Radius of circle where 1 is the smallest value.</param>
       <param name="args">Arguments to customize painting of tiles.</param>
+      <exception cref="T:System.ArgumentNullException">
+            If <paramref name="system" /> is <c>null</c>.
+            </exception>
     </member>
     <member name="M:Rotorz.Tile.PaintingUtility.PaintLine(Rotorz.Tile.TileSystem,Rotorz.Tile.TileIndex,Rotorz.Tile.TileIndex,Rotorz.Tile.PaintingArgs)">
       <summary>
@@ -2367,6 +2412,9 @@
       <param name="from">Index of tile at start of line.</param>
       <param name="to">Index of tile at end of line.</param>
       <param name="args">Arguments to customize painting of tiles.</param>
+      <exception cref="T:System.ArgumentNullException">
+            If <paramref name="system" /> is <c>null</c>.
+            </exception>
     </member>
     <member name="M:Rotorz.Tile.PaintingUtility.PaintRectangle(Rotorz.Tile.TileSystem,Rotorz.Tile.TileIndex,Rotorz.Tile.TileIndex,System.Boolean,Rotorz.Tile.PaintingArgs)">
       <summary>
@@ -2378,6 +2426,9 @@
       <param name="fill">Indicates whether inner area should be filled. Paints outline
             of rectangle when <c>false</c> is specified.</param>
       <param name="args">Arguments to customize painting of tiles.</param>
+      <exception cref="T:System.ArgumentNullException">
+            If <paramref name="system" /> is <c>null</c>.
+            </exception>
     </member>
     <member name="M:Rotorz.Tile.PaintingUtility.PaintSquare(Rotorz.Tile.TileSystem,Rotorz.Tile.TileIndex,System.Int32,Rotorz.Tile.PaintingArgs)">
       <summary>
@@ -2387,6 +2438,9 @@
       <param name="index">Index of tile at center of square.</param>
       <param name="size">Size of square where 1 is the smallest value.</param>
       <param name="args">Arguments to customize painting of tiles.</param>
+      <exception cref="T:System.ArgumentNullException">
+            If <paramref name="system" /> is <c>null</c>.
+            </exception>
     </member>
     <member name="M:Rotorz.Tile.PaintingUtility.PaintSquareOutline(Rotorz.Tile.TileSystem,Rotorz.Tile.TileIndex,System.Int32,Rotorz.Tile.PaintingArgs)">
       <summary>
@@ -2396,6 +2450,9 @@
       <param name="index">Index of tile at center of square.</param>
       <param name="size">Size of square where 1 is the smallest value.</param>
       <param name="args">Arguments to customize painting of tiles.</param>
+      <exception cref="T:System.ArgumentNullException">
+            If <paramref name="system" /> is <c>null</c>.
+            </exception>
     </member>
     <member name="M:Rotorz.Tile.PaintingUtility.StrokeLine(Rotorz.Tile.TileSystem,Rotorz.Tile.TileIndex,Rotorz.Tile.TileIndex,System.Collections.Generic.IList{Rotorz.Tile.TileIndex},Rotorz.Tile.PaintingArgs)">
       <summary>
@@ -2406,6 +2463,9 @@
       <param name="to">Index of tile at end of line.</param>
       <param name="nozzleIndices">Nozzle indices should be set around origin (0, 0).</param>
       <param name="args">Arguments to customize painting of tiles.</param>
+      <exception cref="T:System.ArgumentNullException">
+            If <paramref name="system" /> is <c>null</c>.
+            </exception>
     </member>
     <member name="M:Rotorz.Tile.PaintingUtility.StrokeLineWithCircle(Rotorz.Tile.TileSystem,Rotorz.Tile.TileIndex,Rotorz.Tile.TileIndex,System.Int32,Rotorz.Tile.PaintingArgs)">
       <summary>
@@ -2416,6 +2476,9 @@
       <param name="to">Index of tile at end of line.</param>
       <param name="radius">Radius of circle where 1 is the smallest value.</param>
       <param name="args">Arguments to customize painting of tiles.</param>
+      <exception cref="T:System.ArgumentNullException">
+            If <paramref name="system" /> is <c>null</c>.
+            </exception>
     </member>
     <member name="M:Rotorz.Tile.PaintingUtility.StrokeLineWithSquare(Rotorz.Tile.TileSystem,Rotorz.Tile.TileIndex,Rotorz.Tile.TileIndex,System.Int32,Rotorz.Tile.PaintingArgs)">
       <summary>
@@ -2426,6 +2489,9 @@
       <param name="to">Index of tile at end of line.</param>
       <param name="size">Size of square where 1 is the smallest value.</param>
       <param name="args">Arguments to customize painting of tiles.</param>
+      <exception cref="T:System.ArgumentNullException">
+            If <paramref name="system" /> is <c>null</c>.
+            </exception>
     </member>
     <member name="E:Rotorz.Tile.PaintingUtility.TilePainted">
       <summary>
@@ -2900,7 +2966,7 @@
             </summary>
       <param name="other">The other tile data instance.</param>
       <exception cref="T:System.NullReferenceException">
-            Thrown when input is <c>null</c>.
+            If <paramref name="other" /> is <c>null</c>.
             </exception>
     </member>
     <member name="M:Rotorz.Tile.TileData.SetUserFlag(System.Int32,System.Boolean)">
@@ -2970,6 +3036,13 @@
     <member name="F:Rotorz.Tile.TileIndex.column">
       <summary>
             Zero-based column index.
+            </summary>
+    </member>
+    <member name="P:Rotorz.Tile.TileIndex.EqualityComparer">
+      <summary>
+            Gets the <see cref="T:System.Collections.Generic.IEqualityComparer`1" /> that should be passed to generic
+            collections of <see cref="T:Rotorz.Tile.TileIndex" /> values instead of the default <see cref="P:Rotorz.Tile.TileIndex.EqualityComparer" />
+            implementation when deploying to platforms that require AOT.
             </summary>
     </member>
     <member name="M:Rotorz.Tile.TileIndex.Equals(Rotorz.Tile.TileIndex)">
@@ -3117,13 +3190,6 @@
             </summary>
       <param name="args">Event arguments.</param>
     </member>
-    <member name="T:Rotorz.Tile.TilePaintedHandler">
-      <summary>
-            Represents the method that will handle the <see cref="E:Rotorz.Tile.Brush.TilePainted" /> event.
-            </summary>
-      <param name="system">Tile system.</param>
-      <param name="tile">Tile data.</param>
-    </member>
     <member name="T:Rotorz.Tile.Tileset">
       <summary>
             A tileset allows tileset brushes to paint procedural or non-procedural tiles using
@@ -3217,13 +3283,13 @@
       <param name="atlas">Atlas texture.</param>
       <param name="metrics">Object that contains metrics for tileset.</param>
       <exception cref="T:System.NotSupportedException">
-            Thrown when tileset has already been initialized.
+            If tileset has already been initialized.
             </exception>
       <exception cref="T:System.ArgumentNullException">
-            Thrown when texture argument was not specified.
+            If <paramref name="atlas" /> is <c>null</c>.
             </exception>
       <exception cref="T:System.InvalidOperationException">
-            Thrown when attempting to set metrics of tileset from itself.
+            If attempting to set metrics of tileset from itself.
             </exception>
     </member>
     <member name="P:Rotorz.Tile.Tileset.OriginalAtlasHeight">
@@ -3272,7 +3338,7 @@
             </summary>
       <param name="metrics">Object that contains metrics for tileset.</param>
       <exception cref="T:System.InvalidOperationException">
-            Thrown when attempting to set metrics of tileset from itself.
+            If attempting to set metrics of tileset from itself.
             </exception>
     </member>
     <member name="P:Rotorz.Tile.Tileset.TileHeight">
@@ -3543,7 +3609,7 @@
             Quaternion which describes the rotation.
             </returns>
       <exception cref="T:System.IndexOutOfRangeException">
-            Thrown when an invalid rotation is specified.
+            If an invalid rotation is specified.
             </exception>
     </member>
     <member name="M:Rotorz.Tile.TileSystem.CalculateSimpleRotation(System.Int32)">
@@ -3557,7 +3623,7 @@
             Quaternion which describes the rotation.
             </returns>
       <exception cref="T:System.IndexOutOfRangeException">
-            Thrown when an invalid rotation is specified.
+            If an invalid rotation is specified.
             </exception>
     </member>
     <member name="M:Rotorz.Tile.TileSystem.CalculateTileMatrix(UnityEngine.Matrix4x4@,Rotorz.Tile.TileFacing,System.Int32)">
@@ -3574,7 +3640,7 @@
             arrive at center of cell whereas a value of <c>false</c> indicates that transform
             matrix should arrive at upper-left corner of cell.</param>
       <exception cref="T:System.IndexOutOfRangeException">
-            Thrown when an invalid rotation is specified.
+            If an invalid rotation is specified.
             </exception>
     </member>
     <member name="M:Rotorz.Tile.TileSystem.CalculateTileMatrix(UnityEngine.Matrix4x4@,System.Int32)">
@@ -3591,7 +3657,7 @@
             arrive at center of cell whereas a value of <c>false</c> indicates that transform
             matrix should arrive at upper-left corner of cell.</param>
       <exception cref="T:System.IndexOutOfRangeException">
-            Thrown when an invalid rotation is specified.
+            If an invalid rotation is specified.
             </exception>
     </member>
     <member name="M:Rotorz.Tile.TileSystem.CalculateTileMatrix(UnityEngine.Matrix4x4@,System.Int32,System.Int32,Rotorz.Tile.TileFacing,System.Int32,System.Boolean)">
@@ -3608,7 +3674,7 @@
             arrive at center of cell whereas a value of <c>false</c> indicates that transform
             matrix should arrive at upper-left corner of cell.</param>
       <exception cref="T:System.IndexOutOfRangeException">
-            Thrown when an invalid rotation is specified.
+            If an invalid rotation is specified.
             </exception>
     </member>
     <member name="M:Rotorz.Tile.TileSystem.CalculateTileMatrix(UnityEngine.Matrix4x4@,System.Int32,System.Int32,System.Int32,System.Boolean)">
@@ -3625,7 +3691,7 @@
             arrive at center of cell whereas a value of <c>false</c> indicates that transform
             matrix should arrive at upper-left corner of cell.</param>
       <exception cref="T:System.IndexOutOfRangeException">
-            Thrown when an invalid rotation is specified.
+            If an invalid rotation is specified.
             </exception>
     </member>
     <member name="P:Rotorz.Tile.TileSystem.CellSize">
@@ -3652,7 +3718,7 @@
             The zero-based chunk index.
             </returns>
       <exception cref="T:System.ArgumentOutOfRangeException">
-            Thrown when index refers to non-existent tile outside bounds of tile system.
+            If index refers to non-existent tile outside bounds of tile system.
             </exception>
     </member>
     <member name="M:Rotorz.Tile.TileSystem.ChunkIndexFromTileIndex(System.Int32,System.Int32)">
@@ -3665,7 +3731,7 @@
             The zero-based chunk index.
             </returns>
       <exception cref="T:System.ArgumentOutOfRangeException">
-            Thrown when index refers to non-existent tile outside bounds of tile system.
+            If index refers to non-existent tile outside bounds of tile system.
             </exception>
     </member>
     <member name="P:Rotorz.Tile.TileSystem.ChunkRows">
@@ -3773,7 +3839,7 @@
             A value of <c>true</c> when tile was erased; otherwise <c>false</c>.
             </returns>
       <exception cref="T:System.ArgumentOutOfRangeException">
-            Thrown when index refers to non-existent tile outside bounds of tile system.
+            If index refers to non-existent tile outside bounds of tile system.
             </exception>
     </member>
     <member name="M:Rotorz.Tile.TileSystem.EraseTile(System.Int32,System.Int32)">
@@ -3786,7 +3852,7 @@
             A value of <c>true</c> when tile was erased; otherwise <c>false</c>.
             </returns>
       <exception cref="T:System.ArgumentOutOfRangeException">
-            Thrown when index refers to non-existent tile outside bounds of tile system.
+            If index refers to non-existent tile outside bounds of tile system.
             </exception>
     </member>
     <member name="F:Rotorz.Tile.TileSystem.generateSecondUVs">
@@ -3814,7 +3880,7 @@
             The chunk component when available; otherwise a value of <c>null</c>.
             </returns>
       <exception cref="T:System.ArgumentOutOfRangeException">
-            Thrown when index refers to non-existent tile outside bounds of tile system.
+            If index refers to non-existent tile outside bounds of tile system.
             </exception>
     </member>
     <member name="M:Rotorz.Tile.TileSystem.GetChunkFromTileIndex(System.Int32,System.Int32)">
@@ -3827,7 +3893,7 @@
             The chunk component when available; otherwise a value of <c>null</c>.
             </returns>
       <exception cref="T:System.ArgumentOutOfRangeException">
-            Thrown when index refers to non-existent tile outside bounds of tile system.
+            If index refers to non-existent tile outside bounds of tile system.
             </exception>
     </member>
     <member name="M:Rotorz.Tile.TileSystem.GetTile(Rotorz.Tile.TileIndex)">
@@ -3839,7 +3905,7 @@
             Tile data or a value of <c>null</c> if no tile is present.
             </returns>
       <exception cref="T:System.ArgumentOutOfRangeException">
-            Thrown when index refers to non-existent tile outside bounds of tile system.
+            If index refers to non-existent tile outside bounds of tile system.
             </exception>
     </member>
     <member name="M:Rotorz.Tile.TileSystem.GetTile(System.Int32,System.Int32)">
@@ -3852,7 +3918,7 @@
             Tile data or a value of <c>null</c> if no tile is present.
             </returns>
       <exception cref="T:System.ArgumentOutOfRangeException">
-            Thrown when index refers to non-existent tile outside bounds of tile system.
+            If index refers to non-existent tile outside bounds of tile system.
             </exception>
     </member>
     <member name="M:Rotorz.Tile.TileSystem.GetTileOrNull(Rotorz.Tile.TileIndex)">
@@ -4059,7 +4125,7 @@
       <param name="column">Zero-based column index.</param>
       <param name="flags">A bitwise combination of <see cref="T:Rotorz.Tile.RefreshFlags" /> values.</param>
       <exception cref="T:System.ArgumentOutOfRangeException">
-            Thrown when index refers to non-existent tile outside bounds of tile system.
+            If index refers to non-existent tile outside bounds of tile system.
             </exception>
     </member>
     <member name="M:Rotorz.Tile.TileSystem.RefreshTile(System.Int32,System.Int32,Rotorz.Tile.RefreshFlags)">
@@ -4070,7 +4136,7 @@
       <param name="column">Zero-based column index.</param>
       <param name="flags">A bitwise combination of <see cref="T:Rotorz.Tile.RefreshFlags" /> values.</param>
       <exception cref="T:System.ArgumentOutOfRangeException">
-            Thrown when index refers to non-existent tile outside bounds of tile system.
+            If index refers to non-existent tile outside bounds of tile system.
             </exception>
     </member>
     <member name="M:Rotorz.Tile.TileSystem.ReplaceByBrush(Rotorz.Tile.Brush,Rotorz.Tile.Brush)">
@@ -4117,7 +4183,7 @@
       <param name="column">Zero-based index of tile column.</param>
       <param name="tile">The tile data.</param>
       <exception cref="T:System.ArgumentOutOfRangeException">
-            Thrown when index refers to non-existent tile outside bounds of tile system.
+            If index refers to non-existent tile outside bounds of tile system.
             </exception>
     </member>
     <member name="M:Rotorz.Tile.TileSystem.SetTile(System.Int32,System.Int32,Rotorz.Tile.TileData)">
@@ -4129,7 +4195,7 @@
       <param name="column">Zero-based index of tile column.</param>
       <param name="tile">The tile data.</param>
       <exception cref="T:System.ArgumentOutOfRangeException">
-            Thrown when index refers to non-existent tile outside bounds of tile system.
+            If index refers to non-existent tile outside bounds of tile system.
             </exception>
     </member>
     <member name="M:Rotorz.Tile.TileSystem.SetTileFrom(Rotorz.Tile.TileIndex,Rotorz.Tile.TileData)">
@@ -4145,7 +4211,7 @@
             Returns the <see cref="T:Rotorz.Tile.TileData" /> instance that was updated.
             </returns>
       <exception cref="T:System.ArgumentOutOfRangeException">
-            Thrown when index refers to non-existent tile outside bounds of tile system.
+            If index refers to non-existent tile outside bounds of tile system.
             </exception>
     </member>
     <member name="M:Rotorz.Tile.TileSystem.SetTileFrom(System.Int32,System.Int32,Rotorz.Tile.TileData)">
@@ -4160,7 +4226,7 @@
             Returns the <see cref="T:Rotorz.Tile.TileData" /> instance that was updated.
             </returns>
       <exception cref="T:System.ArgumentOutOfRangeException">
-            Thrown when index refers to non-existent tile outside bounds of tile system.
+            If index refers to non-existent tile outside bounds of tile system.
             </exception>
     </member>
     <member name="P:Rotorz.Tile.TileSystem.SortingLayerID">

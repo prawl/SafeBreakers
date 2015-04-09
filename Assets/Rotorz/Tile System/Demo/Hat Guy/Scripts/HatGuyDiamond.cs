@@ -1,10 +1,16 @@
+// Copyright (c) Rotorz Limited. All rights reserved.
+
 using UnityEngine;
 
-public class HatGuyDiamond : MonoBehaviour {
+namespace Rotorz.Demos.HatGuyDemo {
 
-	void OnTriggerEnter(Collider collider) {
-		if (collider.tag == "Player")
-			Destroy(gameObject);
+	public class HatGuyDiamond : MonoBehaviour {
+
+		private void OnTriggerEnter(Collider collider) {
+			if (collider.CompareTag("Player"))
+				Destroy(gameObject);
+		}
+
 	}
-	
+
 }

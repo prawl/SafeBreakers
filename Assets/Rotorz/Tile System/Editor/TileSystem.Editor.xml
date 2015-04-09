@@ -303,7 +303,7 @@
     </member>
     <member name="P:Rotorz.Tile.Editor.BrushDatabase.BrushRecords">
       <summary>
-            Gets list of brush records that are sorted by display name.
+            Gets a read-only list of brush records that are sorted by display name.
             </summary>
     </member>
     <member name="P:Rotorz.Tile.Editor.BrushDatabase.CustomCategoryLabels">
@@ -341,7 +341,7 @@
     </member>
     <member name="M:Rotorz.Tile.Editor.BrushDatabase.GetTilesetBrushes(Rotorz.Tile.Tileset)">
       <summary>
-            Get brushes contained within tileset.
+            Gets a read-only list of brushes contained within tileset.
             </summary>
       <param name="tileset">The tileset.</param>
       <returns>
@@ -372,7 +372,7 @@
             Name that was assigned to brush.
             </returns>
       <exception cref="T:System.ArgumentException">
-            Thrown when unable to rename brush.
+            If unable to rename brush.
             </exception>
     </member>
     <member name="M:Rotorz.Tile.Editor.BrushDatabase.RenameTileset(Rotorz.Tile.Tileset,System.String)">
@@ -385,7 +385,7 @@
             Name that was assigned to tileset.
             </returns>
       <exception cref="T:System.ArgumentException">
-            Thrown when unable to rename tileset.
+            If unable to rename tileset.
             </exception>
     </member>
     <member name="M:Rotorz.Tile.Editor.BrushDatabase.Rescan(Rotorz.Tile.Editor.RefreshPreviews)">
@@ -396,7 +396,7 @@
     </member>
     <member name="P:Rotorz.Tile.Editor.BrushDatabase.TilesetRecords">
       <summary>
-            Gets list of tileset records that are sorted by display name.
+            Gets a read-only list of tileset records that are sorted by display name.
             </summary>
     </member>
     <member name="T:Rotorz.Tile.Editor.BrushDescriptor">
@@ -1098,13 +1098,13 @@
       <param name="tileset">The tileset.</param>
       <param name="flags">Optional deletion flags.</param>
       <exception cref="T:System.ArgumentNullException">
-            Thrown when tileset was not specified.
+            If <paramref name="tileset" /> is <c>null</c>.
             </exception>
       <exception cref="T:System.ArgumentException">
-            Thrown when attempting to delete an unsuported type of tileset.
+            If attempting to delete an unsuported type of tileset.
             </exception>
       <exception cref="T:System.Exception">
-            Thrown when tileset record was not found for specified tileset.
+            If tileset record was not found for specified tileset.
             </exception>
     </member>
     <member name="M:Rotorz.Tile.Editor.BrushUtility.DuplicateBrush(System.String,Rotorz.Tile.Brush)">
@@ -1970,7 +1970,7 @@
     </member>
     <member name="P:Rotorz.Tile.Editor.HistoryManager.Recent">
       <summary>
-            Gets read-only collection of recently selected objects.
+            Gets a read-only collection of recently selected objects.
             </summary>
     </member>
     <member name="T:Rotorz.Tile.Editor.HistoryManager.State">
@@ -3175,7 +3175,7 @@
             The selected <see cref="T:Rotorz.Tile.Brush" /> instance.
             </returns>
       <exception cref="T:System.InvalidOperationException">
-            Thrown when attempting to access property when brush picker is not shown.
+            If attempting to access property when brush picker is not shown.
             </exception>
     </member>
     <member name="M:Rotorz.Tile.Editor.RotorzEditorGUI.DrawBrushPreview(UnityEngine.Rect,Rotorz.Tile.Brush)">
@@ -3249,6 +3249,22 @@
             A value of <c>true</c> when foldout is expanded; otherwise <c>false</c>.
             </returns>
     </member>
+    <member name="M:Rotorz.Tile.Editor.RotorzEditorGUI.Separator(System.Int32,System.Int32,System.Int32)">
+      <summary>
+            Draw simple grey separator.
+            </summary>
+      <param name="marginTop">Margin above splitter.</param>
+      <param name="marginBottom">Margin below splitter.</param>
+      <param name="thickness">Thickness of splitter in pixels.</param>
+    </member>
+    <member name="M:Rotorz.Tile.Editor.RotorzEditorGUI.SeparatorLight(System.Int32,System.Int32,System.Int32)">
+      <summary>
+            Draw simple grey separator (lighter than <see cref="M:Rotorz.Tile.Editor.RotorzEditorGUI.Separator(System.Int32,System.Int32,System.Int32)" />).
+            </summary>
+      <param name="marginTop">Margin above splitter.</param>
+      <param name="marginBottom">Margin below splitter.</param>
+      <param name="thickness">Thickness of splitter in pixels.</param>
+    </member>
     <member name="M:Rotorz.Tile.Editor.RotorzEditorGUI.ShowBrushPicker(Rotorz.Tile.Brush,System.Boolean,System.Boolean,System.Int32)">
       <summary>
             Show brush picker window and associate with custom control.
@@ -3257,22 +3273,6 @@
       <param name="allowAlias">Indicates whether alias brushes can be selected.</param>
       <param name="allowMaster">Indicates whether master brushes can be selected.</param>
       <param name="controlID">Unique ID of custom control.</param>
-    </member>
-    <member name="M:Rotorz.Tile.Editor.RotorzEditorGUI.Splitter(System.Int32,System.Int32,System.Int32)">
-      <summary>
-            Draw simple grey splitter.
-            </summary>
-      <param name="marginTop">Margin above splitter.</param>
-      <param name="marginBottom">Margin below splitter.</param>
-      <param name="thickness">Thickness of splitter in pixels.</param>
-    </member>
-    <member name="M:Rotorz.Tile.Editor.RotorzEditorGUI.SplitterLight(System.Int32,System.Int32,System.Int32)">
-      <summary>
-            Draw simple grey splitter (lighter than <see cref="M:Rotorz.Tile.Editor.RotorzEditorGUI.Splitter(System.Int32,System.Int32,System.Int32)" />).
-            </summary>
-      <param name="marginTop">Margin above splitter.</param>
-      <param name="marginBottom">Margin below splitter.</param>
-      <param name="thickness">Thickness of splitter in pixels.</param>
     </member>
     <member name="M:Rotorz.Tile.Editor.RotorzEditorGUI.StrippingOptions(Rotorz.Tile.StrippingPreset@,System.Int32@)">
       <summary>
@@ -4157,15 +4157,6 @@
             if tool has not been registered.
             </returns>
     </member>
-    <member name="M:Rotorz.Tile.Editor.ToolManager.Find(System.String)">
-      <summary>
-            Find tool with the specified name.
-            </summary>
-      <param name="name">Name of tool.</param>
-      <returns>
-            The tool.
-            </returns>
-    </member>
     <member name="P:Rotorz.Tile.Editor.ToolManager.Instance">
       <summary>
             Gets one and only tool manager instance.
@@ -4176,15 +4167,6 @@
             Determines whether tool is selected.
             </summary>
       <typeparam name="T">Type of tool.</typeparam>
-      <returns>
-            A value of <c>true</c> if tool is selected; otherwise a value of <c>false</c>.
-            </returns>
-    </member>
-    <member name="M:Rotorz.Tile.Editor.ToolManager.IsSelected(System.String)">
-      <summary>
-            Determines whether tool is selected.
-            </summary>
-      <param name="name">Name of tool.</param>
       <returns>
             A value of <c>true</c> if tool is selected; otherwise a value of <c>false</c>.
             </returns>
@@ -4219,16 +4201,6 @@
             </summary>
       <param name="tool">Tool that is to be selected. Specify `null` to
             revert to previous Unity tool.</param>
-      <returns>
-            Instance of tool that was selected.
-            </returns>
-    </member>
-    <member name="M:Rotorz.Tile.Editor.ToolManager.SelectTool(System.String)">
-      <summary>
-            Selects tool for use within custom system.
-            </summary>
-      <param name="name">Name of tool that is to be selected. Use empty
-            string to revert to previous Unity tool.</param>
       <returns>
             Instance of tool that was selected.
             </returns>

@@ -24,7 +24,7 @@ MonoBehaviour:
   layer: 0
   overrideTag: 0
   tag: Untagged
-  category: 0
+  _categoryId: 0
   forceLegacySideways: 1
   overrideTransforms: 0
   scaleMode: 1

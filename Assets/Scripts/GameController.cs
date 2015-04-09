@@ -20,6 +20,7 @@ public class GameController : MonoBehaviour {
 	public static bool restart;
 	public string scene;
 	public static bool playerReady;
+	public static bool interactiveWindowOn;
 
 	// Use this for initialization
 	void Start () {
@@ -27,8 +28,9 @@ public class GameController : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag ("Player");
 		guards = GameObject.FindGameObjectsWithTag ("Enemy");
 		numEnemies = guards.Length;
-    InventoryController.ResetCurrency();
-    CameraController.SetCameraFocus("Player");
+		interactiveWindowOn = false;
+    	InventoryController.ResetCurrency();
+    	CameraController.SetCameraFocus("Player");
 	}
 
 	void PaintEnd(){
@@ -39,6 +41,10 @@ public class GameController : MonoBehaviour {
 				}
 			}
 		}
+	}
+
+	void CheckIfActivePanel(){
+
 	}
 
 	// Update is called once per frame
