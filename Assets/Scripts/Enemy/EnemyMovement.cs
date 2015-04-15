@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using Rotorz.Tile;
 using Rotorz.Tile.Internal;
@@ -19,11 +20,23 @@ public class EnemyMovement : MonoBehaviour {
 		from = false;
 
 		if (tileSystem.GetTile (startTile).gameObject.transform.position != null) {
-			startPos = tileSystem.GetTile(startTile).gameObject.transform.position;
+			try{
+				startPos = tileSystem.GetTile(startTile).gameObject.transform.position;
+			}
+			catch (Exception e){
+
+			}
 		}
+
 		if (tileSystem.GetTile (endTile).gameObject.transform.position != null) {
-			endPos = tileSystem.GetTile(endTile).gameObject.transform.position;
+			try{
+				endPos = tileSystem.GetTile(endTile).gameObject.transform.position;
+			}
+			catch (Exception e){
+
+			}
 		}
+
 		startPos.z = -1.5f;
 		endPos.z = -1.5f;
 		currentTile = startTile;

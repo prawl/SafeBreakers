@@ -82,7 +82,7 @@ public class TileHighlight : MonoBehaviour {
 		TileData tile = tileSystem.GetTile (next.row, next.column);
 		GameObject tileObject = tile.gameObject;
 		TileCheck validTile = tileObject.GetComponent<TileCheck>();
-		return validTile.isValid;
+		return validTile.valid;
 	}
 
 	public bool CheckIfOccupied(TileIndex next){
@@ -98,13 +98,13 @@ public class TileHighlight : MonoBehaviour {
 			TileData tile = tileSystem.GetTile (next.row, next.column);
 			GameObject tileObject = tile.gameObject;
 			TileCheck validTile = tileObject.GetComponent<TileCheck>();
-			validTile.isValid = true;
+			validTile.valid = true;
 		}
 		else{
 			TileData tile = tileSystem.GetTile (next.row, next.column);
 			GameObject tileObject = tile.gameObject;
 			TileCheck validTile = tileObject.GetComponent<TileCheck>();
-			validTile.isValid = false;
+			validTile.valid = false;
 		}
 	}
 }

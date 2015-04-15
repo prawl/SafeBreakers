@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Rotorz.Tile;
 using Rotorz.Tile.Internal;
 
-[RequireComponent(typeof(CameraController))]
+//[RequireComponent(typeof(CameraController))]
 [RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour {
 	
@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour {
 		current = tileSystem.ClosestTileIndexFromWorld (player.transform.position);
 		controllerScript.start = current;
 		Vector3 temp = tileSystem.WorldPositionFromTileIndex(current, true);
-		temp.z = -1.1f;
+		temp.y = 1.1f;
 		player.transform.position = temp;
 		speed = 1.0f;
 		GetComponent<Renderer>().castShadows = true;
@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		Restart ();
-		CameraController.EnableCameraMovement ();	
+		//CameraController.EnableCameraMovement ();	
 		if(GameController.playerReady){
 			if (Input.GetMouseButtonDown(0)) {
 				if(GameController.gameCount == GameController.enemyCount && GameController.nextTurn == 0){
@@ -50,10 +50,10 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 		if(move){
-			CameraController.DisableCameraMovement();
+			//CameraController.DisableCameraMovement();
 			player.transform.position = Vector3.MoveTowards (player.transform.position, temp, Time.deltaTime*speed);
 			checkLoc ();
-			CameraController.SetCameraFocus("Player");
+			//CameraController.SetCameraFocus("Player");
 		}		
 	}
 
@@ -80,7 +80,7 @@ public class PlayerController : MonoBehaviour {
 		occupied = highlighter.CheckIfOccupied (next);
 		if (move == true && occupied == false) {
 			temp = tileSystem.WorldPositionFromTileIndex (next, true);
-			temp.z = -1.1f;
+			temp.y = 1.1f;
 			GameController.gameCount++;
 		}
 		else{
