@@ -19,6 +19,7 @@ obj/
 *.unityproj
 *.booproj
 *.exe
+*.htm
 
 # ============ #
 # OS generated #
