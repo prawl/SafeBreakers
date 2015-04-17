@@ -18,6 +18,8 @@ obj/
 *.user
 *.unityproj
 *.booproj
+*.exe
+*.htm
 
 # ============ #
 # OS generated #
