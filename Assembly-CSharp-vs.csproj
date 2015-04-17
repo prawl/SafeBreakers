@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{92CD60C4-2047-6A4B-4C29-FADB2D49B5CA}</ProjectGuid>
+	<ProjectGuid>{D6638B14-4E34-4A69-2120-C36943B5E1DD}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -141,6 +141,7 @@
      <Compile Include="Assets\Rotorz\Tile System\Demo\Hat Guy\Scripts\HatGuyTouchButton.cs" />
      <Compile Include="Assets\Scripts\AlarmController.cs" />
      <Compile Include="Assets\Scripts\Currency.cs" />
+     <Compile Include="Assets\Scripts\Developer\GUIDebug.cs" />
      <Compile Include="Assets\Scripts\Door\DoorController.cs" />
      <Compile Include="Assets\Scripts\Door\Door_ButtonController.cs" />
      <Compile Include="Assets\Scripts\Door\Door_ControlPanel.cs" />
@@ -308,19 +309,19 @@
      <None Include="Assets\Rotorz\Tile System\Editor\Languages\fr-FR.txt" />
      <None Include="Assets\TK2DROOT\tk2d_demo\democameradata\source\democamerafont.fnt" />
  <Reference Include="Assembly-UnityScript-firstpass">
- <HintPath>C:/Users/Bradley/Desktop/Creech Monster/Unity/Safebreakers/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
+ <HintPath>C:/Dev/Unity/SafeBreakers/Library/ScriptAssemblies/Assembly-UnityScript-firstpass.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
- <Reference Include="Pathfinding.Ionic.Zip.Reduced">
- <HintPath>C:/Users/Bradley/Desktop/Creech Monster/Unity/Safebreakers/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
+ <Reference Include="TileSystem.Runtime">
+ <HintPath>C:/Dev/Unity/SafeBreakers/Assets/Rotorz/Tile System/TileSystem.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="Pathfinding.JsonFx">
- <HintPath>C:/Users/Bradley/Desktop/Creech Monster/Unity/Safebreakers/Assets/AstarPathfindingProject/Plugins/JsonFx/Pathfinding.JsonFx.dll</HintPath>
+ <HintPath>C:/Dev/Unity/SafeBreakers/Assets/AstarPathfindingProject/Plugins/JsonFx/Pathfinding.JsonFx.dll</HintPath>
  </Reference>
- <Reference Include="TileSystem.Runtime">
- <HintPath>C:/Users/Bradley/Desktop/Creech Monster/Unity/Safebreakers/Assets/Rotorz/Tile System/TileSystem.Runtime.dll</HintPath>
+ <Reference Include="Pathfinding.Ionic.Zip.Reduced">
+ <HintPath>C:/Dev/Unity/SafeBreakers/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iossupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -328,7 +329,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass-vs.csproj">
-      <Project>{8BACE7A3-C274-22DD-B64B-361FC25927A5}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
+      <Project>{E611E66B-7D2E-FC2C-173A-D23BACD7B72D}</Project>      <Name>Assembly-CSharp-firstpass-vs</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
