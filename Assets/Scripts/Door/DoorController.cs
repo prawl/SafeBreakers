@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DoorController : MonoBehaviour {
+public class DoorControllerScript : MonoBehaviour {
 
 	public static bool doorToggle = true;
 	public GameObject entryWay;

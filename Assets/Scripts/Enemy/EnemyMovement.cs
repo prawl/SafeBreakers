@@ -13,13 +13,19 @@ public class EnemyMovement : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+
 		GetDirections ();
 		to = true;
 		from = false;
-		startTile = tileSystem.ClosestTileIndexFromWorld (enemyContrl.transform.position);
-		startPos = tileSystem.GetTile (startTile).gameObject.transform.position;
-		endPos = tileSystem.GetTile (endTile).gameObject.transform.position;
+
+		if (tileSystem.GetTile (startTile).gameObject.transform.position != null) {
+			startPos = tileSystem.GetTile(startTile).gameObject.transform.position;
+		}
+		if (tileSystem.GetTile (endTile).gameObject.transform.position != null) {
+			endPos = tileSystem.GetTile(endTile).gameObject.transform.position;
+		}
 		startPos.z = -1.5f;
+		endPos.z = -1.5f;
 		currentTile = startTile;
 		GetPathDir ();
 	}

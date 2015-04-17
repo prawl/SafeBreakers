@@ -1,127 +1,51 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 using System.Collections;
+using System;
 using Rotorz.Tile;
 using Rotorz.Tile.Internal;
 
 public class EnemyGetPath : MonoBehaviour {
-
-	public int numSteps;
-	public Stack toPath, fromPath, shortestPath;
-	public TileCheck tileCheckScript;
-	public EnemyMovement enemyMoveScript;
-
-	// Use this for initialization
-	void Start () {
-		numSteps = 0;
-		GetShortestPath_To (enemyMoveScript.startTile, enemyMoveScript.endTile);
-	}
 	
-	// Update is called once per frame
-	void Update () {
-		
+	public EnemyMovement moveScript;
+	public List<TileIndex> open;
+	public List<TileIndex> closed;
+	public TileIndex temp;
+
+	void Start(){
+		if(moveScript.to){
+			Pathfinding (moveScript.startTile, moveScript.endTile);
+		}
+		if (moveScript.from) {
+			Pathfinding (moveScript.endTile, moveScript.startTile);
+		}
 	}
 
-	void GetShortestPath_To(TileIndex to, TileIndex from){
-		if(enemyMoveScript.goUp){
-			TileIndex tempTile = enemyMoveScript.tileSystem.ClosestTileIndexFromWorld(enemyMoveScript.tileSystem.GetTile(enemyMoveScript.currentTile.row+1, enemyMoveScript.currentTile.column).gameObject.transform.position);
-			tileCheckScript = enemyMoveScript.tileSystem.GetTile (tempTile).gameObject.GetComponent<TileCheck>();
-			if(tileCheckScript.isValid && !tileCheckScript.occupied){
-				toPath.Push (tempTile);
-				enemyMoveScript.nextTile = tempTile;
-				numSteps++;
-			}
-			else{
-				if(enemyMoveScript.left){
-					toPath.Pop ();
-					enemyMoveScript.goLeft = true;
-					enemyMoveScript.goUp = false;
-				}
-				if(enemyMoveScript.right){
-					toPath.Pop ();
-					enemyMoveScript.goRight = true;
-					enemyMoveScript.goUp = false;
-				}
-				else{
-					toPath.Pop ();
-					enemyMoveScript.goDown = true;
-					enemyMoveScript.goUp = false;
-				}
-			}
+	void Pathfinding(TileIndex start, TileIndex end){
+
+		open.Add (start);
+		temp = start;
+
+		lowestFCost (start);
+	}
+
+	TileIndex lowestFCost(TileIndex current){
+
+		int G = 0;
+		int H = 0;
+
+		if(moveScript.tileSystem.GetTile(current.row + 1, current.column).gameObject.GetComponent<TileCheck>().occupied == false){
+			print ("1");
 		}
-		else if(enemyMoveScript.goDown){
-			TileIndex tempTile = enemyMoveScript.tileSystem.ClosestTileIndexFromWorld(enemyMoveScript.tileSystem.GetTile(enemyMoveScript.currentTile.row-1, enemyMoveScript.currentTile.column).gameObject.transform.position);
-			tileCheckScript = enemyMoveScript.tileSystem.GetTile (tempTile).gameObject.GetComponent<TileCheck>();
-			if(tileCheckScript.isValid && !tileCheckScript.occupied){
-				toPath.Push (tempTile);
-				numSteps++;
-			}
-			else{
-				if(enemyMoveScript.left){
-					toPath.Pop ();
-					enemyMoveScript.goLeft = true;
-					enemyMoveScript.goUp = false;
-				}
-				if(enemyMoveScript.right){
-					toPath.Pop ();
-					enemyMoveScript.goRight = true;
-					enemyMoveScript.goUp = false;
-				}
-				else{
-					toPath.Pop ();
-					enemyMoveScript.goUp = true;
-					enemyMoveScript.goDown = false;
-				}
-			}
+		if(moveScript.tileSystem.GetTile(current.row -1, current.column).gameObject.GetComponent<TileCheck>().occupied == false){
+			print ("2");
 		}
-		else if(enemyMoveScript.goRight){
-			TileIndex tempTile = enemyMoveScript.tileSystem.ClosestTileIndexFromWorld(enemyMoveScript.tileSystem.GetTile(enemyMoveScript.currentTile.row, enemyMoveScript.currentTile.column+1).gameObject.transform.position);
-			tileCheckScript = enemyMoveScript.tileSystem.GetTile (tempTile).gameObject.GetComponent<TileCheck>();
-			if(tileCheckScript.isValid && !tileCheckScript.occupied){
-				toPath.Push (tempTile);
-				numSteps++;
-			}
-			else{
-				if(enemyMoveScript.up){
-					toPath.Pop ();
-					enemyMoveScript.goUp = true;
-					enemyMoveScript.goRight = false;
-				}
-				if(enemyMoveScript.down){
-					toPath.Pop ();
-					enemyMoveScript.goDown = true;
-					enemyMoveScript.goRight = false;
-				}
-				else{
-					toPath.Pop ();
-					enemyMoveScript.goLeft = true;
-					enemyMoveScript.goRight = false;
-				}
-			}
+		if(moveScript.tileSystem.GetTile(current.row, current.column+1).gameObject.GetComponent<TileCheck>().occupied == false){
+			print ("3");
 		}
-		else if(enemyMoveScript.goLeft){
-			TileIndex tempTile = enemyMoveScript.tileSystem.ClosestTileIndexFromWorld(enemyMoveScript.tileSystem.GetTile(enemyMoveScript.currentTile.row, enemyMoveScript.currentTile.column-1).gameObject.transform.position);
-			tileCheckScript = enemyMoveScript.tileSystem.GetTile (tempTile).gameObject.GetComponent<TileCheck>();
-			if(tileCheckScript.isValid && !tileCheckScript.occupied){
-				toPath.Push (tempTile);
-				numSteps++;
-			}
-			else{
-				if(enemyMoveScript.left){
-					toPath.Pop ();
-					enemyMoveScript.goLeft = true;
-					enemyMoveScript.goUp = false;
-				}
-				if(enemyMoveScript.right){
-					toPath.Pop ();
-					enemyMoveScript.goRight = true;
-					enemyMoveScript.goUp = false;
-				}
-				else{
-					toPath.Pop ();
-					enemyMoveScript.goDown = true;
-					enemyMoveScript.goUp = false;
-				}
-			}
+		if(moveScript.tileSystem.GetTile(current.row, current.column-1).gameObject.GetComponent<TileCheck>().occupied == false){
+			print ("4");
 		}
+		return current;
 	}
 }

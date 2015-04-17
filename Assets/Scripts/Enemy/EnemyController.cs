@@ -13,8 +13,8 @@ public class EnemyController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		enemyAnimator = GetComponent<Animator>();
-		enemy.transform.position = movementScript.startPos;
 		player = GameObject.FindGameObjectWithTag ("Player");
+		enemy.gameObject.transform.position = movementScript.startPos;
 	}
 	
 	// Update is called once per frame
