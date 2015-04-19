@@ -15,12 +15,7 @@ public class GUIController : MonoBehaviour {
 	private static float yItemPos = 150;
 	private static bool timer =  false;
 	private static bool purchase = false;
-	private static string textTimer;
 	private static string textCurrency;
-	private static int restSeconds;
-	private static int displaySeconds;
-	private static int displayMinutes;
-	private static int roundedRestSeconds;
 	private static int timerWidth = 100;
 	private static int timerHeight = 50;
 	private static float x, y;
@@ -83,21 +78,8 @@ public class GUIController : MonoBehaviour {
 	public static void DeactivePauseMenu(){
 		showMenu = false;
 	}
-
-	public static bool PauseActive(){
+public static bool PauseActive(){
 		return showMenu;
-	}
-
-	public static bool TimerActive(){
-		return timer;
-	}
-
-	public static void ActivateTimer(){
-		 timer = true;
-	}
-
-	public static void HideTimer(){
-		 timer = false;
 	}
 
 	public static void HidePurchase(){
@@ -112,20 +94,9 @@ public class GUIController : MonoBehaviour {
 		return purchase;
 	}
 
-  public static void DisplayTimer(){
-    GUIStyle style = new GUIStyle();
-		style.normal.textColor = Color.white;
-	  style.alignment = TextAnchor.MiddleCenter;
-		style.fontSize = 25;
-		roundedRestSeconds = Mathf.CeilToInt(Time.time);
-		displaySeconds = roundedRestSeconds % 60;
-		displayMinutes = roundedRestSeconds / 60;
-		textTimer = string.Format ("{0:00}:{1:00}", displayMinutes, displaySeconds);	
-	  GUI.Label (new Rect((Screen.width-timerWidth)/2, 0, timerWidth, timerHeight), textTimer, style);
-  }
 
   public static void DisplayInventory(){
-	  GUI.Box (new Rect(0, 1, buttonWidth/2, Screen.height), "");
+	  GUI.Box (new Rect(0, 1, buttonWidth/2, Screen.height/2), "");
 		if (GUI.Button (new Rect (0, yItemPos, 100, 50), "Smoke Bomb")) {
 		}
 		if (GUI.Button (new Rect (0, yItemPos + 60, 100, 50), "Tranq Gun")) {
