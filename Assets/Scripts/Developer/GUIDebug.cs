@@ -10,14 +10,14 @@ public class GUIDebug : MonoBehaviour {
 	private float boxHeightSpacing = 200f;
 	private float xPos;
 	private float yPos;
-    private float debugBoxHeight = 165f;
-  	private bool visible = true;
+  private float debugBoxHeight = 165f;
+  private bool visible = false;
 	private static int roundedRestSeconds;
 	private static int displaySeconds;
 	private static int displayMinutes;
 	private static string debugText;
-  	private float[] coords;
-  	private Texture2D godModeButton;
+  private float[] coords;
+  private Texture2D godModeButton;
 
   void Start(){
     godModeButton = Resources.Load("god_mode_image") as Texture2D; //Looks in Resources folder to images to load
