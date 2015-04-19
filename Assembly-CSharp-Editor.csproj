@@ -5,7 +5,7 @@
 	<Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
 	<ProductVersion>10.0.20506</ProductVersion>
 	<SchemaVersion>2.0</SchemaVersion>
-	<ProjectGuid>{74B46C8D-1C7F-84FE-68A2-9E927F196840}</ProjectGuid>
+	<ProjectGuid>{121DECEC-F65F-F605-24B5-02AEED0F23CE}</ProjectGuid>
 	<OutputType>Library</OutputType>
 	<AppDesignerFolder>Properties</AppDesignerFolder>
 	<RootNamespace></RootNamespace>
@@ -226,26 +226,20 @@
  <Reference Include="UnityEditor.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/Editor/UnityEditor.UI.dll</HintPath>
  </Reference>
- <Reference Include="Pathfinding.Ionic.Zip.Reduced">
- <HintPath>C:/Users/Bradley/Desktop/Creech Monster/Unity/Safebreakers/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
- </Reference>
- <Reference Include="Pathfinding.JsonFx">
- <HintPath>C:/Users/Bradley/Desktop/Creech Monster/Unity/Safebreakers/Assets/AstarPathfindingProject/Plugins/JsonFx/Pathfinding.JsonFx.dll</HintPath>
- </Reference>
  <Reference Include="JMOAssets">
- <HintPath>C:/Users/Bradley/Desktop/Creech Monster/Unity/Safebreakers/Assets/JMO Assets/Editor/JMOAssets.dll</HintPath>
+ <HintPath>C:/Dev/Unity/SafeBreakers/Assets/JMO Assets/Editor/JMOAssets.dll</HintPath>
  </Reference>
  <Reference Include="TileSystem.Runtime">
- <HintPath>C:/Users/Bradley/Desktop/Creech Monster/Unity/Safebreakers/Assets/Rotorz/Tile System/TileSystem.Runtime.dll</HintPath>
+ <HintPath>C:/Dev/Unity/SafeBreakers/Assets/Rotorz/Tile System/TileSystem.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="TileSystem.Editor">
- <HintPath>C:/Users/Bradley/Desktop/Creech Monster/Unity/Safebreakers/Assets/Rotorz/Tile System/Editor/TileSystem.Editor.dll</HintPath>
+ <HintPath>C:/Dev/Unity/SafeBreakers/Assets/Rotorz/Tile System/Editor/TileSystem.Editor.dll</HintPath>
  </Reference>
  <Reference Include="tk2dExternal">
- <HintPath>C:/Users/Bradley/Desktop/Creech Monster/Unity/Safebreakers/Assets/TK2DROOT/tk2d/Editor/tk2dExternal.dll</HintPath>
+ <HintPath>C:/Dev/Unity/SafeBreakers/Assets/TK2DROOT/tk2d/Editor/tk2dExternal.dll</HintPath>
  </Reference>
  <Reference Include="tk2dSkin">
- <HintPath>C:/Users/Bradley/Desktop/Creech Monster/Unity/Safebreakers/Assets/TK2DROOT/tk2d/Editor/tk2dSkin.dll</HintPath>
+ <HintPath>C:/Dev/Unity/SafeBreakers/Assets/TK2DROOT/tk2d/Editor/tk2dSkin.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.Graphs">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEditor.Graphs.dll</HintPath>
@@ -277,19 +271,25 @@
  <Reference Include="UnityEditor.OSXStandalone.Extensions">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/macstandalonesupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
  </Reference>
+ <Reference Include="Pathfinding.JsonFx">
+ <HintPath>C:/Dev/Unity/SafeBreakers/Assets/AstarPathfindingProject/Plugins/JsonFx/Pathfinding.JsonFx.dll</HintPath>
+ </Reference>
+ <Reference Include="Pathfinding.Ionic.Zip.Reduced">
+ <HintPath>C:/Dev/Unity/SafeBreakers/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
+ </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iossupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
  </Reference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{8BACE7A3-C274-22DD-B64B-361FC25927A5}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
+      <Project>{E611E66B-7D2E-FC2C-173A-D23BACD7B72D}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-UnityScript-firstpass.unityproj">
-      <Project>{DE22F74A-5943-302C-57BC-C019B022C8CF}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
+      <Project>{446803B7-381A-DDC3-1952-300477D8A7F9}</Project>      <Name>Assembly-UnityScript-firstpass</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-CSharp.csproj">
-      <Project>{92CD60C4-2047-6A4B-4C29-FADB2D49B5CA}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
+      <Project>{D6638B14-4E34-4A69-2120-C36943B5E1DD}</Project>      <Name>Assembly-CSharp</Name>    </ProjectReference>
     <ProjectReference Include="Assembly-UnityScript.unityproj">
-      <Project>{45D973EE-FF5D-BE13-A933-27B7463541F4}</Project>      <Name>Assembly-UnityScript</Name>    </ProjectReference>
+      <Project>{4F5FCC74-58CE-C159-D857-AC4F284C3F19}</Project>      <Name>Assembly-UnityScript</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

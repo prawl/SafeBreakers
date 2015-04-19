@@ -51,7 +51,7 @@ public class GameController : MonoBehaviour {
 	void FixedUpdate() {
 		PaintEnd ();
 		bool spotted = CheckIfSpotted ();
-		if(spotted){
+		if(spotted && !PlayerController.GodMode()){
 			RestartGame ();
 		}
 		if (gameCount > enemyCount) {
@@ -92,8 +92,6 @@ public class GameController : MonoBehaviour {
 	}
 
 	void OnGUI(){
-	  GUIController.DisplayTimer();
-
 		if (GUI.Button (new Rect(0, 0, 100, 50), "Pause")){
 			GUIController.PauseGame();
 			GUIController.HideInventory();

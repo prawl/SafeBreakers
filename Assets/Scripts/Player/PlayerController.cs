@@ -21,6 +21,10 @@ public class PlayerController : MonoBehaviour {
 	public GameController controllerScript;
 	public TileHighlight highlighter;
 	public Animator playerAnimator;
+  public static int steps = 0;
+  public static bool godMode = false;
+  
+
 	
 	// Use this for initialization
 	void Start () {
@@ -68,7 +72,6 @@ public class PlayerController : MonoBehaviour {
 			move = false;
 		}
 	}
-
 	void MoveToLocation(){
 		move = false;
 		temp = new Vector3 ();
@@ -91,4 +94,29 @@ public class PlayerController : MonoBehaviour {
 	IEnumerator wait(){
 		yield return new WaitForSeconds(1f);			
 	}
+
+  public static string StepsTaken(){
+    steps = GameController.gameCount;
+    return steps.ToString();
+  }
+
+  public static bool GodMode(){
+    return godMode;
+  }
+
+  public static void EnableGodMode(){
+    godMode = true;
+  }
+
+  public static void DisableGodMode(){
+    godMode = false;
+  }
+
+  public static void ToggleGodMode(){
+    if (GodMode()){
+      DisableGodMode();
+    } else {
+      EnableGodMode();
+    }
+  }
 }
