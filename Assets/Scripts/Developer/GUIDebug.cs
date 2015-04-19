@@ -26,6 +26,7 @@ public class GUIDebug : MonoBehaviour {
   void OnGUI(){
     if(DebugMenuVisibile()){
       DisplayDebugMenu();
+      GameController.ShowNPCInteractions();
     }
 
     coords = SetCoords(0, Screen.height - buttonHeightSpacing);

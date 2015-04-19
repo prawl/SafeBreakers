@@ -94,7 +94,6 @@ public static bool PauseActive(){
 		return purchase;
 	}
 
-
   public static void DisplayInventory(){
 	  GUI.Box (new Rect(0, 1, buttonWidth/2, Screen.height/2), "");
 		if (GUI.Button (new Rect (0, yItemPos, 100, 50), "Smoke Bomb")) {

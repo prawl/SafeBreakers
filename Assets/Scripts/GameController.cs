@@ -8,7 +8,7 @@ public class GameController : MonoBehaviour {
 	public static int gameCount = 0;
 	public static int enemyCount = 0;
 	public bool enemiesDone = true;
-	public GameObject[] guards;
+	public static GameObject[] guards;
 	public static int doneMoving = 0;
 	public static int nextTurn = 0;
 	public static int numEnemies;
@@ -120,12 +120,15 @@ public class GameController : MonoBehaviour {
 		}
 		if (GUIController.InventoryActive()){
 		  GUIController.DisplayInventory();
-			GUIController.CreatePopUpMenu(guards);
 		}
     if (GUIController.PurchaseActive()){
       GUIController.DisplayPurchaseWindow();
     }
 	}
+
+  public static void ShowNPCInteractions(){
+    GUIController.CreatePopUpMenu(guards);
+  }
 
   // Use this in FixedUpdate method to see more detailed info about what you're currently clicking on
 	void ClickInfoDebug(){
