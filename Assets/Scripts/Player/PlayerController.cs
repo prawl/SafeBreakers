@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour {
 		if(GameController.PlayerReady()){
 			if (Input.GetMouseButtonDown(0)) {
         // Only can move when player steps == enemy steps
-				if(GameController.gameCount == GameController.enemyCount && GameController.nextTurn == 0){
+				if(GameController.gameCount == GameController.enemyCount){
 					MoveToLocation ();
 				}
 			}

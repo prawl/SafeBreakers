@@ -13,7 +13,6 @@ public class GameController : MonoBehaviour {
 	public static int gameCount = 0;
 	public static int enemyCount = 0;
 	public static int doneMoving = 0;
-	public static int nextTurn = 0;
 	public static int numEnemies;
 	public string scene;
 	public TileIndex start;
@@ -34,19 +33,16 @@ public class GameController : MonoBehaviour {
 			RestartGame ();
 		}
 
-		if (gameCount > enemyCount) {
-			if(doneMoving == numEnemies){
-        // Count enemy movement once they're done moving
-				enemyCount++;
-				doneMoving = 0;
-			}
+    // What exactly is doneMoving == numEnemies doing?
+    // Each enemy will move and add to the count until all enemies move
+		if (EnemiesReadyToMove()) {
+      if (doneMoving == numEnemies){
+        MoveEnemies();
+      }
 		}
 		if (CameraController.AbleToMoveCamera()) {
       EnablePlayerReady();
 			CameraController.PanCamera();
-		}
-		if (nextTurn == numEnemies) {
-			nextTurn = 0;
 		}
 		CheckIfMoving ();
 	}
@@ -74,6 +70,27 @@ public class GameController : MonoBehaviour {
       }
 		}
 	}
+
+  void MoveEnemies(){
+    enemyCount++;
+    doneMoving = 0;
+  }
+
+  public static bool EnemiesReadyToMove(){
+    if (gameCount > enemyCount){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public static bool ActorsDoneMoving(){
+    if (gameCount == enemyCount){
+      return true;
+    } else {
+      return false;
+    }
+  }
 
 	void RestartGame(){
 		if (gameCount == enemyCount) {

@@ -18,7 +18,7 @@ public class EnemyMovement : MonoBehaviour {
 		to = true;
 		from = false;
 
-		if (tileSystem.GetTile (startTile).gameObject.transform.position != null) {
+		if (tileSystem.GetTile (startTile).gameObject != null) {
 			startPos = tileSystem.GetTile(startTile).gameObject.transform.position;
 		}
 		if (tileSystem.GetTile (endTile).gameObject.transform.position != null) {

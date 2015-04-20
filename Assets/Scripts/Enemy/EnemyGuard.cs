@@ -58,6 +58,7 @@ public class EnemyGuard : MonoBehaviour {
 			moving = false;
 		}
 		lastPos = curPos;
+
 		GetPlayerPos ();
 		if(GameController.enemyCount < GameController.gameCount && individualMove == 0 && PlayerController.move == false){
 			if(firstMove){
@@ -84,7 +85,6 @@ public class EnemyGuard : MonoBehaviour {
 		
 		if (enemy.transform.position == currentLoc) {
 			if(individualMove == 1){
-				GameController.nextTurn++;
 				individualMove++;
 			}
 			enemyAnimator.SetBool ("Right", false);
