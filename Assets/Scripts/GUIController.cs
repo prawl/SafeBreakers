@@ -3,6 +3,8 @@ using System.Collections;
 
 public class GUIController : MonoBehaviour {
 
+	private static bool timer =  false;
+	private static bool purchase = false;
 	private static bool isPaused = false;
 	private static bool displayInventory = false;
 	private static bool showMenu = false;
@@ -13,12 +15,41 @@ public class GUIController : MonoBehaviour {
 	private static float xPos;
 	private static float yPos;
 	private static float yItemPos = 150;
-	private static bool timer =  false;
-	private static bool purchase = false;
-	private static string textCurrency;
+	private static float x, y;
 	private static int timerWidth = 100;
 	private static int timerHeight = 50;
-	private static float x, y;
+	private static string textCurrency;
+
+  void OnGUI(){
+		if (GUI.Button (new Rect(0, 0, 100, 50), "Pause")){
+			PauseGame();
+			HideInventory();
+			HidePurchase();
+		}
+		if (PauseActive()){
+			GUI.enabled = false; // When paused, disable Backpack and Shop GUI buttons (grayed-out) 
+		}
+		if (GUI.Button (new Rect(0, 55, 100, 50), "Backpack")){	
+			ToggleInventory();
+		}
+		if (GUI.Button (new Rect(Screen.width-100, 0, 100, 50), "Shop")){	
+			TogglePurchaseWindow();
+		}
+		GUI.enabled = true;
+    if (GameIsPaused()) {
+			FreezeTime();
+			ActivatePauseMenu();
+		}
+		if (PauseActive()) {
+			DisplayPauseMenu();
+		}
+		if (InventoryActive()){
+		  DisplayInventory();
+		}
+    if (PurchaseActive()){
+      DisplayPurchaseWindow();
+    }
+  }
 
   public static void TogglePurchaseWindow(){
     if (PurchaseActive()){
@@ -78,7 +109,8 @@ public class GUIController : MonoBehaviour {
 	public static void DeactivePauseMenu(){
 		showMenu = false;
 	}
-public static bool PauseActive(){
+
+  public static bool PauseActive(){
 		return showMenu;
 	}
 
@@ -106,14 +138,16 @@ public static bool PauseActive(){
 			GUI.backgroundColor = Color.red; // GUI set to red so you can actually see it
 			if (enemies.Length > 0){
 				foreach(GameObject enemy in enemies){
-					Vector3 screenPos = Camera.main.WorldToScreenPoint(enemy.transform.position);
-					xPos = screenPos.x - 250 / 2; // Center button horizontally over targets head
-					yPos = -screenPos.y + Screen.height / 1.25f;
-					float xSpacing = new float(); 
-					xSpacing = (250 / 2) - (100 / 2);
-					if (GUI.Button (new Rect((xPos + xSpacing), (yPos), 100, 50), "Knockout")) {
-						Destroy(enemy);
-					}
+          if (enemy != null){
+            Vector3 screenPos = Camera.main.WorldToScreenPoint(enemy.transform.position);
+            xPos = screenPos.x - 250 / 2; // Center button horizontally over targets head
+            yPos = -screenPos.y + Screen.height / 1.25f;
+            float xSpacing = new float();
+            xSpacing = (250 / 2) - (100 / 2);
+            if (GUI.Button (new Rect((xPos + xSpacing), (yPos), 100, 50), "Knockout")) {
+              Destroy(enemy);
+            }
+          }
 				}
 		 }
 	}				
@@ -151,4 +185,18 @@ public static bool PauseActive(){
     GUI.Button(new Rect(xPos + 210, yPos + 200, 100, 50), "Item 8");
     GUI.Button(new Rect(xPos + 360, yPos + 200, 100, 50), "Item 9");
   }
+  // Use this in FixedUpdate method to see more detailed info about what you're currently clicking on
+	void ClickInfoDebug(){
+	 if (Input.GetMouseButtonDown (0)) {
+		 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		 RaycastHit hit;
+				if (Physics.Raycast(ray, out hit)) {
+					 Debug.Log ("Name = " + hit.collider.name);
+					 Debug.Log ("Tag = " + hit.collider.tag);
+					 Debug.Log ("Hit Point = " + hit.point);
+					 Debug.Log ("Object position = " + hit.collider.gameObject.transform.position);
+					 Debug.Log ("--------------");
+				}
+		 }	
+	}
 }

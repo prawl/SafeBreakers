@@ -2,6 +2,8 @@
 using System.Collections;
 
 public class GUIDebug : MonoBehaviour {
+
+  private bool visible = false;
 	private float buttonHeightSpacing = 35f;
 	private float buttonWidth = 400f;
 	private float buttonHeight = 35f;
@@ -11,16 +13,15 @@ public class GUIDebug : MonoBehaviour {
 	private float xPos;
 	private float yPos;
   private float debugBoxHeight = 165f;
-  private bool visible = false;
+  private float[] coords;
 	private static int roundedRestSeconds;
 	private static int displaySeconds;
 	private static int displayMinutes;
 	private static string debugText;
-  private float[] coords;
-  private Texture2D godModeButton;
+  private Texture2D godModeImage;
 
   void Start(){
-    godModeButton = Resources.Load("god_mode_image") as Texture2D; //Looks in Resources folder to images to load
+    godModeImage = Resources.Load("god_mode_image") as Texture2D; //Looks in Resources folder to images to load
   }
 
   void OnGUI(){
@@ -41,7 +42,7 @@ public class GUIDebug : MonoBehaviour {
 		GUI.TextField (new Rect(coords[0], coords[1], boxWidth, debugBoxHeight), DebugText(), 250);
     GUI.backgroundColor = new Color(0,0,0,0);
     coords = SetCoords( Screen.width - (Screen.width /3), 0);
-    if(GUI.Button(new Rect(coords[0], coords[1], 35, 35), godModeButton)){
+    if(GUI.Button(new Rect(coords[0], coords[1], 35, 35), godModeImage)){
       PlayerController.ToggleGodMode();
     }
   }
@@ -77,4 +78,19 @@ public class GUIDebug : MonoBehaviour {
     float[] coords = new float[] { xPos, yPos };
     return coords;
   }
+
+  // Use this in FixedUpdate method to see more detailed info about what you're currently clicking on
+	void ClickInfoDebug(){
+	 if (Input.GetMouseButtonDown (0)) {
+		 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		 RaycastHit hit;
+				if (Physics.Raycast(ray, out hit)) {
+					 Debug.Log ("Name = " + hit.collider.name);
+					 Debug.Log ("Tag = " + hit.collider.tag);
+					 Debug.Log ("Hit Point = " + hit.point);
+					 Debug.Log ("Object position = " + hit.collider.gameObject.transform.position);
+					 Debug.Log ("--------------");
+				}
+		 }	
+	}
 }

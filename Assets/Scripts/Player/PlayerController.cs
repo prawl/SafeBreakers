@@ -8,27 +8,24 @@ using Rotorz.Tile.Internal;
 [RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour {
 	
+	public Animator playerAnimator;
+  public static bool godMode = false;
+	public static bool move;
+	public static bool spotted = false;
+	public static bool occupied;
+	public float distance;
+	public float speed;
 	public GameObject player;
+	public GameController controllerScript;
+	public Rigidbody rigid;
+  public static int steps = 0;
 	public TileSystem tileSystem;
 	public TileIndex current;
-	public float distance;
-	public Vector3 temp;
-	public Rigidbody rigid;
-	public float speed;
-	public static bool move;
-	public bool occupied;
-	public static bool spotted;
-	public GameController controllerScript;
 	public TileHighlight highlighter;
-	public Animator playerAnimator;
-  public static int steps = 0;
-  public static bool godMode = false;
-  
-
+	public Vector3 temp;
 	
-	// Use this for initialization
 	void Start () {
-		spotted = false;
+    ResetSpotted();
 		playerAnimator = player.GetComponent<Animator> ();
 		highlighter = player.GetComponent<TileHighlight> ();
 		controllerScript = player.GetComponent<GameController> ();
@@ -38,22 +35,20 @@ public class PlayerController : MonoBehaviour {
 		temp.z = -1.1f;
 		player.transform.position = temp;
 		speed = 1.0f;
-		GetComponent<Renderer>().castShadows = true;
-		GetComponent<Renderer>().receiveShadows = true;
+    EnableShadowRender();
 	}
 	
-	// Update is called once per frame
 	void Update () {
-		Restart ();
-		CameraController.EnableCameraMovement ();	
-		if(GameController.playerReady){
+		CameraController.EnableCameraMovement();	
+		if(GameController.PlayerReady()){
 			if (Input.GetMouseButtonDown(0)) {
+        // Only can move when player steps == enemy steps
 				if(GameController.gameCount == GameController.enemyCount && GameController.nextTurn == 0){
 					MoveToLocation ();
 				}
 			}
 		}
-		if(move){
+		if(CanMove()){
 			CameraController.DisableCameraMovement();
 			player.transform.position = Vector3.MoveTowards (player.transform.position, temp, Time.deltaTime*speed);
 			checkLoc ();
@@ -61,19 +56,13 @@ public class PlayerController : MonoBehaviour {
 		}		
 	}
 
-	void Restart(){
-		if(GameController.restart){
-			Start ();
-		}
-	}
-
 	void checkLoc(){
 		if(player.transform.position == temp){
-			move = false;
+      DisableMovement();
 		}
 	}
 	void MoveToLocation(){
-		move = false;
+    DisableMovement();
 		temp = new Vector3 ();
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
@@ -81,7 +70,7 @@ public class PlayerController : MonoBehaviour {
 		TileIndex next = tileSystem.ClosestTileIndexFromWorld (hit.point);
 		move = highlighter.CheckIfValid (next);
 		occupied = highlighter.CheckIfOccupied (next);
-		if (move == true && occupied == false) {
+		if (CanMove() && !TileOccupied()) {
 			temp = tileSystem.WorldPositionFromTileIndex (next, true);
 			temp.z = -1.1f;
 			GameController.gameCount++;
@@ -94,6 +83,10 @@ public class PlayerController : MonoBehaviour {
 	IEnumerator wait(){
 		yield return new WaitForSeconds(1f);			
 	}
+
+  public static bool TileOccupied(){
+    return occupied;
+  }
 
   public static string StepsTaken(){
     steps = GameController.gameCount;
@@ -118,5 +111,31 @@ public class PlayerController : MonoBehaviour {
     } else {
       EnableGodMode();
     }
+  }
+
+  // The player can been seen by a NPC
+  public static bool Spotted(){
+    return spotted;
+  }
+
+  public static void ResetSpotted(){
+    spotted = false;
+  }
+
+  public static bool CanMove(){
+    return move;
+  }
+
+  public static void EnableMovement(){
+    move = true;
+  }
+
+  public static void DisableMovement(){
+    move = false;
+  }
+
+  private void EnableShadowRender(){
+		GetComponent<Renderer>().castShadows = true;
+		GetComponent<Renderer>().receiveShadows = true;
   }
 }
