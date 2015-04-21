@@ -40,13 +40,10 @@ public class PlayerController : MonoBehaviour {
 	
 	void Update () {
 		CameraController.EnableCameraMovement();	
-		if(GameController.PlayerReady()){
-			if (Input.GetMouseButtonDown(0)) {
-        // Only can move when player steps == enemy steps
-				if(GameController.gameCount == GameController.enemyCount){
-					MoveToLocation ();
-				}
-			}
+		if(GameController.PlayerReady() && Input.GetMouseButtonDown(0)){
+      if(GameController.ActorsDoneMoving()){
+        MoveToLocation ();
+      }
 		}
 		if(CanMove()){
 			CameraController.DisableCameraMovement();
@@ -113,9 +110,13 @@ public class PlayerController : MonoBehaviour {
     }
   }
 
-  // The player can been seen by a NPC
   public static bool Spotted(){
     return spotted;
+  }
+
+  // The player has been seen
+  public static void PlayerSpotted(){
+    spotted = true;
   }
 
   public static void ResetSpotted(){

@@ -33,8 +33,6 @@ public class GameController : MonoBehaviour {
 			RestartGame ();
 		}
 
-    // What exactly is doneMoving == numEnemies doing?
-    // Each enemy will move and add to the count until all enemies move
 		if (EnemiesReadyToMove()) {
       if (doneMoving == numEnemies){
         MoveEnemies();

@@ -5,15 +5,7 @@ using Rotorz.Tile.Internal;
 
 public class EnemyGuard : MonoBehaviour {
 	
-	public GameObject enemy;
-	public GameObject player;
-	public TileIndex playerLoc;
-	public TileSystem tileSystem;
-	public TileIndex start;
-	public TileIndex currentTile;
-	public Vector3 currentLoc;
-	public TileIndex end;
-	public float speed;
+	private Animator enemyAnimator = null;
 	public bool to;
 	public bool from;
 	public bool up;
@@ -22,10 +14,18 @@ public class EnemyGuard : MonoBehaviour {
 	public bool right;
 	public bool horizontal;
 	public bool vertical;
-	private Animator enemyAnimator = null;
 	private bool firstMove;
 	public bool moving;
+	public float speed;
+	public GameObject enemy;
+	public GameObject player;
 	public int individualMove;
+	public TileIndex playerLoc;
+	public TileSystem tileSystem;
+	public TileIndex start;
+	public TileIndex currentTile;
+	public TileIndex end;
+	public Vector3 currentLoc;
 	public Vector3 startingPos;
 	public Vector3 curPos;
 	public Vector3 lastPos;
@@ -60,7 +60,7 @@ public class EnemyGuard : MonoBehaviour {
 		lastPos = curPos;
 
 		GetPlayerPos ();
-		if(GameController.enemyCount < GameController.gameCount && individualMove == 0 && PlayerController.move == false){
+		if(GameController.EnemiesReadyToMove() && individualMove == 0 && !PlayerController.CanMove()){
 			if(firstMove){
 				GetNextTile();
 				firstMove = false;
@@ -75,7 +75,7 @@ public class EnemyGuard : MonoBehaviour {
 			}
 		}
 		
-		if (GameController.enemyCount == GameController.gameCount) {
+		if (GameController.ActorsDoneMoving()) {
 			individualMove = 0;
 		}
 		
@@ -113,28 +113,28 @@ public class EnemyGuard : MonoBehaviour {
 		if(up){
 			for(int i = 0; i < 3; i++){
 				if(currentTile.row-i == playerLoc.row && playerLoc.column == currentTile.column){
-					PlayerController.spotted = true;
+					PlayerController.PlayerSpotted();
 				}
 			}
 		}
 		if(down){
 			for(int i = 0; i < 3; i++){
 				if(currentTile.row+i == playerLoc.row && playerLoc.column == currentTile.column){
-					PlayerController.spotted = true;
+					PlayerController.PlayerSpotted();
 				}
 			}
 		}
 		if(left){
 			for(int i = 0; i < 3; i++){
 				if(currentTile.column-i == playerLoc.column && playerLoc.row == currentTile.row){
-					PlayerController.spotted = true;
+					PlayerController.PlayerSpotted();
 				}
 			}
 		}
 		if(right){
 			for(int i = 0; i < 3; i++){
 				if(currentTile.column+i == playerLoc.column && playerLoc.row == currentTile.row){
-					PlayerController.spotted = true;
+					PlayerController.PlayerSpotted();
 				}
 			}
 		}
@@ -142,7 +142,7 @@ public class EnemyGuard : MonoBehaviour {
 
 	void CheckDirection(){
 		if (currentTile == end){
-			if(vertical==true && horizontal == false){
+			if(vertical == true && horizontal == false){
 				if(up){
 					down = true;
 					up = false;
@@ -156,7 +156,7 @@ public class EnemyGuard : MonoBehaviour {
 					from = true;
 				}
 			}
-			if(horizontal ==true && vertical == false){
+			if(horizontal == true && vertical == false){
 				if(right){
 					right = false;
 					left = true;
