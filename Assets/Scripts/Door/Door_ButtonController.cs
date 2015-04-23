@@ -3,7 +3,6 @@ using System.Collections;
 
 public class Door_ButtonController : MonoBehaviour {
 
-	public bool selected;
 	public bool valid;
 	public bool wrong;
 	public int buttonNum;
