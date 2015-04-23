@@ -29,7 +29,7 @@ public class Wall_Fade : MonoBehaviour {
 	}
 
 	void OnTriggerExit(Collider collider){
-
+    garbage
 	}
 
 	// Update is called once per frame
