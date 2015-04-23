@@ -143,14 +143,14 @@
  <Reference Include="Pathfinding.JsonFx">
  <HintPath>/Users/patrickrawlings/Development/Unity/SafeBreakers/Assets/AstarPathfindingProject/Plugins/JsonFx/Pathfinding.JsonFx.dll</HintPath>
  </Reference>
- <Reference Include="TileSystem.Runtime">
- <HintPath>/Users/patrickrawlings/Development/Unity/SafeBreakers/Assets/Rotorz/Tile System/TileSystem.Runtime.dll</HintPath>
+ <Reference Include="Pathfinding.Ionic.Zip.Reduced">
+ <HintPath>/Users/patrickrawlings/Development/Unity/SafeBreakers/Assets/Plugins/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
  </Reference>
  <Reference Include="Pathfinding.JsonFx">
  <HintPath>/Users/patrickrawlings/Development/Unity/SafeBreakers/Assets/Plugins/AstarPathfindingProject/Plugins/JsonFx/Pathfinding.JsonFx.dll</HintPath>
  </Reference>
- <Reference Include="Pathfinding.Ionic.Zip.Reduced">
- <HintPath>/Users/patrickrawlings/Development/Unity/SafeBreakers/Assets/Plugins/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
+ <Reference Include="TileSystem.Runtime">
+ <HintPath>/Users/patrickrawlings/Development/Unity/SafeBreakers/Assets/Rotorz/Tile System/TileSystem.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/Unity.app/Contents/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>

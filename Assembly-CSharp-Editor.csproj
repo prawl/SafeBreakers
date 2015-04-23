@@ -263,11 +263,20 @@
  <Reference Include="JMOAssets">
  <HintPath>/Users/patrickrawlings/Development/Unity/SafeBreakers/Assets/JMO Assets/Editor/JMOAssets.dll</HintPath>
  </Reference>
+ <Reference Include="Pathfinding.Ionic.Zip.Reduced">
+ <HintPath>/Users/patrickrawlings/Development/Unity/SafeBreakers/Assets/Plugins/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
+ </Reference>
+ <Reference Include="Pathfinding.JsonFx">
+ <HintPath>/Users/patrickrawlings/Development/Unity/SafeBreakers/Assets/Plugins/AstarPathfindingProject/Plugins/JsonFx/Pathfinding.JsonFx.dll</HintPath>
+ </Reference>
  <Reference Include="TileSystem.Runtime">
  <HintPath>/Users/patrickrawlings/Development/Unity/SafeBreakers/Assets/Rotorz/Tile System/TileSystem.Runtime.dll</HintPath>
  </Reference>
  <Reference Include="TileSystem.Editor">
  <HintPath>/Users/patrickrawlings/Development/Unity/SafeBreakers/Assets/Rotorz/Tile System/Editor/TileSystem.Editor.dll</HintPath>
+ </Reference>
+ <Reference Include="StrumpyShaderEditor">
+ <HintPath>/Users/patrickrawlings/Development/Unity/SafeBreakers/Assets/StrumpyShaderEditor/Editor/StrumpyShaderEditor.dll</HintPath>
  </Reference>
  <Reference Include="tk2dExternal">
  <HintPath>/Users/patrickrawlings/Development/Unity/SafeBreakers/Assets/TK2DROOT/tk2d/Editor/tk2dExternal.dll</HintPath>
@@ -304,15 +313,6 @@
  </Reference>
  <Reference Include="UnityEditor.OSXStandalone.Extensions">
  <HintPath>/Applications/Unity/Unity.app/Contents/PlaybackEngines/MacStandaloneSupport/UnityEditor.OSXStandalone.Extensions.dll</HintPath>
- </Reference>
- <Reference Include="Pathfinding.JsonFx">
- <HintPath>/Users/patrickrawlings/Development/Unity/SafeBreakers/Assets/Plugins/AstarPathfindingProject/Plugins/JsonFx/Pathfinding.JsonFx.dll</HintPath>
- </Reference>
- <Reference Include="StrumpyShaderEditor">
- <HintPath>/Users/patrickrawlings/Development/Unity/SafeBreakers/Assets/StrumpyShaderEditor/Editor/StrumpyShaderEditor.dll</HintPath>
- </Reference>
- <Reference Include="Pathfinding.Ionic.Zip.Reduced">
- <HintPath>/Users/patrickrawlings/Development/Unity/SafeBreakers/Assets/Plugins/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>/Applications/Unity/Unity.app/Contents/PlaybackEngines/iOSSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
