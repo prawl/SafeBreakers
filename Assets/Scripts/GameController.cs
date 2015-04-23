@@ -20,14 +20,13 @@ public class GameController : MonoBehaviour {
 	public TileSystem tileSystem;
 
 	void Start () {
-		player = GameObject.FindGameObjectWithTag ("Player");
-		guards = GameObject.FindGameObjectsWithTag ("Enemy");
-    GetNumberOfGuards();
+    player = GameObject.FindGameObjectWithTag ("Player");
     InventoryController.ResetCurrency();
     CameraController.SetCameraFocus("Player");
 	}
 
 	void FixedUpdate() {
+    GetNumberOfGuards();
 		PaintEnd ();
 		if(PlayerController.Spotted() && !PlayerController.GodMode()){
 			RestartGame ();
@@ -45,7 +44,6 @@ public class GameController : MonoBehaviour {
 		CheckIfMoving ();
 	}
 
-  // Paint the end tile
 	void PaintEnd(){
 		for(int row = 0; row < tileSystem.RowCount; row++){
 			for(int column = 0; column<tileSystem.ColumnCount; column++){
@@ -113,6 +111,7 @@ public class GameController : MonoBehaviour {
   }
 
   void GetNumberOfGuards(){
+		guards = GameObject.FindGameObjectsWithTag ("Enemy");
 		numEnemies = guards.Length;
   }
 }
