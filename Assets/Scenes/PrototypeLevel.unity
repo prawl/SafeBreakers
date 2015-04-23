@@ -20197,6 +20197,7 @@ GameObject:
   - 114: {fileID: 1547874014}
   - 114: {fileID: 1547874013}
   - 114: {fileID: 1547874012}
+  - 114: {fileID: 1547874015}
   m_Layer: 0
   m_Name: Capsule
   m_TagString: Untagged
@@ -20300,11 +20301,11 @@ MonoBehaviour:
   goRight: 0
   goLeft: 0
   startTile:
-    row: 5
-    column: 11
+    row: 1
+    column: 20
   endTile:
-    row: 4
-    column: 8
+    row: 1
+    column: 18
   currentTile:
     row: 0
     column: 0
@@ -20329,6 +20330,21 @@ MonoBehaviour:
   player: {fileID: 0}
   speed: 0
   movementScript: {fileID: 1547874013}
+--- !u!114 &1547874015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1547874007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49f1a3ccb49873149906f9e0917273fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveScript: {fileID: 1547874013}
+  currentTile:
+    row: 0
+    column: 0
 --- !u!1 &1553333804 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 100000, guid: 905ab501f46c9fe46bae1d5ae2eac637, type: 2}

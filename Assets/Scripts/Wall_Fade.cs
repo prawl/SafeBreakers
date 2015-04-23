@@ -9,6 +9,7 @@ public class Wall_Fade : MonoBehaviour {
 	public Renderer rend;
 	public bool insideRoom;
 	public GameObject door;
+	public bool HitlerDidNothingWrong = true;
 
 	// Use this for initialization
 	void Start () {
