@@ -14,13 +14,16 @@ public class EnemyGuard : MonoBehaviour {
 	public bool right;
 	public bool horizontal;
 	public bool vertical;
+	private static bool awake = true;
 	private bool firstMove;
 	public bool moving;
 	public float speed;
 	public GameObject enemy;
 	public GameObject player;
 	public int individualMove;
+	private static int waitAmount = 0;
 	public TileIndex playerLoc;
+	public TileIndex enemyLoc;
 	public TileSystem tileSystem;
 	public TileIndex start;
 	public TileIndex currentTile;
@@ -29,9 +32,13 @@ public class EnemyGuard : MonoBehaviour {
 	public Vector3 startingPos;
 	public Vector3 curPos;
 	public Vector3 lastPos;
+	public GameObject tmpEnemy;
+	public  GameObject[] guards;
+	public  int numEnemies;
 	
 	// Use this for initialization
 	void Start () {
+    guards = new GameObject[5];
 		enemyAnimator = GetComponent<Animator>();
 		player = GameObject.FindGameObjectWithTag ("Player");
 		start = tileSystem.ClosestTileIndexFromWorld (enemy.transform.position);
@@ -51,51 +58,104 @@ public class EnemyGuard : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		curPos = transform.position;
-		if (curPos != lastPos) {
-			moving = true;
-		}
-		else{
-			moving = false;
-		}
-		lastPos = curPos;
+    if (curPos != lastPos) {
+      moving = true;
+    }
+    else{
+      moving = false;
+    }
+    lastPos = curPos;
 
-		GetPlayerPos ();
-		if(GameController.EnemiesReadyToMove() && individualMove == 0 && !PlayerController.CanMove()){
-			if(firstMove){
-				GetNextTile();
-				firstMove = false;
-			}
-			else{
-				CheckDirection ();
-				GetNextTile ();
-			}
-			if(GameController.doneMoving < GameController.numEnemies){
-				GameController.doneMoving++;
-				individualMove++;
-			}
-		}
-		
-		if (GameController.ActorsDoneMoving()) {
-			individualMove = 0;
-		}
-		
-		if (enemy.transform.position != currentLoc) {
-			MoveToLocation (currentTile, end);
-		}
-		
-		if (enemy.transform.position == currentLoc) {
-			if(individualMove == 1){
-				individualMove++;
-			}
-			enemyAnimator.SetBool ("Right", false);
-			enemyAnimator.SetBool ("Left", false);
-			enemyAnimator.SetBool ("Front", false);
-			enemyAnimator.SetBool ("Back", false);
-		}
+    GetPlayerPos ();
+    if(GameController.EnemiesReadyToMove() && individualMove == 0 && !PlayerController.CanMove()){
+      if(firstMove){
+        GetNextTile();
+        firstMove = false;
+      }
+      else{
+        CheckDirection ();
+        GetNextTile ();
+      }
+      if(GameController.doneMoving < GameController.numEnemies){
+        GameController.doneMoving++;
+        individualMove++;
+      }
+    }
+    
+    if (GameController.ActorsDoneMoving()) {
+      individualMove = 0;
+    }
+    
+    if(EnemyAwake()){
 
-		CheckLineOfSight ();
+      if (enemy.transform.position != currentLoc) {
+        MoveToLocation (currentTile, end);
+      }
+    
+      if (enemy.transform.position == currentLoc) {
+        if(individualMove == 1){
+          individualMove++;
+        }
+        enemyAnimator.SetBool ("Right", false);
+        enemyAnimator.SetBool ("Left", false);
+        enemyAnimator.SetBool ("Front", false);
+        enemyAnimator.SetBool ("Back", false);
+      }
 
+
+      CheckLineOfSight ();
+    } 
+    else {
+      CheckEnemyReady();
+    }
 	}
+
+  void OnGUI(){
+    if (EnemyBesidePlayer()){
+      TileCheck tile = GetTileObject(currentTile);
+      guards[0] = tile.occupierObject;
+      GUIController.CreatePopUpMenu(guards);
+    } 
+  }
+
+  // Enemy has to wait x amount of turns before being activated
+  public static void CheckEnemyReady(){
+    if (waitAmount <= GameController.GetGameCount()){
+      EnemyWakeUp();
+    }
+  }
+
+  public static void StartWaitAmount(int timeToWait){
+    waitAmount = GameController.GetGameCount();
+    waitAmount += timeToWait;
+  }
+
+  public static bool EnemyAwake(){
+    return awake;
+  }
+
+  public static void KnockOutEnemy(){
+    awake = false;
+  }
+
+  public static void EnemyWakeUp(){
+    awake = true;
+  }
+
+  // Gets the object that exist ontop of the tileIndex
+  // 
+  // param targetTile [TileIndex] is the grid based tile
+  private TileCheck GetTileObject (TileIndex targetTile){
+      TileData tile = tileSystem.GetTile (targetTile);
+      GameObject tileObject = tile.gameObject;
+      TileCheck check = tileObject.GetComponent<TileCheck> ();
+      return check;
+  }
+
+  void GetNumberOfGuards(){
+		guards = GameObject.FindGameObjectsWithTag ("Enemy");
+		numEnemies = guards.Length;
+  }
 
 	public void GetPlayerPos(){
 		playerLoc = tileSystem.ClosestTileIndexFromWorld (player.transform.position);
@@ -140,6 +200,36 @@ public class EnemyGuard : MonoBehaviour {
 		}
 	}
 
+  //  Returns true if an enemy gameObject is within 1 square of the player in the north, south, east and west directions
+  bool EnemyBesidePlayer(){
+    for(int i = 0; i < 2; i++){
+      // check up 1 tile
+      if(currentTile.row-i == playerLoc.row && playerLoc.column == currentTile.column){
+        return true;
+      }
+    }
+      // check down 1 tile
+    for(int i = 0; i < 2; i++){
+      if(currentTile.row+i == playerLoc.row && playerLoc.column == currentTile.column){
+        return true;
+      }
+    }
+    // check left  1 tile
+    for(int i = 0; i < 2; i++){
+      if(currentTile.column-i == playerLoc.column && playerLoc.row == currentTile.row){
+        return true;
+      }
+    }
+    // check right  1 tile
+    for(int i = 0; i < 2; i++){
+      if(currentTile.column+i == playerLoc.column && playerLoc.row == currentTile.row){
+        return true;
+      }
+    }
+    return false;
+  }
+
+
 	void CheckDirection(){
 		if (currentTile == end){
 			if(vertical == true && horizontal == false){
@@ -173,7 +263,7 @@ public class EnemyGuard : MonoBehaviour {
 		}
 		
 		if (currentTile == start){
-			if(vertical==true && horizontal == false){
+			if(vertical== true && horizontal == false){
 				if(up){
 					down = true;
 					up = false;
@@ -187,7 +277,7 @@ public class EnemyGuard : MonoBehaviour {
 					from = false;
 				}
 			}
-			if(horizontal ==true && vertical == false){
+			if(horizontal == true && vertical == false){
 				if(right){
 					right = false;
 					left = true;

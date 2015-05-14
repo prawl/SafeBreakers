@@ -31,7 +31,6 @@ public class GameController : MonoBehaviour {
 		if(PlayerController.Spotted() && !PlayerController.GodMode()){
 			RestartGame ();
 		}
-
 		if (EnemiesReadyToMove()) {
       if (doneMoving == numEnemies){
         MoveEnemies();
@@ -113,5 +112,9 @@ public class GameController : MonoBehaviour {
   void GetNumberOfGuards(){
 		guards = GameObject.FindGameObjectsWithTag ("Enemy");
 		numEnemies = guards.Length;
+  }
+
+  public static int GetGameCount(){
+    return gameCount;
   }
 }

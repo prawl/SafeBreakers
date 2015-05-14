@@ -19,6 +19,13 @@ public class GUIController : MonoBehaviour {
 	private static int timerWidth = 100;
 	private static int timerHeight = 50;
 	private static string textCurrency;
+	private static Texture2D knockOutImage;
+	private static AudioClip knockOutSound;
+
+  void Start(){
+    knockOutImage = Resources.Load("fist") as Texture2D;
+    knockOutSound = Resources.Load("knock_out_sound") as AudioClip;
+  }
 
   void OnGUI(){
 		if (GUI.Button (new Rect(0, 0, 100, 50), "Pause")){
@@ -49,6 +56,10 @@ public class GUIController : MonoBehaviour {
     if (PurchaseActive()){
       DisplayPurchaseWindow();
     }
+  }
+
+  public static void PlayKnockOutSound(){
+    AudioSource.PlayClipAtPoint(knockOutSound, Camera.main.transform.position);
   }
 
   public static void TogglePurchaseWindow(){
@@ -127,11 +138,6 @@ public class GUIController : MonoBehaviour {
 	}
 
   public static void DisplayInventory(){
-	  GUI.Box (new Rect(0, 1, buttonWidth/2, Screen.height/2), "");
-		if (GUI.Button (new Rect (0, yItemPos, 100, 50), "Smoke Bomb")) {
-		}
-		if (GUI.Button (new Rect (0, yItemPos + 60, 100, 50), "Tranq Gun")) {
-	  }
   }
 
   public static void CreatePopUpMenu(GameObject[] enemies){
@@ -144,8 +150,13 @@ public class GUIController : MonoBehaviour {
             yPos = -screenPos.y + Screen.height / 1.25f;
             float xSpacing = new float();
             xSpacing = (250 / 2) - (100 / 2);
-            if (GUI.Button (new Rect((xPos + xSpacing), (yPos), 100, 50), "Knockout")) {
-              Destroy(enemy);
+            GUI.backgroundColor = new Color(0,0,0,0);
+            if (EnemyGuard.EnemyAwake()){
+              if (GUI.Button (new Rect((xPos + xSpacing), (yPos), 100, 50), knockOutImage)) {
+                EnemyGuard.KnockOutEnemy();
+                EnemyGuard.StartWaitAmount(3);
+                PlayKnockOutSound();
+              }
             }
           }
 				}
@@ -170,7 +181,6 @@ public class GUIController : MonoBehaviour {
     FreezeTime();
 		xPos = (Screen.width - purchaseBoxWidth)/2;
 		yPos = (Screen.height - purchaseBoxHeight)/2;
-
     textCurrency = string.Format("Currency: {0}", InventoryController.DisplayCurrency());
     GUI.Box(new Rect(xPos, yPos, purchaseBoxWidth, purchaseBoxHeight), "");
     GUI.Label(new Rect(xPos + 70, yPos + 15, 100, 50), textCurrency);
@@ -185,18 +195,4 @@ public class GUIController : MonoBehaviour {
     GUI.Button(new Rect(xPos + 210, yPos + 200, 100, 50), "Item 8");
     GUI.Button(new Rect(xPos + 360, yPos + 200, 100, 50), "Item 9");
   }
-  // Use this in FixedUpdate method to see more detailed info about what you're currently clicking on
-	void ClickInfoDebug(){
-	 if (Input.GetMouseButtonDown (0)) {
-		 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-		 RaycastHit hit;
-				if (Physics.Raycast(ray, out hit)) {
-					 Debug.Log ("Name = " + hit.collider.name);
-					 Debug.Log ("Tag = " + hit.collider.tag);
-					 Debug.Log ("Hit Point = " + hit.point);
-					 Debug.Log ("Object position = " + hit.collider.gameObject.transform.position);
-					 Debug.Log ("--------------");
-				}
-		 }	
-	}
 }

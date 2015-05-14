@@ -3156,19 +3156,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4dbe1a002d66a8e48a661acf0a63d331, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerAnimator: {fileID: 0}
+  distance: 0
+  speed: 0
   player: {fileID: 257980983}
+  controllerScript: {fileID: 0}
+  rigid: {fileID: 0}
   tileSystem: {fileID: 603794808}
   current:
     row: 0
     column: 0
-  distance: 0
-  temp: {x: 0, y: 0, z: 0}
-  rigid: {fileID: 0}
-  speed: 0
-  occupied: 0
-  controllerScript: {fileID: 0}
   highlighter: {fileID: 0}
-  playerAnimator: {fileID: 0}
+  temp: {x: 0, y: 0, z: 0}
 --- !u!114 &257980988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3230,18 +3229,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7ee888e04ecba9d4789f27182b928381, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemiesDone: 1
-  guards: []
+  endTile: {fileID: 11400000, guid: 07d4df7fc924d6a4e81b8fbbd5722fa3, type: 2}
+  player: {fileID: 0}
+  scene: PrototypeLevel
   start:
     row: 2
     column: 5
   end:
     row: 5
     column: 28
-  endTile: {fileID: 11400000, guid: 07d4df7fc924d6a4e81b8fbbd5722fa3, type: 2}
   tileSystem: {fileID: 603794808}
-  player: {fileID: 0}
-  scene: PrototypeLevel
 --- !u!114 &257980993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3253,15 +3250,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a68d97dd436fc62498c39d35c5d2ee8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tileSystem: {fileID: 603794808}
-  player: {fileID: 0}
-  playerController: {fileID: 0}
-  current:
-    row: 0
-    column: 0
   possibleLoc: {fileID: 11400000, guid: c6f1b9a6f0529434e954194eabeb8031, type: 2}
   defaultLoc: {fileID: 11400000, guid: e02ecfd84775a324685b90af43473318, type: 2}
   tempGameCount: 0
+  player: {fileID: 0}
+  playerController: {fileID: 0}
+  tileSystem: {fileID: 603794808}
+  current:
+    row: 0
+    column: 0
 --- !u!114 &257980994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4072,7 +4069,6 @@ MonoBehaviour:
   keyPadNums: 
   randomNum: 0
   alarmTriggered: 0
-  buttons: []
   arrayProgression: 0
   currentNum: 0
   windowRect:
@@ -4115,7 +4111,6 @@ MonoBehaviour:
   keyPadNums: 
   randomNum: 0
   alarmTriggered: 0
-  buttons: []
   arrayProgression: 0
   currentNum: 0
 --- !u!114 &285289137
@@ -6004,6 +5999,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 5400000, guid: fa8a64d6b5ea0144193490af409fe356, type: 2}
       propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: fa8a64d6b5ea0144193490af409fe356, type: 2}
+      propertyPath: m_Name
+      value: Guard 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: fa8a64d6b5ea0144193490af409fe356, type: 2}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -25284,11 +25287,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 400004, guid: fa8a64d6b5ea0144193490af409fe356, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 16
+      value: 6.34000015
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: fa8a64d6b5ea0144193490af409fe356, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -6
+      value: -8.22299957
       objectReference: {fileID: 0}
     - target: {fileID: 400004, guid: fa8a64d6b5ea0144193490af409fe356, type: 2}
       propertyPath: m_LocalPosition.z
@@ -25345,6 +25348,10 @@ Prefab:
     - target: {fileID: 13600000, guid: fa8a64d6b5ea0144193490af409fe356, type: 2}
       propertyPath: m_Center.y
       value: -.280000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: fa8a64d6b5ea0144193490af409fe356, type: 2}
+      propertyPath: m_Name
+      value: Guard 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fa8a64d6b5ea0144193490af409fe356, type: 2}

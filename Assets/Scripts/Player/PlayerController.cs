@@ -58,6 +58,14 @@ public class PlayerController : MonoBehaviour {
       DisableMovement();
 		}
 	}
+  
+  // Skips the players turn and lets all enemies advance once
+  public static void SkipTurn(){
+    if (GameController.ActorsDoneMoving() && GameController.PlayerReady()){
+      GameController.gameCount++;
+    }
+  }
+
 	void MoveToLocation(){
     DisableMovement();
 		temp = new Vector3 ();

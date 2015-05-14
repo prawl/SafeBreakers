@@ -19,9 +19,11 @@ public class GUIDebug : MonoBehaviour {
 	private static int displayMinutes;
 	private static string debugText;
   private Texture2D godModeImage;
+  private Texture2D skipTurnImage;
 
   void Start(){
     godModeImage = Resources.Load("god_mode_image") as Texture2D; //Looks in Resources folder to images to load
+    skipTurnImage = Resources.Load("skip_turn_image") as Texture2D; //Looks in Resources folder to images to load
   }
 
   void OnGUI(){
@@ -44,6 +46,10 @@ public class GUIDebug : MonoBehaviour {
     coords = SetCoords( Screen.width - (Screen.width /3), 0);
     if(GUI.Button(new Rect(coords[0], coords[1], 35, 35), godModeImage)){
       PlayerController.ToggleGodMode();
+    }
+    coords = SetCoords(Screen.width - (Screen.width /3) - 50, 0);
+    if(GUI.Button(new Rect(coords[0], coords[1], 35, 35), skipTurnImage)){
+      PlayerController.SkipTurn();
     }
   }
 

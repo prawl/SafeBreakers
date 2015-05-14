@@ -29,11 +29,6 @@ public class EnemyMovement : MonoBehaviour {
 		currentTile = startTile;
 		GetPathDir ();
 	}
-	
-	// Update is called once per frame
-	void Update () {
-
-	}
 
 	void GetPathDir(){
 		if(up){

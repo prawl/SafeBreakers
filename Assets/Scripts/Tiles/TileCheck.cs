@@ -7,6 +7,7 @@ public class TileCheck : TileHighlight {
 
 	public bool occupied, valid, end, isOccupied, isValid;
 	public string occupier;
+  public GameObject occupierObject;
 
 	// Use this for initialization
 	void Start () {
@@ -17,6 +18,7 @@ public class TileCheck : TileHighlight {
 	
 	void OnTriggerEnter(Collider other){
 		occupier = other.gameObject.tag;
+		occupierObject = other.gameObject;
 		occupied = true;
 		valid = false;
 	}
