@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	void Update () {
-		//CameraController.EnableCameraMovement ();	
+		Restart ();
 		if(GameController.playerReady){
 			if (Input.GetMouseButtonDown(0)) {
 				if(GameController.gameCount == GameController.enemyCount && GameController.nextTurn == 0){
@@ -48,10 +48,8 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 		if(move){
-			//CameraController.DisableCameraMovement();
 			player.transform.position = Vector3.MoveTowards (player.transform.position, temp, Time.deltaTime*speed);
 			checkLoc ();
-			//CameraController.SetCameraFocus("Player");
 		}		
 	}
 
