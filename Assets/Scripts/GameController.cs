@@ -5,21 +5,15 @@ using Rotorz.Tile.Internal;
 
 public class GameController : MonoBehaviour {
 
-	public static int gameCount = 0;
-	public static int enemyCount = 0;
+	public static int gameCount, enemyCount, doneMoving, nextTurn, numEnemies = 0;
 	public bool enemiesDone = true;
 	public GameObject[] guards;
-	public static int doneMoving = 0;
-	public static int nextTurn = 0;
-	public static int numEnemies;
-	public TileIndex start;
-	public TileIndex end;
+	public TileIndex start, end;
 	public Brush endTile;
 	public TileSystem tileSystem;
 	public GameObject player;
-	public static bool restart;
+	public static bool restart, playerReady;
 	public string scene;
-	public static bool playerReady;
 	public static bool interactiveWindowOn;
 
 	// Use this for initialization
@@ -30,7 +24,6 @@ public class GameController : MonoBehaviour {
 		numEnemies = guards.Length;
 		interactiveWindowOn = false;
     	InventoryController.ResetCurrency();
-    	CameraController.SetCameraFocus("Player");
 	}
 
 	void PaintEnd(){
@@ -60,9 +53,9 @@ public class GameController : MonoBehaviour {
 				doneMoving = 0;
 			}
 		}
-		if (CameraController.AbleToMoveCamera()) {
+		/*if (CameraController.AbleToMoveCamera()) {
 			CameraController.PanCamera();
-		}
+		}*/
 
 		if (nextTurn == numEnemies) {
 			nextTurn = 0;
