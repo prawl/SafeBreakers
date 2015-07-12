@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Default
-  m_Shader: {fileID: 4800000, guid: 0899c55c7117ec249be6279ae8fdeafa, type: 3}
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
   m_CustomRenderQueue: -1
@@ -175,16 +175,16 @@ Material:
         second: {r: .200000003, g: .200000003, b: .200000003, a: 1}
       data:
         first:
-          name: _EmissionColorUI
-        second: {r: 1, g: 1, b: 1, a: 1}
+          name: _NotVisibleColor
+        second: {r: 0, g: 1, b: 0, a: 1}
       data:
         first:
           name: _OccludeColor
         second: {r: 0, g: 0, b: 1, a: 1}
       data:
         first:
-          name: _NotVisibleColor
-        second: {r: 0, g: 1, b: 0, a: 1}
+          name: _EmissionColorUI
+        second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
           name: _TintColor

@@ -1,6 +1,23 @@
 fileFormatVersion: 2
 guid: d9b7d8db7cb38fa41a6f7d63c55d0148
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: Enemy_Walk_Forward01
+    21300002: Enemy_Walk_Forward02
+    21300004: Enemy_Walk_Forward03
+    21300006: Enemy_Walk_Forward04
+    21300008: Enemy_Walk_Left01
+    21300010: Enemy_Walk_Left02
+    21300012: Enemy_Walk_Left03
+    21300014: Enemy_Walk_Left04
+    21300016: Enemy_Walk_Right01
+    21300018: Enemy_Walk_Right02
+    21300020: Enemy_Walk_Right03
+    21300022: Enemy_Walk_Right04
+    21300024: Enemy_Walk_Back01
+    21300026: Enemy_Walk_Back02
+    21300028: Enemy_Walk_Back03
+    21300030: Enemy_Walk_Back04
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -19,6 +36,9 @@ TextureImporter:
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 1024
@@ -29,6 +49,7 @@ TextureImporter:
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
+  rGBM: 0
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
@@ -204,3 +225,5 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 
