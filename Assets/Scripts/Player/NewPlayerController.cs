@@ -10,17 +10,17 @@ public class NewPlayerController : MonoBehaviour {
 	public GameObject player;
 	public TileSystem tileSystem;
 	public TileIndex current, next;
-	//public GameController gameCon;
 	public Camera camera;
 	private Vector3 temp;
 	private CharacterController controller;
 	private float speed = 1;
-	public bool moving;
+	private bool moving;
+	private bool mouseInput;
 
 	// Use this for initialization
 	void Start () {
+    EnableMouseInput();
 		player = GameObject.FindGameObjectWithTag ("Player");
-		//gameCon = gameObject.GetComponent<GameController> ();
 		GetComponent<Renderer>().castShadows = true;
 		GetComponent<Renderer>().receiveShadows = true;
 		controller = gameObject.GetComponent<CharacterController> ();
@@ -31,24 +31,47 @@ public class NewPlayerController : MonoBehaviour {
 		transform.position = temp;
 		tileSystem.GetTile (current).gameObject.GetComponent<TileCheck>().occupied = true;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		GetValidTiles ();
-		GetNextTile ();
-		DefaultTiles ();
+
+	void Update() {
+		GetValidTiles();
+		GetNextTile();
+		DefaultTiles();
 	}
 
+  public bool Moving(){
+    return moving;
+  }
+
+  public void DisableMovement(){
+    moving = false;
+  }
+
+  public void EnableMovement(){
+    moving = true;
+  }
+	
+  public bool AllowMouseInput(){
+    return mouseInput;
+  }
+
+  public void DisableMouseInput(){
+    mouseInput = false;
+  }
+
+  public void EnableMouseInput(){
+    mouseInput = true;
+  }
+
 	void GetNextTile(){
-		if(Input.GetMouseButtonDown (0)){
-			Ray ray = camera.ScreenPointToRay (Input.mousePosition);
-			RaycastHit hit;
-			Physics.Raycast(ray, out hit);
-			next = tileSystem.ClosestTileIndexFromWorld(hit.point);
-		}
-		if(tileSystem.GetTile (next).gameObject.GetComponent<TileCheck>().valid){
-			MoveToNextTile ();
-		}
+    if(Input.GetMouseButtonDown(0) && AllowMouseInput()) {
+      Ray ray = camera.ScreenPointToRay (Input.mousePosition);
+      RaycastHit hit;
+      Physics.Raycast(ray, out hit);
+      next = tileSystem.ClosestTileIndexFromWorld(hit.point);
+    }
+    if(tileSystem.GetTile(next).gameObject.GetComponent<TileCheck>().valid){
+      MoveToNextTile();
+    }
 	}
 
 	public bool V3Equal(Vector3 a, Vector3 b){
@@ -56,10 +79,11 @@ public class NewPlayerController : MonoBehaviour {
 	}
 
 	void MoveToNextTile(){
+    DisableMouseInput();
 		Vector3 nextLoc = tileSystem.GetTile (next).gameObject.transform.position;
 		nextLoc.y = 1;
 		if(!V3Equal (nextLoc, transform.position)){
-			moving = true;
+      EnableMovement();
 			Vector3 dir = (nextLoc - transform.position).normalized;
 			dir *= Time.fixedDeltaTime * speed;
 			controller.Move (dir);
@@ -69,7 +93,8 @@ public class NewPlayerController : MonoBehaviour {
 			current = next;
 			tileSystem.GetTile (current).gameObject.GetComponent<TileCheck>().occupied = true;
 			transform.position = nextLoc;
-			moving = false;
+      DisableMovement();
+      EnableMouseInput();
 		}
 	}
 
