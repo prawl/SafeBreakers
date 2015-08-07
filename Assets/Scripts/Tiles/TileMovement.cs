@@ -28,7 +28,7 @@ public class TileMovement : MonoBehaviour {
 		Vector3 temp = tileSystem.WorldPositionFromTileIndex(current, true);
 		temp.z = -1;
 		player.transform.position = temp;
-		speed = 1.0f;
+		speed = 0;
 	}
 
 	// Update is called once per frame

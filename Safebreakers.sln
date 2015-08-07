@@ -5,9 +5,13 @@ Project("{225E8780-EDE0-FC40-3F29-672F45F48931}") = "SafeBreakers", "Assembly-CS
 EndProject
 Project("{225E8780-EDE0-FC40-3F29-672F45F48931}") = "SafeBreakers", "Assembly-CSharp.csproj", "{D6638B14-4E34-4A69-2120-C36943B5E1DD}"
 EndProject
-Project("{225E8780-EDE0-FC40-3F29-672F45F48931}") = "SafeBreakers", "Assembly-CSharp-Editor.csproj", "{121DECEC-F65F-F605-24B5-02AEED0F23CE}"
+Project("{D39EFCCD-E5BF-768E-5956-DCFF770EF9B0}") = "Safebreakers", "Assembly-CSharp-Editor-firstpass.csproj", "{941110ED-AF55-EFE5-9D1D-F409DE49991A}"
 EndProject
-Project("{225E8780-EDE0-FC40-3F29-672F45F48931}") = "SafeBreakers", "Assembly-UnityScript-firstpass.unityproj", "{446803B7-381A-DDC3-1952-300477D8A7F9}"
+Project("{D39EFCCD-E5BF-768E-5956-DCFF770EF9B0}") = "Safebreakers", "Assembly-CSharp-Editor.csproj", "{74B46C8D-1C7F-84FE-68A2-9E927F196840}"
+EndProject
+Project("{D39EFCCD-E5BF-768E-5956-DCFF770EF9B0}") = "Safebreakers", "Assembly-Boo.booproj", "{6D6D46C2-D209-2997-6392-BB478F2BED90}"
+EndProject
+Project("{D39EFCCD-E5BF-768E-5956-DCFF770EF9B0}") = "Safebreakers", "Assembly-UnityScript-firstpass.unityproj", "{DE22F74A-5943-302C-57BC-C019B022C8CF}"
 EndProject
 Project("{225E8780-EDE0-FC40-3F29-672F45F48931}") = "SafeBreakers", "Assembly-UnityScript.unityproj", "{4F5FCC74-58CE-C159-D857-AC4F284C3F19}"
 EndProject
@@ -17,107 +21,85 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E611E66B-7D2E-FC2C-173A-D23BACD7B72D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E611E66B-7D2E-FC2C-173A-D23BACD7B72D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E611E66B-7D2E-FC2C-173A-D23BACD7B72D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E611E66B-7D2E-FC2C-173A-D23BACD7B72D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D6638B14-4E34-4A69-2120-C36943B5E1DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D6638B14-4E34-4A69-2120-C36943B5E1DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D6638B14-4E34-4A69-2120-C36943B5E1DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D6638B14-4E34-4A69-2120-C36943B5E1DD}.Release|Any CPU.Build.0 = Release|Any CPU
-		{121DECEC-F65F-F605-24B5-02AEED0F23CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{121DECEC-F65F-F605-24B5-02AEED0F23CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{121DECEC-F65F-F605-24B5-02AEED0F23CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{121DECEC-F65F-F605-24B5-02AEED0F23CE}.Release|Any CPU.Build.0 = Release|Any CPU
-		{446803B7-381A-DDC3-1952-300477D8A7F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{446803B7-381A-DDC3-1952-300477D8A7F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{446803B7-381A-DDC3-1952-300477D8A7F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{446803B7-381A-DDC3-1952-300477D8A7F9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4F5FCC74-58CE-C159-D857-AC4F284C3F19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4F5FCC74-58CE-C159-D857-AC4F284C3F19}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4F5FCC74-58CE-C159-D857-AC4F284C3F19}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4F5FCC74-58CE-C159-D857-AC4F284C3F19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8BACE7A3-C274-22DD-B64B-361FC25927A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8BACE7A3-C274-22DD-B64B-361FC25927A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8BACE7A3-C274-22DD-B64B-361FC25927A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8BACE7A3-C274-22DD-B64B-361FC25927A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{92CD60C4-2047-6A4B-4C29-FADB2D49B5CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{92CD60C4-2047-6A4B-4C29-FADB2D49B5CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{92CD60C4-2047-6A4B-4C29-FADB2D49B5CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{92CD60C4-2047-6A4B-4C29-FADB2D49B5CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{941110ED-AF55-EFE5-9D1D-F409DE49991A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{941110ED-AF55-EFE5-9D1D-F409DE49991A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{941110ED-AF55-EFE5-9D1D-F409DE49991A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{941110ED-AF55-EFE5-9D1D-F409DE49991A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{74B46C8D-1C7F-84FE-68A2-9E927F196840}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{74B46C8D-1C7F-84FE-68A2-9E927F196840}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{74B46C8D-1C7F-84FE-68A2-9E927F196840}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{74B46C8D-1C7F-84FE-68A2-9E927F196840}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D6D46C2-D209-2997-6392-BB478F2BED90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D6D46C2-D209-2997-6392-BB478F2BED90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D6D46C2-D209-2997-6392-BB478F2BED90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D6D46C2-D209-2997-6392-BB478F2BED90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE22F74A-5943-302C-57BC-C019B022C8CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE22F74A-5943-302C-57BC-C019B022C8CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE22F74A-5943-302C-57BC-C019B022C8CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE22F74A-5943-302C-57BC-C019B022C8CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{45D973EE-FF5D-BE13-A933-27B7463541F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45D973EE-FF5D-BE13-A933-27B7463541F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45D973EE-FF5D-BE13-A933-27B7463541F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45D973EE-FF5D-BE13-A933-27B7463541F4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
-																																																																																																																																																																																												GlobalSection(MonoDevelopProperties) = preSolution
-=======
-																																																														GlobalSection(MonoDevelopProperties) = preSolution
-<<<<<<< HEAD
-=======
-=======
-																																																								GlobalSection(MonoDevelopProperties) = preSolution
->>>>>>> Now displaying a GUI timer [#86118136]
->>>>>>> Now displaying a GUI timer [#86118136]
->>>>>>> Now displaying a GUI timer [#86118136]
-=======
-																																																															GlobalSection(MonoDevelopProperties) = preSolution
->>>>>>> Can now toggle inventory [#86119752]
-=======
-																																																															GlobalSection(MonoDevelopProperties) = preSolution
->>>>>>> WIP Added popup menu over enemies
-=======
-																																																																GlobalSection(MonoDevelopProperties) = preSolution
->>>>>>> GUI Menu will popup over enemies head [#86122422]
-=======
-																																													GlobalSection(MonoDevelopProperties) = preSolution
->>>>>>> The player can pan the camera around the map [#85834460]
-		StartupItem = Assembly-CSharp.csproj
-		Policies = $0
-		$0.TextStylePolicy = $1
-		$1.inheritsSet = null
-		$1.scope = text/x-csharp
-		$0.CSharpFormattingPolicy = $2
-		$2.inheritsSet = Mono
-		$2.inheritsScope = text/x-csharp
-		$2.scope = text/x-csharp
-		$0.TextStylePolicy = $3
-		$3.FileWidth = 120
-		$3.TabWidth = 4
-		$3.EolMarker = Unix
-		$3.inheritsSet = Mono
-		$3.inheritsScope = text/plain
-		$3.scope = text/plain
-	EndGlobalSection
-																																																																																																																										GlobalSection(MonoDevelopProperties) = preSolution
-=======
-																																																														GlobalSection(MonoDevelopProperties) = preSolution
-<<<<<<< HEAD
-=======
-=======
-																																																								GlobalSection(MonoDevelopProperties) = preSolution
->>>>>>> Now displaying a GUI timer [#86118136]
->>>>>>> Now displaying a GUI timer [#86118136]
->>>>>>> Now displaying a GUI timer [#86118136]
-=======
-																																																															GlobalSection(MonoDevelopProperties) = preSolution
->>>>>>> Can now toggle inventory [#86119752]
-=======
-																																																															GlobalSection(MonoDevelopProperties) = preSolution
->>>>>>> WIP Added popup menu over enemies
-=======
-																																																																GlobalSection(MonoDevelopProperties) = preSolution
->>>>>>> GUI Menu will popup over enemies head [#86122422]
-=======
-																																													GlobalSection(MonoDevelopProperties) = preSolution
->>>>>>> The player can pan the camera around the map [#85834460]
-		StartupItem = Assembly-CSharp.csproj
-		Policies = $0
-		$0.TextStylePolicy = $1
-		$1.inheritsSet = null
-		$1.scope = text/x-csharp
-		$0.CSharpFormattingPolicy = $2
-		$2.inheritsSet = Mono
-		$2.inheritsScope = text/x-csharp
-		$2.scope = text/x-csharp
-		$0.TextStylePolicy = $3
-		$3.FileWidth = 120
-		$3.TabWidth = 4
-		$3.EolMarker = Unix
-		$3.inheritsSet = Mono
-		$3.inheritsScope = text/plain
-		$3.scope = text/plain
-	EndGlobalSection
+  GlobalSection(MonoDevelopProperties) = preSolution
+  GlobalSection(MonoDevelopProperties) = preSolution
+  GlobalSection(MonoDevelopProperties) = preSolution
+  GlobalSection(MonoDevelopProperties) = preSolution
+  GlobalSection(MonoDevelopProperties) = preSolution
+  GlobalSection(MonoDevelopProperties) = preSolution
+  GlobalSection(MonoDevelopProperties) = preSolution
+  StartupItem = Assembly-CSharp.csproj
+  Policies = $0
+  $0.TextStylePolicy = $1
+  $1.inheritsSet = null
+  $1.scope = text/x-csharp
+  $0.CSharpFormattingPolicy = $2
+  $2.inheritsSet = Mono
+  $2.inheritsScope = text/x-csharp
+  $2.scope = text/x-csharp
+  $0.TextStylePolicy = $3
+  $3.FileWidth = 120
+  $3.TabWidth = 4
+  $3.EolMarker = Unix
+  $3.inheritsSet = Mono
+  $3.inheritsScope = text/plain
+  $3.scope = text/plain
+  EndGlobalSection
+  GlobalSection(MonoDevelopProperties) = preSolution
+  GlobalSection(MonoDevelopProperties) = preSolution
+  GlobalSection(MonoDevelopProperties) = preSolution
+  GlobalSection(MonoDevelopProperties) = preSolution
+  GlobalSection(MonoDevelopProperties) = preSolution
+  GlobalSection(MonoDevelopProperties) = preSolution
+  GlobalSection(MonoDevelopProperties) = preSolution
+  StartupItem = Assembly-CSharp.csproj
+  Policies = $0
+  $0.TextStylePolicy = $1
+  $1.inheritsSet = null
+  $1.scope = text/x-csharp
+  $0.CSharpFormattingPolicy = $2
+  $2.inheritsSet = Mono
+  $2.inheritsScope = text/x-csharp
+  $2.scope = text/x-csharp
+  $0.TextStylePolicy = $3
+  $3.FileWidth = 120
+  $3.TabWidth = 4
+  $3.EolMarker = Unix
+  $3.inheritsSet = Mono
+  $3.inheritsScope = text/plain
+  $3.scope = text/plain
+  EndGlobalSection
 
-EndGlobal
+  EndGlobal

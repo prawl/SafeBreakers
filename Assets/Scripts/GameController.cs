@@ -5,24 +5,24 @@ using Rotorz.Tile.Internal;
 
 public class GameController : MonoBehaviour {
 
-	public static bool playerReady;
-	public static bool interactiveWindowOn = false;
+	public static int gameCount, enemyCount, doneMoving, nextTurn, numEnemies = 0;
+	public bool enemiesDone = true;
+	public GameObject[] guards;
+	public TileIndex start, end;
 	public Brush endTile;
-	public static GameObject[] guards;
-	public GameObject player;
-	public static int gameCount = 0;
-	public static int enemyCount = 0;
-	public static int doneMoving = 0;
-	public static int numEnemies;
-	public string scene;
-	public TileIndex start;
-	public TileIndex end;
 	public TileSystem tileSystem;
+	public GameObject player;
+	public static bool restart, playerReady;
+	public string scene;
+	public static bool interactiveWindowOn;
 
 	void Start () {
-    player = GameObject.FindGameObjectWithTag ("Player");
-    InventoryController.ResetCurrency();
-    CameraController.SetCameraFocus("Player");
+		restart = false;
+		player = GameObject.FindGameObjectWithTag ("Player");
+		guards = GameObject.FindGameObjectsWithTag ("Enemy");
+		numEnemies = guards.Length;
+		interactiveWindowOn = false;
+    	InventoryController.ResetCurrency();
 	}
 
 	void FixedUpdate() {
@@ -36,12 +36,9 @@ public class GameController : MonoBehaviour {
         MoveEnemies();
       }
 		}
-		if (CameraController.AbleToMoveCamera()) {
-      EnablePlayerReady();
+		/*if (CameraController.AbleToMoveCamera()) {
 			CameraController.PanCamera();
-		}
-		CheckIfMoving ();
-	}
+		}*/
 
 	void PaintEnd(){
 		for(int row = 0; row < tileSystem.RowCount; row++){
