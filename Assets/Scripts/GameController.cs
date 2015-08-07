@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour {
 
 	public static int gameCount, enemyCount, doneMoving, nextTurn, numEnemies = 0;
 	public bool enemiesDone = true;
-	public GameObject[] guards;
+	public static GameObject[] guards;
 	public TileIndex start, end;
 	public Brush endTile;
 	public TileSystem tileSystem;
@@ -39,6 +39,7 @@ public class GameController : MonoBehaviour {
 		/*if (CameraController.AbleToMoveCamera()) {
 			CameraController.PanCamera();
 		}*/
+  }
 
 	void PaintEnd(){
 		for(int row = 0; row < tileSystem.RowCount; row++){

@@ -39,7 +39,6 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	void Update () {
-		Restart ();
 		//CameraController.EnableCameraMovement ();	
 		if(GameController.playerReady){
 			if (Input.GetMouseButtonDown(0)) {
