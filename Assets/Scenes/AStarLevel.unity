@@ -12921,7 +12921,27 @@ Prefab:
       objectReference: {fileID: 315942070}
     - target: {fileID: 137878, guid: 5d087463578df724a86a8fb799352b35, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11489334, guid: 5d087463578df724a86a8fb799352b35, type: 2}
+      propertyPath: startTile.column
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11489334, guid: 5d087463578df724a86a8fb799352b35, type: 2}
+      propertyPath: startTile.row
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11489334, guid: 5d087463578df724a86a8fb799352b35, type: 2}
+      propertyPath: endTile.column
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11489334, guid: 5d087463578df724a86a8fb799352b35, type: 2}
+      propertyPath: endTile.row
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11489334, guid: 5d087463578df724a86a8fb799352b35, type: 2}
+      propertyPath: lineOfSight
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d087463578df724a86a8fb799352b35, type: 2}
@@ -16483,6 +16503,8 @@ GameObject:
   - 143: {fileID: 893534880}
   - 114: {fileID: 893534876}
   - 95: {fileID: 893534873}
+  - 114: {fileID: 893534878}
+  - 114: {fileID: 893534881}
   m_Layer: 2
   m_Name: Player
   m_TagString: Player
@@ -16582,8 +16604,28 @@ MonoBehaviour:
   next:
     row: 0
     column: 0
+  gameCon: {fileID: 0}
   camera: {fileID: 468591084}
   moving: 0
+--- !u!114 &893534878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 893534872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db9f3ba4714a0984fb247c85029f9912, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numOfEnemies: 0
+  startTile:
+    row: 0
+    column: 0
+  endTile:
+    row: 0
+    column: 0
+  player: {fileID: 0}
 --- !u!136 &893534879
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -16614,6 +16656,23 @@ CharacterController:
   m_SkinWidth: .0799999982
   m_MinMoveDistance: 9.99999975e-05
   m_Center: {x: 0, y: .0199999996, z: 0}
+--- !u!114 &893534881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 893534872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c7fd2fb5e5772d4980650d7db73564f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  windowRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
 --- !u!1001 &893567460
 Prefab:
   m_ObjectHideFlags: 0

@@ -10,9 +10,9 @@ public class NewPlayerController : MonoBehaviour {
 	public GameObject player;
 	public TileSystem tileSystem;
 	public TileIndex current, next;
-	//public GameController gameCon;
+	public New_GameController gameCon;
 	public Camera camera;
-	private Vector3 temp;
+	private Vector3 temp, nextLoc;
 	private CharacterController controller;
 	private float speed = 1;
 	public bool moving;
@@ -20,7 +20,7 @@ public class NewPlayerController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player");
-		//gameCon = gameObject.GetComponent<GameController> ();
+		gameCon = gameObject.GetComponent<New_GameController> ();
 		GetComponent<Renderer>().castShadows = true;
 		GetComponent<Renderer>().receiveShadows = true;
 		controller = gameObject.GetComponent<CharacterController> ();
@@ -40,13 +40,14 @@ public class NewPlayerController : MonoBehaviour {
 	}
 
 	void GetNextTile(){
-		if(Input.GetMouseButtonDown (0)){
+		if(Input.GetMouseButtonDown (0) && !moving && New_GameController.gameCount > New_GameController.playerCount){
 			Ray ray = camera.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit;
 			Physics.Raycast(ray, out hit);
 			next = tileSystem.ClosestTileIndexFromWorld(hit.point);
 		}
 		if(tileSystem.GetTile (next).gameObject.GetComponent<TileCheck>().valid){
+			nextLoc = tileSystem.GetTile (next).gameObject.transform.position;
 			MoveToNextTile ();
 		}
 	}
@@ -56,7 +57,6 @@ public class NewPlayerController : MonoBehaviour {
 	}
 
 	void MoveToNextTile(){
-		Vector3 nextLoc = tileSystem.GetTile (next).gameObject.transform.position;
 		nextLoc.y = 1;
 		if(!V3Equal (nextLoc, transform.position)){
 			moving = true;
@@ -70,6 +70,7 @@ public class NewPlayerController : MonoBehaviour {
 			tileSystem.GetTile (current).gameObject.GetComponent<TileCheck>().occupied = true;
 			transform.position = nextLoc;
 			moving = false;
+			New_GameController.playerCount++;
 		}
 	}
 

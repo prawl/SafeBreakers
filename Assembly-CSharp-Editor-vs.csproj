@@ -46,20 +46,6 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\AstarPathfindingProject\Editor\AnimationLinkEditor.cs" />
-     <Compile Include="Assets\AstarPathfindingProject\Editor\AstarPathEditor.cs" />
-     <Compile Include="Assets\AstarPathfindingProject\Editor\AstarUpdateWindow.cs" />
-     <Compile Include="Assets\AstarPathfindingProject\Editor\EditorGUIx.cs" />
-     <Compile Include="Assets\AstarPathfindingProject\Editor\EditorUtilities.cs" />
-     <Compile Include="Assets\AstarPathfindingProject\Editor\GraphEditors\GraphEditor.cs" />
-     <Compile Include="Assets\AstarPathfindingProject\Editor\GraphEditors\GridGeneratorEditor.cs" />
-     <Compile Include="Assets\AstarPathfindingProject\Editor\GraphEditors\NavMeshGeneratorEditor.cs" />
-     <Compile Include="Assets\AstarPathfindingProject\Editor\GraphEditors\PointGeneratorEditor.cs" />
-     <Compile Include="Assets\AstarPathfindingProject\Editor\GraphUpdateSceneEditor.cs" />
-     <Compile Include="Assets\AstarPathfindingProject\Editor\Misc\AstarEnumFlagDrawer.cs" />
-     <Compile Include="Assets\AstarPathfindingProject\Editor\ModifierEditors\RaycastModifierEditor.cs" />
-     <Compile Include="Assets\AstarPathfindingProject\Editor\ModifierEditors\SmoothModifierEditor.cs" />
-     <Compile Include="Assets\AstarPathfindingProject\Editor\SeekerEditor.cs" />
      <Compile Include="Assets\Editor\CrossPlatformInput\CrossPlatformInputInitialize.cs" />
      <Compile Include="Assets\JMO Assets\Cartoon FX Easy Editor\Editor\CFXEasyEditor.cs" />
      <Compile Include="Assets\JMO Assets\Cartoon FX\Editor\CFX_InspectorHelpEditor.cs" />
@@ -159,22 +145,39 @@
      <Compile Include="Assets\TK2DROOT\tk2dUI\Editor\Core\tk2dUIMaskEditor.cs" />
      <Compile Include="Assets\TK2DROOT\tk2dUI\Editor\Core\tk2dUIMethodBindingHelper.cs" />
      <Compile Include="Assets\TK2DROOT\tk2dUI\Editor\Core\tk2dUISpriteAnimatorEditor.cs" />
+     <Compile Include="Assets\TextFx\Editor\MenuOptionsTextFxNative.cs" />
+     <Compile Include="Assets\TextFx\Editor\MenuOptionsTextFxUGUI.cs" />
+     <Compile Include="Assets\TextFx\Editor\TextEffectsManager.cs" />
+     <Compile Include="Assets\TextFx\Editor\TextFxNative_Inspector.cs" />
+     <Compile Include="Assets\TextFx\Editor\TextFxUGUI_Inspector.cs" />
+     <Compile Include="Assets\TextFx\Editor\TextfxFontChangeListener.cs" />
+     <Compile Include="Assets\TextFx\Legacy Content\Editor\EffectManager_Inspector.cs" />
+     <Compile Include="Assets\TextFx\Legacy Content\Editor\TextEffectsManager.cs" />
+     <Compile Include="Assets\TextFx\Legacy Content\Editor\TextfxFontChangeListener.cs" />
      <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFX3 Multiply Color.shader" />
-     <None Include="Assets\AstarPathfindingProject\Editor\EditorAssets\Materials\Navmesh2.shader" />
+     <None Include="Assets\TextFx\AnimationConfigs\Outros\Deal.txt" />
+     <None Include="Assets\TextFx\AnimationConfigs\Mains\Dance.txt" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\LitSolidVertexColor.shader" />
      <None Include="Assets\Rotorz\Tile System\Shaders\Tileset-OpaqueUnlit.shader" />
      <None Include="Assets\JMO Assets\Cartoon FX\Shaders (Mobile)\CFXM_MobileParticleAdd_Alpha8.shader" />
      <None Include="Assets\TK2DROOT\tk2d\Goodies\TexturePacker\Exporter\2dtoolkit\exporter.xml" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\SolidVertexColor.shader" />
+     <None Include="Assets\TextFx\AnimationConfigs\Intros\Flung Out.txt" />
+     <None Include="Assets\TextFx\Legacy Content\Demo Scenes\Fonts\Bitmap Fonts\KarmaFuture.txt" />
      <None Include="Assets\TK2DROOT\tk2dUI\Shaders\DepthMask.shader" />
      <None Include="Assets\Plugins\AstarPathfindingProject\Plugins\DotNetZip\License.txt" />
+     <None Include="Assets\TextFx\AnimationConfigs\Outros\Flip X.txt" />
+     <None Include="Assets\TextFx\Legacy Content\Demo Scenes\Fonts\Bitmap Fonts\dirt2death.txt" />
      <None Include="Assets\Sprites-Shadow.shader" />
+     <None Include="Assets\TextFx\AnimationConfigs\AnimationConfigMains.txt" />
      <None Include="Assets\StrumpyShaderEditor\Editor\Resources\Internal\Temp\TempShader.shader" />
      <None Include="Assets\Rotorz\Tile System\Shaders\Tileset-TransparentUnlit.shader" />
+     <None Include="Assets\TextFx\Shader\Text Shader.shader" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\LitPremulVertexColor.shader" />
      <None Include="Assets\Plugins\AstarPathfindingProject\ExampleScenes\Materials\Projector Multiply.shader" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\PremulVertexColor.shader" />
      <None Include="Assets\TK2DROOT\tk2d_demo\Credits.txt" />
+     <None Include="Assets\TextFx\Legacy Content\Demo Scenes\Fonts\Bitmap Fonts\bring_the_noize.txt" />
      <None Include="Assets\Rotorz\Tile System\Shaders\Preview.shader" />
      <None Include="Assets\Materials\$CutoutBumpwithShadows.shader" />
      <None Include="Assets\Materials\$Sprites-Bumped Diffuse.shader" />
@@ -182,21 +185,33 @@
      <None Include="Assets\Pixel3D\README.txt" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\goodies\PackedTextMesh.shader" />
      <None Include="Assets\Rotorz\Tile System\!Readme.txt" />
+     <None Include="Assets\TextFx\AnimationConfigs\Intros\Mental House.txt" />
      <None Include="Assets\Plugins\HighlightingSystem\Resources\HighlightingTransparent.shader" />
+     <None Include="Assets\TextFx\AnimationConfigs\Intros\Rotate.txt" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\Blend2TexVertexColor.shader" />
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Simple.shader" />
      <None Include="Assets\JMO Assets\Cartoon FX\Shaders (Mobile)\CFXM_MobileParticleAlphaBlend_Alpha8.shader" />
+     <None Include="Assets\TextFx\AnimationConfigs\Mains\Bounce.txt" />
      <None Include="Assets\TK2DROOT\tk2dUI\Shaders\DepthMaskSolid.shader" />
      <None Include="Assets\Plugins\AstarPathfindingProject\ExampleScenes\Materials\DiffuseAlwaysVisible.shader" />
      <None Include="Assets\TK2DROOT\tk2dUI_demo\Assets\Dark\Fonts\Nunito24.fnt" />
      <None Include="Assets\Rotorz\Tile System\Demo\Hat Guy\Shaders\Diamond.shader" />
      <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFX3 Invert.shader" />
      <None Include="Assets\Plugins\HighlightingSystem\Resources\HighlightingComposite.shader" />
+     <None Include="Assets\TextFx\Legacy Content\Demo Scenes\Fonts\Bitmap Fonts\pseudo_saudi.txt" />
      <None Include="Assets\Plugins\AstarPathfindingProject\Plugins\dependencies.txt" />
+     <None Include="Assets\TextFx\AnimationConfigs\Outros\Shot Drop.txt" />
+     <None Include="Assets\TextFx\Utilities\Boomlagoon\JSON\Readme.txt" />
+     <None Include="Assets\TextFx\AnimationConfigs\Intros\Flip Y.txt" />
      <None Include="Assets\Rotorz\Tile System\Shaders\Tileset-TransparentDiffuse.shader" />
      <None Include="Assets\Plugins\AstarPathfindingProject\ExampleScenes\_Example Scenes.txt" />
+     <None Include="Assets\TextFx\AnimationConfigs\Mains\Spinning.txt" />
+     <None Include="Assets\TextFx\Legacy Content\Demo Scenes\Fonts\Bitmap Fonts\hawaii_killer.txt" />
      <None Include="Assets\JMO Assets\Cartoon FX Easy Editor\CartoonFX Easy Editor Readme.txt" />
+     <None Include="Assets\TextFx\Legacy Content\Demo Scenes\Fonts\Bitmap Fonts\brushed.txt" />
      <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFX4 Particle AlphaBlend+AddSoft.shader" />
+     <None Include="Assets\TextFx\README.txt" />
+     <None Include="Assets\TextFx\Legacy Content\Demo Scenes\Fonts\Bitmap Fonts\showcard_gothic.txt" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\resources\BlendVertexColor.shader" />
      <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFX4 Particle AlphaBlend+AddSoft VColor.shader" />
      <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFX4 Particle AlphaBlend+Add.shader" />
@@ -204,23 +219,36 @@
      <None Include="Assets\JMO Assets\!JMO Assets Readme.txt" />
      <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFX4 Hidden.shader" />
      <None Include="Assets\Plugins\AstarPathfindingProject\Readme_upgrading.txt" />
+     <None Include="Assets\TextFx\AnimationConfigs\AnimationConfigOutros.txt" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\LitCutoutVertexColor.shader" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\Rotorz\Tile System\Editor\TileSystem.Editor.xml" />
+     <None Include="Assets\TextFx\Legacy Content\Demo Scenes\Fonts\Bitmap Fonts\carbon.txt" />
+     <None Include="Assets\TextFx\AnimationConfigs\Intros\Deal.txt" />
+     <None Include="Assets\TextFx\AnimationConfigs\Intros\Wheel Spin.txt" />
+     <None Include="Assets\TextFx\AnimationConfigs\Mains\Shimmer.txt" />
+     <None Include="Assets\TextFx\Legacy Content\Demo Scenes\Fonts\Bitmap Fonts\showcard_gothic_drop_shadow.txt" />
      <None Include="Assets\Basic Outline.shader" />
      <None Include="Assets\Plugins\AstarPathfindingProject\ExampleScenes\Materials\Projector Light.shader" />
+     <None Include="Assets\TextFx\Legacy Content\Demo Scenes\Fonts\Bitmap Fonts\punk.txt" />
      <None Include="Assets\Rotorz\Tile System\Editor\Languages\en-GB.txt" />
      <None Include="Assets\Plugins\HighlightingSystem\Resources\HighlightingBlit.shader" />
+     <None Include="Assets\TextFx\Legacy Content\Demo Scenes\Fonts\Bitmap Fonts\katy_berry.txt" />
      <None Include="Assets\TK2DROOT\tk2d\Editor\EditorUtility.shader" />
+     <None Include="Assets\TextFx\AnimationConfigs\Intros\Spin X.txt" />
+     <None Include="Assets\TextFx\AnimationConfigs\Intros\Epic.txt" />
      <None Include="Assets\SilhoetteOnly.shader" />
      <None Include="Assets\JMO Assets\Cartoon FX\Shaders\CFX4 Particle AlphaBlend+Add VColor.shader" />
      <None Include="Assets\Plugins\AstarPathfindingProject\Readme.txt" />
      <None Include="Assets\Rotorz\Tile System\Support\Release Notes.txt" />
      <None Include="Assets\Plugins\HighlightingSystem\Resources\HighlightingOpaque.shader" />
      <None Include="Assets\Rotorz\Tile System\Shaders\Preview-SeeThrough.shader" />
+     <None Include="Assets\TextFx\AnimationConfigs\Outros\Drop Up.txt" />
      <None Include="Assets\Standard Assets\Environment\Water\Water\Shaders\FXWaterPro.shader" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\CutoutVertexColor.shader" />
      <None Include="Assets\TK2DROOT\tk2d_demo\demobmfont\test.fnt" />
+     <None Include="Assets\TextFx\AnimationConfigs\Outros\Rotate.txt" />
+     <None Include="Assets\TextFx\AnimationConfigs\Intros\Type Writer.txt" />
      <None Include="Assets\Transparent.shader" />
      <None Include="Assets\ShowThrough.shader" />
      <None Include="Assets\TK2DROOT\tk2dUI_demo\Assets\Font\OldSansBlack\OldSansBlack.fnt" />
@@ -230,10 +258,21 @@
      <None Include="Assets\TK2DROOT\tk2dUI_demo\Assets\Dark\Fonts\Nunito32.fnt" />
      <None Include="Assets\Plugins\AstarPathfindingProject\Plugins\JsonFx\Readme.txt" />
      <None Include="Assets\JMO Assets\Cartoon FX\CartoonFX4 Readme.txt" />
+     <None Include="Assets\TextFx\AnimationConfigs\Intros\Flip X.txt" />
+     <None Include="Assets\TextFx\Legacy Content\Demo Scenes\Fonts\Bitmap Fonts\armalite.txt" />
+     <None Include="Assets\TextFx\AnimationConfigs\Outros\Flip Y.txt" />
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\WaterInclude.cginc" />
+     <None Include="Assets\TextFx\AnimationConfigs\Outros\Blink.txt" />
+     <None Include="Assets\TextFx\AnimationConfigs\AnimationConfigIntros.txt" />
+     <None Include="Assets\TextFx\AnimationConfigs\Intros\Drop Down.txt" />
+     <None Include="Assets\TextFx\AnimationConfigs\AnimationConfigs2.txt" />
      <None Include="Assets\Plugins\HighlightingSystem\Resources\HighlightingCut.shader" />
      <None Include="Assets\Standard Assets\Environment\Water\Water4\Shaders\FXWater4Advanced.shader" />
+     <None Include="Assets\TextFx\AnimationConfigs\Outros\Spin X.txt" />
+     <None Include="Assets\TextFx\AnimationConfigs\Intros\Blink.txt" />
      <None Include="Assets\Rotorz\Tile System\Shaders\Tileset-OpaqueDiffuse.shader" />
+     <None Include="Assets\TextFx\Legacy Content\Demo Scenes\Fonts\Bitmap Fonts\8bit_limit.txt" />
+     <None Include="Assets\TextFx\Legacy Content\Demo Scenes\Fonts\Bitmap Fonts\wide_awake.txt" />
      <None Include="Assets\TK2DROOT\tk2d\Shaders\AdditiveVertexColor.shader" />
      <None Include="Assets\Rotorz\Tile System\TileSystem.Runtime.xml" />
      <None Include="Assets\Plugins\AstarPathfindingProject\link.xml" />
@@ -263,12 +302,6 @@
  </Reference>
  <Reference Include="UnityEngine.Analytics">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityAnalytics/UnityEngine.Analytics.dll</HintPath>
- </Reference>
- <Reference Include="Pathfinding.Ionic.Zip.Reduced">
- <HintPath>C:/Users/Bradley/Desktop/Creech Monster/Unity/Safebreakers/Assets/AstarPathfindingProject/Plugins/DotNetZip/Pathfinding.Ionic.Zip.Reduced.dll</HintPath>
- </Reference>
- <Reference Include="Pathfinding.JsonFx">
- <HintPath>C:/Users/Bradley/Desktop/Creech Monster/Unity/Safebreakers/Assets/AstarPathfindingProject/Plugins/JsonFx/Pathfinding.JsonFx.dll</HintPath>
  </Reference>
  <Reference Include="JMOAssets">
  <HintPath>C:/Users/Bradley/Desktop/Creech Monster/Unity/Safebreakers/Assets/JMO Assets/Editor/JMOAssets.dll</HintPath>
