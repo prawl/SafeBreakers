@@ -39,7 +39,6 @@ public class PlayerController : MonoBehaviour {
 	}
 	
 	void Update () {
-		Restart ();
 		if(GameController.playerReady){
 			if (Input.GetMouseButtonDown(0)) {
 				if(GameController.gameCount == GameController.enemyCount && GameController.nextTurn == 0){

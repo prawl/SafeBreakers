@@ -36,9 +36,8 @@ public class GameController : MonoBehaviour {
         MoveEnemies();
       }
 		}
-		/*if (CameraController.AbleToMoveCamera()) {
-			CameraController.PanCamera();
-		}*/
+  }
+
 	void PaintEnd(){
 		for(int row = 0; row < tileSystem.RowCount; row++){
 			for(int column = 0; column<tileSystem.ColumnCount; column++){
