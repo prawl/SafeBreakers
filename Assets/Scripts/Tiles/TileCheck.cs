@@ -12,32 +12,19 @@ public class TileCheck : MonoBehaviour {
 	public Renderer render;
 	public TileHighlighter tileHighlighter;
 
-	// Use this for initialization
 	void Start () {
 		render = gameObject.GetComponent<Renderer> ();
 		tileHighlighter = gameObject.GetComponent<TileHighlighter> ();
 		if(tileHighlighter == null){
 			tileHighlighter = gameObject.AddComponent<TileHighlighter>();
 		}
-		valid = false;
-		occupied = false;
+    TileNotValid();
+    TileNotOccupied();
 		end = false;
 	}
-	
-	void OnTriggerEnter(Collider other){
-		occupier = other.gameObject.tag;
-		occupierObject = other.gameObject;
-		occupied = true;
-		valid = false;
-	}
 
-	void OnTriggerExit(Collider other){
-		occupied = false;
-	}
-
-	// Update is called once per frame
 	void Update () {
-		if(valid){
+		if(TileValid()){
 			render.material.color = Color.green;
 			tileHighlighter.enabled = true;
 		}
@@ -45,8 +32,43 @@ public class TileCheck : MonoBehaviour {
 			render.material.color = Color.white;
 			tileHighlighter.enabled = false;
 		}
-		if (occupied) {
-			valid = false;
+		if (TileOccupied()) {
+      TileNotValid();
 		}
 	}
+	
+	void OnTriggerEnter(Collider other){
+		occupier = other.gameObject.tag;
+		occupierObject = other.gameObject;
+    TileIsOccupied();
+    TileNotValid();
+	}
+
+	void OnTriggerExit(Collider other){
+    TileNotOccupied();
+	}
+
+  public bool TileOccupied() {
+    return occupied;
+  }
+
+  public void TileIsOccupied (){
+    occupied = true;
+  }
+
+  public void TileNotOccupied() {
+    occupied = false;
+  }
+
+  public bool TileValid(){
+    return valid;
+  }
+
+  public void TileIsValid(){
+    valid = true;
+  }
+
+  public void TileNotValid(){
+    valid = false;
+  }
 }

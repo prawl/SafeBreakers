@@ -11593,30 +11593,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkAfterTime: 3
-  repeatCheckTime: 1
-  repeatEveryTime: 1
+  repeatCheckTime: 0
+  repeatEveryTime: 10
   checkAfterFrames: 1
   repeatCheckFrame: 1
   repeatEveryFrame: 1
   hasFailed: 0
-  checkMethods: 3
+  checkMethods: 2
   m_ActionBase: {fileID: 3366983}
   checksPerformed: 0
---- !u!114 &637442874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 637442867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d545b1288d5fc74d8e6c961fb67ab18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  afterFrames: 0
-  afterSeconds: 4
-  callOnMethod: 0
-  methodToCall: 0
 --- !u!1001 &647507423
 Prefab:
   m_ObjectHideFlags: 0
@@ -32558,7 +32543,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeout: 10
   ignored: 0
-  succeedAfterAllAssertionsAreExecuted: 0
+  succeedAfterAllAssertionsAreExecuted: 1
   expectException: 0
   expectedExceptionList: 
   succeedWhenExceptionIsThrown: 0
