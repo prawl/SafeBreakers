@@ -8,24 +8,23 @@ using Rotorz.Tile.Internal;
 [RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour {
 	
-	public Animator playerAnimator;
-  public static bool godMode = false;
-	public static bool move;
-	public static bool spotted = false;
-	public static bool occupied;
-	public float distance;
-	public float speed;
 	public GameObject player;
-	public GameController controllerScript;
-	public Rigidbody rigid;
-  public static int steps = 0;
 	public TileSystem tileSystem;
 	public TileIndex current;
-	public TileHighlight highlighter;
+	public float distance;
 	public Vector3 temp;
+	public Rigidbody rigid;
+	public float speed;
+	public static bool move;
+	public bool occupied;
+	public static bool spotted;
+	public GameController controllerScript;
+	public TileHighlight highlighter;
+	public Animator playerAnimator;
 	
+	// Use this for initialization
 	void Start () {
-    ResetSpotted();
+		spotted = false;
 		playerAnimator = player.GetComponent<Animator> ();
 		highlighter = player.GetComponent<TileHighlight> ();
 		controllerScript = player.GetComponent<GameController> ();
@@ -35,10 +34,14 @@ public class PlayerController : MonoBehaviour {
 		temp.y = 1.1f;
 		player.transform.position = temp;
 		speed = 1.0f;
-    EnableShadowRender();
+		GetComponent<Renderer>().castShadows = true;
+		GetComponent<Renderer>().receiveShadows = true;
 	}
 	
+	// Update is called once per frame
 	void Update () {
+		Restart ();
+		//CameraController.EnableCameraMovement ();	
 		if(GameController.playerReady){
 			if (Input.GetMouseButtonDown(0)) {
 				if(GameController.gameCount == GameController.enemyCount && GameController.nextTurn == 0){
@@ -47,26 +50,27 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 		if(move){
+			//CameraController.DisableCameraMovement();
 			player.transform.position = Vector3.MoveTowards (player.transform.position, temp, Time.deltaTime*speed);
 			checkLoc ();
+			//CameraController.SetCameraFocus("Player");
 		}		
+	}
+
+	void Restart(){
+		if(GameController.restart){
+			Start ();
+		}
 	}
 
 	void checkLoc(){
 		if(player.transform.position == temp){
-      DisableMovement();
+			move = false;
 		}
 	}
-  
-  // Skips the players turn and lets all enemies advance once
-  public static void SkipTurn(){
-    if (GameController.ActorsDoneMoving() && GameController.PlayerReady()){
-      GameController.gameCount++;
-    }
-  }
 
 	void MoveToLocation(){
-    DisableMovement();
+		move = false;
 		temp = new Vector3 ();
 		Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 		RaycastHit hit;
@@ -74,7 +78,7 @@ public class PlayerController : MonoBehaviour {
 		TileIndex next = tileSystem.ClosestTileIndexFromWorld (hit.point);
 		move = highlighter.CheckIfValid (next);
 		occupied = highlighter.CheckIfOccupied (next);
-		if (CanMove() && !TileOccupied()) {
+		if (move == true && occupied == false) {
 			temp = tileSystem.WorldPositionFromTileIndex (next, true);
 			temp.y = 1.1f;
 			GameController.gameCount++;
@@ -87,63 +91,4 @@ public class PlayerController : MonoBehaviour {
 	IEnumerator wait(){
 		yield return new WaitForSeconds(1f);			
 	}
-
-  public static bool TileOccupied(){
-    return occupied;
-  }
-
-  public static string StepsTaken(){
-    steps = GameController.gameCount;
-    return steps.ToString();
-  }
-
-  public static bool GodMode(){
-    return godMode;
-  }
-
-  public static void EnableGodMode(){
-    godMode = true;
-  }
-
-  public static void DisableGodMode(){
-    godMode = false;
-  }
-
-  public static void ToggleGodMode(){
-    if (GodMode()){
-      DisableGodMode();
-    } else {
-      EnableGodMode();
-    }
-  }
-
-  public static bool Spotted(){
-    return spotted;
-  }
-
-  // The player has been seen
-  public static void PlayerSpotted(){
-    spotted = true;
-  }
-
-  public static void ResetSpotted(){
-    spotted = false;
-  }
-
-  public static bool CanMove(){
-    return move;
-  }
-
-  public static void EnableMovement(){
-    move = true;
-  }
-
-  public static void DisableMovement(){
-    move = false;
-  }
-
-  private void EnableShadowRender(){
-		GetComponent<Renderer>().castShadows = true;
-		GetComponent<Renderer>().receiveShadows = true;
-  }
 }

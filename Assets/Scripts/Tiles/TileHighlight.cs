@@ -5,13 +5,13 @@ using Rotorz.Tile.Internal;
 
 public class TileHighlight : MonoBehaviour {
 
+	public TileSystem tileSystem; 
+	public GameObject player; 
+	public PlayerController playerController; 
+	public TileIndex current; 
 	public Brush possibleLoc; 
 	public Brush defaultLoc; 
 	public int tempGameCount;
-	public GameObject player; 
-	public PlayerController playerController; 
-	public TileSystem tileSystem; 
-	public TileIndex current; 
 
 	// Use this for initialization
 	void Start () {
@@ -25,9 +25,10 @@ public class TileHighlight : MonoBehaviour {
 		HighlightMoves ();
 	}
 	
+
 	void HighlightMoves(){
 		current = tileSystem.ClosestTileIndexFromWorld (player.transform.position);
-		if(!GameController.playerReady || GameController.EnemiesReadyToMove() == true){
+		if(!GameController.playerReady || GameController.gameCount > GameController.enemyCount){
 			for(int row = 0; row < tileSystem.RowCount; row++){
 				for(int column = 0; column<tileSystem.ColumnCount; column++){
 					defaultLoc.Paint (tileSystem, row, column);
@@ -35,8 +36,8 @@ public class TileHighlight : MonoBehaviour {
 			}
 		}
 		
-		if(GameController.PlayerReady() && GameController.ActorsDoneMoving()){
-			if(!PlayerController.CanMove()){
+		if(GameController.playerReady && GameController.gameCount == GameController.enemyCount){
+			if(!PlayerController.move && GameController.nextTurn == 0){
 				for(int row = 0; row < tileSystem.RowCount; row++){
 					for(int column = 0; column < tileSystem.ColumnCount; column++){
 						if((int.Parse (current.row.ToString ()) + 1 == row) && (int.Parse (current.column.ToString ()) == column)

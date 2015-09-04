@@ -1,11 +1,10 @@
 # =============== #
 # Unity generated #
-/[Ll]ibrary/
-/[Tt]emp/
-/[Oo]bj/
-/[Bb]uild/
+# =============== #
+Temp/
+Library/
 
-# =============== ## ===================================== #
+# ===================================== #
 # Visual Studio / MonoDevelop generated #
 # ===================================== #
 ExportedObj/
@@ -28,7 +27,8 @@ Temp
 *.pidb
 *.unityproj
 *.sln
-*.userprefs
+*.userpref
+
 # ============ #
 # OS generated #
 # ============ #

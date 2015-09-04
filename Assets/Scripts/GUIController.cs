@@ -3,8 +3,6 @@ using System.Collections;
 
 public class GUIController : MonoBehaviour {
 
-	private static bool timer =  false;
-	private static bool purchase = false;
 	private static bool isPaused = false;
 	private static bool displayInventory = false;
 	private static bool showMenu = false;
@@ -15,52 +13,17 @@ public class GUIController : MonoBehaviour {
 	private static float xPos;
 	private static float yPos;
 	private static float yItemPos = 150;
-	private static float x, y;
+	private static bool timer =  false;
+	private static bool purchase = false;
+	private static string textTimer;
+	private static string textCurrency;
+	private static int restSeconds;
+	private static int displaySeconds;
+	private static int displayMinutes;
+	private static int roundedRestSeconds;
 	private static int timerWidth = 100;
 	private static int timerHeight = 50;
-	private static string textCurrency;
-	private static Texture2D knockOutImage;
-	private static AudioClip knockOutSound;
-
-  void Start(){
-    knockOutImage = Resources.Load("fist") as Texture2D;
-    knockOutSound = Resources.Load("knock_out_sound") as AudioClip;
-  }
-
-  void OnGUI(){
-		if (GUI.Button (new Rect(0, 0, 100, 50), "Pause")){
-			PauseGame();
-			HideInventory();
-			HidePurchase();
-		}
-		if (PauseActive()){
-			GUI.enabled = false; // When paused, disable Backpack and Shop GUI buttons (grayed-out) 
-		}
-		if (GUI.Button (new Rect(0, 55, 100, 50), "Backpack")){	
-			ToggleInventory();
-		}
-		if (GUI.Button (new Rect(Screen.width-100, 0, 100, 50), "Shop")){	
-			TogglePurchaseWindow();
-		}
-		GUI.enabled = true;
-    if (GameIsPaused()) {
-			FreezeTime();
-			ActivatePauseMenu();
-		}
-		if (PauseActive()) {
-			DisplayPauseMenu();
-		}
-		if (InventoryActive()){
-		  DisplayInventory();
-		}
-    if (PurchaseActive()){
-      DisplayPurchaseWindow();
-    }
-  }
-
-  public static void PlayKnockOutSound(){
-    AudioSource.PlayClipAtPoint(knockOutSound, Camera.main.transform.position);
-  }
+	private static float x, y;
 
   public static void TogglePurchaseWindow(){
     if (PurchaseActive()){
@@ -121,8 +84,20 @@ public class GUIController : MonoBehaviour {
 		showMenu = false;
 	}
 
-  public static bool PauseActive(){
+	public static bool PauseActive(){
 		return showMenu;
+	}
+
+	public static bool TimerActive(){
+		return timer;
+	}
+
+	public static void ActivateTimer(){
+		 timer = true;
+	}
+
+	public static void HideTimer(){
+		 timer = false;
 	}
 
 	public static void HidePurchase(){
@@ -137,28 +112,38 @@ public class GUIController : MonoBehaviour {
 		return purchase;
 	}
 
+  public static void DisplayTimer(){
+    GUIStyle style = new GUIStyle();
+		style.normal.textColor = Color.white;
+	  style.alignment = TextAnchor.MiddleCenter;
+		style.fontSize = 25;
+		roundedRestSeconds = Mathf.CeilToInt(Time.time);
+		displaySeconds = roundedRestSeconds % 60;
+		displayMinutes = roundedRestSeconds / 60;
+		textTimer = string.Format ("{0:00}:{1:00}", displayMinutes, displaySeconds);	
+	  GUI.Label (new Rect((Screen.width-timerWidth)/2, 0, timerWidth, timerHeight), textTimer, style);
+  }
+
   public static void DisplayInventory(){
+	  GUI.Box (new Rect(0, 1, buttonWidth/2, Screen.height), "");
+		if (GUI.Button (new Rect (0, yItemPos, 100, 50), "Smoke Bomb")) {
+		}
+		if (GUI.Button (new Rect (0, yItemPos + 60, 100, 50), "Tranq Gun")) {
+	  }
   }
 
   public static void CreatePopUpMenu(GameObject[] enemies){
 			GUI.backgroundColor = Color.red; // GUI set to red so you can actually see it
 			if (enemies.Length > 0){
 				foreach(GameObject enemy in enemies){
-          if (enemy != null){
-            Vector3 screenPos = Camera.main.WorldToScreenPoint(enemy.transform.position);
-            xPos = screenPos.x - 250 / 2; // Center button horizontally over targets head
-            yPos = -screenPos.y + Screen.height / 1.25f;
-            float xSpacing = new float();
-            xSpacing = (250 / 2) - (100 / 2);
-            GUI.backgroundColor = new Color(0,0,0,0);
-            if (EnemyGuard.EnemyAwake()){
-              if (GUI.Button (new Rect((xPos + xSpacing), (yPos), 100, 50), knockOutImage)) {
-                EnemyGuard.KnockOutEnemy();
-                EnemyGuard.StartWaitAmount(3);
-                PlayKnockOutSound();
-              }
-            }
-          }
+					Vector3 screenPos = Camera.main.WorldToScreenPoint(enemy.transform.position);
+					xPos = screenPos.x - 250 / 2; // Center button horizontally over targets head
+					yPos = -screenPos.y + Screen.height / 1.25f;
+					float xSpacing = new float(); 
+					xSpacing = (250 / 2) - (100 / 2);
+					if (GUI.Button (new Rect((xPos + xSpacing), (yPos), 100, 50), "Knockout")) {
+						Destroy(enemy);
+					}
 				}
 		 }
 	}				
@@ -181,6 +166,7 @@ public class GUIController : MonoBehaviour {
     FreezeTime();
 		xPos = (Screen.width - purchaseBoxWidth)/2;
 		yPos = (Screen.height - purchaseBoxHeight)/2;
+
     textCurrency = string.Format("Currency: {0}", InventoryController.DisplayCurrency());
     GUI.Box(new Rect(xPos, yPos, purchaseBoxWidth, purchaseBoxHeight), "");
     GUI.Label(new Rect(xPos + 70, yPos + 15, 100, 50), textCurrency);

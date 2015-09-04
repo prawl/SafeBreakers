@@ -45,16 +45,16 @@ Material:
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _Normal
+          name: _2DReflect
         second:
-          m_Texture: {fileID: 2800000, guid: 22c4cf005fa3c2e4784103319589fecf, type: 3}
+          m_Texture: {fileID: 0}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
         first:
-          name: _2DReflect
+          name: _Normal
         second:
-          m_Texture: {fileID: 0}
+          m_Texture: {fileID: 2800000, guid: 22c4cf005fa3c2e4784103319589fecf, type: 3}
           m_Scale: {x: 1, y: 1}
           m_Offset: {x: 0, y: 0}
       data:
@@ -75,16 +75,16 @@ Material:
         second: 50
       data:
         first:
-          name: _SelfIllumination
-        second: 1.71641791
-      data:
-        first:
           name: _SelfIllumStrength
         second: 1.5
       data:
         first:
           name: _RoomReflectionAmount
         second: 2.92537308
+      data:
+        first:
+          name: _SelfIllumination
+        second: 1.71641791
       data:
         first:
           name: _NonLightmapColorMod
@@ -108,12 +108,12 @@ Material:
         second: {r: .999898911, g: 1, b: .999841869, a: 1}
       data:
         first:
-          name: _SpecularColor
-        second: {r: .800000012, g: .800000012, b: .800000012, a: .800000012}
-      data:
-        first:
           name: _TintColor
         second: {r: .999903023, g: 1, b: .999830008, a: 1}
+      data:
+        first:
+          name: _SpecularColor
+        second: {r: .800000012, g: .800000012, b: .800000012, a: .800000012}
 --- !u!1002 &2100001
 EditorExtensionImpl:
   serializedVersion: 6

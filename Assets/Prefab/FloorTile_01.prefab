@@ -89,6 +89,7 @@ MonoBehaviour:
   occupied: 0
   valid: 0
   end: 0
+  selected: 0
   occupier: 
   render: {fileID: 0}
   tileHighlighter: {fileID: 0}
@@ -111,7 +112,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 178786}

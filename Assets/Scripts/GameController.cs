@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour {
 
 	public static int gameCount, enemyCount, doneMoving, nextTurn, numEnemies = 0;
 	public bool enemiesDone = true;
-	public static GameObject[] guards;
+	public GameObject[] guards;
 	public TileIndex start, end;
 	public Brush endTile;
 	public TileSystem tileSystem;
@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour {
 	public string scene;
 	public static bool interactiveWindowOn;
 
+	// Use this for initialization
 	void Start () {
 		restart = false;
 		player = GameObject.FindGameObjectWithTag ("Player");
@@ -24,19 +25,6 @@ public class GameController : MonoBehaviour {
 		interactiveWindowOn = false;
     	InventoryController.ResetCurrency();
 	}
-
-	void FixedUpdate() {
-    GetNumberOfGuards();
-		PaintEnd ();
-		if(PlayerController.Spotted() && !PlayerController.GodMode()){
-			RestartGame ();
-		}
-		if (EnemiesReadyToMove()) {
-      if (doneMoving == numEnemies){
-        MoveEnemies();
-      }
-		}
-  }
 
 	void PaintEnd(){
 		for(int row = 0; row < tileSystem.RowCount; row++){
@@ -48,39 +36,47 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
+	void CheckIfActivePanel(){
+
+	}
+
+	// Update is called once per frame
+	void FixedUpdate() {
+		PaintEnd ();
+		bool spotted = CheckIfSpotted ();
+		if(spotted){
+			RestartGame ();
+		}
+		if (gameCount > enemyCount) {
+			if(doneMoving == numEnemies){
+				enemyCount++;
+				doneMoving = 0;
+			}
+		}
+		/*if (CameraController.AbleToMoveCamera()) {
+			CameraController.PanCamera();
+		}*/
+
+		if (nextTurn == numEnemies) {
+			nextTurn = 0;
+		}
+		CheckIfMoving ();
+	}
+
 	void CheckIfMoving(){
-    EnablePlayerReady();
+		playerReady = true;
 		for(int i = 0; i < numEnemies; i++){
 			GameObject temp = guards[i];
-      if (temp != null) {
-        EnemyGuard tempScript = temp.GetComponent<EnemyGuard>();
-        if(tempScript.moving){
-          DisablePlayerReady();
-        }
-      }
+			EnemyGuard tempScript = temp.GetComponent<EnemyGuard>();
+			if(tempScript.moving){
+				playerReady = false;
+			}
 		}
 	}
 
-  void MoveEnemies(){
-    enemyCount++;
-    doneMoving = 0;
-  }
-
-  public static bool EnemiesReadyToMove(){
-    if (gameCount > enemyCount){
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  public static bool ActorsDoneMoving(){
-    if (gameCount == enemyCount){
-      return true;
-    } else {
-      return false;
-    }
-  }
+	bool CheckIfSpotted(){
+		return PlayerController.spotted;
+	}
 
 	void RestartGame(){
 		if (gameCount == enemyCount) {
@@ -88,28 +84,56 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
-  public static void ShowNPCInteractions(){
-    GUIController.CreatePopUpMenu(guards);
-  }
+	void OnGUI(){
+	  GUIController.DisplayTimer();
 
-  public static void EnablePlayerReady(){
-    playerReady = true;
-  }
+		if (GUI.Button (new Rect(0, 0, 100, 50), "Pause")){
+			GUIController.PauseGame();
+			GUIController.HideInventory();
+			GUIController.HidePurchase();
+		}
 
-  public static void DisablePlayerReady(){
-    playerReady = false;
-  }
+		if (GUIController.PauseActive()){
+			GUI.enabled = false; // When paused, disable Backpack and Shop GUI buttons (grayed-out) 
+		}
 
-  public static bool PlayerReady(){
-    return playerReady;
-  }
+		if (GUI.Button (new Rect(0, 55, 100, 50), "Backpack")){	
+			GUIController.ToggleInventory();
+		}
+		if (GUI.Button (new Rect(Screen.width-100, 0, 100, 50), "Shop")){	
+			GUIController.TogglePurchaseWindow();
+		}
 
-  void GetNumberOfGuards(){
-		guards = GameObject.FindGameObjectsWithTag ("Enemy");
-		numEnemies = guards.Length;
-  }
+		GUI.enabled = true; 
 
-  public static int GetGameCount(){
-    return gameCount;
-  }
+  	if (GUIController.GameIsPaused()) {
+			GUIController.FreezeTime();
+			GUIController.ActivatePauseMenu();
+		}
+		if (GUIController.PauseActive()) {
+			GUIController.DisplayPauseMenu();
+		}
+		if (GUIController.InventoryActive()){
+		  GUIController.DisplayInventory();
+			GUIController.CreatePopUpMenu(guards);
+		}
+    if (GUIController.PurchaseActive()){
+      GUIController.DisplayPurchaseWindow();
+    }
+	}
+
+  // Use this in FixedUpdate method to see more detailed info about what you're currently clicking on
+	void ClickInfoDebug(){
+	 if (Input.GetMouseButtonDown (0)) {
+		 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+		 RaycastHit hit;
+				if (Physics.Raycast(ray, out hit)) {
+					 Debug.Log ("Name = " + hit.collider.name);
+					 Debug.Log ("Tag = " + hit.collider.tag);
+					 Debug.Log ("Hit Point = " + hit.point);
+					 Debug.Log ("Object position = " + hit.collider.gameObject.transform.position);
+					 Debug.Log ("--------------");
+				}
+		 }	
+	}
 }

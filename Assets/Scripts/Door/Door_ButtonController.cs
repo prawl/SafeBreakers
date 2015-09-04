@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Door_ButtonController {
+public class Door_ButtonController : MonoBehaviour {
 
 	public bool selected;
 	public bool valid;

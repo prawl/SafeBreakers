@@ -6,9 +6,8 @@ using HighlightingSystem;
 
 public class TileCheck : MonoBehaviour {
 
-	public bool occupied, valid, end;
+	public bool occupied, valid, end, selected;
 	public string occupier;
-  public GameObject occupierObject;
 	public Renderer render;
 	public TileHighlighter tileHighlighter;
 
@@ -22,11 +21,11 @@ public class TileCheck : MonoBehaviour {
 		valid = false;
 		occupied = false;
 		end = false;
+		selected = false;
 	}
 	
 	void OnTriggerEnter(Collider other){
 		occupier = other.gameObject.tag;
-		occupierObject = other.gameObject;
 		occupied = true;
 		valid = false;
 	}
