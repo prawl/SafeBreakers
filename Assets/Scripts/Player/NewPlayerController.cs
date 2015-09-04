@@ -16,10 +16,13 @@ public class NewPlayerController : MonoBehaviour {
 	private CharacterController controller;
 	private float speed = 1;
 	public bool moving;
+	private Rigidbody rigid;
 
 	// Use this for initialization
 	void Start () {
+		gameObject.tag = "Player";
 		player = GameObject.FindGameObjectWithTag ("Player");
+		rigid = gameObject.GetComponent<Rigidbody> ();
 		gameCon = gameObject.GetComponent<New_GameController> ();
 		GetComponent<Renderer>().castShadows = true;
 		GetComponent<Renderer>().receiveShadows = true;
@@ -45,8 +48,11 @@ public class NewPlayerController : MonoBehaviour {
 			RaycastHit hit;
 			Physics.Raycast(ray, out hit);
 			next = tileSystem.ClosestTileIndexFromWorld(hit.point);
+			if(tileSystem.GetTile (next).gameObject.GetComponent<TileCheck>().valid && tileSystem.GetTile (next).gameObject.GetComponent<TileCheck>().occupier != "Player"){
+				moving = true;
+			}
 		}
-		if(tileSystem.GetTile (next).gameObject.GetComponent<TileCheck>().valid){
+		if(tileSystem.GetTile (next).gameObject.GetComponent<TileCheck>().valid && moving){
 			nextLoc = tileSystem.GetTile (next).gameObject.transform.position;
 			MoveToNextTile ();
 		}
@@ -59,15 +65,12 @@ public class NewPlayerController : MonoBehaviour {
 	void MoveToNextTile(){
 		nextLoc.y = 1;
 		if(!V3Equal (nextLoc, transform.position)){
-			moving = true;
 			Vector3 dir = (nextLoc - transform.position).normalized;
 			dir *= Time.fixedDeltaTime * speed;
 			controller.Move (dir);
 		}
 		if(V3Equal(nextLoc, transform.position)){
-			tileSystem.GetTile (current).gameObject.GetComponent<TileCheck>().occupied = false;
 			current = next;
-			tileSystem.GetTile (current).gameObject.GetComponent<TileCheck>().occupied = true;
 			transform.position = nextLoc;
 			moving = false;
 			New_GameController.playerCount++;
@@ -92,10 +95,16 @@ public class NewPlayerController : MonoBehaviour {
 				if(!tileSystem.GetTile (current.row + 1, current.column).gameObject.GetComponent<TileCheck>().occupied){
 					tileSystem.GetTile (current.row + 1, current.column).gameObject.GetComponent<TileCheck>().valid = true;
 				}
+				if(tileSystem.GetTile (current.row + 1, current.column).gameObject.GetComponent<TileCheck>().occupied && tileSystem.GetTile (current.row + 1, current.column).gameObject.GetComponent<TileCheck>().occupier == "Player"){
+					tileSystem.GetTile (current.row + 1, current.column).gameObject.GetComponent<TileCheck>().valid = true;
+				}
 			}
 			catch{}
 			try{
 				if(!tileSystem.GetTile (current.row - 1, current.column).gameObject.GetComponent<TileCheck>().occupied){
+					tileSystem.GetTile (current.row - 1, current.column).gameObject.GetComponent<TileCheck>().valid = true;
+				}
+				if(tileSystem.GetTile (current.row - 1, current.column).gameObject.GetComponent<TileCheck>().occupied && tileSystem.GetTile (current.row - 1, current.column).gameObject.GetComponent<TileCheck>().occupier == "Player"){
 					tileSystem.GetTile (current.row - 1, current.column).gameObject.GetComponent<TileCheck>().valid = true;
 				}
 			}
@@ -104,10 +113,16 @@ public class NewPlayerController : MonoBehaviour {
 				if(!tileSystem.GetTile (current.row, current.column + 1).gameObject.GetComponent<TileCheck>().occupied){
 					tileSystem.GetTile (current.row, current.column + 1).gameObject.GetComponent<TileCheck>().valid = true;
 				}
+				if(tileSystem.GetTile (current.row, current.column + 1).gameObject.GetComponent<TileCheck>().occupied && tileSystem.GetTile (current.row, current.column + 1).gameObject.GetComponent<TileCheck>().occupier == "Player"){
+					tileSystem.GetTile (current.row, current.column + 1).gameObject.GetComponent<TileCheck>().valid = true;
+				}
 			}
 			catch{}
 			try{
 				if(!tileSystem.GetTile (current.row, current.column - 1).gameObject.GetComponent<TileCheck>().occupied){
+					tileSystem.GetTile (current.row, current.column - 1).gameObject.GetComponent<TileCheck>().valid = true;
+				}
+				if(tileSystem.GetTile (current.row, current.column - 1).gameObject.GetComponent<TileCheck>().occupied && tileSystem.GetTile (current.row, current.column - 1).gameObject.GetComponent<TileCheck>().occupier == "Player"){
 					tileSystem.GetTile (current.row, current.column - 1).gameObject.GetComponent<TileCheck>().valid = true;
 				}
 			}
