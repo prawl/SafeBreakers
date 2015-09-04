@@ -28,10 +28,10 @@ public class EnemyController : MonoBehaviour {
 		GetComponent<Renderer>().castShadows = true;
 		GetComponent<Renderer>().receiveShadows = true;
 		startPosition = tileSystem.GetTile (startTile).gameObject.transform.position;
-		startPosition.y = 1f;
+		startPosition.y = .91f;
 		transform.position = startPosition;
 		endPosition = tileSystem.GetTile (endTile).gameObject.transform.position;
-		endPosition.y = 1f;
+		endPosition.y = .91f;
 		player = GameObject.FindGameObjectWithTag ("Player");
 		seeker = GetComponent<Seeker> ();
 		currentPos = 0;
@@ -98,7 +98,7 @@ public class EnemyController : MonoBehaviour {
 	public void ChangeYvalue(Vector3[] path){
 		for(int i = 0; i < path.Length; i++){
 			Vector3 temp = path[i];
-			temp.y = 1f;
+			temp.y = .91f;
 			path[i] = temp;
 		}
 	}
@@ -156,117 +156,167 @@ public class EnemyController : MonoBehaviour {
 	}
 
 	public void Update(){
-		if (New_GameController.gameCount > New_GameController.enemyCount && New_GameController.playerCount > New_GameController.enemyCount && !moved) {
-			MoveToNextLoc();
+		try{
+			LookForPlayer ();
+			if (New_GameController.gameCount > New_GameController.enemyCount && New_GameController.playerCount > New_GameController.enemyCount && !moved) {
+				MoveToNextLoc();
+			}
+			if (New_GameController.enemyCount == New_GameController.playerCount) {
+				moved = false;
+			}
 		}
-		if (New_GameController.enemyCount == New_GameController.playerCount) {
-			moved = false;
-		}
+		catch{}
 	}
 
 	public void LookForPlayer(){
 		if (faceUp) {
 			try{
-				for(int i = 0; i < lineOfSight; i++){
-					if(tileSystem.GetTile (tileSystem.ClosestTileIndexFromWorld (gameObject.transform.position).row - i, tileSystem.ClosestTileIndexFromWorld (gameObject.transform.position).column) == tileSystem.GetTile (tileSystem.ClosestTileIndexFromWorld(player.transform.position))){
-						New_GameController.levelLost = true;
+				for(int i = 1; i < lineOfSight; i++){
+					TileIndex tempIndex = tileSystem.ClosestTileIndexFromWorld (tileSystem.GetTile (tileSystem.ClosestTileIndexFromWorld (gameObject.transform.position).row - i, tileSystem.ClosestTileIndexFromWorld (gameObject.transform.position).column).gameObject.transform.position);
+					GameObject tempTile = tileSystem.GetTile (tileSystem.ClosestTileIndexFromWorld (gameObject.transform.position).row - i, tileSystem.ClosestTileIndexFromWorld (gameObject.transform.position).column).gameObject;
+					TileCheck tempCheck = tempTile.GetComponent<TileCheck>();
+					if(tempCheck.occupied == true && tempCheck.occupier != "Enemy"){
+						if(tempCheck.occupier == "Player"){
+							New_GameController.levelLost = true;
+						}
+						else{
+							i = lineOfSight;
+						}
 					}
 				}
 			}
-			catch(UnityException e){
-
-			}
+			catch{}
 		}
 		if(faceDown){
 			try{
-				for(int i = 0; i < lineOfSight; i++){
-					if(tileSystem.GetTile (tileSystem.ClosestTileIndexFromWorld (gameObject.transform.position).row + i, tileSystem.ClosestTileIndexFromWorld (gameObject.transform.position).column) == tileSystem.GetTile (tileSystem.ClosestTileIndexFromWorld(player.transform.position))){
-						New_GameController.levelLost = true;
+				for(int i = 1; i < lineOfSight; i++){
+					TileIndex tempIndex = tileSystem.ClosestTileIndexFromWorld (tileSystem.GetTile (tileSystem.ClosestTileIndexFromWorld (gameObject.transform.position).row + i, tileSystem.ClosestTileIndexFromWorld (gameObject.transform.position).column).gameObject.transform.position);
+					GameObject tempTile = tileSystem.GetTile (tileSystem.ClosestTileIndexFromWorld (gameObject.transform.position).row + i, tileSystem.ClosestTileIndexFromWorld (gameObject.transform.position).column).gameObject;
+					TileCheck tempCheck = tempTile.GetComponent<TileCheck>();
+					if(tempCheck.occupied == true && tempCheck.occupier != "Enemy"){
+						if(tempCheck.occupier == "Player"){
+							New_GameController.levelLost = true;
+						}
+						else{
+							i = lineOfSight;
+						}
 					}
 				}
 			}
-			catch(UnityException e){
-				
-			}
+			catch{}
 		}
 		if(faceRight){
 			try{
-				for(int i = 0; i < lineOfSight; i++){
-					if(tileSystem.GetTile (tileSystem.ClosestTileIndexFromWorld (gameObject.transform.position).row , tileSystem.ClosestTileIndexFromWorld (gameObject.transform.position).column + i) == tileSystem.GetTile (tileSystem.ClosestTileIndexFromWorld(player.transform.position))){
-						New_GameController.levelLost = true;
+				for(int i = 1; i < lineOfSight; i++){
+					TileIndex tempIndex = tileSystem.ClosestTileIndexFromWorld (tileSystem.GetTile (tileSystem.ClosestTileIndexFromWorld (gameObject.transform.position).row, tileSystem.ClosestTileIndexFromWorld (gameObject.transform.position).column + i).gameObject.transform.position);
+					GameObject tempTile = tileSystem.GetTile (tileSystem.ClosestTileIndexFromWorld (gameObject.transform.position).row, tileSystem.ClosestTileIndexFromWorld (gameObject.transform.position).column + i).gameObject;
+					TileCheck tempCheck = tempTile.GetComponent<TileCheck>();
+					if(tempCheck.occupied == true && tempCheck.occupier != "Enemy"){
+						if(tempCheck.occupier == "Player"){
+							New_GameController.levelLost = true;
+						}
+						else{
+							i = lineOfSight;
+						}
 					}
 				}
 			}
-			catch(UnityException e){
-				
-			}
+			catch{}
 		}
 		if(faceLeft){
 			try{
-				for(int i = 0; i < lineOfSight; i++){
-					if(tileSystem.GetTile (tileSystem.ClosestTileIndexFromWorld (gameObject.transform.position).row , tileSystem.ClosestTileIndexFromWorld (gameObject.transform.position).column - i) == tileSystem.GetTile (tileSystem.ClosestTileIndexFromWorld(player.transform.position))){
-						New_GameController.levelLost = true;
+				for(int i = 1; i < lineOfSight; i++){
+					TileIndex tempIndex = tileSystem.ClosestTileIndexFromWorld (tileSystem.GetTile (tileSystem.ClosestTileIndexFromWorld (gameObject.transform.position).row, tileSystem.ClosestTileIndexFromWorld (gameObject.transform.position).column - i).gameObject.transform.position);
+					GameObject tempTile = tileSystem.GetTile (tileSystem.ClosestTileIndexFromWorld (gameObject.transform.position).row, tileSystem.ClosestTileIndexFromWorld (gameObject.transform.position).column - i).gameObject;
+					TileCheck tempCheck = tempTile.GetComponent<TileCheck>();
+					if(tempCheck.occupied == true && tempCheck.occupier != "Enemy"){
+						if(tempCheck.occupier == "Player"){
+							New_GameController.levelLost = true;
+						}
+						else{
+							i = lineOfSight;
+						}
 					}
 				}
 			}
-			catch(UnityException e){
-				
-			}
+			catch{}
 		}
 	}
 
 	// Update is called once per frame
 	public void MoveToNextLoc () {
-		if (to) {
-			if(!updatedPos){
-				currentPos++;
-				updatedPos = true;
+		while (!moved) {
+			if (to) {
+				TileCheck tempCheck = tileSystem.GetTile (tileSystem.ClosestTileIndexFromWorld(pathArray[currentPos + 1])).gameObject.GetComponent<TileCheck>();
+				if(tempCheck.occupied == true && tempCheck.occupier != "Player"  && tempCheck.occupier != "Obstacle"){
+					moved = true;
+					updatedPos = false;
+					New_GameController.enemyDone++;
+				}
+				
+				else{
+					if(!updatedPos){
+						currentPos++;
+						updatedPos = true;
+					}
+					if(path == null){
+						//We have no path to move after yet
+						return;
+					}
+					if (!V3Equal(pathArray[currentPos], transform.position) && (currentPos < pathArray.Length-1)) {
+						Vector3 dir = (pathArray[currentPos]-transform.position).normalized;
+						dir *= Time.fixedDeltaTime * speed;
+						controller.Move (dir);
+					}
+					if(V3Equal(pathArray[currentPos], transform.position)){
+						updatedPos = false;
+						moved = true;
+						New_GameController.enemyDone++;
+					}
+					if (currentPos == pathArray.Length-1 ) {
+						print ("Done");
+						from = true;
+						to = false;
+						currentPos--;
+					}
+				}
 			}
-			if(path == null){
-				//We have no path to move after yet
-				return;
+			if (from) {
+				TileCheck tempCheck = tileSystem.GetTile (tileSystem.ClosestTileIndexFromWorld(pathArray[currentPos - 1])).gameObject.GetComponent<TileCheck>();
+				//print (gameObject.name + "Occupied? " + tempCheck.occupied.ToString () + " Occupier:" + tempCheck.occupier.ToString ());
+				if(tempCheck.occupied == true && tempCheck.occupier != "Player" && tempCheck.occupier != "Obstacle"){
+					moved = true;
+					updatedPos = false;
+					New_GameController.enemyDone++;
+				}
+				
+				else{
+					if(!updatedPos){
+						currentPos--;
+						updatedPos = true;
+					}
+					if(path == null){
+						//We have no path to move after yet
+						return;
+					}
+					if (!V3Equal(pathArray[currentPos], transform.position) && (currentPos > 0)) {
+						Vector3 dir = (pathArray[currentPos]-transform.position).normalized;
+						dir *= Time.fixedDeltaTime * speed;
+						controller.Move (dir);
+					}
+					if(V3Equal(pathArray[currentPos], transform.position)){
+						updatedPos = false;
+						moved = true;
+						New_GameController.enemyDone++;
+					}
+					if (currentPos == 0 && to == false) {
+						to = true;
+						from = false;
+						currentPos++;
+					}
+				}
 			}
-			if (!V3Equal(pathArray[currentPos], transform.position) && (currentPos < pathArray.Length-1)) {
-				Vector3 dir = (pathArray[currentPos]-transform.position).normalized;
-				dir *= Time.fixedDeltaTime * speed;
-				controller.Move (dir);
-			}
-			if(V3Equal(pathArray[currentPos], transform.position)){
-				updatedPos = false;
-				moved = true;
-				New_GameController.enemyDone++;
-			}
-			
-			if (currentPos == pathArray.Length-1) {
-				from = true;
-				to = false;
-			}
+			GetDirection (transform.position, pathArray[currentPos]);
 		}
-		if (from) {
-			if(!updatedPos){
-				currentPos--;
-				updatedPos = true;
-			}
-			if(path == null){
-				//We have no path to move after yet
-				return;
-			}
-			if (!V3Equal(pathArray[currentPos], transform.position) && (currentPos > 0)) {
-				Vector3 dir = (pathArray[currentPos]-transform.position).normalized;
-				dir *= Time.fixedDeltaTime * speed;
-				controller.Move (dir);
-			}
-			if(V3Equal(pathArray[currentPos], transform.position)){
-				updatedPos = false;
-				moved = true;
-				New_GameController.enemyDone++;
-			}
-			
-			if (currentPos == 0) {
-				to = true;
-				from = false;
-			}
-		}
-		GetDirection (transform.position, pathArray[currentPos]);
 	}
 }
