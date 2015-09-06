@@ -4140,6 +4140,10 @@ Prefab:
       propertyPath: lineOfSight
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 11489334, guid: 5d087463578df724a86a8fb799352b35, type: 2}
+      propertyPath: tileSystem
+      value: 
+      objectReference: {fileID: 315942070}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5d087463578df724a86a8fb799352b35, type: 2}
   m_IsPrefabParent: 0
