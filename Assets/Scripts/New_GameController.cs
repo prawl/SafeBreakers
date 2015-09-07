@@ -28,6 +28,7 @@ public class New_GameController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		//print ("Game Count: " + gameCount + ". Player Count: " + playerCount + ". Enemy Count: " + enemyCount);
 		if (enemyDone == numOfEnemies) {
 			enemyDone = 0;
 			enemyCount++;
@@ -37,6 +38,10 @@ public class New_GameController : MonoBehaviour {
 		}
 		if(enemyCount == gameCount && playerCount == gameCount){
 			gameCount++;
+		}
+
+		if (levelLost) {
+			print ("Loser");
 		}
 	}
 }
