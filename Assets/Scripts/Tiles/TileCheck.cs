@@ -12,33 +12,56 @@ public class TileCheck : MonoBehaviour {
 	public TileHighlighter tileHighlighter;
 	private GameObject player;
 
-	// Use this for initialization
-	void Start () {
+  void Initialize() {
 		player = GameObject.FindGameObjectWithTag ("Player");
 		render = gameObject.GetComponent<Renderer> ();
 		tileHighlighter = gameObject.GetComponent<TileHighlighter> ();
 		if(tileHighlighter == null){
 			tileHighlighter = gameObject.AddComponent<TileHighlighter>();
 		}
-		valid = false;
-		occupied = false;
-		end = false;
-		selected = false;
+  }
+
+	void Start () {
+    Initialize();
+    ClearTile();
+	}
+
+	void Update () {
+    HighlightTile();
+    ValidateTile();
 	}
 	
 	void OnTriggerEnter(Collider other){
-		occupier = other.gameObject.tag.ToString();
-		occupied = true;
+    OccupyTile(other);
 	}
 
-	void OnTriggerExit(Collider other){
+	void OnTriggerExit(){
+    ClearTile();
+	}
+
+  void OccupyTile(Collider other){
+		occupier = other.gameObject.tag.ToString();
+		occupied = true;
+  }
+
+  void ClearTile(){
 		occupier = "";
 		occupied = false;
 		valid = false;
-	}
+    end = false;
+    selected = false;
+  }
 
-	// Update is called once per frame
-	void Update () {
+  void ValidateTile() {
+		if (occupied && occupier != "Player") {
+			valid = false;
+		}
+		if(occupier == "Player"){
+			valid = true;
+		}
+  }
+
+  void HighlightTile() {
 		if(valid && !occupied && player.GetComponent<NewPlayerController>().moving == false){
 			render.material.color = Color.green;
 			tileHighlighter.enabled = true;
@@ -47,11 +70,5 @@ public class TileCheck : MonoBehaviour {
 			render.material.color = Color.white;
 			tileHighlighter.enabled = false;
 		}
-		if (occupied && occupier != "Player") {
-			valid = false;
-		}
-		if(occupier == "Player"){
-			valid = true;
-		}
-	}
+  }
 }
