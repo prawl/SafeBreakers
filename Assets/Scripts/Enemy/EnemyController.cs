@@ -248,7 +248,7 @@ public class EnemyController : MonoBehaviour {
 		while (!moved) {
 			if (to) {
 				TileCheck tempCheck = tileSystem.GetTile (tileSystem.ClosestTileIndexFromWorld(pathArray[currentPos + 1])).gameObject.GetComponent<TileCheck>();
-				if(tempCheck.occupied == true && tempCheck.occupier != "Player"  && tempCheck.occupier != "Obstacle"){
+				if(tempCheck.occupier == "Enemy"){
 					moved = true;
 					updatedPos = false;
 					New_GameController.enemyDone++;
@@ -283,8 +283,7 @@ public class EnemyController : MonoBehaviour {
 			}
 			if (from) {
 				TileCheck tempCheck = tileSystem.GetTile (tileSystem.ClosestTileIndexFromWorld(pathArray[currentPos - 1])).gameObject.GetComponent<TileCheck>();
-				//print (gameObject.name + "Occupied? " + tempCheck.occupied.ToString () + " Occupier:" + tempCheck.occupier.ToString ());
-				if(tempCheck.occupied == true && tempCheck.occupier != "Player" && tempCheck.occupier != "Obstacle"){
+				if(tempCheck.occupier == "Enemy"){
 					moved = true;
 					updatedPos = false;
 					New_GameController.enemyDone++;

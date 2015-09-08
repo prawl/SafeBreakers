@@ -21,14 +21,11 @@ public class New_GameController : MonoBehaviour {
 	}
 
 	public static void Restart(){
-		//player.gameObject.GetComponent<New_GameController> ().Start ();
-		//Start ();
 		print ("You lose");
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		//print ("Game Count: " + gameCount + ". Player Count: " + playerCount + ". Enemy Count: " + enemyCount);
 		if (enemyDone == numOfEnemies) {
 			enemyDone = 0;
 			enemyCount++;
