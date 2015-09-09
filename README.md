@@ -7,7 +7,7 @@
 - git pull
 
 # Switching Branches
-- git checkout new_branch_name
+- git checkout -b new_branch_name
 
 # Adding Changes
 - git add --all
@@ -16,7 +16,7 @@
 - git commit -m 'Cool awesome feature'
 
 # Pushing
-- 'git push'
+- 'git push origin new_branch_name'
 
 # Change to Master
 - git checkout master
