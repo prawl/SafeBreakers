@@ -4,19 +4,19 @@
 - https://www.youtube.com/watch?v=PAhp_1uXLDM&index=2&list=LLRUw-3GuDIk8dKLJOV3qwIg
 
 # Pulling
-- "git pull origin master"
+- git pull origin master
 
 # Switching Branches
-- "git checkout new_branch_name"
+- git checkout new_branch_name
 
 # Adding Changes
-- "git add --all"
+- git add --all
 
 # Commiting
-- "git commit -m 'Cool awesome feature'"
+- git commit -m 'Cool awesome feature'
 
 # Pushing
 - 'git push origin'
 
 # Change to Master
-- 'git checkout master'
+- git checkout master
