@@ -20,6 +20,13 @@ obj/
 *.booproj
 *.exe
 *.htm
+Library
+Temp
+*.csproj
+*.pidb
+*.unityproj
+*.sln
+*.userpref
 
 # ============ #
 # OS generated #

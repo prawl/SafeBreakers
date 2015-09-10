@@ -9,10 +9,10 @@ GameObject:
   m_Component:
   - 4: {fileID: 486204}
   - 33: {fileID: 3373140}
-  - 65: {fileID: 6532546}
   - 23: {fileID: 2379344}
   - 114: {fileID: 11489216}
   - 114: {fileID: 11485428}
+  - 65: {fileID: 6529616}
   m_Layer: 0
   m_Name: FloorTile_01
   m_TagString: Untagged
@@ -63,7 +63,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 178786}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!65 &6532546
+--- !u!65 &6529616
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -123,6 +123,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.y
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

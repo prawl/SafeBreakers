@@ -16,13 +16,12 @@ public class NewPlayerController : MonoBehaviour {
 	private CharacterController controller;
 	private float speed = 1;
 	public bool moving;
-	private Rigidbody rigid;
 
 	// Use this for initialization
-	void Start () {
+	void Start() {
+		AddRigidBody ();
 		gameObject.tag = "Player";
 		player = GameObject.FindGameObjectWithTag ("Player");
-		rigid = gameObject.GetComponent<Rigidbody> ();
 		gameCon = gameObject.GetComponent<New_GameController> ();
 		GetComponent<Renderer>().castShadows = true;
 		GetComponent<Renderer>().receiveShadows = true;
@@ -42,8 +41,14 @@ public class NewPlayerController : MonoBehaviour {
 		DefaultTiles ();
 	}
 
+	void AddRigidBody(){
+		Rigidbody rigid = gameObject.AddComponent<Rigidbody> ();
+		rigid.isKinematic = true;
+		rigid.useGravity = false;
+	}
+
 	void GetNextTile(){
-		if(Input.GetMouseButtonDown (0) && !moving && New_GameController.gameCount > New_GameController.playerCount){
+		if(Input.GetMouseButtonDown (0) && !moving && gameCon.gameCount > gameCon.playerCount && !gameCon.levelPaused){
 			Ray ray = camera.ScreenPointToRay (Input.mousePosition);
 			RaycastHit hit;
 			Physics.Raycast(ray, out hit);
@@ -73,7 +78,7 @@ public class NewPlayerController : MonoBehaviour {
 			current = next;
 			transform.position = nextLoc;
 			moving = false;
-			New_GameController.playerCount++;
+			gameCon.playerCount++;
 		}
 	}
 
