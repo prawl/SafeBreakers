@@ -42,7 +42,6 @@ public class DistractionItem : MonoBehaviour {
 
   void DestroyItem() {
     if(ItemActive()){
-      print("DED");
       Destroy(GameObject.Find("deployment_item(Clone)"));
       DeactivateItem();
     }
@@ -59,5 +58,4 @@ public class DistractionItem : MonoBehaviour {
   void DeactivateItem(){
     itemExistInGame = false;
   }
-
 }
