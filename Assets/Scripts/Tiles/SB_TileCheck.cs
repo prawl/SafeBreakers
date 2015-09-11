@@ -14,7 +14,7 @@ public class SB_TileCheck : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		player = GameObject.FindGameObjectWithTag ("Player");
+		player = GameObject.Find ("SB_Player");
 		obstacles = GameObject.FindGameObjectsWithTag ("Obstacle");
 		tileSystem = player.GetComponent<SB_PlayerController> ().tileSystem;
 		currentTile = tileSystem.ClosestTileIndexFromWorld (transform.position);

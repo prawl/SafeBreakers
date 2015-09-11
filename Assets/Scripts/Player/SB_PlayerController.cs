@@ -13,7 +13,7 @@ public class SB_PlayerController : MonoBehaviour {
 	private Vector3 currentLoc, nextLoc;
 	private CharacterController controller;
 	private float speed = 1;
-	public bool moving;
+	public bool moving, up, down, left, right;
 	public Button upButton, downButton, rightButton, leftButton;
 	private TileData upTile, downTile, rightTile, leftTile;
 
@@ -28,15 +28,17 @@ public class SB_PlayerController : MonoBehaviour {
 		currentLoc = tileSystem.GetTile (currentTile).gameObject.transform.position;
 		currentLoc.y = .75f;
 		transform.position = currentLoc;
-		//Set occupied for tile to true
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		UpdateButtons ();
-		//LockYAxis ();
 		if(!moving){
 			GetValidTiles ();
+			up = false;
+			down = false;
+			right = false;
+			left = false;
 		}
 		if (moving) {
 			MoveToNextTile();
@@ -50,12 +52,6 @@ public class SB_PlayerController : MonoBehaviour {
 				tileSystem.GetTile (i,j).gameObject.GetComponent<SB_TileCheck>().valid = false;
 			}
 		}
-	}
-
-	void LockYAxis(){
-		Vector3 temp = transform.position;
-		temp.y = .75f;
-		transform.position = temp;
 	}
 
 	void UpdateButtons(){
@@ -105,24 +101,28 @@ public class SB_PlayerController : MonoBehaviour {
 	public void GoUp(){
 		if (upTile.gameObject.GetComponent<SB_TileCheck> ().valid) {
 			GetNextTile (tileSystem.ClosestTileIndexFromWorld (upTile.gameObject.transform.position));
+			up = true;
 		}
 	}
 
 	public void GoDown(){
 		if (downTile.gameObject.GetComponent<SB_TileCheck> ().valid) {
 			GetNextTile (tileSystem.ClosestTileIndexFromWorld (downTile.gameObject.transform.position));
+			down = true;
 		}
 	}
 
 	public void GoRight(){
 		if (rightTile.gameObject.GetComponent<SB_TileCheck> ().valid) {
 			GetNextTile (tileSystem.ClosestTileIndexFromWorld (rightTile.gameObject.transform.position));
+			right = true;
 		}
 	}
 
 	public void GoLeft(){
 		if (leftTile.gameObject.GetComponent<SB_TileCheck> ().valid) {
 			GetNextTile (tileSystem.ClosestTileIndexFromWorld (leftTile.gameObject.transform.position));
+			left = true;
 		}
 	}
 
