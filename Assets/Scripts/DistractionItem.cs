@@ -4,7 +4,9 @@ using System.Collections;
 public class DistractionItem : MonoBehaviour {
 
   private GameObject player;
+  private Vector3 itemPosition;
   public GameObject deployItem;
+  public GameObject itemIsTouchingTile;
 
 	void Initialize() {
 		player = GameObject.FindGameObjectWithTag ("Player");
@@ -16,14 +18,21 @@ public class DistractionItem : MonoBehaviour {
 	}
 	
 	void Update () {
-	
 	}
 
   void OnTriggerEnter(Collider col) {
-    print(col.gameObject.name);
+    CaptureTileTouchingItem(col);
+  }
+
+  void CaptureTileTouchingItem(Collider col){
+    if(col.gameObject.transform.parent.gameObject.name != null){
+      itemIsTouchingTile = col.gameObject.transform.parent.gameObject;
+    }
   }
 
   void CreateItem () {
-    Instantiate(deployItem);
+    itemPosition = player.transform.position;
+    itemPosition.x += .25f;
+    Instantiate(deployItem, itemPosition, player.transform.rotation);
   }
 }
