@@ -7828,6 +7828,23 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 41753d70c98d95a4886e91b2190c2c14, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &187526777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2586c8e41f35d2f4fadde53020bf4207, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  go: {fileID: 874600347}
+  thisPropertyPath: DistractionItem.itemExistInGame
+  compareToType: 1
+  other: {fileID: 0}
+  otherPropertyPath: 
+  constantValueGeneric: 0
 --- !u!1 &188606057
 GameObject:
   m_ObjectHideFlags: 0
@@ -9072,7 +9089,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &206470025
 Transform:
   m_ObjectHideFlags: 0
@@ -31675,7 +31692,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &870478725
 Transform:
   m_ObjectHideFlags: 0
@@ -31943,8 +31960,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18395b0a163b74cbe8e8da80e17e7d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deployItem: {fileID: 132878, guid: 1f9e6911d0a3b44cb8a9528a14dcbad4, type: 2}
+  deployItem: {fileID: 120052, guid: f3a1be546f6ca4042a4271e1458dfe62, type: 2}
   itemIsTouchingTile: {fileID: 0}
+  itemExistInGame: 0
 --- !u!54 &874600350
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -31960,6 +31978,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &874600359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 874600347}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bafa54482a87ac4cbd7ff1bfd1ac93a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkAfterTime: 4
+  repeatCheckTime: 0
+  repeatEveryTime: 1
+  checkAfterFrames: 1
+  repeatCheckFrame: 1
+  repeatEveryFrame: 1
+  hasFailed: 0
+  checkMethods: 1
+  m_ActionBase: {fileID: 187526777}
+  checksPerformed: 0
 --- !u!1001 &875141184
 Prefab:
   m_ObjectHideFlags: 0
@@ -67830,8 +67869,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18395b0a163b74cbe8e8da80e17e7d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deployItem: {fileID: 132878, guid: 1f9e6911d0a3b44cb8a9528a14dcbad4, type: 2}
+  deployItem: {fileID: 120052, guid: f3a1be546f6ca4042a4271e1458dfe62, type: 2}
   itemIsTouchingTile: {fileID: 0}
+  itemExistInGame: 0
 --- !u!1001 &1788153288
 Prefab:
   m_ObjectHideFlags: 0

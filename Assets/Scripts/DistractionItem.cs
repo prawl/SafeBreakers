@@ -7,9 +7,11 @@ public class DistractionItem : MonoBehaviour {
   private Vector3 itemPosition;
   public GameObject deployItem;
   public GameObject itemIsTouchingTile;
+  public bool itemExistInGame;
 
 	void Initialize() {
 		player = GameObject.FindGameObjectWithTag ("Player");
+    itemExistInGame = false;
 	}
 
 	void Start () {
@@ -34,5 +36,28 @@ public class DistractionItem : MonoBehaviour {
     itemPosition = player.transform.position;
     itemPosition.x += .25f;
     Instantiate(deployItem, itemPosition, player.transform.rotation);
+    ActivateItem();
+    Invoke("DestroyItem", 3f);
   }
+
+  void DestroyItem() {
+    if(ItemActive()){
+      print("DED");
+      Destroy(GameObject.Find("deployment_item(Clone)"));
+      DeactivateItem();
+    }
+  }
+
+  bool ItemActive(){
+    return itemExistInGame;
+  }
+
+  void ActivateItem(){
+    itemExistInGame = true;
+  }
+
+  void DeactivateItem(){
+    itemExistInGame = false;
+  }
+
 }
