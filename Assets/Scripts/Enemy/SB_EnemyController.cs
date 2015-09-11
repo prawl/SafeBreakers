@@ -6,49 +6,62 @@ using Rotorz.Tile.Internal;
 
 public class SB_EnemyController : MonoBehaviour {
 
-	public GameObject player, enemy;
+	private GameObject player;
 	private SB_GameController gameCon;
-	public TileSystem tileSystem;
+	private TileSystem tileSystem;
 	public TileIndex startTile, endTile;
 	public int lineOfSight;
 	private Vector3 startPos, endPos;
 	private Seeker seeker;
 	private CharacterController controller;
 	private Path path;
-	private float speed = 2;
-	public Vector3[] pathArray;
-	public int currentPos;
-	public bool up, down, right, left, to, from, moved, updatedPos, faceUp, faceDown, faceRight, faceLeft;
+	private float speed = 1;
+	private Vector3[] pathArray;
+	private int currentPos;
+	public bool up, down, right, left, moved;
+	private bool to, from, updatedPos, faceUp, faceDown, faceRight, faceLeft;
 
 	// Use this for initialization
 	void Start () {
 		GetComponent<Renderer> ().castShadows = true;
 		GetComponent<Renderer> ().receiveShadows = true;
+		player = GameObject.Find ("SB_Player");
+		tileSystem = player.GetComponent<SB_PlayerController> ().tileSystem;
 		startPos = tileSystem.GetTile (startTile).gameObject.transform.position;
-		startPos.y = .75f;
+		startPos.y = .74f;
 		transform.position = startPos;
 		endPos = tileSystem.GetTile (endTile).gameObject.transform.position;
-		endPos.y = .75f;
-		player = GameObject.Find ("SB_Player");
+		endPos.y = .74f;
 		gameCon = player.GetComponent<SB_GameController> ();
 		seeker = GetComponent<Seeker> ();
 		currentPos = 0;
 		controller = GetComponent<CharacterController> ();
 		seeker.StartPath (startPos, endPos, OnPathComplete);
-		to = true;
-		from = false;
-		updatedPos = false;
+		to = true;from = false;updatedPos = false;moved = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		if (!gameCon.levelPaused) {
+		if (!gameCon.isLevelPaused) {
 			LookForPlayer();
+			if(!moved){
+				if(to){
+					if(currentPos != pathArray.Length-1){
+						GetDirection (pathArray[currentPos], pathArray[currentPos+1]);
+					}
+				}
+				else{
+					if(currentPos != 0){
+					GetDirection (pathArray[currentPos], pathArray[currentPos-1]);
+				}
+				}
+			}
 			if(gameCon.playerCount > gameCon.enemyCount){
+				moved = false;
 				MoveToNextLoc ();
 			}
-			if(gameCon.gameCount == gameCon.enemyCount){
-				moved = false;
+			if(gameCon.playerCount == gameCon.enemyCount){
+				moved = true;
 			}
 		}
 	}
@@ -58,15 +71,15 @@ public class SB_EnemyController : MonoBehaviour {
 			up = false; down = false; right = false; left = true;
 			faceUp = false; faceDown = false; faceRight = false; faceLeft = true;
 		}
-		if ((start.x < end.x)  && (Mathf.Approximately(start.z, end.z))) {
+		else if ((start.x < end.x)  && (Mathf.Approximately(start.z, end.z))) {
 			up = false; down = false; right = true; left = false;
 			faceUp = false; faceDown = false; faceRight = true; faceLeft = false;
 		}
-		if ((start.z > end.z) && (Mathf.Approximately(start.x, end.x))) {
+		else if ((start.z > end.z) && (Mathf.Approximately(start.x, end.x))) {
 			up = false; down = true; right = false; left = false;
 			faceUp = false; faceDown = true; faceRight = false; faceLeft = false;
 		}
-		if ((start.z < end.z) && (Mathf.Approximately(start.x, end.x))) {
+		else if ((start.z < end.z) && (Mathf.Approximately(start.x, end.x))) {
 			up = true; down = false; right = false; left = false;
 			faceUp = true; faceDown = false; faceRight = false; faceLeft = false;
 		}
@@ -75,7 +88,7 @@ public class SB_EnemyController : MonoBehaviour {
 	void ChangeYValue(Vector3[] path){
 		for (int i = 0; i < path.Length; i++) {
 			Vector3 temp = path[i];
-			temp.y = .75f;
+			temp.y = .74f;
 			path[i] = temp;
 		}
 	}
@@ -93,12 +106,12 @@ public class SB_EnemyController : MonoBehaviour {
 		if (faceUp) {
 			try{
 				for(int i = 0; i < lineOfSight; i++){
-					TileIndex tempTile = tileSystem.ClosestTileIndexFromWorld(enemy.transform.position);
+					TileIndex tempTile = tileSystem.ClosestTileIndexFromWorld(transform.position);
 					if(tempTile.row - i >= 0){
 						SB_TileCheck tempTileCheck = tileSystem.GetTile (tempTile.row - i, tempTile.column).gameObject.GetComponent<SB_TileCheck>();
 						if(tempTileCheck.occupied == true){
 							if(tempTileCheck.occupier == "Player"){
-								gameCon.levelLost = true;
+								gameCon.isLevelLost = true;
 							}
 							else{
 								i = lineOfSight;
@@ -115,12 +128,12 @@ public class SB_EnemyController : MonoBehaviour {
 		if (faceDown) {
 			try{
 				for(int i = 0; i < lineOfSight; i++){
-					TileIndex tempTile = tileSystem.ClosestTileIndexFromWorld(enemy.transform.position);
+					TileIndex tempTile = tileSystem.ClosestTileIndexFromWorld(transform.position);
 					if(tempTile.row + i <= tileSystem.RowCount-1){
 						SB_TileCheck tempTileCheck = tileSystem.GetTile (tempTile.row + i, tempTile.column).gameObject.GetComponent<SB_TileCheck>();
 						if(tempTileCheck.occupied == true){
 							if(tempTileCheck.occupier == "Player"){
-								gameCon.levelLost = true;
+								gameCon.isLevelLost = true;
 							}
 							else{
 								i = lineOfSight;
@@ -137,12 +150,12 @@ public class SB_EnemyController : MonoBehaviour {
 		if (faceRight) {
 			try{
 				for(int i = 0; i < lineOfSight; i++){
-					TileIndex tempTile = tileSystem.ClosestTileIndexFromWorld(enemy.transform.position);
+					TileIndex tempTile = tileSystem.ClosestTileIndexFromWorld(transform.position);
 					if(tempTile.column + i <= tileSystem.ColumnCount-1){
 						SB_TileCheck tempTileCheck = tileSystem.GetTile (tempTile.row, tempTile.column + i).gameObject.GetComponent<SB_TileCheck>();
 						if(tempTileCheck.occupied == true){
 							if(tempTileCheck.occupier == "Player"){
-								gameCon.levelLost = true;
+								gameCon.isLevelLost = true;
 							}
 							else{
 								i = lineOfSight;
@@ -159,12 +172,12 @@ public class SB_EnemyController : MonoBehaviour {
 		if (faceLeft) {
 			try{
 				for(int i = 0; i < lineOfSight; i++){
-					TileIndex tempTile = tileSystem.ClosestTileIndexFromWorld(enemy.transform.position);
+					TileIndex tempTile = tileSystem.ClosestTileIndexFromWorld(transform.position);
 					if(tempTile.column - i <= 0){
 						SB_TileCheck tempTileCheck = tileSystem.GetTile (tempTile.row, tempTile.column - i).gameObject.GetComponent<SB_TileCheck>();
 						if(tempTileCheck.occupied == true){
 							if(tempTileCheck.occupier == "Player"){
-								gameCon.levelLost = true;
+								gameCon.isLevelLost = true;
 							}
 							else{
 								i = lineOfSight;
@@ -187,7 +200,7 @@ public class SB_EnemyController : MonoBehaviour {
 	public void MoveToNextLoc(){
 		if (!moved) {
 			if(to){
-				if(tileSystem.GetTile (tileSystem.ClosestTileIndexFromWorld(pathArray[currentPos + 1])).gameObject.GetComponent<SB_TileCheck>().occupier == "Enemy"){
+				if((currentPos != pathArray.Length-1) && (tileSystem.GetTile (tileSystem.ClosestTileIndexFromWorld(pathArray[currentPos + 1])).gameObject.GetComponent<SB_TileCheck>().occupier == "Enemy")){
 					moved = true;
 					updatedPos = false;
 					gameCon.enemyDone++;
@@ -208,13 +221,14 @@ public class SB_EnemyController : MonoBehaviour {
 						gameCon.enemyDone++;
 					}
 					if(currentPos == pathArray.Length-1){
+						moved = true;
 						to = false;
 						from = true;
 					}
 				}
 			}
 			if(from){
-				if(tileSystem.GetTile (tileSystem.ClosestTileIndexFromWorld(pathArray[currentPos - 1])).gameObject.GetComponent<SB_TileCheck>().occupier == "Enemy"){
+				if((currentPos != 0) && (tileSystem.GetTile (tileSystem.ClosestTileIndexFromWorld(pathArray[currentPos - 1])).gameObject.GetComponent<SB_TileCheck>().occupier == "Enemy")){
 					moved = true;
 					updatedPos = false;
 					gameCon.enemyDone++;
@@ -235,8 +249,9 @@ public class SB_EnemyController : MonoBehaviour {
 						gameCon.enemyDone++;
 					}
 					if(currentPos == 0){
-						to = false;
-						from = true;
+						moved = true;
+						to = true;
+						from = false;
 					}
 				}
 			}

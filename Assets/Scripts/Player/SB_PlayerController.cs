@@ -35,16 +35,18 @@ public class SB_PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		UpdateButtons ();
-		if(!moving){
-			GetValidTiles ();
-			up = false;
-			down = false;
-			right = false;
-			left = false;
-		}
-		if (moving) {
-			MoveToNextTile();
-			ResetTiles ();
+		if (!gameCon.isLevelPaused) {
+			if(!moving){
+				GetValidTiles ();
+				up = false;
+				down = false;
+				right = false;
+				left = false;
+			}
+			if (moving) {
+				MoveToNextTile();
+				ResetTiles ();
+			}
 		}
 	}
 
@@ -57,74 +59,84 @@ public class SB_PlayerController : MonoBehaviour {
 	}
 
 	void UpdateButtons(){
-		if (moving) {
+		if (!gameCon.isLevelPaused) {
+			if (moving) {
+				upButton.interactable = false;
+				downButton.interactable = false;
+				rightButton.interactable = false;
+				leftButton.interactable = false;
+			}
+			if (!moving) {
+				try{
+					if(upTile.gameObject.GetComponent<SB_TileCheck>().valid && currentTile.row != 0){
+						upButton.interactable = true;
+					}
+					if(!upTile.gameObject.GetComponent<SB_TileCheck>().valid || currentTile.row == 0){
+						upButton.interactable = false;
+					}
+					if(downTile.gameObject.GetComponent<SB_TileCheck>().valid && currentTile.row != tileSystem.RowCount-1){
+						downButton.interactable = true;
+					}
+					if(!downTile.gameObject.GetComponent<SB_TileCheck>().valid || currentTile.row == tileSystem.RowCount-1){
+						downButton.interactable = false;
+					}
+					if(rightTile.gameObject.GetComponent<SB_TileCheck>().valid && currentTile.column != tileSystem.ColumnCount-1){
+						rightButton.interactable = true;
+					}
+					if(!rightTile.gameObject.GetComponent<SB_TileCheck>().valid || currentTile.column == tileSystem.ColumnCount-1){
+						rightButton.interactable = false;
+					}
+					if(leftTile.gameObject.GetComponent<SB_TileCheck>().valid && currentTile.column != 0){
+						leftButton.interactable = true;
+					}
+					if(!leftTile.gameObject.GetComponent<SB_TileCheck>().valid || currentTile.column == 0){
+						leftButton.interactable = false;
+					}
+				}
+				catch{}
+			}
+		}
+		else{
 			upButton.interactable = false;
 			downButton.interactable = false;
 			rightButton.interactable = false;
 			leftButton.interactable = false;
 		}
-		if (!moving) {
-			try{
-				if(upTile.gameObject.GetComponent<SB_TileCheck>().valid){
-					upButton.interactable = true;
-				}
-				if(!upTile.gameObject.GetComponent<SB_TileCheck>().valid || currentTile.row == 0){
-					upButton.interactable = false;
-				}
-				if(downTile.gameObject.GetComponent<SB_TileCheck>().valid){
-					downButton.interactable = true;
-				}
-				if(!downTile.gameObject.GetComponent<SB_TileCheck>().valid || currentTile.row == tileSystem.RowCount-1){
-					downButton.interactable = false;
-				}
-				if(rightTile.gameObject.GetComponent<SB_TileCheck>().valid){
-					rightButton.interactable = true;
-				}
-				if(!rightTile.gameObject.GetComponent<SB_TileCheck>().valid || currentTile.column == tileSystem.ColumnCount-1){
-					rightButton.interactable = false;
-				}
-				if(leftTile.gameObject.GetComponent<SB_TileCheck>().valid){
-					leftButton.interactable = true;
-				}
-				if(!leftTile.gameObject.GetComponent<SB_TileCheck>().valid || currentTile.column == 0){
-					leftButton.interactable = false;
-				}
-				else{
-					upButton.interactable = true;
-					downButton.interactable = true;
-					rightButton.interactable = true;
-					leftButton.interactable = true;
-				}
-			}
-			catch{}
-		}
 	}
 
 	public void GoUp(){
-		if (upTile.gameObject.GetComponent<SB_TileCheck> ().valid && gameCon.playerCount < gameCon.gameCount) {
-			GetNextTile (tileSystem.ClosestTileIndexFromWorld (upTile.gameObject.transform.position));
-			up = true;
+		if (upButton.interactable) {
+			if (upTile.gameObject.GetComponent<SB_TileCheck> ().valid && gameCon.playerCount < gameCon.gameCount) {
+				GetNextTile (tileSystem.ClosestTileIndexFromWorld (upTile.gameObject.transform.position));
+				up = true;
+			}
 		}
 	}
 
 	public void GoDown(){
-		if (downTile.gameObject.GetComponent<SB_TileCheck> ().valid && gameCon.playerCount < gameCon.gameCount) {
-			GetNextTile (tileSystem.ClosestTileIndexFromWorld (downTile.gameObject.transform.position));
-			down = true;
+		if (downButton.interactable) {
+			if (downTile.gameObject.GetComponent<SB_TileCheck> ().valid && gameCon.playerCount < gameCon.gameCount) {
+				GetNextTile (tileSystem.ClosestTileIndexFromWorld (downTile.gameObject.transform.position));
+				down = true;
+			}
 		}
 	}
 
 	public void GoRight(){
-		if (rightTile.gameObject.GetComponent<SB_TileCheck> ().valid && gameCon.playerCount < gameCon.gameCount) {
-			GetNextTile (tileSystem.ClosestTileIndexFromWorld (rightTile.gameObject.transform.position));
-			right = true;
+		if (rightButton.interactable) {
+			if (rightTile.gameObject.GetComponent<SB_TileCheck> ().valid && gameCon.playerCount < gameCon.gameCount) {
+				GetNextTile (tileSystem.ClosestTileIndexFromWorld (rightTile.gameObject.transform.position));
+				right = true;
+			}
 		}
 	}
 
 	public void GoLeft(){
-		if (leftTile.gameObject.GetComponent<SB_TileCheck> ().valid && gameCon.playerCount < gameCon.gameCount) {
-			GetNextTile (tileSystem.ClosestTileIndexFromWorld (leftTile.gameObject.transform.position));
-			left = true;
+		if (leftButton.interactable) {
+			if (leftTile.gameObject.GetComponent<SB_TileCheck> ().valid && gameCon.playerCount < gameCon.gameCount) {
+				GetNextTile (tileSystem.ClosestTileIndexFromWorld (leftTile.gameObject.transform.position));
+				left = true;
+			}
 		}
 	}
 

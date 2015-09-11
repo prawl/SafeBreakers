@@ -6,7 +6,8 @@ using Rotorz.Tile.Internal;
 public class SB_GameController : MonoBehaviour {
 
 	public int playerCount, enemyCount, gameCount, enemyDone;
-	public bool levelWon, levelLost, levelPaused;
+	public GameObject[] enemies;
+	public bool isLevelWon, isLevelLost, isLevelPaused;
 	public int numOfEnemies;
 	public TileIndex startTile, endTile;
 
@@ -15,10 +16,11 @@ public class SB_GameController : MonoBehaviour {
 		playerCount = 0;
 		enemyCount = 0;
 		gameCount = 1;
-		levelWon = false;
-		levelPaused = false;
-		levelLost = false;
+		isLevelWon = false;
+		isLevelPaused = false;
+		isLevelLost = false;
 		numOfEnemies = GameObject.FindGameObjectsWithTag ("Enemy").Length;
+		enemies = GameObject.FindGameObjectsWithTag ("Enemy");
 	}
 	
 	// Update is called once per frame
@@ -29,6 +31,22 @@ public class SB_GameController : MonoBehaviour {
 		}
 		if(enemyCount == playerCount && playerCount == gameCount){
 			gameCount++;
+		}
+		CheckGameLost ();
+	}
+
+	void CheckGameLost(){
+		if (isLevelLost) {
+			isLevelPaused = true;
+		}
+	}
+
+	public void PauseGame(){
+		if (!isLevelPaused) {
+			isLevelPaused = true;
+		}
+		else{
+			isLevelPaused = false;
 		}
 	}
 }
