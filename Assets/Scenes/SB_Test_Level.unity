@@ -17882,6 +17882,7 @@ MonoBehaviour:
   nextTile:
     row: 0
     column: 0
+  moving: 0
   upButton: {fileID: 1113346808}
   downButton: {fileID: 801154314}
   rightButton: {fileID: 1214927316}

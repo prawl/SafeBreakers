@@ -27,13 +27,13 @@ public class SB_TileCheck : MonoBehaviour {
 	}
 
 	void CheckIfOccupied(){
-		if(player.GetComponent<SB_PlayerController>().moving && occupier == "Player"){
-			occupied = false;
-			occupier = "";
-		}
 		if (player.GetComponent<SB_PlayerController>().currentTile == currentTile) {
 			occupied = true;
 			occupier = "Player";
+		}
+		if (player.GetComponent<SB_PlayerController>().currentTile != currentTile) {
+			occupied = false;
+			occupier = "";
 		}
 		for (int i = 0; i < obstacles.Length; i++) {
 			if(tileSystem.ClosestTileIndexFromWorld(obstacles[i].transform.position) == currentTile){

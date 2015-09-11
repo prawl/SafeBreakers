@@ -40,6 +40,15 @@ public class SB_PlayerController : MonoBehaviour {
 		}
 		if (moving) {
 			MoveToNextTile();
+			ResetTiles ();
+		}
+	}
+
+	void ResetTiles(){
+		for (int i = 0; i < tileSystem.RowCount; i++) {
+			for(int j = 0; j < tileSystem.ColumnCount; j++){
+				tileSystem.GetTile (i,j).gameObject.GetComponent<SB_TileCheck>().valid = false;
+			}
 		}
 	}
 
@@ -94,19 +103,27 @@ public class SB_PlayerController : MonoBehaviour {
 	}
 
 	public void GoUp(){
-		GetNextTile (tileSystem.ClosestTileIndexFromWorld (upTile.gameObject.transform.position));
+		if (upTile.gameObject.GetComponent<SB_TileCheck> ().valid) {
+			GetNextTile (tileSystem.ClosestTileIndexFromWorld (upTile.gameObject.transform.position));
+		}
 	}
 
 	public void GoDown(){
-		GetNextTile (tileSystem.ClosestTileIndexFromWorld (downTile.gameObject.transform.position));
+		if (downTile.gameObject.GetComponent<SB_TileCheck> ().valid) {
+			GetNextTile (tileSystem.ClosestTileIndexFromWorld (downTile.gameObject.transform.position));
+		}
 	}
 
 	public void GoRight(){
-		GetNextTile (tileSystem.ClosestTileIndexFromWorld (rightTile.gameObject.transform.position));
+		if (rightTile.gameObject.GetComponent<SB_TileCheck> ().valid) {
+			GetNextTile (tileSystem.ClosestTileIndexFromWorld (rightTile.gameObject.transform.position));
+		}
 	}
 
 	public void GoLeft(){
-		GetNextTile (tileSystem.ClosestTileIndexFromWorld (leftTile.gameObject.transform.position));
+		if (leftTile.gameObject.GetComponent<SB_TileCheck> ().valid) {
+			GetNextTile (tileSystem.ClosestTileIndexFromWorld (leftTile.gameObject.transform.position));
+		}
 	}
 
 
@@ -138,19 +155,25 @@ public class SB_PlayerController : MonoBehaviour {
 			if (upTile.gameObject.GetComponent<SB_TileCheck> ().occupied && upTile.gameObject.GetComponent<SB_TileCheck> ().occupier != "Player") {
 				upTile.gameObject.GetComponent<SB_TileCheck>().valid = false;
 			}
-			else if (downTile.gameObject.GetComponent<SB_TileCheck> ().occupied && downTile.gameObject.GetComponent<SB_TileCheck> ().occupier != "Player") {
+			else{
+				upTile.gameObject.GetComponent<SB_TileCheck>().valid = true;
+			}
+			if (downTile.gameObject.GetComponent<SB_TileCheck> ().occupied && downTile.gameObject.GetComponent<SB_TileCheck> ().occupier != "Player") {
 				downTile.gameObject.GetComponent<SB_TileCheck>().valid = false;
 			}
-			else if (rightTile.gameObject.GetComponent<SB_TileCheck> ().occupied && rightTile.gameObject.GetComponent<SB_TileCheck> ().occupier != "Player") {
+			else{
+				downTile.gameObject.GetComponent<SB_TileCheck>().valid = true;
+			}
+			if (rightTile.gameObject.GetComponent<SB_TileCheck> ().occupied && rightTile.gameObject.GetComponent<SB_TileCheck> ().occupier != "Player") {
 				rightTile.gameObject.GetComponent<SB_TileCheck>().valid = false;
 			}
-			else if (leftTile.gameObject.GetComponent<SB_TileCheck> ().occupied && leftTile.gameObject.GetComponent<SB_TileCheck> ().occupier != "Player") {
+			else{
+				rightTile.gameObject.GetComponent<SB_TileCheck>().valid = true;
+			}
+			if (leftTile.gameObject.GetComponent<SB_TileCheck> ().occupied && leftTile.gameObject.GetComponent<SB_TileCheck> ().occupier != "Player") {
 				leftTile.gameObject.GetComponent<SB_TileCheck>().valid = false;
 			}
 			else{
-				upTile.gameObject.GetComponent<SB_TileCheck>().valid = true;
-				downTile.gameObject.GetComponent<SB_TileCheck>().valid = true;
-				rightTile.gameObject.GetComponent<SB_TileCheck>().valid = true;
 				leftTile.gameObject.GetComponent<SB_TileCheck>().valid = true;
 			}
 		}
