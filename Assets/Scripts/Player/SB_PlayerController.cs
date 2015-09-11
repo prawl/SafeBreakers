@@ -16,6 +16,7 @@ public class SB_PlayerController : MonoBehaviour {
 	public bool moving, up, down, left, right;
 	public Button upButton, downButton, rightButton, leftButton;
 	private TileData upTile, downTile, rightTile, leftTile;
+	private SB_GameController gameCon;
 
 	// Use this for initialization
 	void Start () {
@@ -23,6 +24,7 @@ public class SB_PlayerController : MonoBehaviour {
 		GetComponent<Renderer> ().castShadows = true;
 		GetComponent<Renderer> ().receiveShadows = true;
 		controller = gameObject.GetComponent<CharacterController> ();
+		gameCon = gameObject.GetComponent<SB_GameController> ();
 		moving = false;
 		currentTile = tileSystem.ClosestTileIndexFromWorld (transform.position);
 		currentLoc = tileSystem.GetTile (currentTile).gameObject.transform.position;
@@ -99,28 +101,28 @@ public class SB_PlayerController : MonoBehaviour {
 	}
 
 	public void GoUp(){
-		if (upTile.gameObject.GetComponent<SB_TileCheck> ().valid) {
+		if (upTile.gameObject.GetComponent<SB_TileCheck> ().valid && gameCon.playerCount < gameCon.gameCount) {
 			GetNextTile (tileSystem.ClosestTileIndexFromWorld (upTile.gameObject.transform.position));
 			up = true;
 		}
 	}
 
 	public void GoDown(){
-		if (downTile.gameObject.GetComponent<SB_TileCheck> ().valid) {
+		if (downTile.gameObject.GetComponent<SB_TileCheck> ().valid && gameCon.playerCount < gameCon.gameCount) {
 			GetNextTile (tileSystem.ClosestTileIndexFromWorld (downTile.gameObject.transform.position));
 			down = true;
 		}
 	}
 
 	public void GoRight(){
-		if (rightTile.gameObject.GetComponent<SB_TileCheck> ().valid) {
+		if (rightTile.gameObject.GetComponent<SB_TileCheck> ().valid && gameCon.playerCount < gameCon.gameCount) {
 			GetNextTile (tileSystem.ClosestTileIndexFromWorld (rightTile.gameObject.transform.position));
 			right = true;
 		}
 	}
 
 	public void GoLeft(){
-		if (leftTile.gameObject.GetComponent<SB_TileCheck> ().valid) {
+		if (leftTile.gameObject.GetComponent<SB_TileCheck> ().valid && gameCon.playerCount < gameCon.gameCount) {
 			GetNextTile (tileSystem.ClosestTileIndexFromWorld (leftTile.gameObject.transform.position));
 			left = true;
 		}
@@ -189,6 +191,7 @@ public class SB_PlayerController : MonoBehaviour {
 			transform.position = nextLoc;
 			currentTile = nextTile;
 			moving = false;
+			gameCon.playerCount++;
 		}
 		nextLoc.y = .75f;
 		Vector3 moveDiff = nextLoc - transform.position;
