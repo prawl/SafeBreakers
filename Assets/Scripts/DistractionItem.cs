@@ -19,8 +19,8 @@ public class DistractionItem : MonoBehaviour {
 	
 	}
 
-  void OnTriggerEnter(Collider other) {
-    print("hi");
+  void OnTriggerEnter(Collider col) {
+    print(col.gameObject.name);
   }
 
   void CreateItem () {
