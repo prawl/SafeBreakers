@@ -34,8 +34,8 @@ public class DistractionItem : MonoBehaviour {
     }
 	}
 
-  void OnTriggerEnter(Collider col) {
-    CaptureTileTouchingItem(col);
+  void OnCollisionEnter(Collision col) {
+    // CaptureTileTouchingItem(col);
   }
 
   // Borrowed from http://answers.unity3d.com/questions/248788/calculating-ball-trajectory-in-full-3d-world.html
@@ -63,8 +63,8 @@ public class DistractionItem : MonoBehaviour {
     return result;
   }
 
-  void CaptureTileTouchingItem(Collider col){
-    print(col.gameObject);
+  void CaptureTileTouchingItem(Collision col){
+    // if(col.gameObject.transform.parent.gameObject.name != null && col != null){
     // if(col.gameObject.transform.parent.gameObject.name != null && col != null){
     //   itemIsTouchingTile = col.gameObject.transform.parent.gameObject;
     // }
@@ -84,7 +84,7 @@ public class DistractionItem : MonoBehaviour {
     itemPosition.y += .75f;
     Instantiate(deployItem, itemPosition, player.transform.rotation);
     ActivateItem();
-    Invoke("DestroyItem", 5f);
+    // Invoke("DestroyItem", 5f);
   }
 
   void DestroyItem() {
