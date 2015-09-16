@@ -32,10 +32,13 @@ public class DistractionItem : MonoBehaviour {
       throwSpeed = calculateBestThrowSpeed(player.transform.position, mouseClickWorldPosition, temp2);
       GameObject.Find("deploy_item(Clone)").GetComponent<Rigidbody>().AddForce(throwSpeed, ForceMode.VelocityChange);
     }
+    // print(itemIsTouchingTile);
 	}
 
   void OnCollisionEnter(Collision col) {
-    // CaptureTileTouchingItem(col);
+    if(col != null && col.gameObject.transform.parent != null && col.gameObject.transform.parent.transform.parent != null){
+      itemIsTouchingTile = col.gameObject;
+    }
   }
 
   // Borrowed from http://answers.unity3d.com/questions/248788/calculating-ball-trajectory-in-full-3d-world.html
@@ -61,13 +64,6 @@ public class DistractionItem : MonoBehaviour {
     result *= v0xz;                                // set magnitude of xz to v0xz (starting speed in xz plane)
     result.y = v0y;                                // set y to v0y (starting speed of y plane)
     return result;
-  }
-
-  void CaptureTileTouchingItem(Collision col){
-    // if(col.gameObject.transform.parent.gameObject.name != null && col != null){
-    // if(col.gameObject.transform.parent.gameObject.name != null && col != null){
-    //   itemIsTouchingTile = col.gameObject.transform.parent.gameObject;
-    // }
   }
 
   // This function will not work properly unless a camera has the tag MainCamera

@@ -13,6 +13,8 @@ GameObject:
   - 111: {fileID: 11171146}
   - 54: {fileID: 5439968}
   - 136: {fileID: 13665504}
+  - 114: {fileID: 11473286}
+  - 114: {fileID: 11430954}
   m_Layer: 0
   m_Name: deploy_item
   m_TagString: Item
@@ -92,6 +94,33 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 1
   m_CullingType: 0
+--- !u!114 &11430954
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 363e8c1035dbc41d1bef74327d9f82e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11473286
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 190622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18395b0a163b74cbe8e8da80e17e7d08, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  deployItem: {fileID: 190622}
+  itemIsTouchingTile: {fileID: 0}
+  itemExistInGame: 0
+  temp: .5
+  temp2: 2
 --- !u!136 &13665504
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -136,6 +165,10 @@ Prefab:
       propertyPath: m_IsTrigger
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: deployItem
+      value: 
+      objectReference: {fileID: 190622}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 190622}
