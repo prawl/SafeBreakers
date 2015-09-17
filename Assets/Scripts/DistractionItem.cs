@@ -80,7 +80,7 @@ public class DistractionItem : MonoBehaviour {
     itemPosition.y += .75f;
     Instantiate(deployItem, itemPosition, player.transform.rotation);
     ActivateItem();
-    // Invoke("DestroyItem", 5f);
+    Invoke("DestroyItem", 5f);
   }
 
   void DestroyItem() {

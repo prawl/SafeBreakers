@@ -14,7 +14,6 @@ GameObject:
   - 54: {fileID: 5439968}
   - 136: {fileID: 13665504}
   - 114: {fileID: 11473286}
-  - 114: {fileID: 11430954}
   m_Layer: 0
   m_Name: deploy_item
   m_TagString: Item
@@ -94,17 +93,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 1
   m_CullingType: 0
---- !u!114 &11430954
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 190622}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 363e8c1035dbc41d1bef74327d9f82e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11473286
 MonoBehaviour:
   m_ObjectHideFlags: 1
