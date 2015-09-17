@@ -1,6 +1,23 @@
 fileFormatVersion: 2
 guid: a0b4afac6d254a44aadbee699c9a0406
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: JapaneseLamp_0
+    21300002: JapaneseLamp_1
+    21300004: JapaneseLamp_2
+    21300006: JapaneseLamp_3
+    21300008: JapaneseLamp_4
+    21300010: JapaneseLamp_5
+    21300012: JapaneseLamp_6
+    21300014: JapaneseLamp_7
+    21300016: JapaneseLamp_8
+    21300018: JapaneseLamp_9
+    21300020: JapaneseLamp_10
+    21300022: JapaneseLamp_11
+    21300024: JapaneseLamp_12
+    21300026: JapaneseLamp_13
+    21300028: JapaneseLamp_14
+    21300030: JapaneseLamp_15
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -19,6 +36,9 @@ TextureImporter:
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 1024
@@ -29,7 +49,9 @@ TextureImporter:
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
+  rGBM: 0
   compressionQuality: 50
+  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
@@ -204,3 +226,5 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 

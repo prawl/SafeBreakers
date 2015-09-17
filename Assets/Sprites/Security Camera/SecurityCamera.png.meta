@@ -1,6 +1,23 @@
 fileFormatVersion: 2
 guid: 85747501db11d924f8002ab440319c29
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: SecurityCamera_Left
+    21300002: SecurityCamera_1
+    21300004: SecurityCamera_2
+    21300006: SecurityCamera_3
+    21300008: SecurityCamera_4
+    21300010: SecurityCamera_5
+    21300012: SecurityCamera_6
+    21300014: SecurityCamera_7
+    21300016: SecurityCamera_8
+    21300018: SecurityCamera_9
+    21300020: SecurityCamera_10
+    21300022: SecurityCamera_11
+    21300024: SecurityCamera_12
+    21300026: SecurityCamera_13
+    21300028: SecurityCamera_14
+    21300030: SecurityCamera_15
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -19,6 +36,9 @@ TextureImporter:
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 1024
@@ -29,7 +49,9 @@ TextureImporter:
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
+  rGBM: 0
   compressionQuality: 50
+  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
@@ -204,3 +226,5 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 

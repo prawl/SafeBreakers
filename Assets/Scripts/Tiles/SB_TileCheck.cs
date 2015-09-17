@@ -27,7 +27,7 @@ public class SB_TileCheck : MonoBehaviour {
 	}
 
 	void CheckIfOccupied(){
-		if (player.GetComponent<SB_PlayerController>().currentTile == currentTile) {
+		if (player.GetComponent<SB_PlayerController>().currentTile == currentTile && !occupied) {
 			occupied = true;
 			occupier = "Player";
 		}

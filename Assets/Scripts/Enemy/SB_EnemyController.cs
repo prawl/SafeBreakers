@@ -47,13 +47,15 @@ public class SB_EnemyController : MonoBehaviour {
 			if(!moved){
 				if(to){
 					if(currentPos != pathArray.Length-1){
+						LookForPlayer();
 						GetDirection (pathArray[currentPos], pathArray[currentPos+1]);
 					}
 				}
 				else{
 					if(currentPos != 0){
-					GetDirection (pathArray[currentPos], pathArray[currentPos-1]);
-				}
+						LookForPlayer();
+						GetDirection (pathArray[currentPos], pathArray[currentPos-1]);
+					}
 				}
 			}
 			if(gameCon.playerCount > gameCon.enemyCount){
@@ -98,7 +100,6 @@ public class SB_EnemyController : MonoBehaviour {
 			path = p;
 			pathArray = path.vectorPath.ToArray ();
 			ChangeYValue(pathArray);
-			GetDirection(pathArray[currentPos], pathArray[currentPos + 1]);
 		}
 	}
 

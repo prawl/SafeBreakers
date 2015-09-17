@@ -1,6 +1,52 @@
 fileFormatVersion: 2
 guid: 9a527703956f2db47a8f00ab1aca52a5
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: Mario_0
+    21300002: Mario_1
+    21300004: Mario_2
+    21300006: Mario_3
+    21300008: Mario_4
+    21300010: Mario_5
+    21300012: Mario_6
+    21300014: Mario_7
+    21300016: Mario_8
+    21300018: Mario_9
+    21300020: Mario_10
+    21300022: Mario_11
+    21300024: Mario_12
+    21300026: Mario_13
+    21300028: Mario_14
+    21300030: Mario_15
+    21300032: Mario_16
+    21300034: Mario_17
+    21300036: Mario_18
+    21300038: Mario_19
+    21300040: Mario_20
+    21300042: Mario_21
+    21300044: Mario_22
+    21300046: Mario_23
+    21300048: Mario_24
+    21300050: Mario_25
+    21300052: Mario_26
+    21300054: Mario_27
+    21300056: Mario_28
+    21300058: Mario_29
+    21300060: Mario_30
+    21300062: Mario_31
+    21300064: Mario_32
+    21300066: Mario_33
+    21300068: Mario_34
+    21300070: Mario_35
+    21300072: Mario_36
+    21300074: Mario_37
+    21300076: Mario_38
+    21300078: Mario_39
+    21300080: Mario_40
+    21300082: Mario_41
+    21300084: Mario_42
+    21300086: Mario_43
+    21300088: Mario_44
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -19,6 +65,9 @@ TextureImporter:
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 1024
@@ -29,7 +78,9 @@ TextureImporter:
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
+  rGBM: 0
   compressionQuality: 50
+  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
@@ -494,3 +545,5 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 

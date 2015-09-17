@@ -26,7 +26,7 @@ public class SB_PlayerController : MonoBehaviour {
 		controller = gameObject.GetComponent<CharacterController> ();
 		gameCon = gameObject.GetComponent<SB_GameController> ();
 		moving = false;
-		currentTile = tileSystem.ClosestTileIndexFromWorld (transform.position);
+		currentTile = gameCon.startTile;
 		currentLoc = tileSystem.GetTile (currentTile).gameObject.transform.position;
 		currentLoc.y = .75f;
 		transform.position = currentLoc;
@@ -46,6 +46,9 @@ public class SB_PlayerController : MonoBehaviour {
 			if (moving) {
 				MoveToNextTile();
 				ResetTiles ();
+			}
+			if(currentTile == gameCon.endTile){
+				gameCon.isLevelWon = true;
 			}
 		}
 	}
@@ -71,25 +74,25 @@ public class SB_PlayerController : MonoBehaviour {
 					if(upTile.gameObject.GetComponent<SB_TileCheck>().valid && currentTile.row != 0){
 						upButton.interactable = true;
 					}
-					if(!upTile.gameObject.GetComponent<SB_TileCheck>().valid || currentTile.row == 0){
+					if(!upTile.gameObject.GetComponent<SB_TileCheck>().valid || currentTile.row == 0 || upTile.gameObject.GetComponent<SB_TileCheck>().occupied){
 						upButton.interactable = false;
 					}
 					if(downTile.gameObject.GetComponent<SB_TileCheck>().valid && currentTile.row != tileSystem.RowCount-1){
 						downButton.interactable = true;
 					}
-					if(!downTile.gameObject.GetComponent<SB_TileCheck>().valid || currentTile.row == tileSystem.RowCount-1){
+					if(!downTile.gameObject.GetComponent<SB_TileCheck>().valid || currentTile.row == tileSystem.RowCount-1 || downTile.gameObject.GetComponent<SB_TileCheck>().occupied){
 						downButton.interactable = false;
 					}
 					if(rightTile.gameObject.GetComponent<SB_TileCheck>().valid && currentTile.column != tileSystem.ColumnCount-1){
 						rightButton.interactable = true;
 					}
-					if(!rightTile.gameObject.GetComponent<SB_TileCheck>().valid || currentTile.column == tileSystem.ColumnCount-1){
+					if(!rightTile.gameObject.GetComponent<SB_TileCheck>().valid || currentTile.column == tileSystem.ColumnCount-1 || rightTile.gameObject.GetComponent<SB_TileCheck>().occupied){
 						rightButton.interactable = false;
 					}
 					if(leftTile.gameObject.GetComponent<SB_TileCheck>().valid && currentTile.column != 0){
 						leftButton.interactable = true;
 					}
-					if(!leftTile.gameObject.GetComponent<SB_TileCheck>().valid || currentTile.column == 0){
+					if(!leftTile.gameObject.GetComponent<SB_TileCheck>().valid || currentTile.column == 0 || leftTile.gameObject.GetComponent<SB_TileCheck>().occupied){
 						leftButton.interactable = false;
 					}
 				}

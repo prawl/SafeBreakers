@@ -33,10 +33,17 @@ public class SB_GameController : MonoBehaviour {
 			gameCount++;
 		}
 		CheckGameLost ();
+		CheckGameWon ();
 	}
 
 	void CheckGameLost(){
 		if (isLevelLost) {
+			isLevelPaused = true;
+		}
+	}
+
+	void CheckGameWon(){
+		if (isLevelWon) {
 			isLevelPaused = true;
 		}
 	}
