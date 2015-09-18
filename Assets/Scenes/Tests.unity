@@ -37,9 +37,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
---- !u!127 &3
-LevelGameManager:
-  m_ObjectHideFlags: 0
 --- !u!157 &4
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -68,6 +65,7 @@ LightmapSettings:
     m_TextureCompression: 1
     m_FinalGather: 0
     m_FinalGatherRayCount: 1024
+    m_ReflectionCompression: 2
   m_LightmapSnapshot: {fileID: 0}
   m_RuntimeCPUUsage: 25
 --- !u!196 &5
@@ -6189,7 +6187,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 5439968, guid: b52a0b254a7014a16b5ef3b9d15d3567, type: 2}
       propertyPath: m_UseGravity
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11473286, guid: b52a0b254a7014a16b5ef3b9d15d3567, type: 2}
       propertyPath: temp
@@ -6198,6 +6196,10 @@ Prefab:
     - target: {fileID: 11473286, guid: b52a0b254a7014a16b5ef3b9d15d3567, type: 2}
       propertyPath: temp2
       value: .180000007
+      objectReference: {fileID: 0}
+    - target: {fileID: 190622, guid: b52a0b254a7014a16b5ef3b9d15d3567, type: 2}
+      propertyPath: m_TagString
+      value: Item
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b52a0b254a7014a16b5ef3b9d15d3567, type: 2}
@@ -10716,6 +10718,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
+  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -16854,7 +16857,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18395b0a163b74cbe8e8da80e17e7d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deployItem: {fileID: 120052, guid: f3a1be546f6ca4042a4271e1458dfe62, type: 2}
+  deployItem: {fileID: 0}
   itemIsTouchingTile: {fileID: 0}
   itemExistInGame: 0
   temp: .5
@@ -18851,6 +18854,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
+  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -24791,11 +24795,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   numOfEnemies: 0
   startTile:
-    row: 1
-    column: 1
+    row: 0
+    column: 0
   endTile:
-    row: 1
-    column: 1
+    row: 0
+    column: 0
   player: {fileID: 0}
 --- !u!95 &1252435548
 Animator:
@@ -24872,16 +24876,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2edec70675dded64c91de58f7184cc4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1252435544}
-  tileSystem: {fileID: 1966549304}
+  player: {fileID: 0}
+  tileSystem: {fileID: 0}
   current:
-    row: 1
-    column: 1
+    row: 0
+    column: 0
   next:
-    row: 1
-    column: 1
+    row: 0
+    column: 0
   gameCon: {fileID: 0}
-  camera: {fileID: 983752160}
+  camera: {fileID: 0}
   moving: 0
 --- !u!212 &1252435553
 SpriteRenderer:
@@ -27097,8 +27101,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2edec70675dded64c91de58f7184cc4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1366607837}
-  tileSystem: {fileID: 804119244}
+  player: {fileID: 0}
+  tileSystem: {fileID: 0}
   current:
     row: 0
     column: 0
@@ -27106,7 +27110,7 @@ MonoBehaviour:
     row: 0
     column: 0
   gameCon: {fileID: 0}
-  camera: {fileID: 1511122630}
+  camera: {fileID: 0}
   moving: 0
 --- !u!212 &1366607846
 SpriteRenderer:
@@ -30834,6 +30838,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
+  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
@@ -32692,13 +32697,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db9f3ba4714a0984fb247c85029f9912, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  numOfEnemies: 1
+  numOfEnemies: 0
   startTile:
-    row: 1
-    column: 1
+    row: 0
+    column: 0
   endTile:
-    row: 1
-    column: 1
+    row: 0
+    column: 0
   player: {fileID: 0}
 --- !u!95 &1599136104
 Animator:
@@ -32775,16 +32780,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2edec70675dded64c91de58f7184cc4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 1599136100}
-  tileSystem: {fileID: 1077274326}
+  player: {fileID: 0}
+  tileSystem: {fileID: 0}
   current:
-    row: 4
-    column: 2
+    row: 0
+    column: 0
   next:
     row: 0
     column: 0
   gameCon: {fileID: 0}
-  camera: {fileID: 507328990}
+  camera: {fileID: 0}
   moving: 0
 --- !u!212 &1599136109
 SpriteRenderer:
@@ -42708,16 +42713,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2edec70675dded64c91de58f7184cc4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2079023074}
-  tileSystem: {fileID: 2138408857}
+  player: {fileID: 0}
+  tileSystem: {fileID: 0}
   current:
-    row: 4
-    column: 2
+    row: 0
+    column: 0
   next:
     row: 0
     column: 0
   gameCon: {fileID: 0}
-  camera: {fileID: 2144333620}
+  camera: {fileID: 0}
   moving: 0
 --- !u!212 &2079023082
 SpriteRenderer:
@@ -43819,6 +43824,7 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
+  m_TargetEye: 3
   m_HDR: 0
   m_OcclusionCulling: 1
   m_StereoConvergence: 10

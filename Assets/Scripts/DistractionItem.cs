@@ -12,6 +12,9 @@ public class DistractionItem : MonoBehaviour {
   public GameObject itemIsTouchingTile;
   public bool itemExistInGame;
   private GameObject[] deployItems;
+  private float waitUntilThisTime;
+  private float numberOfSeconds = 3f;
+
 
   public float temp = 0.5f;
   public float temp2 = 2f;
@@ -19,6 +22,7 @@ public class DistractionItem : MonoBehaviour {
 	void Initialize() {
 		player = GameObject.FindGameObjectWithTag ("Player");
     itemExistInGame = false;
+    waitUntilThisTime = 0f;
 	}
 
 	void Start () {
@@ -26,14 +30,28 @@ public class DistractionItem : MonoBehaviour {
 	}
 	
 	void Update () {
-    if (Input.GetMouseButtonDown(0)) {
-      CreateItem();
-      CaptureMouseClick();
-      throwSpeed = calculateBestThrowSpeed(player.transform.position, mouseClickWorldPosition, temp2);
-      GameObject.Find("deploy_item(Clone)").GetComponent<Rigidbody>().AddForce(throwSpeed, ForceMode.VelocityChange);
+    if (SecondsHavePassed() == true) {
+      print("true");
+      if (Input.GetMouseButtonDown(0)) {
+         CreateItem();
+        waitUntilThisTime = Time.time + numberOfSeconds;
+        CaptureMouseClick();
+        throwSpeed = calculateBestThrowSpeed(player.transform.position, mouseClickWorldPosition, temp2);
+        GameObject.Find("deploy_item(Clone)").GetComponent<Rigidbody>().AddForce(throwSpeed, ForceMode.VelocityChange);
+      }
+    } else {
+      print("false");
     }
     // print(itemIsTouchingTile);
 	}
+
+  bool SecondsHavePassed(){
+    if(waitUntilThisTime < Time.time){
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   void OnCollisionEnter(Collision col) {
     if(col != null && col.gameObject.transform.parent != null && col.gameObject.transform.parent.transform.parent != null){
@@ -80,13 +98,13 @@ public class DistractionItem : MonoBehaviour {
     itemPosition.y += .75f;
     Instantiate(deployItem, itemPosition, player.transform.rotation);
     ActivateItem();
-    Invoke("DestroyItem", 5f);
+    // Invoke("DestroyItem", 5f);
   }
 
   void DestroyItem() {
     if(ItemActive()){
       deployItems = GameObject.FindGameObjectsWithTag("Item");
-      for(int i=0; i < deployItems.Length; i++) {
+      for(int i=1; i < deployItems.Length; i++) {
         Destroy(deployItems[i]);
       }
       DeactivateItem();
