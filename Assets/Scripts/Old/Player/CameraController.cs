@@ -18,6 +18,10 @@ public class CameraController : MonoBehaviour {
 	void Start () {
 		mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 	}
+
+	void Update () {
+    PanCamera();
+	}
 	
 	// Moves the main camera's focus onto an object using its tag
 	public static void SetCameraFocus(string Tag){
@@ -41,6 +45,7 @@ public class CameraController : MonoBehaviour {
 	public static void PanCamera() {
 		//Right mouse btn is held down
 		if (Input.GetMouseButton(1)){
+      print("hello");
 			OnMouseDrag();
 		}
 		//Right mouse btn is let go
