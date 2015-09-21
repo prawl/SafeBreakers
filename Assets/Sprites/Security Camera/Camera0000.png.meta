@@ -1,6 +1,10 @@
 fileFormatVersion: 2
 guid: 3a60b0b546a4b3e409bcfe18e316fe9a
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: Camera_Left
+    21300002: Camera_Center
+    21300004: Camera_Right
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -19,6 +23,9 @@ TextureImporter:
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 1024
@@ -29,7 +36,9 @@ TextureImporter:
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
+  rGBM: 0
   compressionQuality: 50
+  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
@@ -74,3 +83,5 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 

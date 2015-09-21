@@ -1,6 +1,74 @@
 fileFormatVersion: 2
 guid: e4fc9f2e52033f14ebec3a59cad0adca
 TextureImporter:
+  fileIDToRecycleName:
+    21300000: OfficeItems_0
+    21300002: OfficeItems_1
+    21300004: OfficeItems_2
+    21300006: OfficeItems_3
+    21300008: OfficeItems_4
+    21300010: OfficeItems_5
+    21300012: OfficeItems_6
+    21300014: OfficeItems_7
+    21300016: OfficeItems_8
+    21300018: OfficeItems_9
+    21300020: OfficeItems_10
+    21300022: OfficeItems_11
+    21300024: OfficeItems_12
+    21300026: OfficeItems_13
+    21300028: OfficeItems_14
+    21300030: OfficeItems_15
+    21300032: OfficeItems_16
+    21300034: OfficeItems_17
+    21300036: OfficeItems_18
+    21300038: OfficeItems_19
+    21300040: OfficeItems_20
+    21300042: OfficeItems_21
+    21300044: OfficeItems_22
+    21300046: OfficeItems_23
+    21300048: OfficeItems_24
+    21300050: OfficeItems_25
+    21300052: OfficeItems_26
+    21300054: OfficeItems_27
+    21300056: OfficeItems_28
+    21300058: OfficeItems_29
+    21300060: OfficeItems_30
+    21300062: OfficeItems_31
+    21300064: OfficeItems_32
+    21300066: OfficeItems_33
+    21300068: OfficeItems_34
+    21300070: OfficeItems_35
+    21300072: OfficeItems_36
+    21300074: OfficeItems_37
+    21300076: OfficeItems_38
+    21300078: OfficeItems_39
+    21300080: OfficeItems_40
+    21300082: OfficeItems_41
+    21300084: OfficeItems_42
+    21300086: OfficeItems_43
+    21300088: OfficeItems_44
+    21300090: OfficeItems_45
+    21300092: OfficeItems_46
+    21300094: OfficeItems_47
+    21300096: OfficeItems_48
+    21300098: OfficeItems_49
+    21300100: OfficeItems_50
+    21300102: OfficeItems_51
+    21300104: OfficeItems_52
+    21300106: OfficeItems_53
+    21300108: OfficeItems_54
+    21300110: OfficeItems_55
+    21300112: OfficeItems_56
+    21300114: OfficeItems_57
+    21300116: OfficeItems_58
+    21300118: OfficeItems_59
+    21300120: OfficeItems_60
+    21300122: OfficeItems_61
+    21300124: OfficeItems_62
+    21300126: OfficeItems_63
+    21300128: OfficeItems_64
+    21300130: OfficeItems_65
+    21300132: OfficeItems_66
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -19,6 +87,9 @@ TextureImporter:
   isReadable: 0
   grayScaleToAlpha: 0
   generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
   seamlessCubemap: 0
   textureFormat: -1
   maxTextureSize: 1024
@@ -29,7 +100,9 @@ TextureImporter:
     wrapMode: 1
   nPOTScale: 0
   lightmap: 0
+  rGBM: 0
   compressionQuality: 50
+  allowsAlphaSplitting: 0
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
@@ -714,3 +787,5 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
+  assetBundleName: 
+  assetBundleVariant: 

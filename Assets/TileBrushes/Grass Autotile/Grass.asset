@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 475653285, guid: 533361e04fa896b4395cced4d33088c3, type: 3}
+  m_Name: Grass
+  m_EditorClassIdentifier: 
+  _originalAtlasWidth: 1024
+  _originalAtlasHeight: 1024
+  _rows: 8
+  _columns: 6
+  _tileIncrementX: 170
+  _tileIncrementY: 128
+  _tileIncrementU: .166015625
+  _tileIncrementV: .125
+  _tileWidth: 170
+  _tileHeight: 128
+  _tileWidthUV: .166015625
+  _tileHeightUV: .125
+  _borderSize: 0
+  _borderU: 0
+  _borderV: 0
+  _delta: .5
+  _deltaU: .00048828125
+  _deltaV: .00048828125
+  procedural: 1
+  _atlasMaterial: {fileID: 2100000, guid: 25b32e1b6fddd4741949cb6237f7f1ff, type: 2}
+  _atlasTexture: {fileID: 2800000, guid: cd1c5762ea9e3db48b62bab69c9b7e39, type: 3}
+  _tileMeshAsset: {fileID: 0}
+  _tileMeshes: []
+  _autotileStyle: 0
+  _hasInnerJoins: 1
+  _forceClampEdges: 0
+  rawTexture: {fileID: 2800000, guid: c6e0767b1f8c34890ac245217f4b9731, type: 3}
