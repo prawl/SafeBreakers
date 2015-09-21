@@ -9,11 +9,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 575807087, guid: 533361e04fa896b4395cced4d33088c3, type: 3}
-  m_Name: DefaultFloor
+  m_Name: GrassFloor
   m_EditorClassIdentifier: 
   _internalFlags: 1
   disableImmediatePreview: 0
-  _previewAssetId: z_8c56cf22-2086-44db-9527-3616553d0e30
+  _previewAssetId: z_19839e03-3dbc-4d38-8a4b-1c4603d9c046
   customPreviewImage: {fileID: 0}
   customPreviewDesignTime: 1
   _static: 0
@@ -24,7 +24,7 @@ MonoBehaviour:
   layer: 0
   overrideTag: 0
   tag: Untagged
-  category: 0
+  _categoryId: 0
   forceLegacySideways: 0
   overrideTransforms: 0
   scaleMode: 0
@@ -39,14 +39,15 @@ MonoBehaviour:
   - mask: 255
     _type: 0
     _rotation: 0
-    variations:
-    - {fileID: 100000, guid: 905ab501f46c9fe46bae1d5ae2eac637, type: 2}
+    _variations:
+    - {fileID: 148780, guid: 75247af8d65c6464caab82eb4eb83840, type: 2}
     _variationWeights: 64000000
   _materialMappingFrom:
-  - {fileID: 2100000, guid: 33688ffe0ba82e8478281a18ace6309b, type: 2}
+  - {fileID: 2100000, guid: 649df39e3b35e6a42b49616b71fbbd89, type: 2}
   _materialMappingTo:
-  - {fileID: 2100000, guid: 33688ffe0ba82e8478281a18ace6309b, type: 2}
-  coalesce: 1
-  coalesceWithRotated: 0
-  coalesceBrushGroup: 0
+  - {fileID: 2100000, guid: 649df39e3b35e6a42b49616b71fbbd89, type: 2}
+  _coalesce: 1
+  _coalesceWithRotated: 0
+  _coalesceWithBorder: 0
+  _coalesceBrushGroup: 0
   _coalesceWithBrushGroups: 

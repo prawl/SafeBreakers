@@ -169,25 +169,25 @@ public class SB_PlayerController : MonoBehaviour {
 		catch{}
 
 		try{
-			if (upTile.gameObject.GetComponent<SB_TileCheck> ().occupied && upTile.gameObject.GetComponent<SB_TileCheck> ().occupier != "Player") {
+			if (upTile.gameObject.GetComponent<SB_TileCheck> ().occupied && upTile.gameObject.GetComponent<SB_TileCheck> ().occupier.tag != "Player") {
 				upTile.gameObject.GetComponent<SB_TileCheck>().valid = false;
 			}
 			else{
 				upTile.gameObject.GetComponent<SB_TileCheck>().valid = true;
 			}
-			if (downTile.gameObject.GetComponent<SB_TileCheck> ().occupied && downTile.gameObject.GetComponent<SB_TileCheck> ().occupier != "Player") {
+			if (downTile.gameObject.GetComponent<SB_TileCheck> ().occupied && downTile.gameObject.GetComponent<SB_TileCheck> ().occupier.tag != "Player") {
 				downTile.gameObject.GetComponent<SB_TileCheck>().valid = false;
 			}
 			else{
 				downTile.gameObject.GetComponent<SB_TileCheck>().valid = true;
 			}
-			if (rightTile.gameObject.GetComponent<SB_TileCheck> ().occupied && rightTile.gameObject.GetComponent<SB_TileCheck> ().occupier != "Player") {
+			if (rightTile.gameObject.GetComponent<SB_TileCheck> ().occupied && rightTile.gameObject.GetComponent<SB_TileCheck> ().occupier.tag != "Player") {
 				rightTile.gameObject.GetComponent<SB_TileCheck>().valid = false;
 			}
 			else{
 				rightTile.gameObject.GetComponent<SB_TileCheck>().valid = true;
 			}
-			if (leftTile.gameObject.GetComponent<SB_TileCheck> ().occupied && leftTile.gameObject.GetComponent<SB_TileCheck> ().occupier != "Player") {
+			if (leftTile.gameObject.GetComponent<SB_TileCheck> ().occupied && leftTile.gameObject.GetComponent<SB_TileCheck> ().occupier.tag != "Player") {
 				leftTile.gameObject.GetComponent<SB_TileCheck>().valid = false;
 			}
 			else{
