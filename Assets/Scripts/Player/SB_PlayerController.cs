@@ -17,6 +17,7 @@ public class SB_PlayerController : MonoBehaviour {
 	public Button upButton, downButton, rightButton, leftButton;
 	private TileData upTile, downTile, rightTile, leftTile;
 	private SB_GameController gameCon;
+    public GameObject interactiveIcon;
 
 	// Use this for initialization
 	void Start () {
@@ -62,6 +63,14 @@ public class SB_PlayerController : MonoBehaviour {
 	}
 
 	void UpdateButtons(){
+        if (gameCon.canInteract)
+        {
+            interactiveIcon.SetActive(true);
+        }
+        else
+        {
+            interactiveIcon.SetActive(false);
+        }
 		if (!gameCon.isLevelPaused) {
 			if (moving) {
 				upButton.interactable = false;
@@ -69,7 +78,7 @@ public class SB_PlayerController : MonoBehaviour {
 				rightButton.interactable = false;
 				leftButton.interactable = false;
 			}
-			if (!moving) {
+			if (!moving && (gameCon.playerCount == gameCon.enemyCount)) {
 				try{
 					if(upTile.gameObject.GetComponent<SB_TileCheck>().valid && currentTile.row != 0){
 						upButton.interactable = true;

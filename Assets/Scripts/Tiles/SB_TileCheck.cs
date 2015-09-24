@@ -5,19 +5,17 @@ using Rotorz.Tile.Internal;
 
 public class SB_TileCheck : MonoBehaviour {
 
-	public TileSystem tileSystem;
-	public TileIndex currentTile;
-	public GameObject player, occupier;
-	public GameObject[] enemies, obstacles;
-	public bool occupied, valid, end, selected;
+	public GameObject occupier;
+    public bool occupied, valid;
+    public TileIndex currentTile;
+    private TileSystem tileSystem;
+    private GameObject player;
 
 	// Use this for initialization
 	void Start () {
-		player = GameObject.Find ("SB_Player");
-		obstacles = GameObject.FindGameObjectsWithTag ("Obstacle");
-        enemies = GameObject.FindGameObjectsWithTag("Enemy");
-        tileSystem = player.GetComponent<SB_PlayerController> ().tileSystem;
-		currentTile = tileSystem.ClosestTileIndexFromWorld (transform.position);
+        player = GameObject.FindGameObjectWithTag("Player");
+        tileSystem = player.GetComponent<SB_PlayerController>().tileSystem;
+        currentTile = tileSystem.ClosestTileIndexFromWorld(gameObject.transform.position);
         occupier = gameObject;
 	}
 	
