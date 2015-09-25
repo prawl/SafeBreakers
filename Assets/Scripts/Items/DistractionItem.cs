@@ -38,6 +38,10 @@ public class DistractionItem : MonoBehaviour {
     }
   }
 
+  public void OnBecameInvisible(){
+    DestroyAllItems();
+  }
+
   public int ItemsInLevel() {
     return numberOfItems;
   }
