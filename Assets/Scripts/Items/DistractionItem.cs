@@ -1,9 +1,11 @@
 using UnityEngine;
 using System.Collections;
+using Rotorz.Tile;
 
 public class DistractionItem : MonoBehaviour {
 
-  public GameObject itemIsTouchingTile;
+  public GameObject playerClickedTile;
+  public Vector3 currentTileLocation;
   public float itemThrowArc = 1.5f;
   public float timeToTarget = 0.18f;
   private GameObject player;
@@ -18,12 +20,12 @@ public class DistractionItem : MonoBehaviour {
 		player = GameObject.FindGameObjectWithTag ("Player");
 	}
 	
-	void Update () {
-   CountNumberOfItems("Item");
+  void Update () {
+    CountNumberOfItems("Item");
+    CaptureMouseClick();
 
     if (ItemsInLevel() < 2 && ItemsInLevel() > 0) {
-      if (Input.GetMouseButtonDown(0)) {
-        CaptureMouseClick();
+      if (Input.GetMouseButtonDown(0) && playerClickedTile != null) {
         CreateItem();
         // Invoke("DestroyAllItems", 5f);
       }
@@ -32,7 +34,7 @@ public class DistractionItem : MonoBehaviour {
     if(Input.GetKeyDown("space") ){
       DestroyAllItems();
     }
-    //print(itemIsTouchingTile);
+
   }
 
   public int ItemsInLevel() {
@@ -41,10 +43,17 @@ public class DistractionItem : MonoBehaviour {
 
   // This function will not work properly unless a camera has the tag MainCamera
   private void CaptureMouseClick(){
-    RaycastHit hit;
-    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-    if (Physics.Raycast(ray, out hit)) {
-      mouseClickWorldPosition = hit.point;
+    if(Input.GetMouseButtonDown(0) ) {
+      RaycastHit hit;
+      Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+      if (Physics.Raycast(ray, out hit)) {
+        if (hit.transform.gameObject.tag == "Ground") {
+          playerClickedTile = hit.transform.gameObject.transform.parent.gameObject;
+          currentTileLocation = hit.transform.gameObject.transform.position;
+        } else {
+          playerClickedTile = null;
+        }
+      }
     }
   }
 
@@ -59,7 +68,7 @@ public class DistractionItem : MonoBehaviour {
 
   private void OnCollisionEnter(Collision col) {
     if(col != null && col.gameObject.transform.parent != null && col.gameObject.transform.parent.transform.parent != null){
-      itemIsTouchingTile = col.gameObject;
+      playerClickedTile = col.gameObject;
     }
   }
 
@@ -71,7 +80,7 @@ public class DistractionItem : MonoBehaviour {
     itemPosition = player.transform.position;
     itemPosition.y += .75f;
     instantiatedItem = (GameObject) Instantiate(PrefabManager.Instance.deployItem, itemPosition, player.transform.rotation);
-    throwSpeed = calculateBestThrowSpeed(player.transform.position, mouseClickWorldPosition, timeToTarget);
+    throwSpeed = calculateBestThrowSpeed(player.transform.position, currentTileLocation, timeToTarget);
     instantiatedItem.GetComponent<Rigidbody>().AddForce(throwSpeed, ForceMode.VelocityChange);
   }
 
