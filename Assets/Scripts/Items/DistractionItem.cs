@@ -22,19 +22,20 @@ public class DistractionItem : MonoBehaviour {
 	
   void Update () {
     CountNumberOfItems("Item");
-    CaptureMouseClick();
-
-    if (ItemsInLevel() < 2 && ItemsInLevel() > 0) {
-      if (Input.GetMouseButtonDown(0) && playerClickedTile != null) {
-        CreateItem();
+    if (Input.GetMouseButtonDown(0)) {
+      CaptureMouseClick();
+      if (ItemsInLevel() < 2 && ItemsInLevel() > 0) {
+        if (currentTileLocation != Vector3.zero) {
+          CreateItem();
+        }
         // Invoke("DestroyAllItems", 5f);
       }
     }
 
     if(Input.GetKeyDown("space") ){
       DestroyAllItems();
+      ResetTileLocation();
     }
-
   }
 
   public int ItemsInLevel() {
@@ -43,16 +44,12 @@ public class DistractionItem : MonoBehaviour {
 
   // This function will not work properly unless a camera has the tag MainCamera
   private void CaptureMouseClick(){
-    if(Input.GetMouseButtonDown(0) ) {
-      RaycastHit hit;
-      Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-      if (Physics.Raycast(ray, out hit)) {
-        if (hit.transform.gameObject.tag == "Ground") {
-          playerClickedTile = hit.transform.gameObject.transform.parent.gameObject;
-          currentTileLocation = hit.transform.gameObject.transform.position;
-        } else {
-          playerClickedTile = null;
-        }
+    RaycastHit hit;
+    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+    if (Physics.Raycast(ray, out hit)) {
+      if (hit.transform.gameObject.tag == "Ground") {
+        playerClickedTile = hit.transform.gameObject.transform.parent.gameObject;
+        currentTileLocation = hit.transform.gameObject.transform.position;
       }
     }
   }
@@ -82,6 +79,12 @@ public class DistractionItem : MonoBehaviour {
     instantiatedItem = (GameObject) Instantiate(PrefabManager.Instance.deployItem, itemPosition, player.transform.rotation);
     throwSpeed = calculateBestThrowSpeed(player.transform.position, currentTileLocation, timeToTarget);
     instantiatedItem.GetComponent<Rigidbody>().AddForce(throwSpeed, ForceMode.VelocityChange);
+  }
+
+  // When we don't want the player to throw an item unless they click a tile.  In order to enforce this
+  // we set the currentTileLocation to 0,0,0 to disable throwing when you click on nothing.
+  private void ResetTileLocation(){
+    currentTileLocation = Vector3.zero;
   }
 
   // Borrowed from http://answers.unity3d.com/questions/248788/calculating-ball-trajectory-in-full-3d-world.html
