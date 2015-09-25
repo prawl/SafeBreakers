@@ -37,6 +37,9 @@ public class DistractionItem : MonoBehaviour {
       ResetTileLocation();
     }
   }
+  public void OnClick(){
+    print("Hello world");
+  }
 
   public void OnBecameInvisible(){
     DestroyAllItems();
