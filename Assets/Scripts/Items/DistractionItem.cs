@@ -8,13 +8,14 @@ public class DistractionItem : MonoBehaviour {
   public Vector3 currentTileLocation;
   public float itemThrowArc = 1.5f;
   public float timeToTarget = 0.18f;
-  private GameObject player;
-  private Vector3 itemPosition;
-  private Vector3 throwSpeed;
-  private Vector3 mouseClickWorldPosition;
-  private GameObject[] deployItems;
-  private int numberOfItems;
-  private GameObject instantiatedItem;
+  public GameObject player;
+  public Vector3 itemPosition;
+  public Vector3 throwSpeed;
+  public Vector3 mouseClickWorldPosition;
+  public GameObject[] deployItems;
+  public int numberOfItems;
+  public GameObject instantiatedItem;
+  private int readyToThrow = 0;
 
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player");
@@ -22,11 +23,13 @@ public class DistractionItem : MonoBehaviour {
 	
   void Update () {
     CountNumberOfItems("Item");
+
     if (Input.GetMouseButtonDown(0)) {
       CaptureMouseClick();
       if (ItemsInLevel() < 2 && ItemsInLevel() > 0) {
-        if (currentTileLocation != Vector3.zero) {
+        if (currentTileLocation != Vector3.zero && DeployItem() == 1) {
           CreateItem();
+          DisableDeployItem();
         }
         // Invoke("DestroyAllItems", 5f);
       }
@@ -38,7 +41,19 @@ public class DistractionItem : MonoBehaviour {
     }
   }
   public void OnClick(){
-    print("Hello world");
+    EnableDeployItem();
+  }
+
+  public int DeployItem(){
+    return readyToThrow;
+  }
+
+  public void EnableDeployItem(){
+    readyToThrow = 1;
+  }
+
+  public void DisableDeployItem(){
+    readyToThrow = 0;
   }
 
   public void OnBecameInvisible(){
@@ -50,7 +65,7 @@ public class DistractionItem : MonoBehaviour {
   }
 
   // This function will not work properly unless a camera has the tag MainCamera
-  private void CaptureMouseClick(){
+  public void CaptureMouseClick(){
     RaycastHit hit;
     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
     if (Physics.Raycast(ray, out hit)) {
@@ -61,7 +76,7 @@ public class DistractionItem : MonoBehaviour {
     }
   }
 
-  private void DestroyAllItems() {
+  public void DestroyAllItems() {
     if(ItemsInLevel() > 0){
       deployItems = GameObject.FindGameObjectsWithTag("Item");
       for(int i=1; i < deployItems.Length; i++) {
@@ -70,17 +85,17 @@ public class DistractionItem : MonoBehaviour {
     }
   }
 
-  private void OnCollisionEnter(Collision col) {
+  public void OnCollisionEnter(Collision col) {
     if(col != null && col.gameObject.transform.parent != null && col.gameObject.transform.parent.transform.parent != null){
       playerClickedTile = col.gameObject;
     }
   }
 
-  private void CountNumberOfItems(string tag) {
+  public void CountNumberOfItems(string tag) {
    numberOfItems = GameObject.FindGameObjectsWithTag(tag).Length;
   }
 
-  private void CreateItem () {
+  public void CreateItem () {
     itemPosition = player.transform.position;
     itemPosition.y += .75f;
     instantiatedItem = (GameObject) Instantiate(PrefabManager.Instance.deployItem, itemPosition, player.transform.rotation);
@@ -90,12 +105,12 @@ public class DistractionItem : MonoBehaviour {
 
   // When we don't want the player to throw an item unless they click a tile.  In order to enforce this
   // we set the currentTileLocation to 0,0,0 to disable throwing when you click on nothing.
-  private void ResetTileLocation(){
+  public void ResetTileLocation(){
     currentTileLocation = Vector3.zero;
   }
 
   // Borrowed from http://answers.unity3d.com/questions/248788/calculating-ball-trajectory-in-full-3d-world.html
-  private Vector3 calculateBestThrowSpeed(Vector3 origin, Vector3 target, float timeToTarget) {
+  public Vector3 calculateBestThrowSpeed(Vector3 origin, Vector3 target, float timeToTarget) {
     // calculate vectors
     Vector3 toTarget = target - origin;
     Vector3 toTargetXZ = toTarget;
