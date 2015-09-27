@@ -11114,15 +11114,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerClickedTile: {fileID: 0}
   currentTileLocation: {x: 0, y: 0, z: 0}
-  itemThrowArc: 1.5
-  timeToTarget: .180000007
-  player: {fileID: 0}
-  itemPosition: {x: 0, y: 0, z: 0}
-  throwSpeed: {x: 0, y: 0, z: 0}
-  mouseClickWorldPosition: {x: 0, y: 0, z: 0}
-  deployItems: []
   numberOfItems: 0
-  instantiatedItem: {fileID: 0}
 --- !u!136 &998937703
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -11216,8 +11208,7 @@ Transform:
 --- !u!114 &998937709
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11486246, guid: b52a0b254a7014a16b5ef3b9d15d3567,
-    type: 2}
+  m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 998937701}
   m_Enabled: 1
