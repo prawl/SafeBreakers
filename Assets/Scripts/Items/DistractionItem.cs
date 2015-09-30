@@ -102,7 +102,7 @@ public class DistractionItem : MonoBehaviour {
     if(size > 1){
       if(col.transform.gameObject.name == "Grass_Floor"){
         instantiatedItem.GetComponent<AudioSource>().Play();
-      }elseif (col.transform.gameObject.name == "Tree") {
+      }else if (col.transform.gameObject.name == "Tree") {
         print("Hit tree!");
       }
     }
