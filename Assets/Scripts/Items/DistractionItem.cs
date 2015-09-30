@@ -15,6 +15,7 @@ public class DistractionItem : MonoBehaviour {
   private GameObject[] deployItems;
   private GameObject instantiatedItem;
   private int readyToThrow = 0;
+  public AudioClip impact;
 
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player");
@@ -39,6 +40,7 @@ public class DistractionItem : MonoBehaviour {
       ResetTileLocation();
     }
   }
+
   public void OnClick(){
     EnableDeployItem();
   }
@@ -67,7 +69,6 @@ public class DistractionItem : MonoBehaviour {
    numberOfItems = GameObject.FindGameObjectsWithTag(tag).Length;
   }
 
-
   // This function will not work properly unless a camera has the tag MainCamera
   private void CaptureMouseClick(){
     RaycastHit hit;
@@ -82,16 +83,28 @@ public class DistractionItem : MonoBehaviour {
 
   private void DestroyAllItems() {
     if(ItemsInLevel() > 0){
-      deployItems = GameObject.FindGameObjectsWithTag("Item");
+      GetDeployItems();
       for(int i=1; i < deployItems.Length; i++) {
         Destroy(deployItems[i]);
       }
     }
   }
 
+  private void GetDeployItems() {
+    deployItems = GameObject.FindGameObjectsWithTag("Item");
+  }
+
   public void OnCollisionEnter(Collision col) {
-    if(col != null && col.gameObject.transform.parent != null && col.gameObject.transform.parent.transform.parent != null){
-      playerClickedTile = col.gameObject;
+    GetDeployItems();
+    int size = new int();
+    size = deployItems.Length;
+    instantiatedItem = deployItems[size-1];
+    if(size > 1){
+      if(col.transform.gameObject.name == "Grass_Floor"){
+        instantiatedItem.GetComponent<AudioSource>().Play();
+      }elseif (col.transform.gameObject.name == "Tree") {
+        print("Hit tree!");
+      }
     }
   }
 
