@@ -1,12 +1,16 @@
 using UnityEngine;
 using System.Collections;
 using Rotorz.Tile;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class DistractionItem : MonoBehaviour {
 
   public GameObject playerClickedTile;
   public Vector3 currentTileLocation;
   public int numberOfItems;
+  public AudioClip impact;
+  public Button rockButton;
   private float itemThrowArc = 1.5f;
   private float timeToTarget = 0.18f;
   private GameObject player;
@@ -15,7 +19,6 @@ public class DistractionItem : MonoBehaviour {
   private GameObject[] deployItems;
   private GameObject instantiatedItem;
   private int readyToThrow = 0;
-  public AudioClip impact;
 
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player");
@@ -23,6 +26,7 @@ public class DistractionItem : MonoBehaviour {
 	
   void Update () {
     CountNumberOfItems("Item");
+    ToggleButton();
 
     if (Input.GetMouseButtonDown(0)) {
       CaptureMouseClick();
@@ -38,6 +42,14 @@ public class DistractionItem : MonoBehaviour {
     if(Input.GetKeyDown("space") ){
       DestroyAllItems();
       ResetTileLocation();
+    }
+  }
+
+  public void ToggleButton(){
+    if(ItemsInLevel() > 1){
+      DisableButton();
+    } else {
+      EnableButton();
     }
   }
 
@@ -90,11 +102,19 @@ public class DistractionItem : MonoBehaviour {
     }
   }
 
+  private void DisableButton(){
+    rockButton.interactable = false;
+  }
+
+  private void EnableButton(){
+    rockButton.interactable = true;
+  }
+
   private void GetDeployItems() {
     deployItems = GameObject.FindGameObjectsWithTag("Item");
   }
 
-  public void OnCollisionEnter(Collision col) {
+  private void OnCollisionEnter(Collision col) {
     GetDeployItems();
     int size = new int();
     size = deployItems.Length;
