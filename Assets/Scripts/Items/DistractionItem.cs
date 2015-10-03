@@ -19,6 +19,7 @@ public class DistractionItem : MonoBehaviour {
   private GameObject[] deployItems;
   private GameObject instantiatedItem;
   private int readyToThrow = 0;
+  private int maxNumberOfDeployItems = 5;
 
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player");
@@ -30,7 +31,7 @@ public class DistractionItem : MonoBehaviour {
 
     if (Input.GetMouseButtonDown(0)) {
       CaptureMouseClick();
-      if (ItemsInLevel() < 2 && ItemsInLevel() > 0) {
+      if (ItemsInLevel() <= maxNumberOfDeployItems && ItemsInLevel() > 0) {
         if (currentTileLocation != Vector3.zero && DeployItem() == 1) {
           CreateItem();
           DisableDeployItem();
@@ -46,7 +47,7 @@ public class DistractionItem : MonoBehaviour {
   }
 
   public void ToggleButton(){
-    if(ItemsInLevel() > 1){
+    if(ItemsInLevel() > maxNumberOfDeployItems){
       DisableButton();
     } else {
       EnableButton();
