@@ -14,6 +14,9 @@ public class DistractionItem : MonoBehaviour {
   private float itemThrowArc = 1.5f;
   private float timeToTarget = 0.18f;
   private GameObject player;
+
+  private Text guiCounter;
+
   private Vector3 itemPosition;
   private Vector3 throwSpeed;
   private GameObject[] deployItems;
@@ -23,10 +26,19 @@ public class DistractionItem : MonoBehaviour {
 
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player");
+		// guiCounter = GameObject.Find ("GUI_Rock_Counter");
+    guiCounter = GameObject.Find("GUI_Rock_Counter").GetComponent<Text>();
 	}
 	
+
+  private void NumberOfRocksLeft(){
+    int rocksActive = (maxNumberOfDeployItems + 1) - numberOfItems;
+    guiCounter.text = rocksActive.ToString();
+  }
+
   void Update () {
     CountNumberOfItems("Item");
+    NumberOfRocksLeft();
     ToggleButton();
 
     if (Input.GetMouseButtonDown(0)) {
