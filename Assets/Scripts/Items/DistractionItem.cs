@@ -48,7 +48,6 @@ public class DistractionItem : MonoBehaviour {
           CreateItem();
           DisableDeployItem();
         }
-        // Invoke("DestroyAllItems", 5f);
       }
     }
 
@@ -83,7 +82,11 @@ public class DistractionItem : MonoBehaviour {
   }
 
   public void OnBecameInvisible(){
-    DestroyAllItems();
+    DestroyDistractionItem();
+  }
+
+  private void DestroyDistractionItem(){
+    Destroy(gameObject);
   }
 
   public int ItemsInLevel() {
