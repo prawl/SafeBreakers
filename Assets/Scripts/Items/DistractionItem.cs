@@ -27,6 +27,7 @@ public class DistractionItem : MonoBehaviour {
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player");
     guiCounter = GameObject.Find("GUI_Rock_Counter").GetComponent<Text>();
+    rockButton = GameObject.Find("GUI_Rock_Button").GetComponent<Button>();
 	}
 	
 
@@ -119,7 +120,7 @@ public class DistractionItem : MonoBehaviour {
 
   private void DisableButton(){
     if (rockButton != null) {
-      rockButton.interactable = false;
+    rockButton.interactable = false;
     }
   }
 
