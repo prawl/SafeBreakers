@@ -1004,6 +1004,46 @@ Prefab:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 82ad81bdace382e4e8d2700f45f1919d, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &57188059
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 57188061}
+  - 135: {fileID: 57188060}
+  m_Layer: 0
+  m_Name: rock_collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!135 &57188060
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 57188059}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: .415148854
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &57188061
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 57188059}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: -.279000014, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 998937708}
+  m_RootOrder: 0
 --- !u!1001 &58744659
 Prefab:
   m_ObjectHideFlags: 0
@@ -2054,8 +2094,6 @@ GameObject:
   - 33: {fileID: 163307654}
   - 65: {fileID: 163307653}
   - 23: {fileID: 163307652}
-  - 114: {fileID: 163307651}
-  - 114: {fileID: 163307650}
   m_Layer: 8
   m_Name: FloorTile02
   m_TagString: Untagged
@@ -2075,30 +2113,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 290176974}
   m_RootOrder: 0
---- !u!114 &163307650
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11444200, guid: 41753d70c98d95a4886e91b2190c2c14,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 163307648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &163307651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11468524, guid: 41753d70c98d95a4886e91b2190c2c14,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 163307648}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &163307652
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -5583,8 +5597,6 @@ GameObject:
   - 33: {fileID: 493316000}
   - 65: {fileID: 493315999}
   - 23: {fileID: 493315998}
-  - 114: {fileID: 493315997}
-  - 114: {fileID: 493315996}
   m_Layer: 8
   m_Name: FloorTile02
   m_TagString: Untagged
@@ -5604,30 +5616,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 403289078}
   m_RootOrder: 0
---- !u!114 &493315996
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11444200, guid: 41753d70c98d95a4886e91b2190c2c14,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 493315994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &493315997
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11468524, guid: 41753d70c98d95a4886e91b2190c2c14,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 493315994}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &493315998
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -8213,8 +8201,6 @@ GameObject:
   - 33: {fileID: 782851856}
   - 65: {fileID: 782851855}
   - 23: {fileID: 782851854}
-  - 114: {fileID: 782851853}
-  - 114: {fileID: 782851852}
   m_Layer: 8
   m_Name: FloorTile02
   m_TagString: Untagged
@@ -8234,30 +8220,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1626140729}
   m_RootOrder: 0
---- !u!114 &782851852
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11444200, guid: 41753d70c98d95a4886e91b2190c2c14,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 782851850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &782851853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11468524, guid: 41753d70c98d95a4886e91b2190c2c14,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 782851850}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &782851854
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -10662,7 +10624,6 @@ GameObject:
   - 114: {fileID: 998937709}
   - 82: {fileID: 998937710}
   - 212: {fileID: 998937705}
-  - 136: {fileID: 998937703}
   m_Layer: 0
   m_Name: deploy_item
   m_TagString: Item
@@ -10687,19 +10648,6 @@ MonoBehaviour:
   numberOfItems: 0
   impact: {fileID: 8300000, guid: 255f8e5ee851049b8ad708c56fa46dab, type: 3}
   rockButton: {fileID: 0}
---- !u!136 &998937703
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 998937701}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: .504999995
-  m_Height: 1.71000004
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &998937704
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10714,7 +10662,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 16
+  m_Constraints: 48
   m_CollisionDetection: 0
 --- !u!212 &998937705
 SpriteRenderer:
@@ -10749,9 +10697,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 998937701}
   m_LocalRotation: {x: 2.18556924e-08, y: -7.54604972e-12, z: .000345267006, w: .99999994}
-  m_LocalPosition: {x: -.303000003, y: 1.22099996, z: -.310000002}
+  m_LocalPosition: {x: -.303000003, y: 1.245, z: -.310000002}
   m_LocalScale: {x: .170809552, y: .170809984, z: .170809984}
-  m_Children: []
+  m_Children:
+  - {fileID: 57188061}
   m_Father: {fileID: 0}
   m_RootOrder: 1
 --- !u!114 &998937709
@@ -12004,8 +11953,6 @@ GameObject:
   - 33: {fileID: 1087463767}
   - 65: {fileID: 1087463766}
   - 23: {fileID: 1087463765}
-  - 114: {fileID: 1087463764}
-  - 114: {fileID: 1087463763}
   m_Layer: 8
   m_Name: FloorTile02
   m_TagString: Untagged
@@ -12025,30 +11972,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 921008512}
   m_RootOrder: 0
---- !u!114 &1087463763
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11444200, guid: 41753d70c98d95a4886e91b2190c2c14,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1087463761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1087463764
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11468524, guid: 41753d70c98d95a4886e91b2190c2c14,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1087463761}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!23 &1087463765
 MeshRenderer:
   m_ObjectHideFlags: 0
