@@ -7,6 +7,8 @@ TagManager:
   - Guard
   - Enemy
   - Obstacle
+  - Item
+  - Ground
   layers:
   - Default
   - TransparentFX
