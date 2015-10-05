@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
+using UnityEngine.EventSystems;
 using Rotorz.Tile;
 using Rotorz.Tile.Internal;
 
@@ -7,9 +9,11 @@ public class SB_GameController : MonoBehaviour {
 
 	public int playerCount, enemyCount, gameCount, enemyDone;
 	public GameObject[] enemies;
-	public bool isLevelWon, isLevelLost, isLevelPaused;
+    public bool isLevelWon, isLevelLost, isLevelPaused, canInteract;
+    public bool minigameOn;
 	public int numOfEnemies;
 	public TileIndex startTile, endTile;
+    public Button pauseButton, actionButton;
 
 	// Use this for initialization
 	void Start () {
@@ -19,12 +23,30 @@ public class SB_GameController : MonoBehaviour {
 		isLevelWon = false;
 		isLevelPaused = false;
 		isLevelLost = false;
+        minigameOn = false;
+        canInteract = false;
 		numOfEnemies = GameObject.FindGameObjectsWithTag ("Enemy").Length;
 		enemies = GameObject.FindGameObjectsWithTag ("Enemy");
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if (minigameOn)
+        {
+            pauseButton.interactable = false;
+        }
+        else
+        {
+            pauseButton.interactable = true;
+        }
+        if (canInteract)
+        {
+            actionButton.interactable = true;   
+        }
+        else
+        {
+            actionButton.interactable = false;
+        }
 		if (enemyDone == numOfEnemies && enemyCount < playerCount) {
 			enemyDone = 0;
 			enemyCount++;
@@ -49,11 +71,19 @@ public class SB_GameController : MonoBehaviour {
 	}
 
 	public void PauseGame(){
-		if (!isLevelPaused) {
+		if (!isLevelPaused && !minigameOn) {
 			isLevelPaused = true;
 		}
 		else{
 			isLevelPaused = false;
 		}
 	}
+
+    public void startMinigame()
+    {
+        if (canInteract && !isLevelPaused)
+        {
+            minigameOn = true;
+        }
+    }
 }
