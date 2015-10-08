@@ -3,7 +3,12 @@ guid: b5f260a28ddb62e40b4bc13be7eb558e
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: WaterStream_02
+    11100000: //RootNode
   materials:
     importMaterials: 1
     materialName: 3

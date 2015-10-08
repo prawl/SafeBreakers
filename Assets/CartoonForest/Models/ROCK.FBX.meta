@@ -3,6 +3,40 @@ guid: eac05a3886a23874a98795d590cc300a
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
+    100000: //RootNode
+    100002: Rock_01
+    100004: Rock_02
+    100006: Rock_03
+    100008: Rock_04
+    100010: Rock_05
+    100012: Rock_06
+    100014: Rock_07
+    100016: Rock_08
+    400000: //RootNode
+    400002: Rock_01
+    400004: Rock_02
+    400006: Rock_03
+    400008: Rock_04
+    400010: Rock_05
+    400012: Rock_06
+    400014: Rock_07
+    400016: Rock_08
+    2300000: Rock_01
+    2300002: Rock_02
+    2300004: Rock_03
+    2300006: Rock_04
+    2300008: Rock_05
+    2300010: Rock_06
+    2300012: Rock_07
+    2300014: Rock_08
+    3300000: Rock_01
+    3300002: Rock_02
+    3300004: Rock_03
+    3300006: Rock_04
+    3300008: Rock_05
+    3300010: Rock_06
+    3300012: Rock_07
+    3300014: Rock_08
     4300000: Rock_05
     4300002: Rock_06
     4300004: Rock_07
@@ -11,6 +45,7 @@ ModelImporter:
     4300010: Rock_08
     4300012: Rock_02
     4300014: Rock_01
+    11100000: //RootNode
   materials:
     importMaterials: 1
     materialName: 3

@@ -3,8 +3,19 @@ guid: 21d773e213ea8234c8f7d73742e4c029
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
+    100000: Mushroom 3_group
+    100002: Mushroom 3_single
+    100004: //RootNode
+    400000: Mushroom 3_group
+    400002: Mushroom 3_single
+    400004: //RootNode
+    2300000: Mushroom 3_group
+    2300002: Mushroom 3_single
+    3300000: Mushroom 3_group
+    3300002: Mushroom 3_single
     4300000: Mushroom 3_group
     4300002: Mushroom 3_single
+    11100000: //RootNode
   materials:
     importMaterials: 1
     materialName: 3

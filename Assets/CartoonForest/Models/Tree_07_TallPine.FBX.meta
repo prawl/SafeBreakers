@@ -3,7 +3,12 @@ guid: 624d906653ad2d842810f05892dbeabb
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
+    100000: //RootNode
+    400000: //RootNode
+    2300000: //RootNode
+    3300000: //RootNode
     4300000: Tree_07_TallPine
+    11100000: //RootNode
   materials:
     importMaterials: 1
     materialName: 3
