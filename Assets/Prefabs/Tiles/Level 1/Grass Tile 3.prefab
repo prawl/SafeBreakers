@@ -12,7 +12,6 @@ GameObject:
   - 65: {fileID: 6597590}
   - 23: {fileID: 2365730}
   - 114: {fileID: 11495436}
-  - 114: {fileID: 11478426}
   m_Layer: 0
   m_Name: Grass Tile 3
   m_TagString: Untagged
@@ -70,7 +69,7 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191790}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100002, guid: 181b1ff2f2465144794955abd0bb5220, type: 2}
@@ -94,7 +93,7 @@ MeshRenderer:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117456}
   m_Enabled: 1
-  m_CastShadows: 1
+  m_CastShadows: 0
   m_ReceiveShadows: 1
   m_Materials:
   - {fileID: 2100000, guid: ac41f5bc553dc9846be1d803cadb1d8c, type: 2}
@@ -137,29 +136,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11478426
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 117456}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ea961b7f0a34b9a80f9f8437e0e9c3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lodMeshes:
-  - {fileID: 4300000, guid: e797fc4743a7c4a43bb661b906c23742, type: 2}
-  - {fileID: 4300000, guid: e25ff23161495b747b211e968a191a4d, type: 2}
-  - {fileID: 4300000, guid: 1e320936488ae7c4ea8845d4a8e0d089, type: 2}
-  - {fileID: 4300000, guid: 814113e95cde4d445bb0e61b2e5cfddd, type: 2}
-  lodGameObjects: []
-  lodScreenSizes:
-  - .600000024
-  - .300000012
-  - .150000006
-  deactivateAtDistance: 0
-  customCamera: {fileID: 0}
 --- !u!114 &11495436
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -191,7 +167,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_ReceiveShadows
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 117456}
