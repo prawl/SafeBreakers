@@ -1,4 +1,12 @@
-﻿using UnityEngine;
+﻿/*
+Script Name: SB_tILeCheck.cs
+Author: Bradley M. Butts
+Last Modified: 10-19-2015
+Description: This script checks if any gameobjects are colliding with a tile. If so, the tile is listed as occupied
+             and the variable occupier is the gameobjects tag. This script also adds a basic visual effect if the 
+             respective tile is the end level tile
+*/
+using UnityEngine;
 using System.Collections;
 using Rotorz.Tile;
 using Rotorz.Tile.Internal;
@@ -33,6 +41,10 @@ public class SB_TileCheck : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        //Looking for visual to assign to the end tile. Add another wall with a door? 
+        /*if(currentTile == player.GetComponent<SB_GameController>().endTile)
+        {
 
+        }*/
 	}
 }
