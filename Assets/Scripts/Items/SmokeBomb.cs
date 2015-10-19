@@ -59,7 +59,14 @@ public class SmokeBomb : MonoBehaviour {
   }
 
 
-  void ReleaseSmoke(){
+  void ReleaseSmoke(GameObject instantiatedItem){
+    smoke = instantiatedItem.transform.GetComponent<ParticleSystem>();
+    smoke.Play();
+  }
+
+  void HaltSmoke(GameObject instantiatedItem){
+    smoke = instantiatedItem.transform.GetComponent<ParticleSystem>();
+    smoke.Stop();
   }
 
   public void ToggleButton(){
@@ -146,8 +153,7 @@ public class SmokeBomb : MonoBehaviour {
     instantiatedItem = deployItems[size-1];
     if(size > 1){
       if(col.transform.gameObject.tag == "Ground"){
-        instantiatedItem.transform.GetComponent<ParticleSystem>().Play();
-        instantiatedItem.GetComponent<AudioSource>().Play();
+        ReleaseSmoke(instantiatedItem);
       }else if (col.transform.gameObject.name == "Tree") {
       }
     }

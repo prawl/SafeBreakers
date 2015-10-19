@@ -23266,6 +23266,14 @@ Prefab:
       propertyPath: deployItem
       value: 
       objectReference: {fileID: 167540, guid: 973428c23103e4fbb860d451b88993ee, type: 2}
+    - target: {fileID: 19850658, guid: 973428c23103e4fbb860d451b88993ee, type: 2}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19850658, guid: 973428c23103e4fbb860d451b88993ee, type: 2}
+      propertyPath: lengthInSec
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 973428c23103e4fbb860d451b88993ee, type: 2}
   m_IsPrefabParent: 0
