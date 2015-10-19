@@ -1,4 +1,13 @@
-﻿using UnityEngine;
+﻿/*
+Script Name: SB_DoorMinigame.cs
+Author: Bradley M. Butts
+Last Modified: 10-19-2015
+Description: This script handles the door minigame that can be added to a level. The script is a mixture of UI management and internal timers and checks.
+             The UI items being managed are the buttons attached to the door panel, progress bar based on how the player is doing in the minigame, and
+             the countdown lights. Numbers for the buttons are randomly generated each time the minigame is launched. Losing the minigame triggers an
+             alarm which causes the Alarm scripts to take effect. Values stored in the inspector are: minigame tile, timerLength, and UI images.
+*/
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -9,7 +18,7 @@ public class SB_DoorMinigame : MonoBehaviour {
 
     public Image miniGameWindow;
     private GameObject player;
-    public bool gameActive, isGameWon, isGameLost;
+    public bool gameActive, isGameWon, isGameLost, panelDown, panelLeft;
     private int numOne, numTwo, numThree, progress;
     public int timerLength;
     public Button button1, button2, button3, button4, button5, button6, button7, button8, button9, progressLight1, progressLight2, progressLight3, timerLight1, timerLight2, timerLight3, timerLight4, timerLight5;
@@ -30,6 +39,7 @@ public class SB_DoorMinigame : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        //If the player is on the gameTile then the canInteract feature is enabled
         if(gameTile == player.GetComponent<SB_PlayerController>().currentTile && (!isGameLost && !isGameWon))
         {
             player.GetComponent<SB_GameController>().canInteract = true;
@@ -42,6 +52,7 @@ public class SB_DoorMinigame : MonoBehaviour {
         {
             gameActive = true;
         }
+        //If the minigame is active, the player must play the minigame for the required amount of time.
         if (gameActive)
         {
             miniGameWindow.gameObject.SetActive(true);
@@ -68,6 +79,8 @@ public class SB_DoorMinigame : MonoBehaviour {
         }
 	}
 
+    //Function highlights the panel buttons based on the randomly selected numbers that make up the password. 
+    //Once the correct button is pressed, it will turn green. If the button can be selected, it will turn blue.
     void highlightButtons()
     {
         if(progress == 0)
@@ -191,6 +204,7 @@ public class SB_DoorMinigame : MonoBehaviour {
         }
     }
 
+    //Functions splits up the timer into fifths so that the lights on the panel can give the player a visual queue on how much time remains in the minigame
     void lightTimer()
     {
         if(timer >= (timerLength * .8f))
@@ -236,6 +250,7 @@ public class SB_DoorMinigame : MonoBehaviour {
         }
     }
 
+    //Checks if the gameProgess variable *only increases if the player selects a correct button* is 3. If so, the minigame is won.
     void doorMinigame()
     {
         if(progress == 3)
@@ -244,6 +259,8 @@ public class SB_DoorMinigame : MonoBehaviour {
         }
     }
 
+    //Randomly generates a three number password. Checks are included in the function to prevent the same number,
+    //coming up more than once
     void getPassword()
     {
         numOne = Random.Range(1, 9);
@@ -259,6 +276,7 @@ public class SB_DoorMinigame : MonoBehaviour {
         }
     }
 
+    //Function highlights the three UI buttons at the bottom portion of the panel based on how many numbers in the passcode the player has gotten correct so far
     void highlightProgress()
     {
         if(progress >= 1)
@@ -275,6 +293,8 @@ public class SB_DoorMinigame : MonoBehaviour {
         }
     }
 
+    //If the player wins the minigame, then this script will toggle the panel to green and normal for every second for 5 seconds.
+    //After the panel is done switching colors, it'll change the appropriate values inside of SB_GameController to return to the normal game
     IEnumerator gameWon()
     {
         miniGameWindow.color = Color.green;
@@ -294,6 +314,9 @@ public class SB_DoorMinigame : MonoBehaviour {
         player.GetComponent<SB_GameController>().minigameOn = false;
     }
 
+    //If the player loses the minigame, the this script will toggle the panel to red and normal every second for 5 seconds.
+    //After the panel is done switching colors, the game will switch to "Alarm Mode". Once alarm mode is complete, the minigame will refresh and 
+    //The player will be able to play it again.
     IEnumerator gameLost()
     {
         miniGameWindow.color = Color.red;
@@ -309,9 +332,22 @@ public class SB_DoorMinigame : MonoBehaviour {
         miniGameWindow.color = Color.gray;
         yield return new WaitForSeconds(1f);
         gameActive = false;
+        player.GetComponent<SB_AlarmMode>().alarmSource = gameTile;
+        if (panelLeft)
+        {
+            player.GetComponent<SB_AlarmMode>().left = true;
+            player.GetComponent<SB_AlarmMode>().down = false;
+        }
+        if (panelDown)
+        {
+            player.GetComponent<SB_AlarmMode>().left = false;
+            player.GetComponent<SB_AlarmMode>().down = true;
+        }
         player.GetComponent<SB_GameController>().minigameOn = false;
+        player.GetComponent<SB_GameController>().alarmMode = true;
     }
 
+    //If the player wins the minigame, this function will raise the door so the player can pass through it.
     public void openDoor()
     {
         Vector3 openLoc = gameObject.transform.position;
@@ -326,6 +362,11 @@ public class SB_DoorMinigame : MonoBehaviour {
         }
     }
 
+
+    /*The next several public functions are assigned to the UI buttons for the minigame and handle the user input for them.
+    If the player selects a button that is correct, it'll update the progress. If the user selects a button that is not valid,
+    then they lose the game.
+    */
     public void inputOne()
     {
         if(progress == 0)
