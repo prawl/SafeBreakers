@@ -1,4 +1,13 @@
-﻿using UnityEngine;
+﻿/*
+Script Name: SB_EnemyController.cs
+Author: Bradley M. Butts
+Last Modified: 9-21-2015
+Description: This script handles all of the enemy's AI components. All of the major components must be entered inside of the inspector
+             in the Unity development window. The AI mechanics include: pathfinding, automated movement based on the path found,
+             checking if the player is a certain number of tiles away from the enemy based on the direction the enemy is looking at.
+*/
+
+using UnityEngine;
 using System.Collections;
 using Pathfinding;
 using Rotorz.Tile;
@@ -18,12 +27,12 @@ public class SB_EnemyController : MonoBehaviour {
 	private float speed = 1;
 	private Vector3[] pathArray;
 	private int currentPos;
-	public bool up, down, right, left, moved, faceUp, faceDown, faceRight, faceLeft;
+	public bool up, down, right, left, moved, faceUp, faceDown, faceRight, faceLeft, isAlarmed;
     public bool to, from, updatedPos;
 
 	// Use this for initialization
 	void Start () {
-		GetComponent<Renderer> ().castShadows = true;
+        GetComponent<Renderer>().shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.On;
 		GetComponent<Renderer> ().receiveShadows = true;
 		player = GameObject.Find ("SB_Player");
 		tileSystem = player.GetComponent<SB_PlayerController> ().tileSystem;
@@ -36,26 +45,36 @@ public class SB_EnemyController : MonoBehaviour {
 		seeker = GetComponent<Seeker> ();
 		currentPos = 0;
 		controller = GetComponent<CharacterController> ();
+        //A* function that generates the closest path from startPos to endPos.
 		seeker.StartPath (startPos, endPos, OnPathComplete);
-		to = true;from = false;updatedPos = false;moved = true;
+		to = true;from = false;updatedPos = false;moved = true;isAlarmed = false;
     }
 	
-	// Update is called once per frame
+	// Update is called once per frame. Looks for the player whenever the player's turn is done
+    // Only moves if the player's count is the same as the game's count (which means the player has successfully moved)
 	void Update () {
-		if (!gameCon.isLevelPaused) {
-            if (!player.GetComponent<SB_PlayerController>().moving){
-                LookForPlayer();
+        if (!gameCon.isLevelPaused)
+        {
+            if (!isAlarmed)
+            {
+                if (!player.GetComponent<SB_PlayerController>().moving)
+                {
+                    LookForPlayer();
+                }
+                if (gameCon.playerCount > gameCon.enemyCount)
+                {
+                    moved = false;
+                    MoveToNextLoc();
+                }
+                if (gameCon.playerCount == gameCon.enemyCount)
+                {
+                    moved = true;
+                }
             }
-			if(gameCon.playerCount > gameCon.enemyCount){
-				moved = false;
-				MoveToNextLoc ();
-			}
-			if(gameCon.playerCount == gameCon.enemyCount){
-				moved = true;
-			}
-		}
+        }
 	}
 
+    //Function gets the direction the enemy should be facing based on the next tile
 	void GetDirection(Vector3 start, Vector3 end){
 		if ((start.x > end.x)  && (Mathf.Approximately(start.z, end.z)) && !V3Equal(start, end)) {
 			up = false; down = false; right = false; left = true;
@@ -75,7 +94,9 @@ public class SB_EnemyController : MonoBehaviour {
 		}
 	}
 
-	void ChangeYValue(Vector3[] path){
+    //Function changes the Y value of the path returned to a specified value. This is to keep the enemy's Y value consistant since the path generated has all Y values
+    //set to 0 by default; which would have the player walking inside the ground
+	public void ChangeYValue(Vector3[] path){
 		for (int i = 0; i < path.Length; i++) {
 			Vector3 temp = path[i];
 			temp.y = .74f;
@@ -83,6 +104,7 @@ public class SB_EnemyController : MonoBehaviour {
 		}
 	}
 
+    //Once the A* path is complete; it takes the path generated and stores it into a Vector3 array for the enemy to follow
 	void OnPathComplete(Path p){
 		if (!p.error) {
 			path = p;
@@ -91,6 +113,8 @@ public class SB_EnemyController : MonoBehaviour {
 		}
 	}
 
+    //Based on the direction the enemy is facing; the enemy looks for the player a set number of tiles above, below, left, or right. If an object is in the line of sight of the enemy
+    //The LookForPlayer function ends to prevent the enemy from seeing the player through objects like trees or rocks.
 	public void LookForPlayer(){
 		if (faceUp) {
 			try{
@@ -170,10 +194,13 @@ public class SB_EnemyController : MonoBehaviour {
 		}
 	}
 
-	public bool V3Equal(Vector3 a, Vector3 b){
+    //Script that we use to check if the enemy's current location is close enough to the next tiles location to end the movement script
+    public bool V3Equal(Vector3 a, Vector3 b){
 		return Vector3.SqrMagnitude (a - b) < 0.000001;
 	}
 
+    //Function moves the enemy to the next tile in the path array we generated earlier. If the enemy reaches the end of the array (or the beginning of the array if the enemy is returning
+    //the function also changes the to and from value respectfully. 
 	public void MoveToNextLoc(){
 		if (!moved) {
 			if(to){

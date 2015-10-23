@@ -1,4 +1,10 @@
-﻿using UnityEngine;
+﻿/*
+Script Name: SB_LevelLost.cs
+Author: Bradley M. Butts
+Last Modified: 9-12-2015
+Description: This script handles the UI functions that occur if the player loses the level
+*/
+using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
@@ -25,6 +31,8 @@ public class SB_LevelLost : MonoBehaviour {
 		}
 	}
 	
+
+    //Public function assigned to the Replay button attached to the UI window
 	public void ResetLevel(){
 		Application.LoadLevel (Application.loadedLevelName);
 	}

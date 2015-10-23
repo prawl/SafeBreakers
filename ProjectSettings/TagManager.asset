@@ -9,6 +9,7 @@ TagManager:
   - Obstacle
   - Item
   - Ground
+  - TileSystem
   layers:
   - Default
   - TransparentFX
