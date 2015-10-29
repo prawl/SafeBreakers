@@ -14,21 +14,21 @@ public class SB_EnemyAnimator : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!enemyCon.moved) {
-			if (enemyCon.up) {
+		if (!GameObject.FindGameObjectWithTag("Player").GetComponent<SB_GameController>().isLevelPaused && !enemyCon.moved) {
+            if (enemyCon.faceUp) {
 				animator.SetBool ("Up", true);
 			}
-			if (enemyCon.down) {
+            if (enemyCon.faceDown) {
 				animator.SetBool ("Down", true);
 			}
-			if (enemyCon.right) {
+            if (enemyCon.faceRight) {
 				animator.SetBool ("Right", true);
 			}
-			if (enemyCon.left) {
+            if (enemyCon.faceLeft) {
 				animator.SetBool ("Left", true);
 			}
 		}
-		else {
+		if(enemyCon.moved) {
 			animator.SetBool ("Up", false);
 			animator.SetBool ("Down", false);
 			animator.SetBool ("Right", false);

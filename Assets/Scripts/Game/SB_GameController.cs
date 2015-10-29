@@ -1,7 +1,7 @@
 ﻿/*
 Script Name: SB_PlayerController.cs
 Author: Bradley M. Butts
-Last Modified: 9-24-2015
+Last Modified: 10-19-2015
 Description: This script handles all game functions for a playable level.
              This includes the gameCount, playerCount, and enemyCount.
              The script also checks to see if the player has paused, won, or lost the current level; prompting the GUI window.
@@ -57,9 +57,14 @@ public class SB_GameController : MonoBehaviour {
 			enemyDone = 0;
 			enemyCount++;
 		}
-		if(enemyCount == playerCount && playerCount == gameCount){
+		if(enemyCount == playerCount && playerCount == gameCount && !alarmMode){
 			gameCount++;
 		}
+        if(enemyCount == playerCount && playerCount == gameCount && alarmMode)
+        {
+            gameObject.GetComponent<SB_AlarmMode>().alarmModeLength--;
+            gameCount++;
+        }
         if (alarmMode)
         {
             GetComponent<SB_AlarmMode>().enabled = true;
