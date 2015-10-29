@@ -19774,7 +19774,7 @@ GameObject:
   - 114: {fileID: 1681010476}
   - 132: {fileID: 1681010475}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Deploy_Item_Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
