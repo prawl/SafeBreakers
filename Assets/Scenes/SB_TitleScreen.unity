@@ -256,8 +256,8 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 12800000, guid: f2fafa490c511ff4c8d80d501021d315, type: 3}
-    m_FontSize: 142
+    m_Font: {fileID: 12800000, guid: d36878fb51065cd43a540057c278fa8e, type: 3}
+    m_FontSize: 75
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 10
@@ -267,7 +267,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: SafeBreakers
+  m_Text: SB
 --- !u!222 &580334959
 CanvasRenderer:
   m_ObjectHideFlags: 0
