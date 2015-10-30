@@ -7,10 +7,10 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Lightbeam_Fog_Soft
-  m_Shader: {fileID: 4800000, guid: 9b18589ff581c0248a20808dde4ceab9, type: 3}
+  m_Shader: {fileID: 4800000, guid: a0a5cb9d8925b7a4ca83c7a9fa9a5b85, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2

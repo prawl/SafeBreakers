@@ -7,10 +7,10 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Lightbeam_Rays_Soft
-  m_Shader: {fileID: 4800000, guid: 9b18589ff581c0248a20808dde4ceab9, type: 3}
+  m_Shader: {fileID: 4800000, guid: 4b3a931b4a161c349a30d0a31d1a92e0, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   m_SavedProperties:
     serializedVersion: 2
