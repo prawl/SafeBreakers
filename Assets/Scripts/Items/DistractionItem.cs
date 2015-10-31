@@ -134,13 +134,26 @@ public class DistractionItem : MonoBehaviour {
     deployItems = GameObject.FindGameObjectsWithTag("Item");
   }
 
+  private void FreezeGameObjectPosition(GameObject gameObject) {
+    print("Hello");
+    gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+  }
+
+  private void DeactivateCollider(GameObject gameObject) {
+    gameObject.transform.GetChild(0).gameObject.GetComponent<Collider>().enabled = false;
+  }
+
+
   private void OnCollisionEnter(Collision col) {
     GetDeployItems();
     int size = new int();
     size = deployItems.Length;
     instantiatedItem = deployItems[size-1];
     if(size > 1){
+      print(col.transform.gameObject.name);
       if(col.transform.gameObject.tag == "Ground"){
+        FreezeGameObjectPosition(instantiatedItem);
+        DeactivateCollider(instantiatedItem);
         instantiatedItem.GetComponent<AudioSource>().Play();
       }else if (col.transform.gameObject.name == "Tree") {
       }
