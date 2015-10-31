@@ -149,7 +149,6 @@ public class DistractionItem : MonoBehaviour {
     size = deployItems.Length;
     instantiatedItem = deployItems[size-1];
     if(size > 1){
-      print(col.transform.gameObject.name);
       if(col.transform.gameObject.tag == "Ground"){
         FreezeGameObjectPosition(instantiatedItem);
         DeactivateCollider(instantiatedItem);
