@@ -142,7 +142,6 @@ public class DistractionItem : MonoBehaviour {
     gameObject.transform.GetChild(0).gameObject.GetComponent<Collider>().enabled = false;
   }
 
-
   private void OnCollisionEnter(Collision col) {
     GetDeployItems();
     int size = new int();
