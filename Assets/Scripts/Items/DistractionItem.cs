@@ -135,7 +135,6 @@ public class DistractionItem : MonoBehaviour {
   }
 
   private void FreezeGameObjectPosition(GameObject gameObject) {
-    print("Hello");
     gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
   }
 
