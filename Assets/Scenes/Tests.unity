@@ -2971,15 +2971,13 @@ GUIText:
   m_GameObject: {fileID: 172982655}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: 'sadfasd
-
-'
+  m_Text: 
   m_Anchor: 0
   m_Alignment: 0
   m_PixelOffset: {x: 0, y: 0}
   m_LineSpacing: 1
   m_TabSize: 4
-  m_Font: {fileID: 0}
+  m_Font: {fileID: 12800000, guid: cdac810930e02ee4b9606bd10cfd5c4e, type: 3}
   m_Material: {fileID: 0}
   m_FontSize: 0
   m_FontStyle: 0
@@ -3008,7 +3006,7 @@ MonoBehaviour:
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_Font: {fileID: 12800000, guid: 51ff6273c53a48641bb9d48c1d11d688, type: 3}
     m_FontSize: 25
     m_FontStyle: 0
     m_BestFit: 0
@@ -4683,7 +4681,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aba5dfec1354ec94ca0d7d4c6f230703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightingRenderer: {fileID: 286856232}
 --- !u!114 &286856232
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4696,22 +4693,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b765e0b5af3bcf4a9deb5895e477da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetFactor: 0
-  offsetUnits: 0
-  _downsampleFactor: 4
-  iterations: 2
-  blurMinSpread: .649999976
-  blurSpread: .25
-  _blurIntensity: .300000012
-  layerMask: 128
-  graphicsDeviceVersion: 0
-  shaderCameraGO: {fileID: 0}
-  shaderCamera: {fileID: 0}
-  highlightingBuffer: {fileID: 0}
-  go: {fileID: 0}
-  refCam: {fileID: 0}
-  isSupported: 0
-  _isDepthAvailable: 1
 --- !u!81 &286856233
 AudioListener:
   m_ObjectHideFlags: 0
@@ -8027,7 +8008,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aba5dfec1354ec94ca0d7d4c6f230703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightingRenderer: {fileID: 543120123}
 --- !u!114 &543120123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8040,22 +8020,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b765e0b5af3bcf4a9deb5895e477da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetFactor: 0
-  offsetUnits: 0
-  _downsampleFactor: 4
-  iterations: 2
-  blurMinSpread: .649999976
-  blurSpread: .25
-  _blurIntensity: .300000012
-  layerMask: 128
-  graphicsDeviceVersion: 0
-  shaderCameraGO: {fileID: 0}
-  shaderCamera: {fileID: 0}
-  highlightingBuffer: {fileID: 0}
-  go: {fileID: 0}
-  refCam: {fileID: 0}
-  isSupported: 0
-  _isDepthAvailable: 1
 --- !u!81 &543120124
 AudioListener:
   m_ObjectHideFlags: 0
@@ -10369,7 +10333,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aba5dfec1354ec94ca0d7d4c6f230703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightingRenderer: {fileID: 716591932}
 --- !u!114 &716591932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10382,22 +10345,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b765e0b5af3bcf4a9deb5895e477da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetFactor: 0
-  offsetUnits: 0
-  _downsampleFactor: 4
-  iterations: 2
-  blurMinSpread: .649999976
-  blurSpread: .25
-  _blurIntensity: .300000012
-  layerMask: 128
-  graphicsDeviceVersion: 0
-  shaderCameraGO: {fileID: 0}
-  shaderCamera: {fileID: 0}
-  highlightingBuffer: {fileID: 0}
-  go: {fileID: 0}
-  refCam: {fileID: 0}
-  isSupported: 0
-  _isDepthAvailable: 1
 --- !u!81 &716591933
 AudioListener:
   m_ObjectHideFlags: 0
@@ -12474,26 +12421,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee7f037da52a304e8aa76bcb3d659cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pixelObject: {fileID: 0}
-  pixelMaterial: {fileID: 0}
-  pixelThickness: 2
-  layerOffset: 0
-  pixelScale: 1
-  colorBlendThreshold: .100000001
-  spriteRenderer: {fileID: 0}
-  pixelGroupRef: {fileID: 0}
-  currentSprite: {fileID: 0}
-  origTextureRect:
-    x: 0
-    y: 0
-    width: 0
-    height: 0
-  prevPixelThickness: 0
-  prevLayerOffset: 0
-  prevPixelScale: 0
-  prevBlendThreshold: 0
-  nextLayer: 0
-  isValidSprite: 1
 --- !u!143 &852543586
 CharacterController:
   m_ObjectHideFlags: 0
@@ -12904,7 +12831,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aba5dfec1354ec94ca0d7d4c6f230703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightingRenderer: {fileID: 873475835}
 --- !u!114 &873475835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12917,22 +12843,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b765e0b5af3bcf4a9deb5895e477da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetFactor: 0
-  offsetUnits: 0
-  _downsampleFactor: 4
-  iterations: 2
-  blurMinSpread: .649999976
-  blurSpread: .25
-  _blurIntensity: .300000012
-  layerMask: 128
-  graphicsDeviceVersion: 0
-  shaderCameraGO: {fileID: 0}
-  shaderCamera: {fileID: 0}
-  highlightingBuffer: {fileID: 0}
-  go: {fileID: 0}
-  refCam: {fileID: 0}
-  isSupported: 0
-  _isDepthAvailable: 1
 --- !u!81 &873475836
 AudioListener:
   m_ObjectHideFlags: 0
@@ -17885,26 +17795,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee7f037da52a304e8aa76bcb3d659cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pixelObject: {fileID: 0}
-  pixelMaterial: {fileID: 0}
-  pixelThickness: 2
-  layerOffset: 0
-  pixelScale: 1
-  colorBlendThreshold: .100000001
-  spriteRenderer: {fileID: 0}
-  pixelGroupRef: {fileID: 0}
-  currentSprite: {fileID: 0}
-  origTextureRect:
-    x: 0
-    y: 0
-    width: 0
-    height: 0
-  prevPixelThickness: 0
-  prevLayerOffset: 0
-  prevPixelScale: 0
-  prevBlendThreshold: 0
-  nextLayer: 0
-  isValidSprite: 1
 --- !u!143 &1153772575
 CharacterController:
   m_ObjectHideFlags: 0
@@ -20753,26 +20643,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee7f037da52a304e8aa76bcb3d659cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pixelObject: {fileID: 0}
-  pixelMaterial: {fileID: 0}
-  pixelThickness: 2
-  layerOffset: 0
-  pixelScale: 1
-  colorBlendThreshold: .100000001
-  spriteRenderer: {fileID: 0}
-  pixelGroupRef: {fileID: 0}
-  currentSprite: {fileID: 0}
-  origTextureRect:
-    x: 0
-    y: 0
-    width: 0
-    height: 0
-  prevPixelThickness: 0
-  prevLayerOffset: 0
-  prevPixelScale: 0
-  prevBlendThreshold: 0
-  nextLayer: 0
-  isValidSprite: 1
 --- !u!143 &1314427867
 CharacterController:
   m_ObjectHideFlags: 0
@@ -25475,26 +25345,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee7f037da52a304e8aa76bcb3d659cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pixelObject: {fileID: 0}
-  pixelMaterial: {fileID: 0}
-  pixelThickness: 2
-  layerOffset: 0
-  pixelScale: 1
-  colorBlendThreshold: .100000001
-  spriteRenderer: {fileID: 0}
-  pixelGroupRef: {fileID: 0}
-  currentSprite: {fileID: 0}
-  origTextureRect:
-    x: 0
-    y: 0
-    width: 0
-    height: 0
-  prevPixelThickness: 0
-  prevLayerOffset: 0
-  prevPixelScale: 0
-  prevBlendThreshold: 0
-  nextLayer: 0
-  isValidSprite: 1
 --- !u!143 &1581805933
 CharacterController:
   m_ObjectHideFlags: 0
@@ -27506,7 +27356,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 1, y: .5}
   m_AnchorMax: {x: 1, y: .5}
-  m_AnchoredPosition: {x: -51, y: -81}
+  m_AnchoredPosition: {x: -51, y: 133}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: .5, y: .5}
 --- !u!114 &1728548448
@@ -30076,26 +29926,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ee7f037da52a304e8aa76bcb3d659cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pixelObject: {fileID: 0}
-  pixelMaterial: {fileID: 0}
-  pixelThickness: 2
-  layerOffset: 0
-  pixelScale: 1
-  colorBlendThreshold: .100000001
-  spriteRenderer: {fileID: 0}
-  pixelGroupRef: {fileID: 0}
-  currentSprite: {fileID: 0}
-  origTextureRect:
-    x: 0
-    y: 0
-    width: 0
-    height: 0
-  prevPixelThickness: 0
-  prevLayerOffset: 0
-  prevPixelScale: 0
-  prevBlendThreshold: 0
-  nextLayer: 0
-  isValidSprite: 1
 --- !u!143 &1863649208
 CharacterController:
   m_ObjectHideFlags: 0
@@ -31760,7 +31590,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aba5dfec1354ec94ca0d7d4c6f230703, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  highlightingRenderer: {fileID: 1972612554}
 --- !u!114 &1972612554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -31773,22 +31602,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b765e0b5af3bcf4a9deb5895e477da8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offsetFactor: 0
-  offsetUnits: 0
-  _downsampleFactor: 4
-  iterations: 2
-  blurMinSpread: .649999976
-  blurSpread: .25
-  _blurIntensity: .300000012
-  layerMask: 128
-  graphicsDeviceVersion: 0
-  shaderCameraGO: {fileID: 0}
-  shaderCamera: {fileID: 0}
-  highlightingBuffer: {fileID: 0}
-  go: {fileID: 0}
-  refCam: {fileID: 0}
-  isSupported: 0
-  _isDepthAvailable: 1
 --- !u!81 &1972612555
 AudioListener:
   m_ObjectHideFlags: 0
