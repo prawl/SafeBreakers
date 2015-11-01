@@ -3717,7 +3717,7 @@ GameObject:
   - 54: {fileID: 163784098}
   m_Layer: 0
   m_Name: Brick_Door
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12200,7 +12200,7 @@ GameObject:
   - 54: {fileID: 559279566}
   m_Layer: 0
   m_Name: Tree_02 1
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -17840,6 +17840,10 @@ Prefab:
     - target: {fileID: 484180, guid: 574ab17b6dbe2984aba9dc9943c34cc9, type: 2}
       propertyPath: m_LocalRotation.w
       value: .991444886
+      objectReference: {fileID: 0}
+    - target: {fileID: 11485090, guid: 574ab17b6dbe2984aba9dc9943c34cc9, type: 2}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 574ab17b6dbe2984aba9dc9943c34cc9, type: 2}
@@ -30432,15 +30436,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04fdb909a78b72a4583faebc2f20fa1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alarmSource:
-    row: 0
-    column: 0
-  closestEnemy: {fileID: 0}
-  shortestDistance: 0
-  alarmModeLength: 0
-  left: 0
-  down: 0
-  alarmModeReady: 0
 --- !u!1 &1358427119 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 190546, guid: d9463089ce8301348b4a7de053b22f13, type: 2}
@@ -33597,6 +33592,10 @@ Prefab:
       propertyPath: m_Name
       value: Tree_02 2
       objectReference: {fileID: 0}
+    - target: {fileID: 139438, guid: e377240f2ab634549a0fb78b181e4fca, type: 2}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e377240f2ab634549a0fb78b181e4fca, type: 2}
   m_IsPrefabParent: 0
@@ -34432,7 +34431,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 176188, guid: 122b072808497874d83a674ca72bbc9e, type: 2}
       propertyPath: m_Name
-      value: SB_Enemy w/ Flashlight 1
+      value: SB_Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 10893430, guid: 122b072808497874d83a674ca72bbc9e, type: 2}
       propertyPath: m_BounceIntensity
@@ -34440,19 +34439,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 10893430, guid: 122b072808497874d83a674ca72bbc9e, type: 2}
       propertyPath: m_Intensity
-      value: 3
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 10893430, guid: 122b072808497874d83a674ca72bbc9e, type: 2}
       propertyPath: m_Lightmapping
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 10893430, guid: 122b072808497874d83a674ca72bbc9e, type: 2}
       propertyPath: m_Range
-      value: 75
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 10893430, guid: 122b072808497874d83a674ca72bbc9e, type: 2}
       propertyPath: m_SpotAngle
-      value: 30
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 10893430, guid: 122b072808497874d83a674ca72bbc9e, type: 2}
       propertyPath: m_CullingMask.m_Bits
@@ -34461,6 +34460,38 @@ Prefab:
     - target: {fileID: 10893430, guid: 122b072808497874d83a674ca72bbc9e, type: 2}
       propertyPath: m_Cookie
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 11402410, guid: 122b072808497874d83a674ca72bbc9e, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 484826, guid: 122b072808497874d83a674ca72bbc9e, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -.778999984
+      objectReference: {fileID: 0}
+    - target: {fileID: 484826, guid: 122b072808497874d83a674ca72bbc9e, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -.115000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 484826, guid: 122b072808497874d83a674ca72bbc9e, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 484826, guid: 122b072808497874d83a674ca72bbc9e, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: .678163111
+      objectReference: {fileID: 0}
+    - target: {fileID: 484826, guid: 122b072808497874d83a674ca72bbc9e, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: .200237408
+      objectReference: {fileID: 0}
+    - target: {fileID: 484826, guid: 122b072808497874d83a674ca72bbc9e, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: .200237393
+      objectReference: {fileID: 0}
+    - target: {fileID: 484826, guid: 122b072808497874d83a674ca72bbc9e, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: .678162813
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 122b072808497874d83a674ca72bbc9e, type: 2}
@@ -41193,7 +41224,20 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 176188, guid: 122b072808497874d83a674ca72bbc9e, type: 2}
       propertyPath: m_Name
-      value: SB_Enemy w_ Flashlight 2
+      value: SB_Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 9579766, guid: 122b072808497874d83a674ca72bbc9e, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 21299344, guid: 122b072808497874d83a674ca72bbc9e, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: d9b7d8db7cb38fa41a6f7d63c55d0148,
+        type: 3}
+    - target: {fileID: 176188, guid: 122b072808497874d83a674ca72bbc9e, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 122b072808497874d83a674ca72bbc9e, type: 2}
@@ -44004,7 +44048,7 @@ TerrainCollider:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1966744400}
   m_Material: {fileID: 13400000, guid: 79b6f9d3d49d1a2469d2d9402570c834, type: 2}
-  m_Enabled: 1
+  m_Enabled: 0
   m_TerrainData: {fileID: 15600000, guid: df5fbd098c0784b46967b7e5bce1f338, type: 2}
   m_EnableTreeColliders: 0
 --- !u!218 &1966744402

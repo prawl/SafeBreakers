@@ -23,32 +23,29 @@ public class SB_EnemyFlashlight : MonoBehaviour {
 	
 	// Update is called once per frame. Based on the direction the player is looking, the flashlight is rotated and transformed to the correct direction
 	void Update () {
-        if (!enemyCon.isAlarmed && !enemyCon.moved)
+        if (enemyCon.faceUp)
         {
-            if (enemyCon.faceUp)
-            {
-                Quaternion tempRot = new Quaternion();
-                tempRot.x = 0; tempRot.y = 90; tempRot.z = -80;
-                flashlight.gameObject.transform.rotation = Quaternion.Euler(tempRot.x, tempRot.y, tempRot.z);
-            }
-            if (enemyCon.faceDown)
-            {
-                Quaternion tempRot = new Quaternion();
-                tempRot.x = 0; tempRot.y = 270; tempRot.z = -80;
-                flashlight.gameObject.transform.rotation = Quaternion.Euler(tempRot.x, tempRot.y, tempRot.z);
-            }
-            if (enemyCon.faceRight)
-            {
-                Quaternion tempRot = new Quaternion();
-                tempRot.x = 0; tempRot.y = 180; tempRot.z = -80;
-                flashlight.gameObject.transform.rotation = Quaternion.Euler(tempRot.x, tempRot.y, tempRot.z);
-            }
-            if (enemyCon.faceLeft)
-            {
-                Quaternion tempRot = new Quaternion();
-                tempRot.x = 0; tempRot.y = 0; tempRot.z = -80;
-                flashlight.gameObject.transform.rotation = Quaternion.Euler(tempRot.x, tempRot.y, tempRot.z);
-            }
+            Quaternion tempRot = new Quaternion();
+            tempRot.x = 0; tempRot.y = 90; tempRot.z = -80;
+            flashlight.gameObject.transform.rotation = Quaternion.Euler(tempRot.x, tempRot.y, tempRot.z);
+        }
+        if (enemyCon.faceDown)
+        {
+            Quaternion tempRot = new Quaternion();
+            tempRot.x = 0; tempRot.y = 270; tempRot.z = -80;
+            flashlight.gameObject.transform.rotation = Quaternion.Euler(tempRot.x, tempRot.y, tempRot.z);
+        }
+        if (enemyCon.faceRight)
+        {
+            Quaternion tempRot = new Quaternion();
+            tempRot.x = 0; tempRot.y = 180; tempRot.z = -80;
+            flashlight.gameObject.transform.rotation = Quaternion.Euler(tempRot.x, tempRot.y, tempRot.z);
+        }
+        if (enemyCon.faceLeft)
+        {
+            Quaternion tempRot = new Quaternion();
+            tempRot.x = 0; tempRot.y = 0; tempRot.z = -80;
+            flashlight.gameObject.transform.rotation = Quaternion.Euler(tempRot.x, tempRot.y, tempRot.z);
         }
 	}
 }

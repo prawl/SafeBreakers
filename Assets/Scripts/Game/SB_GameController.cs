@@ -30,8 +30,9 @@ public class SB_GameController : MonoBehaviour {
         player = GameObject.FindGameObjectWithTag("Player");
         playerCount = 0;enemyCount = 0;gameCount = 1;
 		isLevelWon = false;isLevelPaused = false;isLevelLost = false;minigameOn = false;canInteract = false;alarmMode = false;
-		numOfEnemies = GameObject.FindGameObjectsWithTag ("Enemy").Length;
 		enemies = GameObject.FindGameObjectsWithTag ("Enemy");
+        ClearClones();
+        numOfEnemies = GameObject.FindGameObjectsWithTag("Enemy").Length;
         GetComponent<SB_AlarmMode>().enabled = false;
     }
 	
@@ -62,7 +63,7 @@ public class SB_GameController : MonoBehaviour {
 		}
         if(enemyCount == playerCount && playerCount == gameCount && alarmMode)
         {
-            gameObject.GetComponent<SB_AlarmMode>().alarmModeLength--;
+            //gameObject.GetComponent<SB_AlarmMode>().alarmModeLength--;
             gameCount++;
         }
         if (alarmMode)
@@ -72,6 +73,17 @@ public class SB_GameController : MonoBehaviour {
 		CheckGameLost ();
 		CheckGameWon ();
 	}
+
+    void ClearClones()
+    {
+        for(int i = 0; i <enemies.Length - 1; i++)
+        {
+            if(enemies[i].name == "SB_Enemy(Clone)"){
+                Destroy(enemies[i]);
+            }
+        }
+        enemies = GameObject.FindGameObjectsWithTag("Enemy");
+    }
 
     //Checks every frame to see if the player has lost the level
 	void CheckGameLost(){

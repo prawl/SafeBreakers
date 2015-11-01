@@ -17,13 +17,13 @@ public class SB_EnemyController : MonoBehaviour
 {
 
     private GameObject player;
-    private SB_GameController gameCon;
-    private TileSystem tileSystem;
+    public SB_GameController gameCon;
+    public TileSystem tileSystem;
     public TileIndex startTile, endTile;
     public int lineOfSight;
     private Vector3 startPos, endPos;
-    private Seeker seeker;
-    private CharacterController controller;
+    public Seeker seeker;
+    public CharacterController controller;
     private Path path;
     private float speed = 1;
     private Vector3[] pathArray;
