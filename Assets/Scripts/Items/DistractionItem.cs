@@ -102,9 +102,15 @@ public class DistractionItem : MonoBehaviour {
     RaycastHit hit;
     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
     if (Physics.Raycast(ray, out hit)) {
+      print(hit.transform.gameObject);
       if (hit.transform.gameObject.tag == "Ground") {
         playerClickedTile = hit.transform.gameObject.transform.parent.gameObject;
         currentTileLocation = hit.transform.gameObject.transform.position;
+      }
+      else if (hit.transform.gameObject.tag == "Obstacle") {
+        playerClickedTile = hit.transform.gameObject.transform.parent.gameObject;
+        currentTileLocation = hit.transform.gameObject.transform.position;
+        print("wall!");
       }
     }
   }
@@ -152,7 +158,8 @@ public class DistractionItem : MonoBehaviour {
         FreezeGameObjectPosition(instantiatedItem);
         DeactivateCollider(instantiatedItem);
         instantiatedItem.GetComponent<AudioSource>().Play();
-      }else if (col.transform.gameObject.name == "Tree") {
+      }else if (col.transform.gameObject.tag == "Obstacle") {
+        print("hit wall sound!");
       }
     }
   }
