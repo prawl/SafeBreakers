@@ -9,22 +9,24 @@ public class DistractionItem : MonoBehaviour {
   public GameObject playerClickedTile;
   public Vector3 currentTileLocation;
   public int numberOfItems;
-  public AudioClip impact;
   public Button rockButton;
   private float itemThrowArc = 1.5f;
   private float timeToTarget = 0.18f;
   private GameObject player;
-
   private Text guiCounter;
-
   private Vector3 itemPosition;
   private Vector3 throwSpeed;
   private GameObject[] deployItems;
   private GameObject instantiatedItem;
   private int readyToThrow = 0;
   private int maxNumberOfDeployItems = 5;
+  public AudioSource groundImpactSound;
+  public AudioSource wallImpactSound;
 
 	void Start () {
+    AudioSource[] audios = GetComponents<AudioSource>();
+    groundImpactSound = audios[0];
+    wallImpactSound = audios[1];
 		player = GameObject.FindGameObjectWithTag ("Player");
     guiCounter = GameObject.Find("GUI_Rock_Counter").GetComponent<Text>();
     rockButton = GameObject.Find("GUI_Rock_Button").GetComponent<Button>();
@@ -157,9 +159,9 @@ public class DistractionItem : MonoBehaviour {
       if(col.transform.gameObject.tag == "Ground"){
         FreezeGameObjectPosition(instantiatedItem);
         DeactivateCollider(instantiatedItem);
-        instantiatedItem.GetComponent<AudioSource>().Play();
+        groundImpactSound.Play();
       }else if (col.transform.gameObject.tag == "Obstacle") {
-        print("hit wall sound!");
+        wallImpactSound.Play();
       }
     }
   }
