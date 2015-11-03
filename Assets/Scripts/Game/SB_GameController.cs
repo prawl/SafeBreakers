@@ -63,7 +63,7 @@ public class SB_GameController : MonoBehaviour {
 		}
         if(enemyCount == playerCount && playerCount == gameCount && alarmMode)
         {
-            //gameObject.GetComponent<SB_AlarmMode>().alarmModeLength--;
+            gameObject.GetComponent<SB_AlarmMode>().alarmModeLength--;
             gameCount++;
         }
         if (alarmMode)

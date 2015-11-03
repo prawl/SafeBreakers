@@ -1,11 +1,11 @@
 ﻿/*
 Script Name: SB_EnemyFlashlight.cs
 Author: Bradley M. Butts
-Last Modified: 10-19-2015
+Last Modified: 11-03-2015
 Description: This script handles the direction and length of the enemies flashlight based on the direction and
              line of sight that the enemy has.
 
-             CURRENT BUG: When the enemy reaches the end of their path, the flashlight automatically switches to the next direction before the enemy does.
+             *RESOLVED* CURRENT BUG: When the enemy reaches the end of their path, the flashlight automatically switches to the next direction before the enemy does.
 */
 
 using UnityEngine;
@@ -23,7 +23,7 @@ public class SB_EnemyFlashlight : MonoBehaviour {
 	
 	// Update is called once per frame. Based on the direction the player is looking, the flashlight is rotated and transformed to the correct direction
 	void Update () {
-        if (!enemyCon.moved)
+        if (enemyCon.gameCon.enemyCount < enemyCon.gameCon.playerCount)
         {
             if (enemyCon.faceUp)
             {

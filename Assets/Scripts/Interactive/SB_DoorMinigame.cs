@@ -332,7 +332,7 @@ public class SB_DoorMinigame : MonoBehaviour {
         miniGameWindow.color = Color.gray;
         yield return new WaitForSeconds(1f);
         gameActive = false;
-       /* player.GetComponent<SB_AlarmMode>().alarmSource = gameTile;
+       player.GetComponent<SB_AlarmMode>().alarmSource = gameTile;
         if (panelLeft)
         {
             player.GetComponent<SB_AlarmMode>().left = true;
@@ -354,7 +354,6 @@ public class SB_DoorMinigame : MonoBehaviour {
         {
             player.GetComponent<SB_AlarmMode>().down = true;
         }
-        */
     }
 
     //If the player wins the minigame, this function will raise the door so the player can pass through it.
