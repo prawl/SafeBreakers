@@ -9,22 +9,24 @@ public class DistractionItem : MonoBehaviour {
   public GameObject playerClickedTile;
   public Vector3 currentTileLocation;
   public int numberOfItems;
-  public AudioClip impact;
   public Button rockButton;
   private float itemThrowArc = 1.5f;
   private float timeToTarget = 0.18f;
   private GameObject player;
-
   private Text guiCounter;
-
   private Vector3 itemPosition;
   private Vector3 throwSpeed;
   private GameObject[] deployItems;
   private GameObject instantiatedItem;
   private int readyToThrow = 0;
   private int maxNumberOfDeployItems = 5;
+  public AudioSource groundImpactSound;
+  public AudioSource wallImpactSound;
 
 	void Start () {
+    AudioSource[] audios = GetComponents<AudioSource>();
+    groundImpactSound = audios[0];
+    wallImpactSound = audios[1];
 		player = GameObject.FindGameObjectWithTag ("Player");
     guiCounter = GameObject.Find("GUI_Rock_Counter").GetComponent<Text>();
     rockButton = GameObject.Find("GUI_Rock_Button").GetComponent<Button>();
@@ -102,9 +104,15 @@ public class DistractionItem : MonoBehaviour {
     RaycastHit hit;
     Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
     if (Physics.Raycast(ray, out hit)) {
+      print(hit.transform.gameObject);
       if (hit.transform.gameObject.tag == "Ground") {
         playerClickedTile = hit.transform.gameObject.transform.parent.gameObject;
         currentTileLocation = hit.transform.gameObject.transform.position;
+      }
+      else if (hit.transform.gameObject.tag == "Obstacle") {
+        playerClickedTile = hit.transform.gameObject.transform.parent.gameObject;
+        currentTileLocation = hit.transform.gameObject.transform.position;
+        print("wall!");
       }
     }
   }
@@ -134,6 +142,14 @@ public class DistractionItem : MonoBehaviour {
     deployItems = GameObject.FindGameObjectsWithTag("Item");
   }
 
+  private void FreezeGameObjectPosition(GameObject gameObject) {
+    gameObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+  }
+
+  private void DeactivateCollider(GameObject gameObject) {
+    gameObject.transform.GetChild(0).gameObject.GetComponent<Collider>().enabled = false;
+  }
+
   private void OnCollisionEnter(Collision col) {
     GetDeployItems();
     int size = new int();
@@ -141,8 +157,11 @@ public class DistractionItem : MonoBehaviour {
     instantiatedItem = deployItems[size-1];
     if(size > 1){
       if(col.transform.gameObject.tag == "Ground"){
-        instantiatedItem.GetComponent<AudioSource>().Play();
-      }else if (col.transform.gameObject.name == "Tree") {
+        FreezeGameObjectPosition(instantiatedItem);
+        DeactivateCollider(instantiatedItem);
+        groundImpactSound.Play();
+      }else if (col.transform.gameObject.tag == "Obstacle") {
+        wallImpactSound.Play();
       }
     }
   }
