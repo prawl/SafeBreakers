@@ -45,7 +45,7 @@ public class DistractionItem : MonoBehaviour {
 
     if (Input.GetMouseButtonDown(0)) {
       CaptureMouseClick();
-      if (ItemsInLevel() <= maxNumberOfDeployItems && ItemsInLevel() > 0) {
+      if (ItemsInLevel() <= maxNumberOfDeployItems && ItemsInLevel() >= 0) {
         if (currentTileLocation != Vector3.zero && DeployItem() == 1) {
           CreateItem();
           DisableDeployItem();
