@@ -70,6 +70,10 @@ public class SB_GameController : MonoBehaviour {
         {
             GetComponent<SB_AlarmMode>().enabled = true;
         }
+        if(alarmMode && GetComponent<SB_AlarmMode>().alarmModeLength == 0)
+        {
+            alarmMode = false;
+        }
 		CheckGameLost ();
 		CheckGameWon ();
 	}

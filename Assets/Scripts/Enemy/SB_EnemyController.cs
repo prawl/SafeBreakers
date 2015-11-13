@@ -25,7 +25,7 @@ public class SB_EnemyController : MonoBehaviour
     public Seeker seeker;
     public CharacterController controller;
     private Path path;
-    private float speed = 1;
+    public float speed = 1;
     private Vector3[] pathArray;
     private int currentPos;
     public bool up, down, right, left, moved, faceUp, faceDown, faceRight, faceLeft, isAlarmed;
