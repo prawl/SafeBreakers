@@ -34,7 +34,7 @@ public class DistractionItem : MonoBehaviour {
 	
 
   private void NumberOfRocksLeft(){
-    int rocksActive = (maxNumberOfDeployItems + 1) - numberOfItems;
+    int rocksActive = (maxNumberOfDeployItems) - numberOfItems;
     guiCounter.text = rocksActive.ToString();
   }
 
@@ -45,7 +45,7 @@ public class DistractionItem : MonoBehaviour {
 
     if (Input.GetMouseButtonDown(0)) {
       CaptureMouseClick();
-      if (ItemsInLevel() <= maxNumberOfDeployItems && ItemsInLevel() >= 0) {
+      if (ItemsInLevel() < maxNumberOfDeployItems && ItemsInLevel() >= 0) {
         if (currentTileLocation != Vector3.zero && DeployItem() == 1) {
           CreateItem();
           DisableDeployItem();
@@ -118,9 +118,9 @@ public class DistractionItem : MonoBehaviour {
   }
 
   private void DestroyAllItems() {
-    if(ItemsInLevel() > 0){
+    if(ItemsInLevel() >= 0){
       GetDeployItems();
-      for(int i=1; i < deployItems.Length; i++) {
+      for(int i=0; i < deployItems.Length; i++) {
         Destroy(deployItems[i]);
       }
     }
